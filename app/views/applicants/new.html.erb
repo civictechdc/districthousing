@@ -1,0 +1,11 @@
+<h1>Create New Applicant</h1>
+
+<%= form_for @applicant, :url => { :action => "create" }, :html => {:class => "app_form"} do |f| %>
+  <%= label_tag(:first_name, "First Name:") %>
+  <%= f.text_field :first_name %>
+  <%= label_tag(:last_name, "Last Name:") %>
+  <%= f.text_field :last_name %>
+  <%= f.submit "Create" %>
+<% end %>
+
+<%= link_to 'Back', applicants_path %>

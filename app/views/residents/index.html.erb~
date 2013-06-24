@@ -1,0 +1,43 @@
+<h1>Listing residents</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Middle name</th>
+    <th>Ssn</th>
+    <th>Dob</th>
+    <th>Gender</th>
+    <th>Res street address</th>
+    <th>Res apt</th>
+    <th>Res city</th>
+    <th>Res state</th>
+    <th>Res zip</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @residents.each do |resident| %>
+  <tr>
+    <td><%= resident.first_name %></td>
+    <td><%= resident.last_name %></td>
+    <td><%= resident.middle_name %></td>
+    <td><%= resident.ssn %></td>
+    <td><%= resident.dob %></td>
+    <td><%= resident.gender %></td>
+    <td><%= resident.res_street_address %></td>
+    <td><%= resident.res_apt %></td>
+    <td><%= resident.res_city %></td>
+    <td><%= resident.res_state %></td>
+    <td><%= resident.res_zip %></td>
+    <td><%= link_to 'Show', resident %></td>
+    <td><%= link_to 'Edit', edit_resident_path(resident) %></td>
+    <td><%= link_to 'Remove', resident, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Resident', new_resident_path %>

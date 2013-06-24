@@ -1,0 +1,4 @@
+<h1>Bread for the City</h1>
+<p>Welcome to the DC Housing Applications Assistant!</p>
+<%= link_to "Residentss", residents_path %>
+
