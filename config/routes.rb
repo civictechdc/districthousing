@@ -2,9 +2,6 @@ DchousingApps::Application.routes.draw do
   resources :residents
 
 
-  resources :applicants
-
-
   get "home/index"
 
   # The priority is based upon order of creation:
