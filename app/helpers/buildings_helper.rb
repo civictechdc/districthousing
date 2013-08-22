@@ -1,0 +1,2 @@
+module BuildingsHelper
+end
