@@ -11,23 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130623222643) do
-
-  create_table "applicants", :force => true do |t|
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "middle_name"
-    t.string   "ssn"
-    t.datetime "dob"
-    t.string   "gender"
-    t.string   "res_street_address"
-    t.string   "res_apt"
-    t.string   "res_city"
-    t.string   "res_state"
-    t.string   "res_zip"
-  end
+ActiveRecord::Schema.define(:version => 20130902055912) do
 
   create_table "residents", :force => true do |t|
     t.string   "first_name"
