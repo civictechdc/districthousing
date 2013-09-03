@@ -19,6 +19,7 @@ DchousingApps::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+  config.serve_static_assets = true
 
 
   # Add the fonts path
