@@ -15,19 +15,19 @@
 				<div class="logo"></div>
 
 				<div class="button-group">
-				  <div class="side-button"><a href=""><div class="button-text">Home</div></a></div>
-				  <div class="side-button"><a href=""><div class="button-text">Apply</div></a></div>
-				  <div class="side-button"><a href=""><div class="button-text">About</div></a></div>
+				  <div class="side-button"><div class="button-text"><%= link_to "Home", root_path %></div></div>
+				  <div class="side-button"><div class="button-text"><%= link_to "Apply", new_user_registration_path %></div></div>
+				  <div class="side-button"><div class="button-text"><%= link_to "About", about_path %></div></div>
 				</div>
-			
+
 		</div>
 
 		<div class="span10 main">
-			
-				
+
+
 					<%= yield %>
-			
-			
+
+
 		</div>
 	</div>
 </div>

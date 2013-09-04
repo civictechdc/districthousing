@@ -1,5 +1,6 @@
 class ResidentsController < ApplicationController
-  before_filter :authenticate_user!
+  # Right now, we don't want to make ourselves log in.
+  # before_filter :authenticate_user!
   # GET /residents
   # GET /residents.json
   def index
