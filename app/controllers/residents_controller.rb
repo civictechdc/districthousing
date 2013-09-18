@@ -82,4 +82,11 @@ class ResidentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def fill_all_forms
+    resident = Resident.find(params[:id])
+    send_data resident.generate_pdf_archive,
+      filename: 'housingforms.zip',
+      type: 'application/zip'
+  end
 end

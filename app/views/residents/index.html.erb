@@ -32,6 +32,7 @@
     <td><%= resident.res_state %></td>
     <td><%= resident.res_zip %></td>
     <td><%= link_to 'Assist with Applications', resident %></td>
+    <td><%= link_to 'Fill all applications', fill_all_forms_resident_path(resident) %></td>
     <td><%= link_to 'Edit', edit_resident_path(resident) %></td>
     <td><%= link_to 'Remove', resident, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
