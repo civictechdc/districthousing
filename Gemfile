@@ -17,3 +17,4 @@ end
 
 gem 'jquery-rails'
 gem 'rubyzip'
+gem 'thin'

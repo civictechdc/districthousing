@@ -1,4 +1,7 @@
 DchousingApps::Application.routes.draw do
+  resources :buildings
+  resources :housing_forms
+
   devise_for :users
 
   resources :housing_forms
