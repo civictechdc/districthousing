@@ -16,6 +16,7 @@
     <td><%= link_to 'Show', housing_form %></td>
     <td><%= link_to 'Edit', edit_housing_form_path(housing_form) %></td>
     <td><%= link_to 'Destroy', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'Add to cart', line_items_path(housing_form_id: housing_form) %></td>
   </tr>
 <% end %>
 </table>

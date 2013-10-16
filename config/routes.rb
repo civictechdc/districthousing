@@ -1,9 +1,10 @@
 DchousingApps::Application.routes.draw do
-  resources :buildings
-  resources :housing_forms
-
   devise_for :users
 
+  resources :buildings
+  resources :housing_forms
+  resources :line_items
+  resources :carts
   resources :housing_forms
 
   resources :residents do
