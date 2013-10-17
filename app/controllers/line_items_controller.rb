@@ -43,7 +43,7 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     housing_form = HousingForm.find(params[:housing_form_id])
-    @line_item = @cart.line_items.build
+    @line_item = @cart.add_housing_form(housing_form.id)
     @line_item.housing_form = housing_form
 
     respond_to do |format|
