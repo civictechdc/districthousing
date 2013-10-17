@@ -82,6 +82,7 @@ p, ol, ul, td {
 		position: relative;
 		float: none;
 		margin-top: 3%;
+		color: #ffffff;
 		
 		text-transform: uppercase;
 		font-family: 'Nevis';
@@ -95,7 +96,13 @@ p, ol, ul, td {
 
 		.button-text {
 			color: #e74c3c;
+
+			&:visited {
+				color: #e74c3c;
+			}
 		}
+
+
 	}
 
 	a {
@@ -105,6 +112,9 @@ p, ol, ul, td {
 			text-decoration: none;
 			-webkit-transition: 0.2s ease-in-out;
 			transition: 0.2s ease-in-out;
+		}
+		&:visited {
+			color: inherit;
 		}
 	}
 }
