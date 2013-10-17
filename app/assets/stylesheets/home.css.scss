@@ -69,6 +69,37 @@ p, ol, ul, td {
 	}
 }
 
+.headshot-text{
+	text-align: center;
+	#name {
+		padding-top: 12px;
+	}
+}
+
+.social-icons {
+	font-size: 3em;
+
+	#icon-twitter {
+		color: #4099FF;
+		&:hover {
+			color:#e74c3c;
+			-webkit-transition: 0.2s ease-in-out;
+			transition: 0.2s ease-in-out;
+		}
+	}
+
+	#icon-facebook {
+		color: #3B5998;
+		&:hover {
+			color:#e74c3c;
+			-webkit-transition: 0.2s ease-in-out;
+			transition: 0.2s ease-in-out;
+		}
+	}
+}
+
+
+
 .side-button {
 	text-align: center;
 	max-width: 200px;
@@ -102,8 +133,6 @@ p, ol, ul, td {
 				color: #e74c3c;
 			}
 		}
-
-
 	}
 
 	a {
@@ -124,14 +153,12 @@ p, ol, ul, td {
 	width: 100%;
 	height:auto;
 	background: white;
-	margin-bottom: 10%;
 	&:hover{
 		background-color: #e74c3c;
 		opacity:0.4;
 		-webkit-transition: 0.2s ease-in-out;
 		transition: 0.2s ease-in-out;
 	}
-
 }
 
 
@@ -205,7 +232,7 @@ p, ol, ul, td {
 
 	.main {
 		margin-top: 200px;
-		padding-left: 50px;
+		padding-left: 0;
 	}
 
 	.button-group {
