@@ -19,15 +19,14 @@
 			  <div class="side-button"><div class="button-text"><%= link_to content_tag(:div, "Home"), root_path %></div></div>
 			  <div class="side-button"><div class="button-text"><%= link_to content_tag(:div, "Apply"), new_user_registration_path %></div></div>
 			  <div class="side-button"><div class="button-text"><%= link_to content_tag(:div, "About"), about_path %></div></div>
-			  <div id="login-button" class="side-button"><div class="button-text"><%= link_to content_tag(:div, "Login"), :id => "myModal" %></div></div>
+
+			  <a href="#myModal" data-toggle="modal"><div id="login-button" class="side-button"><div class="button-text">Login</div></div></a>
 			</div>
 
 		</div>
 
 		<div class="span10 main">
 			
-			<!--<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>-->
-			 
 			<!-- Modal -->
 			<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-header">
@@ -39,12 +38,11 @@
 			  </div>
 			  <div class="modal-footer">
 			    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-			    <button class="btn btn-primary">Save changes</button>
+			    <button class="btn btn-success">Save changes</button>
 			  </div>
 			</div>
 
 					<%= yield %>
-
 
 		</div>
 	</div>
