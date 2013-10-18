@@ -18,9 +18,12 @@ p, ol, ul, td {
 }
 
 
-/*a a:hover {
-	text-decoration: none;
-}*/
+a {
+	&:hover {
+		text-decoration: none;
+	}
+}
+
 
 #sidebar {
 	background-color: #e74c3c;
@@ -85,6 +88,7 @@ p, ol, ul, td {
 			color:#e74c3c;
 			-webkit-transition: 0.2s ease-in-out;
 			transition: 0.2s ease-in-out;
+			text-decoration: none;
 		}
 	}
 
@@ -94,6 +98,7 @@ p, ol, ul, td {
 			color:#e74c3c;
 			-webkit-transition: 0.2s ease-in-out;
 			transition: 0.2s ease-in-out;
+			text-decoration: none;
 		}
 	}
 }
