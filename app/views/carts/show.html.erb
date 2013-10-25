@@ -2,8 +2,4 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h2>Your cart:</h2>
-<table>
-  <%= render(@cart.line_items) %>
-</table>
-<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= render(@cart) %>
