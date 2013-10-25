@@ -4,11 +4,6 @@
 
 <h2>Your cart:</h2>
 <table>
-  <% @cart.line_items.each do |item| %>
-    <tr>
-      <td><%= item.housing_form.name %></td>
-      <td><%= button_to "Remove", item, method: :delete %></td>
-    </tr>
-  <% end %>
+  <%= render(@cart.line_items) %>
 </table>
 <%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
