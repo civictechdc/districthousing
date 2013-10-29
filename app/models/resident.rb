@@ -3,17 +3,4 @@ class Resident < ActiveRecord::Base
 
   belongs_to :user
 
-  def instance_variable_string_hash *variable_names
-    h = Hash.new
-    variable_names.each do |attr|
-      puts attr
-      h["#{attr}"] = instance_variable_get("@#{attr}").to_s
-    end
-    h
-  end
-
-  def attributes_hash
-    instance_variable_string_hash self.class.accessible_attributes
-  end
-
 end
