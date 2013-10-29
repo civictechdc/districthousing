@@ -14,5 +14,5 @@ DchousingApps::Application.routes.draw do
   get "home/index"
   match "/about", :to => "home#about"
 
-  root :to => 'home#index'
+  root :to => 'housing_forms#index'
 end
