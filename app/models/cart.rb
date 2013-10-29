@@ -1,3 +1,6 @@
+require 'zip/zip'
+require 'net/http'
+
 class Cart < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
 
@@ -8,6 +11,22 @@ class Cart < ActiveRecord::Base
       current_item = line_items.build(housing_form_id: housing_form_id)
     end
     current_item
+  end
+
+  def generate_pdf_archive
+    stringio = Zip::ZipOutputStream::write_buffer do |zio|
+      HousingForm.all.each do |form|
+        uri = URI.parse("http://192.241.132.194:8080/fill")
+        http_post_data = attributes
+        http_post_data["pdf"] = form.uri
+        logger.debug http_post_data.inspect
+        response = Net::HTTP.post_form(uri, http_post_data)
+        zio.put_next_entry("#{form.name}.pdf")
+        zio.write response.body
+      end
+    end
+    stringio.rewind
+    stringio.sysread
   end
 
 end

@@ -86,4 +86,10 @@ class CartsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def download
+    send_data current_cart.generate_pdf_archive,
+      filename: 'housingforms.zip',
+      type: 'application/zip'
+  end
 end

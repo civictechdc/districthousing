@@ -13,6 +13,7 @@ DchousingApps::Application.routes.draw do
 
   get "home/index"
   match "/about", :to => "home#about"
+  match "/download", :to => "carts#download"
 
   root :to => 'housing_forms#index'
 end
