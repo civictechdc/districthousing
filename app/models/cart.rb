@@ -15,7 +15,7 @@ class Cart < ActiveRecord::Base
 
   def generate_pdf_archive
     stringio = Zip::ZipOutputStream::write_buffer do |zio|
-      HousingForm.all.each do |form|
+      line_items.map(&:housing_form).each do |form|
         uri = URI.parse("http://192.241.132.194:8080/fill")
         http_post_data = attributes
         http_post_data["pdf"] = form.uri
