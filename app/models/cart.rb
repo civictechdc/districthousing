@@ -3,6 +3,7 @@ require 'net/http'
 
 class Cart < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
+  belongs_to :user
 
   # Prevent duplicates of the same housing from from being added to the cart
   def add_housing_form(housing_form_id)
@@ -19,6 +20,8 @@ class Cart < ActiveRecord::Base
         uri = URI.parse("http://192.241.132.194:8080/fill")
         http_post_data = attributes
         http_post_data["pdf"] = form.uri
+        http_post_data.deep_merge!(Resident.first.attributes)
+        p http_post_data
         logger.debug http_post_data.inspect
         response = Net::HTTP.post_form(uri, http_post_data)
         zio.put_next_entry("#{form.name}.pdf")
