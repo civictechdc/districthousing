@@ -2,6 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*variables and reused blocks*/
+
+$red : #e74c3c;
+$font-stack: 'Nevis';
+
+
+.hover-behavior {
+	-webkit-transition: 0.2s ease-in-out;
+	transition: 0.2s ease-in-out;
+}
+
+
+
+/* ******************** */
 
 body {
   background-color: #fff;
@@ -17,16 +31,20 @@ p, ol, ul, td {
   line-height: 18px;
 }
 
-
 a {
+	background-color: transparent;
 	&:hover {
+		background-color: transparent;
 		text-decoration: none;
 	}
 }
 
+.about-text {
+	margin: 5% 0 5% 5%;
+}
 
 #sidebar {
-	background-color: #e74c3c;
+	background-color: $red;
 	position: fixed;
 	width: 300px;
 	height: 110%;
@@ -40,19 +58,19 @@ a {
 	height: 100%;
 
 	h1, h2, h3, h4, h5 {
-		font-family: 'Nevis';
+		font-family: $font-stack;
 		text-transform: uppercase;
 	}
 }
 
 .logo {
+	display: block;
+	width: 85%;
+	height: auto;
 	margin-top: 3em;
 	margin-left: auto;
 	margin-right:auto;
-	background-image: url('http://f.cl.ly/items/3w200q113J3x0X3Q1S2z/district-housing-logo-transparent-nevis-250-wide.png');
-	background-color: #e74c3c;
-	width: 250px;
-	height: 250px;
+	background-color: $red;
 }
 
 .button-group {
@@ -68,7 +86,7 @@ a {
 	margin-left: 4em;
 
 	.button-text {
-		margin-top: 7%;
+		margin-top: 5%;
 	}
 }
 
@@ -85,9 +103,8 @@ a {
 	#icon-twitter {
 		color: #4099FF;
 		&:hover {
-			color:#e74c3c;
-			-webkit-transition: 0.2s ease-in-out;
-			transition: 0.2s ease-in-out;
+			color: $red;
+			@extend .hover-behavior;
 			text-decoration: none;
 		}
 	}
@@ -95,21 +112,18 @@ a {
 	#icon-facebook {
 		color: #3B5998;
 		&:hover {
-			color:#e74c3c;
-			-webkit-transition: 0.2s ease-in-out;
-			transition: 0.2s ease-in-out;
+			color:$red;
+			@extend .hover-behavior;
 			text-decoration: none;
 		}
 	}
 }
 
-
-
 .side-button {
 	text-align: center;
 	max-width: 200px;
 	height: 2em;
-	background-color: #e74c3c;
+	background-color: $red;
 	border-style: solid;
 	border-width: 4px;
 	border-color: #ffffff;
@@ -118,24 +132,23 @@ a {
 	.button-text {
 		position: relative;
 		float: none;
-		margin-top: 3%;
+		margin-top: 2%;
 		color: #ffffff;
 		
 		text-transform: uppercase;
-		font-family: 'Nevis';
+		font-family: $font-stack;
 		font-size: 2em;
 	}
 
 	&:hover {
 		background-color: #ffffff;
-		-webkit-transition: 0.2s ease-in-out;
-		transition: 0.2s ease-in-out;
+		@extend .hover-behavior;
 
 		.button-text {
-			color: #e74c3c;
+			color: $red;
 
 			&:visited {
-				color: #e74c3c;
+				color: $red;
 			}
 		}
 	}
@@ -143,10 +156,9 @@ a {
 	a {
 		color: #ffffff;
 		&:hover {
-			color: #e74c3c;
+			color: $red;
 			text-decoration: none;
-			-webkit-transition: 0.2s ease-in-out;
-			transition: 0.2s ease-in-out;
+			@extend .hover-behavior;
 		}
 		&:visited {
 			color: inherit;
@@ -156,59 +168,14 @@ a {
 
 .img-container{
 	width: 100%;
-	height:auto;
+	height: auto;
 	background: white;
 	&:hover{
-		background-color: #e74c3c;
+		background-color: $red;
 		opacity:0.4;
-		-webkit-transition: 0.2s ease-in-out;
-		transition: 0.2s ease-in-out;
+		@extend .hover-behavior;
 	}
 }
-
-
-
-.circle-container {
-  width: 100%;
-  height:300px;
-  background: white;
-}
-
-.circle {
-  border-radius: 50%;
-  width: 100%;
-  padding-bottom: 100%;
-  background: url('http://f.cl.ly/items/000z093L1S1H191m0h1d/small%20headshot.jpg') no-repeat;
-
-  &:hover{
-  	background-color: #e74c3c;
-  	opacity:0.4;
-  	-webkit-transition: 0.2s ease-in-out;
-  	transition: 0.2s ease-in-out;
-  }
-
-}
-
-.circle-image {
-	position: relative;
-	border-radius: 50%;
-	width: 100%;
-	height: 100%;
-	max-width: 200px;
-	max-height: 200px;
-	padding-top: 100%;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	background: url('http://f.cl.ly/items/000z093L1S1H191m0h1d/small%20headshot.jpg') no-repeat;
-
-	&:hover{
-		background-color: #e74c3c;
-		opacity:0.4;
-		-webkit-transition: 0.2s ease-in-out;
-		transition: 0.2s ease-in-out;
-	}
-}
-
 
 
 @media(max-width:769px){
@@ -230,7 +197,6 @@ a {
 	.logo {
 		margin-top: 50px;
 		margin-left: 3em;
-		background-image: url('http://f.cl.ly/items/0c2S3I2Z2X3i2K3U2y2B/district-housing-logo-transparent-nevis-150-wide.png');
 		width: 150px;
 		height: 150px;
 	}
@@ -243,12 +209,10 @@ a {
 	.button-group {
 		margin-top: 10%;
 		float: none;
-		
 		margin: -135px 5% 0 40%;
 	}
 
 }
-
 
 
 
