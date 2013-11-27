@@ -1,0 +1,6 @@
+<h2>Your cart:</h2>
+<table>
+  <%= render(cart.line_items) %>
+</table>
+<%= button_to 'Empty cart', cart, method: :delete %>
+<%= button_to 'Download forms', "/download" %>

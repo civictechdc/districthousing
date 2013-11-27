@@ -3,6 +3,7 @@ class HousingFormsController < ApplicationController
   # GET /housing_forms.json
   def index
     @housing_forms = HousingForm.all
+    @cart = current_cart
 
     respond_to do |format|
       format.html # index.html.erb

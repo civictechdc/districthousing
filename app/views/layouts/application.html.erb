@@ -11,46 +11,29 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
   <%= csrf_meta_tags %>
-  
+
 </head>
 
 <body>
-<div class="fluid-container">
-	<div class ="row-fluid">
-		<div id="sidebar" class="span2">
-			<img src="http://f.cl.ly/items/0J160v2M0q1i061R1a0B/district-housing-logo-transparent-full.png" class="logo">
+  <div class="fluid-container">
+    <div class ="row-fluid">
+      <div id="sidebar" class="span2">
+        <img src="http://f.cl.ly/items/0J160v2M0q1i061R1a0B/district-housing-logo-transparent-full.png" class="logo">
 
-			<div class="button-group">
-			  <div class="side-button"><div class="button-text"><%= link_to content_tag(:div, "Home"), root_path %></div></div>
-			  <div class="side-button"><div class="button-text"><%= link_to content_tag(:div, "Apply"), new_user_registration_path %></div></div>
-			  <div class="side-button"><div class="button-text"><%= link_to content_tag(:div, "About"), about_path %></div></div>
+        <div class="button-group">
+          <div class="side-button"><div class="button-text"><%= link_to content_tag(:div, "Home"), root_path %></div></div>
+          <div class="side-button"><div class="button-text"><%= link_to content_tag(:div, "Apply"), new_user_registration_path %></div></div>
+          <div class="side-button"><div class="button-text"><%= link_to content_tag(:div, "About"), about_path %></div></div>
+        </div>
 
-			  <a href="#myModal" data-toggle="modal"><div id="login-button" class="side-button"><div class="button-text">Login</div></div></a>
-			</div>
+      </div>
 
-		</div>
+      <div class="span11 main">
 
-		<div class="span11 main">
-			
-			<!-- Modal -->
-			<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-header">
-			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			    <h3 id="myModalLabel">Login now</h3>
-			  </div>
-			  <div class="modal-body">
-			    <p>One fine body…</p>
-			  </div>
-			  <div class="modal-footer">
-			    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-			    <button class="btn btn-success">Save changes</button>
-			  </div>
-			</div>
+        <%= yield %>
 
-					<%= yield %>
-
-		</div>
-	</div>
-</div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
