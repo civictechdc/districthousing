@@ -2,7 +2,7 @@
 <p>Welcome to the DC Housing Applications Assistant!</p>
 
 <% if user_signed_in? %>
-<%= link_to "Get started!", housing_forms_path %>
+<%= link_to "Get started!", picker_path %>
 <% else %>
 <%= link_to "Log in", new_user_session_path %> or <%= link_to "Create an account", new_user_registration_path %>
 <% end %>

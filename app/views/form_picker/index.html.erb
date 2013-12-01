@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Available housing forms</h1>
+
+<table>
+<% @housing_forms.each do |housing_form| %>
+  <tr>
+    <td><%= housing_form.name %></td>
+    <td><%= button_to 'Add to cart', line_items_path(housing_form_id: housing_form) %></td>
+  </tr>
+<% end %>
+</table>
+
+<div id="cart">
+  <%= render @cart %>
+</div>
+
+<br />

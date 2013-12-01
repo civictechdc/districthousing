@@ -1,18 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Available housing forms</h1>
+<h1>Listing housing_forms</h1>
 
 <table>
+  <tr>
+    <th>Name</th>
+    <th>Uri</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
 <% @housing_forms.each do |housing_form| %>
   <tr>
     <td><%= housing_form.name %></td>
-    <td><%= button_to 'Add to cart', line_items_path(housing_form_id: housing_form) %></td>
+    <td><%= housing_form.uri %></td>
+    <td><%= link_to 'Show', housing_form %></td>
+    <td><%= link_to 'Edit', edit_housing_form_path(housing_form) %></td>
+    <td><%= link_to 'Destroy', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
-<div id="cart">
-  <%= render @cart %>
-</div>
-
 <br />
+
+<%= link_to 'New Housing form', new_housing_form_path %>
