@@ -4,7 +4,12 @@ class Resident < ActiveRecord::Base
   belongs_to :user
 
   def form_field_hash
-    { FirstName: first_name, LastName: last_name }
+    {
+      FirstName: first_name,
+      LastName: last_name,
+      DOB: dob,
+      SSN: ssn,
+    }
   end
 
 end
