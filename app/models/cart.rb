@@ -20,7 +20,7 @@ class Cart < ActiveRecord::Base
         uri = URI.parse("http://192.241.132.194:8080/fill")
         http_post_data = attributes
         http_post_data["pdf"] = form.uri
-        http_post_data.deep_merge!(Resident.first.attributes)
+        http_post_data.deep_merge!(Resident.first.form_field_hash)
         p http_post_data
         logger.debug http_post_data.inspect
         response = Net::HTTP.post_form(uri, http_post_data)
