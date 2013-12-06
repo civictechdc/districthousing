@@ -18,3 +18,4 @@ end
 gem 'jquery-rails'
 gem 'rubyzip'
 gem 'thin'
+gem 'pry'
