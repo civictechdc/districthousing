@@ -21,7 +21,7 @@ class LineItemsControllerTest < ActionController::TestCase
       post :create, housing_form_id: housing_forms(:one).id
     end
 
-    assert_redirected_to cart_path(assigns(:line_item).cart)
+    assert_redirected_to picker_path
   end
 
   test "should show line_item" do
@@ -44,6 +44,6 @@ class LineItemsControllerTest < ActionController::TestCase
       delete :destroy, id: @line_item
     end
 
-    assert_redirected_to cart_path(assigns(:line_item).cart)
+    assert_redirected_to picker_path
   end
 end

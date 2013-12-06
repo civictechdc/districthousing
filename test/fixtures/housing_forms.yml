@@ -3,7 +3,14 @@
 one:
   name: MyString
   uri: MyString
+  id: 1
 
 two:
   name: MyString
   uri: MyString
+  id: 2
+
+unreferenced:
+  name: MyString
+  uri: MyString
+  id: 3

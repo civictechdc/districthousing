@@ -3,6 +3,7 @@ require 'test_helper'
 class HousingFormsControllerTest < ActionController::TestCase
   setup do
     @housing_form = housing_forms(:one)
+    @unreferenced_housing_form = housing_forms(:unreferenced)
   end
 
   test "should get index" do
@@ -39,11 +40,15 @@ class HousingFormsControllerTest < ActionController::TestCase
     assert_redirected_to housing_form_path(assigns(:housing_form))
   end
 
-  test "should destroy housing_form" do
-    assert_difference('HousingForm.count', -1) do
+  test "should destroy housing_form if unreferenced by line_item" do
+    assert_no_difference('HousingForm.count') do
       delete :destroy, id: @housing_form
     end
 
     assert_redirected_to housing_forms_path
+
+    assert_difference('HousingForm.count', -1) do
+      delete :destroy, id: @unreferenced_housing_form
+    end
   end
 end
