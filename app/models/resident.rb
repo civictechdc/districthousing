@@ -12,4 +12,8 @@ class Resident < ActiveRecord::Base
     }
   end
 
+  def description
+    "#{first_name} #{last_name}"
+  end
+
 end
