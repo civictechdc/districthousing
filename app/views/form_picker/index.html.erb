@@ -2,16 +2,17 @@
 
 <h1>Available housing forms</h1>
 
-<!-- This doesn't work, but you can probably see what I'm trying to do here.
-Fix it, lankyfrenchman! -->
 <%= form_for @cart do |f| %>
-  <%= f.collection_select :user_id, Resident.all, :id, :description %>
-  <%= f.submit "add user" %>
+  <%= f.collection_select :resident_id, Resident.all, :id, :description %>
+  <%= f.submit "Change Resident" %>
 <% end %>
 
 <h1>Available housing forms</h1>
 
-<h2><%= "Selected user: #{@resident.description}" %>
+<% if @resident %>
+<p>Current user: <strong><%= @resident.description %></strong></p>
+<% end %>
+
 <table>
 <% @housing_forms.each do |housing_form| %>
   <tr>

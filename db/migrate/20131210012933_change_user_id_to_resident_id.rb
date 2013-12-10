@@ -1,7 +1,5 @@
 class ChangeUserIdToResidentId < ActiveRecord::Migration
-  def up
-  end
-
-  def down
+  def change
+    rename_column :carts, :user_id, :resident_id
   end
 end
