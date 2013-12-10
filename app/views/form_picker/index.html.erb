@@ -4,12 +4,14 @@
 
 <!-- This doesn't work, but you can probably see what I'm trying to do here.
 Fix it, lankyfrenchman! -->
-<%= form_for :cart, :url => cart_path, :method => :update do |f| %>
+<%= form_for @cart do |f| %>
   <%= f.collection_select :user_id, Resident.all, :id, :description %>
+  <%= f.submit "add user" %>
 <% end %>
 
 <h1>Available housing forms</h1>
 
+<h2><%= "Selected user: #{@resident.description}" %>
 <table>
 <% @housing_forms.each do |housing_form| %>
   <tr>
