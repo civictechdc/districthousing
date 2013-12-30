@@ -1,6 +1,3 @@
-development:
-	PG_DEV_PW: districthousing
-test:
-	PG_TEST_PW: districthousing
-production:
-	PG_PROD_PW: districthousing
+PG_DEV_PW: "districthousing"
+PG_TEST_PW: "districthousing"
+PG_PROD_PW: "districthousing"
