@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'sqlite3'
-
 gem 'devise'
 
 group :assets do
@@ -15,7 +13,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'rails_12factor', group: :production
+
+gem 'pg'
+gem 'figaro'
 gem 'jquery-rails'
 gem 'rubyzip'
 gem 'thin'
 gem 'pry'
+
+ruby '2.0.0'

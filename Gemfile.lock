@@ -48,6 +48,9 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.1)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -63,6 +66,7 @@ GEM
     mime-types (1.25)
     multi_json (1.7.9)
     orm_adapter (0.4.0)
+    pg (0.17.1)
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -83,6 +87,11 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (3.2.13)
       actionpack (= 3.2.13)
       activesupport (= 3.2.13)
@@ -132,9 +141,12 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
+  figaro
   jquery-rails
+  pg
   pry
   rails (= 3.2.13)
+  rails_12factor
   rubyzip
   sass-rails (~> 3.2.3)
   sqlite3
