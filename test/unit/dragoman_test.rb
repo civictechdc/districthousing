@@ -9,12 +9,13 @@ class TestDragoman < Test::Unit::TestCase
     @provider.last_name = "White"
     @d = Dragoman.new
     @d.provider = @provider
-  end
 
-  def test_produces_field
     @d.learn(/FullName.*/,
              ->(first_name, middle_name, last_name) { "#{first_name} #{middle_name} #{last_name}"},
              ->(first_name, last_name) { "#{first_name} #{last_name}"})
+  end
+
+  def test_produces_field
 
     assert_equal "Walter White",  @d.field("FullName")
     assert_equal "Walter White",  @d.field("FullName1")
@@ -29,7 +30,6 @@ class TestDragoman < Test::Unit::TestCase
   end
 
   def test_shows_required_items
-    @d.learn(/FullName.*/, ->(first_name, middle_name, last_name) { "#{first_name} #{middle_name} #{last_name}"})
     assert_equal Set.new([:first_name, :middle_name, :last_name]),  @d.required_items("FullName")
   end
 
