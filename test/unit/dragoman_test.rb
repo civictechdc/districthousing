@@ -19,8 +19,10 @@ class TestDragoman < Test::Unit::TestCase
     assert_equal "Walter White",  @d.field("FullName")
     assert_equal "Walter White",  @d.field("FullName1")
 
-    @provider.middle_name = "Hartwell"
+    @provider.middle_name = ""
+    assert_equal "Walter White",  @d.field("FullName")
 
+    @provider.middle_name = "Hartwell"
     assert_equal "Walter Hartwell White",  @d.field("FullName")
   end
 
