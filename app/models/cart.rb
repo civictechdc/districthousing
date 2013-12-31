@@ -26,7 +26,6 @@ class Cart < ActiveRecord::Base
     stringio = Zip::ZipOutputStream::write_buffer do |zio|
       line_items.map(&:housing_form).each do |form|
         uri = URI.parse("http://192.241.132.194:8080/fill")
-        http_post_data = attributes
         http_post_data["pdf"] = form.uri
         http_post_data.deep_merge!(Resident.first.form_field_hash(field_names(form.uri)))
         response = Net::HTTP.post_form(uri, http_post_data)
