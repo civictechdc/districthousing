@@ -26,10 +26,10 @@ class Dragoman
     @rules = Array.new
     @provider = nil
 
-    # The function to test whether the provider has a value for the source
-    # field.  Defaults to a respond_to? check.  Users might want to set it
-    # to an empty string check, for example.
-    @is_provided = ->(source_field) { @provider.respond_to? source_field }
+  end
+
+  def is_provided(source_field)
+    @provider.respond_to? source_field and not @provider.public_send(source_field).to_s.empty?
   end
 
   def learn pattern, *productions
@@ -41,7 +41,7 @@ class Dragoman
   end
 
   def missing_items target
-    required_items(target).reject { |param| @is_provided.call(param) }
+    required_items(target).reject { |param| is_provided(param) }
   end
 
   def field target
@@ -59,7 +59,7 @@ class Dragoman
   end
 
   def is_usable production
-    production.parameters.all? { |param| @is_provided.call(param.last) }
+    production.parameters.all? { |param| is_provided(param.last) }
   end
 
   def invoke production
