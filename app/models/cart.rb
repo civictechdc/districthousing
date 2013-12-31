@@ -19,7 +19,9 @@ class Cart < ActiveRecord::Base
   def field_names uri
     uri = URI.parse("http://192.241.132.194:8080/fields.json?pdf=#{uri}")
     response = Net::HTTP.get(uri)
-    JSON.parse(response)
+    JSON.parse(response).map do |field_hash|
+      field_hash["FieldName"]
+    end
   end
 
   def fill_form form
