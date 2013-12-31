@@ -4,13 +4,22 @@ class Resident < ActiveRecord::Base
   belongs_to :user
   has_many :carts
 
-  def form_field_hash
-    {
-      FirstName: first_name,
-      LastName: last_name,
-      DOB: dob,
-      SSN: ssn,
-    }
+  def form_field_hash targets
+    d = Dragoman.new
+    d.learn(/FirstName/, ->(first_name) { first_name })
+    d.learn(/LastName/, ->(last_name) { last_name })
+    d.learn(/DOB/, ->(dob) { dob })
+    d.learn(/SSN/, ->(ssn) { ssn })
+    d.learn(/.*/, ->() { "x" })
+
+    d.provider = self
+
+    result = Hash.new
+    targets.each do |target|
+      result[target] = d.field( target )
+    end
+
+    result
   end
 
   def description
