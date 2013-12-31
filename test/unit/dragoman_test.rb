@@ -24,17 +24,17 @@ class TestDragoman < Test::Unit::TestCase
 
     @provider.middle_name = "Hartwell"
     assert_equal "Walter Hartwell White",  @d.field("FullName")
+
+    # FIXME: What does Dragoman do in case of no matching rule?  Raise an exception?
   end
 
-  # FIXME: Return a set, not an array.
-  # FIXME: What does Dragoman do in case of no matching rule?  Raise an exception?
   def test_shows_required_items
     @d.learn(/FullName.*/, ->(first_name, middle_name, last_name) { "#{first_name} #{middle_name} #{last_name}"})
-    assert_equal [:first_name, :middle_name, :last_name],  @d.required_items("FullName")
+    assert_equal Set.new([:first_name, :middle_name, :last_name]),  @d.required_items("FullName")
   end
 
   def test_shows_missing_items
     @d.learn(/FullName.*/, ->(first_name, middle_name, last_name) { "#{first_name} #{middle_name} #{last_name}"})
-    assert_equal [:middle_name],  @d.missing_items("FullName")
+    assert_equal Set.new([:middle_name]),  @d.missing_items("FullName")
   end
 end

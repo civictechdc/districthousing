@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'ostruct'
+require 'set'
 
 class Dragoman
 
@@ -12,15 +13,21 @@ class Dragoman
       @productions = productions
     end
 
+    def required_items
+      Set.new(required_parameter_names)
+    end
+
+    private
+
     # FIXME: There might be different subsets of required items, if there is
     # more than one production.  Change this function's return value to express
     # that.
-    def required_items
-      productions.first.parameters.map { |param| param.last }
+    def required_parameter_names
+      @productions.first.parameters.map { |param| param.last }
     end
   end
 
-  attr_accessor :provider, :is_provided
+  attr_accessor :provider
 
   def initialize
     @rules = Array.new
@@ -41,7 +48,7 @@ class Dragoman
   end
 
   def missing_items target
-    required_items(target).reject { |param| is_provided(param) }
+    Set.new(required_items(target).reject { |param| is_provided(param) })
   end
 
   def field target
