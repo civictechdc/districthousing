@@ -22,13 +22,18 @@ class Cart < ActiveRecord::Base
     JSON.parse(response)
   end
 
+  def fill_form form
+    uri = URI.parse("http://192.241.132.194:8080/fill")
+    http_post_data = Hash.new
+    http_post_data["pdf"] = form.uri
+    http_post_data.deep_merge!(Resident.first.form_field_hash(field_names(form.uri)))
+    Net::HTTP.post_form(uri, http_post_data)
+  end
+
   def generate_pdf_archive
     stringio = Zip::ZipOutputStream::write_buffer do |zio|
       line_items.map(&:housing_form).each do |form|
-        uri = URI.parse("http://192.241.132.194:8080/fill")
-        http_post_data["pdf"] = form.uri
-        http_post_data.deep_merge!(Resident.first.form_field_hash(field_names(form.uri)))
-        response = Net::HTTP.post_form(uri, http_post_data)
+        response = fill_form(form)
         zio.put_next_entry("#{form.name}.pdf")
         zio.write response.body
       end
