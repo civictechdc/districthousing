@@ -10,4 +10,10 @@ class FormPickerController < ApplicationController
       format.json { render json: @housing_forms }
     end
   end
+
+  def download
+    send_data generate_pdf_archive(current_cart),
+      filename: 'housingforms.zip',
+      type: 'application/zip'
+  end
 end

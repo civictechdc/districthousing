@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'rubyzip'
 gem 'thin'
 gem 'pry'
+
 gem 'guard'
 gem 'guard-test'
 gem 'guard-rails'

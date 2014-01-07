@@ -6,6 +6,7 @@ class Resident < ActiveRecord::Base
   belongs_to :user
   has_many :carts
 
+
   def form_field_hash targets
     d = Dragoman.new
     d.learn(/FirstName/, ->(first_name) { first_name })
