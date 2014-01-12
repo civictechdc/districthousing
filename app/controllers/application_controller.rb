@@ -40,5 +40,4 @@ class ApplicationController < ActionController::Base
     stringio.sysread
   end
 
-
 end
