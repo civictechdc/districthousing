@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def fill_form form
+  def fill_form form, resident
     http_post_data = Hash.new
     http_post_data["pdf"] = form.uri
-    http_post_data.deep_merge!(Resident.first.form_field_hash(field_names(form.uri)))
+    http_post_data.deep_merge!(resident.form_field_hash(field_names(form.uri)))
 
     fill_uri = URI.parse("http://192.241.132.194:8080/fill")
     Net::HTTP.post_form(fill_uri, http_post_data)
@@ -30,8 +30,8 @@ class ApplicationController < ActionController::Base
 
   def generate_pdf_archive cart
     stringio = Zip::ZipOutputStream::write_buffer do |zio|
-      cart.line_items.map(&:housing_form).each do |form|
-        response = fill_form(form)
+      cart.forms.each do |form|
+        response = fill_form(form, cart.resident)
         zio.put_next_entry("#{form.name}.pdf")
         zio.write response.body
       end

@@ -16,4 +16,8 @@ class Cart < ActiveRecord::Base
     current_item
   end
 
+  def forms
+    line_items.map(&:housing_form)
+  end
+
 end
