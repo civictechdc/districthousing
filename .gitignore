@@ -6,3 +6,4 @@ log/development.log
 .bundle/
 .DS_Store
 tags
+/public/forms/*.pdf
