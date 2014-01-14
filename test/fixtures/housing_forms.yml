@@ -1,14 +1,15 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+<%
+form_counter = 1
+Dir.glob(Rails.root.join("public/forms/*.pdf")) do |pdf_path|
+%>
 
-one:
-  name: MyString
-  uri: MyString
-  id: 1
+form_<%= form_counter %>:
+  name: <%= pdf_path %>
+  uri: <%= pdf_path %>
+  id: <%= form_counter %>
 
-two:
-  name: MyString
-  uri: MyString
-  id: 2
+<% form_counter += 1 %>
+<% end %>
 
 unreferenced:
   name: MyString

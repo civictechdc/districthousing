@@ -11,29 +11,25 @@ class ApplicationController < ActionController::Base
     cart
   end
 
-  def field_names uri
-    uri = URI.parse("http://192.241.132.194:8080/fields.json?pdf=#{uri}")
-    response = Net::HTTP.get(uri)
-    JSON.parse(response).map do |field_hash|
-      field_hash["FieldName"]
-    end
+  def field_names path
+    logger.info path
+    PDF_FORMS.get_field_names path
   end
 
   def fill_form form, resident
-    http_post_data = Hash.new
-    http_post_data["pdf"] = form.uri
-    http_post_data.deep_merge!(resident.form_field_hash(field_names(form.uri)))
-
-    fill_uri = URI.parse("http://192.241.132.194:8080/fill")
-    Net::HTTP.post_form(fill_uri, http_post_data)
+    http_post_data = resident.form_field_hash(field_names(form.uri))
+    destination_pdf = Tempfile.new(form.name)
+    PDF_FORMS.fill_form form.uri, destination_pdf.path, http_post_data
+    destination_pdf
   end
 
   def generate_pdf_archive cart
     stringio = Zip::ZipOutputStream::write_buffer do |zio|
       cart.forms.each do |form|
-        response = fill_form(form, cart.resident)
-        zio.put_next_entry("#{form.name}.pdf")
-        zio.write response.body
+        filled_form = fill_form(form, cart.resident)
+        zio.put_next_entry(form.name)
+        zio.write(filled_form.read)
+        filled_form.unlink
       end
     end
     stringio.rewind
