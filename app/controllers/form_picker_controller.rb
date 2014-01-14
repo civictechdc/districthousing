@@ -1,8 +1,8 @@
 class FormPickerController < ApplicationController
   def index
     @cart = current_cart
-    @current_form_ids = @cart.line_items.map(&:housing_form_id)
-    @housing_forms = HousingForm.all.reject{|x| @current_form_ids.include?(x.id)}
+    @housing_forms = HousingForm.all.reject{|x| @cart.forms.include? x }
+    @resident = @cart.resident
 
     respond_to do |format|
       format.html # index.html.erb
