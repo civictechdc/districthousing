@@ -83,6 +83,8 @@ GEM
     mime-types (1.25)
     multi_json (1.7.9)
     orm_adapter (0.4.0)
+    pdftk (0.0.4)
+      rails
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -161,6 +163,7 @@ DEPENDENCIES
   guard-rails
   guard-test
   jquery-rails
+  pdftk
   pry
   rails (= 3.2.13)
   rubyzip
