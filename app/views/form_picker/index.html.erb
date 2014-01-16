@@ -26,4 +26,7 @@
   <%= render @cart %>
 </div>
 
+<p>Provided fields: <%= @provided.inspect %></p>
+<p>Still needed: <%= @still_needed.inspect %></p>
+<p>Unrecognized fields: <%= @unrecognized.inspect %></p>
 <br />
