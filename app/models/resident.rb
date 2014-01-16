@@ -12,6 +12,7 @@ class Resident < ActiveRecord::Base
     d.learn(/LastName/, ->(last_name) { last_name })
     d.learn(/DOB/, ->(dob) { dob })
     d.learn(/SSN/, ->(ssn) { ssn })
+    d.learn(/Phone/, ->(phone) { phone })
 
     d.provider = self
 
