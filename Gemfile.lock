@@ -51,6 +51,9 @@ GEM
     eventmachine (1.0.3)
     execjs (2.0.1)
     ffi (1.9.3)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     formatador (0.2.4)
     guard (2.2.5)
       formatador (>= 0.2.4)
@@ -84,6 +87,7 @@ GEM
     multi_json (1.7.9)
     orm_adapter (0.4.0)
     pdf-forms (0.5.5)
+    pg (0.17.1)
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -104,6 +108,11 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (3.2.13)
       actionpack (= 3.2.13)
       activesupport (= 3.2.13)
@@ -158,16 +167,18 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
+  figaro
   guard
   guard-rails
   guard-test
   jquery-rails
   pdf-forms
+  pg
   pry
   rails (= 3.2.13)
+  rails_12factor
   rubyzip
   sass-rails (~> 3.2.3)
-  sqlite3
   therubyracer
   thin
   uglifier (>= 1.0.3)
