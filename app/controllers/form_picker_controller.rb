@@ -4,9 +4,11 @@ class FormPickerController < ApplicationController
     @housing_forms = HousingForm.all.reject{|x| @cart.forms.include? x }
     @resident = @cart.resident
     @pdf_field_names = @cart.forms.map{ |form| field_names(form.uri) }.flatten.to_set
-    @still_needed = @resident.missing_attrs_for @pdf_field_names
-    @unrecognized = @resident.unrecognized_fields_for @pdf_field_names
-    @provided = @resident.form_field_hash @pdf_field_names
+    unless @resident.nil?
+      @still_needed = @resident.missing_attrs_for @pdf_field_names
+      @unrecognized = @resident.unrecognized_fields_for @pdf_field_names
+      @provided = @resident.form_field_hash @pdf_field_names
+    end
 
     respond_to do |format|
       format.html # index.html.erb
