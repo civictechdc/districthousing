@@ -36,7 +36,7 @@ class CartsControllerTest < ActionController::TestCase
 
   test "should update cart" do
     put :update, id: @cart, cart: {  }
-    assert_redirected_to cart_path(assigns(:cart))
+    assert_redirected_to picker_path
   end
 
   test "should destroy cart" do

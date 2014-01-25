@@ -22,4 +22,9 @@ gem 'rubyzip'
 gem 'thin'
 gem 'pry'
 
+gem 'guard'
+gem 'guard-test'
+gem 'guard-rails'
+
+gem 'pdf-forms'
 ruby '2.0.0'

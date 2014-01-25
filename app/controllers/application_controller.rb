@@ -10,4 +10,30 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = cart.id
     cart
   end
+
+  def field_names path
+    logger.info path
+    PDF_FORMS.get_field_names path
+  end
+
+  def fill_form form, resident
+    http_post_data = resident.form_field_hash(field_names(form.uri))
+    destination_pdf = Tempfile.new(form.name)
+    PDF_FORMS.fill_form form.uri, destination_pdf.path, http_post_data
+    destination_pdf
+  end
+
+  def generate_pdf_archive cart
+    stringio = Zip::ZipOutputStream::write_buffer do |zio|
+      cart.forms.each do |form|
+        filled_form = fill_form(form, cart.resident)
+        zio.put_next_entry(form.name)
+        zio.write(filled_form.read)
+        filled_form.unlink
+      end
+    end
+    stringio.rewind
+    stringio.sysread
+  end
+
 end

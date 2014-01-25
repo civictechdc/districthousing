@@ -1,17 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  first_name: MyString
-  last_name: MyString
-  middle_name: MyString
-  ssn: MyString
+  id: 1
+  first_name: Test
+  last_name: McTesterson
+  middle_name: Testing
+  ssn: 123-45-6789
   dob: 2013-06-23 22:26:43
-  gender: MyString
-  res_street_address: MyString
-  res_apt: MyString
-  res_city: MyString
-  res_state: MyString
-  res_zip: MyString
+  gender: Male
+  res_street_address: 123 Fake Street
+  res_apt: 456
+  res_city: Testville
+  res_state: Testington
+  res_zip: 12345
 
 two:
   first_name: MyString

@@ -1,5 +1,6 @@
 one:
   id: 1
+  resident_id: 1
 
 two:
   id: 2

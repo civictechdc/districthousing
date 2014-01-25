@@ -65,7 +65,7 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.update_attributes(params[:cart])
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        format.html { redirect_to picker_path, notice: 'Cart was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -85,11 +85,5 @@ class CartsController < ApplicationController
       format.html { redirect_to housing_forms_url, notice: 'Your cart is currently empty' }
       format.json { head :no_content }
     end
-  end
-
-  def download
-    send_data current_cart.generate_pdf_archive,
-      filename: 'housingforms.zip',
-      type: 'application/zip'
   end
 end

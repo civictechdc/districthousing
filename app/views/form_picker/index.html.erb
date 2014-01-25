@@ -2,6 +2,17 @@
 
 <h1>Available housing forms</h1>
 
+<%= form_for @cart do |f| %>
+  <%= f.collection_select :resident_id, Resident.all, :id, :description %>
+  <%= f.submit "Change Resident" %>
+<% end %>
+
+<h1>Available housing forms</h1>
+
+<% if @resident %>
+<p>Current user: <strong><%= @resident.description %></strong></p>
+<% end %>
+
 <table>
 <% @housing_forms.each do |housing_form| %>
   <tr>
@@ -15,4 +26,7 @@
   <%= render @cart %>
 </div>
 
+<p>Provided fields: <%= @provided.inspect %></p>
+<p>Still needed: <%= @still_needed.inspect %></p>
+<p>Unrecognized fields: <%= @unrecognized.inspect %></p>
 <br />
