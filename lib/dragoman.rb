@@ -83,6 +83,10 @@ class Dragoman
     @rules << Rule.new(pattern, productions)
   end
 
+  def preferred_items target
+    matching_rule(target).preferred_items
+  end
+
   def required_items target
     matching_rule(target).required_items
   end

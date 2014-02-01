@@ -5,9 +5,7 @@ class FormPickerController < ApplicationController
     @resident = @cart.resident
     @pdf_field_names = @cart.forms.map{ |form| field_names(form.uri) }.flatten.to_set
     unless @resident.nil?
-      @still_needed = @resident.missing_attrs_for @pdf_field_names
-      @unrecognized = @resident.unrecognized_fields_for @pdf_field_names
-      @provided = @resident.form_field_hash @pdf_field_names
+      @attributes_preferred = @resident.preferred_attrs_for @pdf_field_names
     end
 
     respond_to do |format|

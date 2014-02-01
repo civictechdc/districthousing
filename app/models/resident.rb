@@ -64,4 +64,19 @@ class Resident < ActiveRecord::Base
     end.flatten.reject(&:nil?).to_set
   end
 
+  def preferred_attrs_for field_names
+    d = create_dragoman
+
+    logger.info "Preferred attrs for: #{field_names.inspect}"
+
+    field_names.map do |field_name|
+      begin
+        d.preferred_items(field_name)
+      rescue Dragoman::NoMatchError
+        nil
+      end
+    end.flatten.reject(&:nil?).to_set.tap do |o|
+      logger.info(o.inspect)
+    end
+  end
 end
