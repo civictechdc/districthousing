@@ -44,16 +44,12 @@ class Resident < ActiveRecord::Base
   end
 
   def preferred_attrs_for field_names
-    logger.info "dragoman is: #{$field_name_translator.inspect}"
-
     field_names.map do |field_name|
       begin
         $field_name_translator.preferred_items field_name
       rescue Dragoman::NoMatchError
         nil
       end
-    end.flatten.reject(&:nil?).to_set.tap do |o|
-      logger.info(o.inspect)
-    end
+    end.flatten.reject(&:nil?).to_set
   end
 end
