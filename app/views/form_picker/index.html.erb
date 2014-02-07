@@ -10,23 +10,30 @@
 <h1>Available housing forms</h1>
 
 <% if @resident %>
-<p>Current user: <strong><%= @resident.description %></strong></p>
+  <p>Current user: <strong><%= @resident.description %></strong></p>
 <% end %>
 
 <table>
-<% @housing_forms.each do |housing_form| %>
-  <tr>
-    <td><%= housing_form.name %></td>
-    <td><%= button_to 'Add to cart', line_items_path(housing_form_id: housing_form) %></td>
-  </tr>
-<% end %>
+  <% @housing_forms.each do |housing_form| %>
+    <tr>
+      <td><%= housing_form.name %></td>
+      <td><%= button_to 'Add to cart', line_items_path(housing_form_id: housing_form) %></td>
+    </tr>
+  <% end %>
 </table>
 
 <div id="cart">
   <%= render @cart %>
 </div>
 
-<p>Provided fields: <%= @provided.inspect %></p>
-<p>Still needed: <%= @still_needed.inspect %></p>
-<p>Unrecognized fields: <%= @unrecognized.inspect %></p>
+<% if @attributes_preferred %>
+  <%= form_for @resident do |f| %>
+    <% @attributes_preferred.each do |attr| %>
+      <p>
+        <%= f.label attr %>
+        <%= f.text_field attr %>
+      </p>
+    <% end %>
+  <% end %>
+<% end %>
 <br />

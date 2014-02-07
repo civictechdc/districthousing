@@ -83,16 +83,28 @@ class Dragoman
     @rules << Rule.new(pattern, productions)
   end
 
+  def preferred_items target
+    matching_rule(target).preferred_items
+  end
+
   def required_items target
     matching_rule(target).required_items
   end
 
-  def missing_items target
-    matching_rule(target).missing_items(provider)
+  def missing_items target, temp_provider = nil
+    unless temp_provider.nil?
+      matching_rule(target).missing_items(temp_provider)
+    else
+      matching_rule(target).missing_items(provider)
+    end
   end
 
-  def field target
-    matching_rule(target).produce(@provider)
+  def field target, temp_provider = nil
+    unless temp_provider.nil?
+      matching_rule(target).produce(temp_provider)
+    else
+      matching_rule(target).produce(@provider)
+    end
   end
 
   private
