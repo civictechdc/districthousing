@@ -11,7 +11,17 @@ form_<%= form_counter %>:
 <% form_counter += 1 %>
 <% end %>
 
+one:
+  name: FakeForm
+  uri: FakeUri
+  id: 1000
+
+two:
+  name: FakeForm
+  uri: FakeUri
+  id: 2000
+
 unreferenced:
   name: MyString
   uri: MyString
-  id: 3
+  id: 1001
