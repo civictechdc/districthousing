@@ -3,7 +3,7 @@ class Resident < ActiveRecord::Base
   attr_accessible :res_city, :res_state, :res_street_address, :res_zip, :ssn
   attr_accessible :res_city, :res_state, :res_street_address, :res_zip, :ssn
   attr_accessible :phone, :work_phone, :home_phone, :cell_phone, :citizenship
-  attr_accessible :nationality, :email
+  attr_accessible :nationality, :email, :race
 
   has_many :previous_ssns
 

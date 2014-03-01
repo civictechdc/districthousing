@@ -29,6 +29,7 @@ test_resident = Resident.create(
   citizenship: Faker::Address.country,
   nationality: Faker::Address.country,
   email: Faker::Internet.email,
+  race: "Night Elf",
 )
 
 test_resident.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))
