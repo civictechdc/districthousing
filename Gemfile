@@ -21,6 +21,7 @@ gem 'jquery-rails'
 gem 'rubyzip'
 gem 'thin'
 gem 'pry'
+gem 'faker'
 
 gem 'guard'
 gem 'guard-test'
