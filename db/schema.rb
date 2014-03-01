@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140301043156) do
+ActiveRecord::Schema.define(:version => 20140301164615) do
 
   create_table "aliases", :force => true do |t|
     t.string  "name"
@@ -47,6 +47,13 @@ ActiveRecord::Schema.define(:version => 20140301043156) do
     t.integer  "cart_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "previous_ssns", :force => true do |t|
+    t.string   "number"
+    t.integer  "resident_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "residents", :force => true do |t|

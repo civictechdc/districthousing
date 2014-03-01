@@ -11,7 +11,7 @@ end
 require 'faker'
 
 Resident.destroy_all
-Resident.create(
+test_resident = Resident.create(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   middle_name: Faker::Name.first_name,
@@ -19,7 +19,7 @@ Resident.create(
   res_city: Faker::Address.city,
   res_state: Faker::Address.state,
   res_zip: Faker::Address.zip_code,
-  ssn: Faker::Number.number(9),
+  ssn: Faker::Number.number(8),
   dob:"7/9/1959",
   gender:"Male",
   phone: Faker::PhoneNumber.phone_number,
@@ -30,3 +30,7 @@ Resident.create(
   nationality: Faker::Address.country,
   email: Faker::Internet.email,
 )
+
+test_resident.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))
+test_resident.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))
+

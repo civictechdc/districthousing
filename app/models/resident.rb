@@ -5,6 +5,8 @@ class Resident < ActiveRecord::Base
   attr_accessible :phone, :work_phone, :home_phone, :cell_phone, :citizenship
   attr_accessible :nationality, :email
 
+  has_many :previous_ssns
+
   belongs_to :user
   has_many :carts
 
