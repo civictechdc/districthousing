@@ -11,8 +11,22 @@ class ApplicationController < ActionController::Base
     cart
   end
 
+  def form_field_hash field_names, resident
+    result = Hash.new
+
+    field_names.map(&:name).each do |field_name|
+      begin
+      result[field_name] = $field_name_translator.field( field_name, resident )
+      rescue Dragoman::MissingItemsError
+      rescue Dragoman::NoMatchError
+      end
+    end
+
+    result
+  end
+
   def fill_form form, resident
-    http_post_data = resident.form_field_hash(form.form_fields)
+    http_post_data = form_field_hash(form.form_fields, resident)
     destination_pdf = Tempfile.new(form.name)
     PDF_FORMS.fill_form form.uri, destination_pdf.path, http_post_data
     destination_pdf

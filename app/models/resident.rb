@@ -4,20 +4,6 @@ class Resident < ActiveRecord::Base
   belongs_to :user
   has_many :carts
 
-  def form_field_hash field_names
-    result = Hash.new
-
-    field_names.each do |field_name|
-      begin
-      result[field_name] = $field_name_translator.field( field_name )
-      rescue Dragoman::MissingItemsError
-      rescue Dragoman::NoMatchError
-      end
-    end
-
-    result
-  end
-
   def description
     "#{first_name} #{last_name}"
   end
