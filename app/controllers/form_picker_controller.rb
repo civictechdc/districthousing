@@ -3,7 +3,7 @@ class FormPickerController < ApplicationController
     @cart = current_cart
     @housing_forms = HousingForm.all.reject{|x| @cart.forms.include? x }
     @resident = @cart.resident
-    @pdf_field_names = @cart.forms.map{ |form| field_names(form.uri) }.flatten.to_set
+    @pdf_field_names = @cart.forms.map{ |form| form.form_fields }.flatten.to_set.map(&:name)
     unless @resident.nil?
       @attributes_preferred = @resident.preferred_attrs_for @pdf_field_names
     end

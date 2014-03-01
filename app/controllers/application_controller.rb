@@ -11,13 +11,8 @@ class ApplicationController < ActionController::Base
     cart
   end
 
-  def field_names path
-    logger.info path
-    PDF_FORMS.get_field_names path
-  end
-
   def fill_form form, resident
-    http_post_data = resident.form_field_hash(field_names(form.uri))
+    http_post_data = resident.form_field_hash(form.form_fields)
     destination_pdf = Tempfile.new(form.name)
     PDF_FORMS.fill_form form.uri, destination_pdf.path, http_post_data
     destination_pdf
