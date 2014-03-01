@@ -2,7 +2,6 @@
 /log/*
 /tmp/*
 db/development.sqlite3
-log/development.log
 .bundle/
 .DS_Store
 tags
