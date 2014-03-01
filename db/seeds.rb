@@ -19,6 +19,10 @@ test_resident = Resident.create(
   res_city: Faker::Address.city,
   res_state: Faker::Address.state,
   res_zip: Faker::Address.zip_code,
+  mail_street_address: Faker::Address.street_address,
+  mail_city: Faker::Address.city,
+  mail_state: Faker::Address.state,
+  mail_zip: Faker::Address.zip_code,
   ssn: Faker::Number.number(8),
   dob:"7/9/1959",
   gender:"Male",
@@ -26,10 +30,13 @@ test_resident = Resident.create(
   work_phone: Faker::PhoneNumber.phone_number,
   home_phone: Faker::PhoneNumber.phone_number,
   cell_phone: Faker::PhoneNumber.phone_number,
+  preferred_phone: Faker::PhoneNumber.phone_number,
   citizenship: Faker::Address.country,
   nationality: Faker::Address.country,
   email: Faker::Internet.email,
   race: "Night Elf",
+  student_status: "Part-time",
+  marital_status: "Single",
 )
 
 test_resident.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))

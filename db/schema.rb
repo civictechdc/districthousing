@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140301165533) do
+ActiveRecord::Schema.define(:version => 20140301171209) do
 
   create_table "aliases", :force => true do |t|
     t.string  "name"
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20140301165533) do
     t.string   "res_city"
     t.string   "res_state"
     t.string   "res_zip"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "phone"
     t.string   "work_phone"
     t.string   "home_phone"
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(:version => 20140301165533) do
     t.string   "nationality"
     t.string   "email"
     t.string   "race"
+    t.string   "student_status"
+    t.string   "marital_status"
+    t.string   "mail_street_address"
+    t.string   "mail_city"
+    t.string   "mail_state"
+    t.string   "mail_zip"
+    t.string   "preferred_phone"
   end
 
   create_table "users", :force => true do |t|
