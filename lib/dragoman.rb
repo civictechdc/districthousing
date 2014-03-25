@@ -77,6 +77,7 @@ class Dragoman
   def initialize
     @rules = Array.new
     @provider = nil
+    yield self if block_given?
   end
 
   def learn pattern, *productions
