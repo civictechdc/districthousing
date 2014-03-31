@@ -34,7 +34,7 @@ test_resident = Resident.create(
   citizenship: Faker::Address.country,
   nationality: Faker::Address.country,
   email: Faker::Internet.email,
-  race: "Night Elf",
+  race: "White",
   student_status: "Part-time",
   marital_status: "Single",
 )
