@@ -6,12 +6,12 @@ class FormPickerControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns[:cart]
     assert_not_nil assigns[:housing_forms]
-    assert_not_nil assigns[:resident]
+    assert_not_nil assigns[:applicant]
     assert_not_nil assigns[:pdf_field_names]
 
     assert_not_equal [], assigns[:pdf_field_names]
-    assert_not_equal nil, assigns[:resident]
-    assert_equal "Test", assigns[:resident].first_name
+    assert_not_equal nil, assigns[:applicant]
+    assert_equal "Test", assigns[:applicant].self.first_name
   end
 
   test "should download forms" do

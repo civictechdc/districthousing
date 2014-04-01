@@ -10,8 +10,10 @@ end
 
 require 'faker'
 
-Resident.destroy_all
-test_resident = Resident.create(
+Applicant.destroy_all
+Person.destroy_all
+
+test_person = Person.create(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   middle_name: Faker::Name.first_name,
@@ -39,6 +41,8 @@ test_resident = Resident.create(
   marital_status: "Single",
 )
 
-test_resident.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))
-test_resident.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))
+test_person.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))
+test_person.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))
 
+test_applicant = Applicant.create
+test_applicant.self = test_person

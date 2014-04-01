@@ -1,5 +1,5 @@
-class Resident < ActiveRecord::Base
-  attr_accessible :first_name, :gender, :last_name, :middle_name, :res_apt
+class Person < ActiveRecord::Base
+  attr_accessible :dob, :first_name, :gender, :last_name, :middle_name, :res_apt
   attr_accessible :res_city, :res_state, :res_street_address, :res_zip, :ssn
   attr_accessible :phone, :work_phone, :home_phone, :cell_phone, :preferred_phone
   attr_accessible :citizenship
@@ -36,18 +36,8 @@ class Resident < ActiveRecord::Base
     end.flatten.reject(&:nil?).to_set
   end
 
-  def preferred_attrs_for field_names
-    field_names.map do |field_name|
-      begin
-        $field_name_translator.preferred_items field_name
-      rescue Dragoman::NoMatchError
-        nil
-      end
-    end.flatten.reject(&:nil?).to_set
-  end
-
-  def dob
-    attributes["dob"].strftime("%m/%d/%Y")
+  def dob_date
+    @dob.strftime("%m/%d/%Y")
   end
 
 end

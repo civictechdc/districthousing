@@ -11,17 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140301171209) do
+ActiveRecord::Schema.define(:version => 20140401032154) do
 
   create_table "aliases", :force => true do |t|
     t.string  "name"
-    t.integer "resident_id"
+    t.integer "person_id"
+  end
+
+  create_table "applicants", :force => true do |t|
+    t.integer  "self_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "carts", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "resident_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "applicant_id"
   end
 
   create_table "form_fields", :force => true do |t|
@@ -49,14 +55,7 @@ ActiveRecord::Schema.define(:version => 20140301171209) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "previous_ssns", :force => true do |t|
-    t.string   "number"
-    t.integer  "resident_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "residents", :force => true do |t|
+  create_table "people", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "middle_name"
@@ -85,6 +84,13 @@ ActiveRecord::Schema.define(:version => 20140301171209) do
     t.string   "mail_state"
     t.string   "mail_zip"
     t.string   "preferred_phone"
+  end
+
+  create_table "previous_ssns", :force => true do |t|
+    t.string   "number"
+    t.integer  "person_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

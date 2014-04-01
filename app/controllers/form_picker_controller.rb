@@ -2,10 +2,10 @@ class FormPickerController < ApplicationController
   def index
     @cart = current_cart
     @housing_forms = HousingForm.all.reject{|x| @cart.forms.include? x }
-    @resident = @cart.resident
+    @applicant = @cart.applicant
     @pdf_field_names = @cart.forms.map{ |form| form.form_fields }.flatten.to_set.map(&:name)
-    unless @resident.nil?
-      @attributes_preferred = @resident.preferred_attrs_for @pdf_field_names
+    unless @applicant.nil?
+      @attributes_preferred = @applicant.preferred_attrs_for @pdf_field_names
     end
 
     respond_to do |format|
@@ -15,8 +15,8 @@ class FormPickerController < ApplicationController
   end
 
   def download
-    if current_cart.resident.nil?
-      redirect_to picker_url, notice: "Sorry! You have to choose a resident first."
+    if current_cart.applicant.nil?
+      redirect_to picker_url, notice: "Sorry! You have to choose an applicant first."
       return
     end
 
