@@ -11,13 +11,22 @@ class ApplicationController < ActionController::Base
     cart
   end
 
-  def field_names path
-    logger.info path
-    PDF_FORMS.get_field_names path
+  def form_field_hash field_names, applicant
+    result = Hash.new
+
+    field_names.map(&:name).each do |field_name|
+      begin
+      result[field_name] = $field_name_translator.field( field_name, applicant )
+      rescue Dragoman::MissingItemsError
+      rescue Dragoman::NoMatchError
+      end
+    end
+
+    result
   end
 
-  def fill_form form, resident
-    http_post_data = resident.form_field_hash(field_names(form.uri))
+  def fill_form form, applicant
+    http_post_data = form_field_hash(form.form_fields, applicant)
     destination_pdf = Tempfile.new(form.name)
     PDF_FORMS.fill_form form.uri, destination_pdf.path, http_post_data
     destination_pdf
@@ -26,7 +35,7 @@ class ApplicationController < ActionController::Base
   def generate_pdf_archive cart
     stringio = Zip::ZipOutputStream::write_buffer do |zio|
       cart.forms.each do |form|
-        filled_form = fill_form(form, cart.resident)
+        filled_form = fill_form(form, cart.applicant)
         zio.put_next_entry(form.name)
         zio.write(filled_form.read)
         filled_form.unlink

@@ -15,12 +15,14 @@ end
 
 gem 'rails_12factor', group: :production
 
+gem 'sqlite3'
 gem 'pg'
 gem 'figaro'
 gem 'jquery-rails'
 gem 'rubyzip'
 gem 'thin'
 gem 'pry'
+gem 'faker'
 
 gem 'guard'
 gem 'guard-test'

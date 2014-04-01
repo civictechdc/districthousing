@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HousingFormTest < ActiveSupport::TestCase
+class ApplicantTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

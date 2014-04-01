@@ -50,6 +50,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.1)
+    faker (1.2.0)
+      i18n (~> 0.5)
     ffi (1.9.3)
     figaro (0.7.0)
       bundler (~> 1.0)
@@ -167,6 +169,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
+  faker
   figaro
   guard
   guard-rails
@@ -179,6 +182,7 @@ DEPENDENCIES
   rails_12factor
   rubyzip
   sass-rails (~> 3.2.3)
+  sqlite3
   therubyracer
   thin
   uglifier (>= 1.0.3)
