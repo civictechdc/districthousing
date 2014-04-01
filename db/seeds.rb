@@ -46,5 +46,5 @@ test_person.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8)
 test_person.save
 
 test_applicant = Applicant.create
-test_applicant.self = test_person
+test_applicant.identity = test_person
 test_applicant.save

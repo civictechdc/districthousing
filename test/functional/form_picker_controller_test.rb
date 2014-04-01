@@ -11,7 +11,7 @@ class FormPickerControllerTest < ActionController::TestCase
 
     assert_not_equal [], assigns[:pdf_field_names]
     assert_not_equal nil, assigns[:applicant]
-    assert_equal "Test", assigns[:applicant].self.first_name
+    assert_equal "Test", assigns[:applicant].identity.first_name
   end
 
   test "should download forms" do

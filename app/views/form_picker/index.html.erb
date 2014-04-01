@@ -3,14 +3,14 @@
 <h1>Available housing forms</h1>
 
 <%= form_for @cart do |f| %>
-  <%= f.collection_select :applicant_id, Applicant.all, :id, :id %>
+  <%= f.collection_select :applicant_id, Applicant.all, :id, :description %>
   <%= f.submit "Change Applicant" %>
 <% end %>
 
 <h1>Available housing forms</h1>
 
 <% if @applicant %>
-  <p>Current user: <strong><%= @applicant.self.description %></strong></p>
+  <p>Current user: <strong><%= @applicant.description %></strong></p>
 <% end %>
 
 <table>

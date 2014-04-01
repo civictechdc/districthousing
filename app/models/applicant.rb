@@ -1,5 +1,5 @@
 class Applicant < ActiveRecord::Base
-  belongs_to :self, :class_name => "Person"
+  belongs_to :identity, :class_name => "Person", :foreign_key => "self_id"
 
   def preferred_attrs_for field_names
     field_names.map do |field_name|
@@ -9,6 +9,10 @@ class Applicant < ActiveRecord::Base
         nil
       end
     end.flatten.reject(&:nil?).to_set
+  end
+
+  def description
+    identity.description
   end
 
 end
