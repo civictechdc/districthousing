@@ -76,7 +76,6 @@ class Dragoman
 
   def initialize
     @rules = Array.new
-    @provider = nil
     yield self if block_given?
   end
 
@@ -92,20 +91,12 @@ class Dragoman
     matching_rule(target).required_items
   end
 
-  def missing_items target, temp_provider = nil
-    unless temp_provider.nil?
-      matching_rule(target).missing_items(temp_provider)
-    else
-      matching_rule(target).missing_items(provider)
-    end
+  def missing_items target, provider
+    matching_rule(target).missing_items(provider)
   end
 
-  def field target, temp_provider = nil
-    unless temp_provider.nil?
-      matching_rule(target).produce(temp_provider)
-    else
-      matching_rule(target).produce(@provider)
-    end
+  def field target, provider
+    matching_rule(target).produce(provider)
   end
 
   private
