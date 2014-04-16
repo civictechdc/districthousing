@@ -72,8 +72,6 @@ class Dragoman
     end
   end
 
-  attr_accessor :provider
-
   def initialize
     @rules = Array.new
     yield self if block_given?
