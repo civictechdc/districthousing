@@ -1,28 +1,26 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
 one:
   id: 1
-  first_name: Test
-  last_name: McTesterson
-  middle_name: Testing
-  ssn: 123-45-6789
-  dob: 2013-06-23 22:26:43
+  first_name: One
+  last_name: McOne
+  middle_name: John
+  ssn: 111-11-1111
+  dob: 1981-01-01 01:01:01
   gender: Male
-  res_street_address: 123 Fake Street
-  res_apt: 456
-  res_city: Testville
-  res_state: Testington
-  res_zip: 12345
+  res_street_address: 111 Fake Street
+  res_apt: 111
+  res_city: Oneville
+  res_state: DC
+  res_zip: 11111
 
 two:
-  first_name: MyString
-  last_name: MyString
-  middle_name: MyString
-  ssn: MyString
+  first_name: Two
+  last_name: McTwo
+  middle_name: Jane
+  ssn: 222-22-2222
   dob: 2013-06-23 22:26:43
-  gender: MyString
-  res_street_address: MyString
-  res_apt: MyString
-  res_city: MyString
-  res_state: MyString
-  res_zip: MyString
+  gender: Female
+  res_street_address: 222 Fake Street
+  res_apt: 222
+  res_city: Two Town
+  res_state: Maryland
+  res_zip: 22222
