@@ -15,27 +15,6 @@ class Person < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def missing_attrs_for field_names
-    field_names.map do |field_name|
-      begin
-        $field_name_translator.missing_items field_name, self
-      rescue Dragoman::NoMatchError
-        nil
-      end
-    end.flatten.reject(&:nil?).to_set
-  end
-
-  def unrecognized_fields_for field_names
-    field_names.map do |field_name|
-      begin
-        $field_name_translator.required_items field_name
-        nil
-      rescue Dragoman::NoMatchError
-        field_name
-      end
-    end.flatten.reject(&:nil?).to_set
-  end
-
   def dob_date
     @dob.strftime("%m/%d/%Y")
   end

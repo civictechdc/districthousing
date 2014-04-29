@@ -35,7 +35,7 @@ class Applicant < ActiveRecord::Base
   def preferred_attrs_for field_names
     field_names.map do |field_name|
       begin
-        $field_name_translator.preferred_items field_name
+        preferred_items field_name
       rescue Dragoman::NoMatchError
         nil
       end

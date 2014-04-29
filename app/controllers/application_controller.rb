@@ -1,3 +1,5 @@
+require 'zip'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -16,7 +18,7 @@ class ApplicationController < ActionController::Base
 
     field_names.map(&:name).each do |field_name|
       begin
-      result[field_name] = $field_name_translator.field( field_name, applicant )
+      result[field_name] = applicant.field(field_name)
       rescue Dragoman::MissingItemsError
       rescue Dragoman::NoMatchError
       end
@@ -33,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def generate_pdf_archive cart
-    stringio = Zip::ZipOutputStream::write_buffer do |zio|
+    stringio = Zip::OutputStream::write_buffer do |zio|
       cart.forms.each do |form|
         filled_form = fill_form(form, cart.applicant)
         zio.put_next_entry(form.name)

@@ -1,4 +1,4 @@
-require 'zip/zip'
+#require 'zip/zip'
 require 'net/http'
 
 class Cart < ActiveRecord::Base

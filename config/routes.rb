@@ -8,9 +8,9 @@ DchousingApps::Application.routes.draw do
   resources :housing_forms
 
   get "home/index"
-  match "/about", :to => "home#about"
-  match "/download", :to => "form_picker#download"
-  match "/picker", :to => "form_picker#index"
+  get "/about", :to => "home#about"
+  post "/download", :to => "form_picker#download"
+  get "/picker", :to => "form_picker#index"
 
   # Bypass the login for now
   #root :to => 'home#index'
