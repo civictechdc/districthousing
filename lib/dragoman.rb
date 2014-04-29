@@ -2,7 +2,7 @@
 
 require 'set'
 
-class Dragoman
+module Dragoman
 
   def self.is_provided(provider, source_field)
     provider.respond_to? source_field and not provider.public_send(source_field).to_s.empty?
@@ -40,7 +40,7 @@ class Dragoman
     end
 
     def missing_items provider
-      required_items.reject { |param| Dragoman.is_provided(provider, param) }
+      required_items.reject { |param| Dragoman::is_provided(provider, param) }
     end
 
     def produce provider
@@ -62,7 +62,7 @@ class Dragoman
     end
 
     def usable? production, provider
-      parameter_names(production).all? { |param| Dragoman.is_provided(provider, param) }
+      parameter_names(production).all? { |param| Dragoman::is_provided(provider, param) }
     end
 
     private
@@ -72,13 +72,28 @@ class Dragoman
     end
   end
 
-  def initialize
-    @rules = Array.new
-    yield self if block_given?
+  module ClassMethods
+
+    def rules
+      class_variable_get :@@rules
+    end
+
+    def learn pattern, *productions
+      rules << Rule.new(pattern, productions)
+    end
+
+    def matching_rule target
+      rules.detect { |rule| rule.pattern =~ target } or raise NoMatchError, "Unrecognized field \"#{target}\""
+    end
+
+    def self.extended klass
+      klass.class_variable_set(:@@rules, Array.new)
+    end
+
   end
 
-  def learn pattern, *productions
-    @rules << Rule.new(pattern, productions)
+  def matching_rule target
+    self.class.matching_rule target
   end
 
   def preferred_items target
@@ -89,18 +104,22 @@ class Dragoman
     matching_rule(target).required_items
   end
 
-  def missing_items target, provider
-    matching_rule(target).missing_items(provider)
+  def missing_items target
+    matching_rule(target).missing_items(self)
   end
 
-  def field target, provider
-    matching_rule(target).produce(provider)
+  def field target
+    matching_rule(target).produce(self)
+  end
+
+  def rules
+    self.class.rules
   end
 
   private
 
-  def matching_rule target
-    @rules.detect { |rule| rule.pattern =~ target } or raise NoMatchError, "Unrecognized field \"#{target}\""
+  def self.included klass
+    klass.extend ClassMethods
   end
 
 end
