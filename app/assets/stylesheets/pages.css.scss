@@ -1,3 +1,49 @@
+/*** BODY STYLES ****/
+body {
+  margin: 0;
+  background-color: lightblue;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+
+/*** LANDING PAGE ***/
+.center_signup.header_row {
+  margin: 0;
+  color: #c64942;
+  text-transform: uppercase;
+  background-color: #fff;
+  height: 100px;
+}
+.center_signup.heade_row h1 {
+  font-weight: normal;
+  font-size: 18px;
+}
 .center_signup {
   text-align: center;
+  color: #fff;
+}
+.center_signup p {
+  font-size: 30px;
+  line-height: 30px;
+}
+.center_signup.description {
+  font-weight: normal;
+  font-size: 18px;
+}
+.center_signup.description h2 {
+  font-size: 40px;
+  font-weight: normal;
+}
+.center_signup.description p {
+  font-size: 18px;
+  line-height: 24px;
 }
