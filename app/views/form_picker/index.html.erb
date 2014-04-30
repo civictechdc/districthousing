@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Available housing forms</h1>
+<!--
+<h2>Available housing forms</h2>
 
 <%= form_for @cart do |f| %>
   <%= f.collection_select :applicant_id, Applicant.all, :id, :description %>
   <%= f.submit "Change Applicant" %>
 <% end %>
-
-<h1>Available housing forms</h1>
 
 <% if @applicant %>
   <p>Current user: <strong><%= @applicant.description %></strong></p>
@@ -22,8 +21,11 @@
   <% end %>
 </table>
 
+-->
+
+<%= render "megaform" %>
+
 <div id="cart">
   <%= render @cart %>
 </div>
 
-<br />
