@@ -7,12 +7,15 @@ class User < ActiveRecord::Base
 
   has_many :applicants
 
-  ROLES = {
+  USER_ROLES = {
     :admin => 0,
     :standard => 1
   }
 
   def is_admin?
-    role == 0
+    return false if role.nil?
+
+    role == User::USER_ROLES[:admin]
   end
+
 end
