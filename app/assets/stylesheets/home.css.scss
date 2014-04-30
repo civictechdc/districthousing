@@ -7,13 +7,10 @@
 $red : #e74c3c;
 $font-stack: 'Nevis';
 
-
 .hover-behavior {
-	-webkit-transition: 0.2s ease-in-out;
-	transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
-
-
 
 /* ******************** */
 
@@ -32,187 +29,239 @@ p, ol, ul, td {
 }
 
 a {
-	background-color: transparent;
-	&:hover {
-		background-color: transparent;
-		text-decoration: none;
-	}
+  background-color: transparent;
+  &:hover {
+    background-color: transparent;
+    text-decoration: none;
+  }
 }
 
 .about-text {
-	margin: 5% 0 5% 5%;
+  margin: 5% 0 5% 5%;
 }
 
 #sidebar {
-	background-color: $red;
-	position: fixed;
-	width: 300px;
-	height: 110%;
-	margin-top: -50px;
-	
+  background-color: $red;
+  position: fixed;
+  width: 300px;
+  height: 110%;
+  margin-top: -50px;
+
 }
 
 .main {
-	padding-left: 400px;
-	margin-top: 50px;
-	height: 100%;
+  padding-left: 400px;
+  margin-top: 50px;
+  height: 100%;
 
-	h1, h2, h3, h4, h5 {
-		font-family: $font-stack;
-		text-transform: uppercase;
-	}
+  h1, h2, h3, h4, h5 {
+    font-family: $font-stack;
+    text-transform: uppercase;
+  }
 }
 
 .logo {
-	display: block;
-	width: 85%;
-	height: auto;
-	margin-top: 3em;
-	margin-left: auto;
-	margin-right:auto;
-	background-color: $red;
+  display: block;
+  width: 85%;
+  height: auto;
+  margin-top: 3em;
+  margin-left: auto;
+  margin-right:auto;
+  background-color: $red;
 }
 
 .button-group {
-	margin-top: 30%;
-	float: none;
-	margin-left: 15%;
-	/*margin-right: auto;*/
+  margin-top: 30%;
+  float: none;
+  margin-left: 15%;
+  /*margin-right: auto;*/
 }
 
 #login-button {
-	position: absolute;
-	bottom: 3em;
-	margin-left: 4em;
+  position: absolute;
+  bottom: 3em;
+  margin-left: 4em;
 
-	.button-text {
-		margin-top: 5%;
-	}
+  .button-text {
+    margin-top: 5%;
+  }
 }
 
 .headshot-text{
-	text-align: center;
-	#name {
-		padding-top: 12px;
-	}
+  text-align: center;
+  #name {
+    padding-top: 12px;
+  }
 }
 
 .social-icons {
-	font-size: 3em;
+  font-size: 3em;
 
-	#icon-twitter {
-		color: #4099FF;
-		&:hover {
-			color: $red;
-			@extend .hover-behavior;
-			text-decoration: none;
-		}
-	}
+  #icon-twitter {
+    color: #4099FF;
+    &:hover {
+      color: $red;
+      @extend .hover-behavior;
+      text-decoration: none;
+    }
+  }
 
-	#icon-facebook {
-		color: #3B5998;
-		&:hover {
-			color:$red;
-			@extend .hover-behavior;
-			text-decoration: none;
-		}
-	}
+  #icon-facebook {
+    color: #3B5998;
+    &:hover {
+      color:$red;
+      @extend .hover-behavior;
+      text-decoration: none;
+    }
+  }
 }
 
 .side-button {
-	text-align: center;
-	max-width: 200px;
-	height: 2em;
-	background-color: $red;
-	border-style: solid;
-	border-width: 4px;
-	border-color: #ffffff;
-	margin-bottom: 6px;
+  text-align: center;
+  max-width: 200px;
+  height: 2em;
+  background-color: $red;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #ffffff;
+  margin-bottom: 6px;
 
-	.button-text {
-		position: relative;
-		float: none;
-		margin-top: 2%;
-		color: #ffffff;
-		
-		text-transform: uppercase;
-		font-family: $font-stack;
-		font-size: 2em;
-	}
+  .button-text {
+    position: relative;
+    float: none;
+    margin-top: 2%;
+    color: #ffffff;
 
-	&:hover {
-		background-color: #ffffff;
-		@extend .hover-behavior;
+    text-transform: uppercase;
+    font-family: $font-stack;
+    font-size: 2em;
+  }
 
-		.button-text {
-			color: $red;
+  &:hover {
+    background-color: #ffffff;
+    @extend .hover-behavior;
 
-			&:visited {
-				color: $red;
-			}
-		}
-	}
+    .button-text {
+      color: $red;
 
-	a {
-		color: #ffffff;
-		&:hover {
-			color: $red;
-			text-decoration: none;
-			@extend .hover-behavior;
-		}
-		&:visited {
-			color: inherit;
-		}
-	}
+      &:visited {
+        color: $red;
+      }
+    }
+  }
+
+  a {
+    color: #ffffff;
+    &:hover {
+      color: $red;
+      text-decoration: none;
+      @extend .hover-behavior;
+    }
+    &:visited {
+      color: inherit;
+    }
+  }
 }
 
 .img-container{
-	width: 100%;
-	height: auto;
-	background: white;
-	&:hover{
-		background-color: $red;
-		opacity:0.4;
-		@extend .hover-behavior;
-	}
+  width: 100%;
+  height: auto;
+  background: white;
+  &:hover{
+    background-color: $red;
+    opacity:0.4;
+    @extend .hover-behavior;
+  }
 }
 
 
 @media(max-width:769px){
-	#sidebar {
-		width: 110%;
-		height: 200px;
-		margin-bottom: 50px;
-		margin-left: -50px;
-	}
+  #sidebar {
+    width: 110%;
+    height: 200px;
+    margin-bottom: 50px;
+    margin-left: -50px;
+  }
 
-	#login-button {
-		margin-left: 30%;
-	}
+  #login-button {
+    margin-left: 30%;
+  }
 
-	.side-button {
-		max-width: 150px;
-	}
+  .side-button {
+    max-width: 150px;
+  }
 
-	.logo {
-		margin-top: 50px;
-		margin-left: 3em;
-		width: 150px;
-		height: 150px;
-	}
+  .logo {
+    margin-top: 50px;
+    margin-left: 3em;
+    width: 150px;
+    height: 150px;
+  }
 
-	.main {
-		margin-top: 200px;
-		padding-left: 0;
-	}
+  .main {
+    margin-top: 200px;
+    padding-left: 0;
+  }
 
-	.button-group {
-		margin-top: 10%;
-		float: none;
-		margin: -135px 5% 0 40%;
-	}
+  .button-group {
+    margin-top: 10%;
+    float: none;
+    margin: -135px 5% 0 40%;
+  }
 
 }
 
+/*** LANDING BODY STYLES ****/
+body#landing {
+  margin: 0;
+  background-color: lightblue;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
 
+/*** LANDING PAGE ***/
+.center_signup.header_row {
+  margin: 0;
+  color: #c64942;
+  text-transform: uppercase;
+  background-color: #fff;
+  height: 100px;
 
+  .h1 {
+    font-weight: normal;
+    font-size: 18px;
+  }
+}
+
+.center_signup {
+  text-align: center;
+  color: #fff;
+}
+
+.center_signup p {
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.center_signup.description {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.center_signup.description h2 {
+  font-size: 40px;
+  font-weight: normal;
+}
+
+.center_signup.description p {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+/*** SIGN IN/SIGN UP STYLING ***/
+
+.devise_main {
+  text-align: center;
+}
