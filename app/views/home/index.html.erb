@@ -1,8 +1,20 @@
-<h1>Bread for the City</h1>
-<p>Welcome to the DC Housing Applications Assistant!</p>
+<div>
 
-<% if user_signed_in? %>
-<%= link_to "Get started!", picker_path %>
-<% else %>
-<%= link_to "Log in", new_user_session_path %> or <%= link_to "Create an account", new_user_registration_path %>
-<% end %>
+  <div class="center_signup header_row">
+    <h1>District Housing</h1>
+  </div>
+
+  <div class="center_signup">
+    <p><%= link_to "Apply", new_user_registration_path %></p>
+    <p><%= link_to "Log In", new_user_session_path %></p>
+  </div>
+
+  <div class="center_signup description">
+    <h2>Bringing DC closer to home</h2>
+
+    <p>Bread for the City and Code for DC are proud to present District Housing, a complete, streamlined application that opens the door to the various affordable housing options in Washington, DC.</p>
+
+    <p><%= link_to "More about us", about_path %></p>
+  </div>
+
+</div>

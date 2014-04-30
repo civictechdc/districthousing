@@ -12,7 +12,5 @@ DchousingApps::Application.routes.draw do
   match "/download", :to => "form_picker#download"
   match "/picker", :to => "form_picker#index"
 
-  # Bypass the login for now
-  #root :to => 'home#index'
-  root :to => 'form_picker#index'
+  root :to => 'home#index'
 end
