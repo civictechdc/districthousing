@@ -6,6 +6,7 @@ DchousingApps::Application.routes.draw do
   resources :line_items
   resources :carts
   resources :housing_forms
+  resources :salesforce, :only => [:index]
 
   get "home/index"
   match "/about", :to => "home#about"
