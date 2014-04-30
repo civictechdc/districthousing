@@ -18,5 +18,10 @@ gem 'guard-rails'
 gem 'pdf-forms'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'protected_attributes'
+gem "therubyracer"
+gem "less-rails"
+gem "sass-rails"
+gem "coffee-rails"
+gem 'twitter-bootstrap-rails'
 
 ruby '2.0.0'
