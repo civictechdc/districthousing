@@ -6,4 +6,13 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :applicants
+
+  ROLES = {
+    :admin => 0,
+    :standard => 1
+  }
+
+  def is_admin?
+    role == 0
+  end
 end
