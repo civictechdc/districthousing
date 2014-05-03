@@ -6,7 +6,7 @@
 
 $red : #e74c3c;
 $font-stack: 'Montserrat', sans-serif;
-
+$font-secondary: "ff-tisa-web-pro",serif;
 .hover-behavior {
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
@@ -20,18 +20,27 @@ $font-stack: 'Montserrat', sans-serif;
   box-sizing: border-box;
 }
 
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern=1";
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
 body {
   background-color: #fff;
   color: #333;
   /*font-family: verdana, arial, helvetica, sans-serif;*/
-  font-family: "ff-tisa-web-pro",serif;
+  font-family: $font-secondary;
   font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
   /*font-family: verdana, arial, helvetica, sans-serif;*/
-  font-family: "ff-tisa-web-pro",serif;
+  font-family: $font-secondary;
   font-size: 13px;
   line-height: 18px;
 }
@@ -53,6 +62,12 @@ h1, h2, h3, h4, h5 {
 
 .about-text {
   margin: 5% 0 5% 5%;
+}
+
+.edge-bar {
+  background-color: $red;
+  height: 3px;
+  width: 100%;
 }
 
 #sidebar {
@@ -102,26 +117,41 @@ h1, h2, h3, h4, h5 {
   display: block;
   float: none;
   margin: 2% auto;
-  
   line-height: 35px;
-  a {
-    
-    color: white;
-    &:hover {
-      &:visited {
-        color: white !important;
-      }
-      color: $red;
-      @extend .hover-behavior;
-    }
-
+  color: white;
+  &:visited {
+    color: white ;
   }
   &:hover {
+    color: $red;
     background-color: white;
     @extend .hover-behavior;
   }
 }
 
+.signup-button
+  {
+  border: 5px solid #27ae60;
+  width: 200px !important;
+  height: 35px;
+  background-color: #27ae60;
+  font-size: 2em;
+  font-family: $font-stack;
+  display: block;
+  float: none;
+  margin: 2% auto;
+  line-height: 20px;
+  color: white;
+  font-size: 18px;
+  &:visited {
+    color: white ;
+  }
+  &:hover {
+    color: #27ae60;
+    background-color: white;
+    @extend .hover-behavior;
+  }
+}
 
 
 .headshot-text{
@@ -292,12 +322,25 @@ body {
     padding-left: 3%;
     padding-top: 1%;
     position: absolute;
+    
       img { 
         display: inline;
         float: left;
         display: inline;
         max-width: 20% !important;
         height: auto;
+        -moz-transition: all 0.6s ease-in-out;
+        -webkit-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+        &:hover {
+          -moz-transform: rotate(360deg);
+          -webkit-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
       }
     }
 
@@ -312,7 +355,6 @@ body {
     margin: 0 auto;
     width: 40%;
   }
-
   #about {
     padding-top: 3%;
   }
@@ -323,6 +365,7 @@ body {
   }
   .icon-arrow-right{
     padding-left: 5px;
+    color: $red;
   }
   .description {
     font-weight: normal;
@@ -353,3 +396,21 @@ body {
 .devise_main {
   text-align: center;
 }
+
+
+/******/
+.btn-success {
+  font-family: $font-stack;
+  text-transform: uppercase;
+  background-color: $red;
+}
+
+.simplebox
+{
+  outline: none;
+  border-radius: 0 !important;
+  box-shadow:none !important;
+  height: 30px !important;
+  font-family: $font-secondary;
+}
+
