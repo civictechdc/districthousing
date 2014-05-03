@@ -133,7 +133,7 @@ h1, h2, h3, h4, h5 {
 .signup-button
   {
   border: 5px solid #27ae60;
-  width: 200px !important;
+  width: 250px !important;
   height: 35px;
   background-color: #27ae60;
   font-size: 2em;
@@ -144,6 +144,9 @@ h1, h2, h3, h4, h5 {
   line-height: 20px;
   color: white;
   font-size: 18px;
+  .reset-pw {
+    width: 250px !important;
+  }
   &:visited {
     color: white ;
   }
@@ -151,9 +154,36 @@ h1, h2, h3, h4, h5 {
     color: #27ae60;
     background-color: white;
     @extend .hover-behavior;
-  }
+  }  
 }
 
+
+.reset-pw
+  {
+  border: 5px solid #27ae60;
+  width: 400px !important;
+  height: 35px;
+  background-color: #27ae60;
+  font-size: 2em;
+  font-family: $font-stack;
+  display: block;
+  float: none;
+  margin: 2% auto;
+  line-height: 20px;
+  color: white;
+  font-size: 18px;
+  .reset-pw {
+    width: 250px !important;
+  }
+  &:visited {
+    color: white ;
+  }
+  &:hover {
+    color: #27ae60;
+    background-color: white;
+    @extend .hover-behavior;
+  }  
+}
 
 .headshot-text{
   text-align: center;
@@ -408,6 +438,7 @@ body {
 
 .simplebox
 {
+  margin-top: -20px;
   outline: none;
   border-radius: 0 !important;
   box-shadow:none !important;
@@ -415,3 +446,12 @@ body {
   font-family: $font-secondary;
 }
 
+.links {
+  font-family: $font-stack;
+  text-transform: uppercase;
+}
+
+.spacer {
+  height: 50px;
+  width: 100%;
+}
