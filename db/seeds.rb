@@ -12,6 +12,7 @@ require 'faker'
 
 Applicant.destroy_all
 Person.destroy_all
+User.destroy_all
 
 test_person = Person.create(
   first_name: Faker::Name.first_name,
@@ -48,3 +49,9 @@ test_person.save
 test_applicant = Applicant.create
 test_applicant.identity = test_person
 test_applicant.save
+
+# Seed a test user
+User.create!(
+  :email => "testuser@districthousing.org",
+  :password => "password"
+)
