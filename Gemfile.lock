@@ -102,7 +102,6 @@ GEM
     nio4r (1.0.0)
     orm_adapter (0.5.0)
     pdf-forms (0.5.7)
-    pg (0.17.1)
     polyglot (0.3.4)
     protected_attributes (1.0.3)
       activemodel (>= 4.0.0, < 5.0)
@@ -192,7 +191,6 @@ DEPENDENCIES
   jquery-rails
   less-rails
   pdf-forms
-  pg
   protected_attributes
   pry
   rails (= 4.0.0)
