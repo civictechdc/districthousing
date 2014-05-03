@@ -5,7 +5,7 @@
 /*variables and reused blocks*/
 
 $red : #e74c3c;
-$font-stack: 'Nevis';
+$font-stack: 'Montserrat', sans-serif;
 
 .hover-behavior {
   -webkit-transition: 0.2s ease-in-out;
@@ -14,16 +14,24 @@ $font-stack: 'Nevis';
 
 /* ******************** */
 
+*, *:before, *:after {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  /*font-family: verdana, arial, helvetica, sans-serif;*/
+  font-family: "ff-tisa-web-pro",serif;
   font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  /*font-family: verdana, arial, helvetica, sans-serif;*/
+  font-family: "ff-tisa-web-pro",serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -31,10 +39,17 @@ p, ol, ul, td {
 a {
   background-color: transparent;
   &:hover {
+    color: $red;
     background-color: transparent;
     text-decoration: none;
+    @extend .hover-behavior;
   }
 }
+
+h1, h2, h3, h4, h5 {
+    font-family: $font-stack !important;
+    text-transform: none;
+  }
 
 .about-text {
   margin: 5% 0 5% 5%;
@@ -55,8 +70,8 @@ a {
   height: 100%;
 
   h1, h2, h3, h4, h5 {
-    font-family: $font-stack;
-    text-transform: uppercase;
+    font-family: $font-stack !important;
+    text-transform: none;
   }
 }
 
@@ -77,15 +92,37 @@ a {
   /*margin-right: auto;*/
 }
 
-#login-button {
-  position: absolute;
-  bottom: 3em;
-  margin-left: 4em;
+.apply-button, .login-button {
+  border: 5px solid $red;
+  width: 200px;
+  height: 50px;
+  background-color: $red;
+  font-size: 2em;
+  font-family: $font-stack;
+  display: block;
+  float: none;
+  margin: 2% auto;
+  
+  line-height: 35px;
+  a {
+    
+    color: white;
+    &:hover {
+      &:visited {
+        color: white !important;
+      }
+      color: $red;
+      @extend .hover-behavior;
+    }
 
-  .button-text {
-    margin-top: 5%;
+  }
+  &:hover {
+    background-color: white;
+    @extend .hover-behavior;
   }
 }
+
+
 
 .headshot-text{
   text-align: center;
@@ -212,52 +249,103 @@ a {
 }
 
 /*** LANDING BODY STYLES ****/
-body#landing {
+body {
+  #landing {
   margin: 0;
-  background-color: lightblue;
-  color: #333;
+  /*background-color: lightblue;*/
+  color: #2c3e50;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  }
 }
 
 /*** LANDING PAGE ***/
-.center_signup.header_row {
-  margin: 0;
-  color: #c64942;
-  text-transform: uppercase;
-  background-color: #fff;
-  height: 100px;
 
+#fade-in {
+  /*opacity: 0;*/
+}
+
+.center_signup {
+  text-align: center;
+  color: #2c3e50;
+  padding: 1% 0 1% 0;
+}
+
+.center_signup {
+  .header_row {
+    margin: 0;
+    background-color: $red;
+    height: 100px;
+    
+  }
   .h1 {
+    color: white !important;
     font-weight: normal;
     font-size: 18px;
   }
 }
 
+.logo-image {
+    float: left;
+    clear: both;
+    padding-left: 3%;
+    padding-top: 1%;
+    position: absolute;
+      img { 
+        display: inline;
+        float: left;
+        display: inline;
+        max-width: 20% !important;
+        height: auto;
+      }
+    }
+
+
+
 .center_signup {
-  text-align: center;
-  color: #fff;
-}
+  p {
+    font-size: 1.3em;
+    line-height: 1.8em;
+    display: block;
+    float: none;
+    margin: 0 auto;
+    width: 40%;
+  }
 
-.center_signup p {
-  font-size: 30px;
-  line-height: 30px;
-}
+  #about {
+    padding-top: 3%;
+  }
+  #more-about {
+    padding-top: 6%;
+    text-transform: uppercase;
+    font-family: $font-stack;
+  }
+  .icon-arrow-right{
+    padding-left: 5px;
+  }
+  .description {
+    font-weight: normal;
+    font-size: 18px;
+    p {
+      font-size: 18px;
+      line-height: 24px;
+      width: 40%;
+      display: block;
+      float: none;
+      margin: 0 auto;
+      margin-top: 1%;
+    }
+  }
 
-.center_signup.description {
-  font-weight: normal;
-  font-size: 18px;
-}
-
-.center_signup.description h2 {
+  h2 {
   font-size: 40px;
   font-weight: normal;
-}
-
-.center_signup.description p {
-  font-size: 18px;
-  line-height: 24px;
+  display: block;
+  float: none;
+  margin: 0 auto;
+  margin-top: 5%;
+  }
 }
 
 /*** SIGN IN/SIGN UP STYLING ***/
