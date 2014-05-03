@@ -7,9 +7,9 @@
     <%= devise_error_messages! %>
 
     <div><%= f.label :email %><br />
-    <%= f.email_field :email, :autofocus => true %></div>
+    <%= f.email_field :email, :autofocus => true, class: 'simplebox' %></div>
 
-    <div><%= f.submit "Send me reset password instructions", :class => 'btn btn-success' %></div>
+    <div><%= f.submit "Send me reset password instructions", :class => 'reset-pw' %></div>
   <% end %>
 
   <%= render "devise/shared/links" %>
