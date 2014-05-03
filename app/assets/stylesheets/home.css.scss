@@ -60,10 +60,6 @@ h1, h2, h3, h4, h5 {
     text-transform: none;
   }
 
-.about-text {
-  margin: 5% 0 5% 5%;
-
-}
 
 .edge-bar {
   background-color: $red;
@@ -88,6 +84,11 @@ h1, h2, h3, h4, h5 {
   h1, h2, h3, h4, h5 {
     font-family: $font-stack !important;
     text-transform: none;
+  }
+
+  .about-text {
+  margin: 5% 0 5% 5%;
+  font-size: 18px;
   }
 }
 
@@ -398,6 +399,8 @@ body {
     padding-left: 5px;
     color: $red;
   }
+
+
   .description {
     font-weight: normal;
     font-size: 18px;
@@ -445,6 +448,10 @@ body {
   box-shadow:none !important;
   height: 30px !important;
   font-family: $font-secondary;
+  
+  &:focus {
+    border: 1px solid #cccccc !important;
+  }
 }
 
 .links {
@@ -457,3 +464,7 @@ body {
   width: 100%;
 }
 
+.icon-arrow-left {
+    padding-right: 5px;
+    color: $red;
+  }
