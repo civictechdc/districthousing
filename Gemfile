@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'sqlite3'
-gem 'pg'
+#gem 'pg'
 gem 'figaro'
 gem 'jquery-rails'
 gem 'rubyzip'
@@ -23,5 +24,3 @@ gem "less-rails"
 gem "sass-rails"
 gem "coffee-rails"
 gem 'twitter-bootstrap-rails'
-
-ruby '2.0.0'

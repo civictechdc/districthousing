@@ -1,8 +1,22 @@
-<h1>Bread for the City</h1>
-<p>Welcome to the DC Housing Applications Assistant!</p>
+<div>
+  <div class="edge-bar"></div>
+  <div class="logo-image" id="fade-in"><img src="http://f.cl.ly/items/1z451g1M3v450Z3j2H3p/affordable-housing-logo-small.png"></div>
+  <div class="center_signup header_row" id="fade-in">
+    <h1>District Housing</h1>
+  </div>
 
-<% if user_signed_in? %>
-<%= link_to "Get started!", picker_path %>
-<% else %>
-<%= link_to "Log in", new_user_session_path %> or <%= link_to "Create an account", new_user_registration_path %>
-<% end %>
+  <div class="center_signup">
+    
+    <%= link_to "Apply", new_user_registration_path, class: "apply-button"%>
+    <%= link_to "Log In", new_user_session_path, class: "login-button"%>
+  </div>
+
+  <div class="center_signup description">
+    <h2>Bringing DC closer to home</h2>
+
+    <p id="about">Bread for the City and Code for DC are proud to present District Housing, a complete, streamlined application that opens the door to the various affordable housing options in Washington, DC.</p>
+    <p id="more-about"><%= link_to "More about us", about_path %><i class="icon-arrow-right"></i></p>
+  </div>
+
+</div>
+<script type="text/javascript">$("#fade-in").delay(300).animate({opacity:1}, 500);</script>
