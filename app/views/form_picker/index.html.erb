@@ -1,31 +1,4 @@
 <p id="notice"><%= notice %></p>
 
-<!--
-<h2>Available housing forms</h2>
-
-<%= form_for @cart do |f| %>
-  <%= f.collection_select :applicant_id, Applicant.all, :id, :description %>
-  <%= f.submit "Change Applicant" %>
-<% end %>
-
-<% if @applicant %>
-  <p>Current user: <strong><%= @applicant.description %></strong></p>
-<% end %>
-
-<table>
-  <% @housing_forms.each do |housing_form| %>
-    <tr>
-      <td><%= housing_form.name %></td>
-      <td><%= button_to 'Add to cart', line_items_path(housing_form_id: housing_form) %></td>
-    </tr>
-  <% end %>
-</table>
-
--->
-
 <%= render "megaform" %>
-
-<div id="cart">
-  <%= render @cart %>
-</div>
-
+<%= button_to 'Download forms', "/download" %>

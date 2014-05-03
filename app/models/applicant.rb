@@ -3,6 +3,7 @@ class Applicant < ActiveRecord::Base
   include Dragoman
 
   belongs_to :identity, :class_name => "Person", :foreign_key => "self_id"
+  belongs_to :user
 
   delegate :dob,
     :first_name,

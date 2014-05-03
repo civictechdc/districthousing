@@ -14,6 +14,13 @@ Applicant.destroy_all
 Person.destroy_all
 User.destroy_all
 
+# Seed a test user
+test_user = User.create(
+  :email => "testuser@districthousing.org",
+  :password => "password"
+)
+test_user.save
+
 test_person = Person.create(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
@@ -48,10 +55,5 @@ test_person.save
 
 test_applicant = Applicant.create
 test_applicant.identity = test_person
+test_applicant.user = test_user
 test_applicant.save
-
-# Seed a test user
-User.create!(
-  :email => "testuser@districthousing.org",
-  :password => "password"
-)

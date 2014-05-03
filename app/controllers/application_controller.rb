@@ -5,14 +5,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def current_cart
-    Cart.find(session[:cart_id])
-  rescue ActiveRecord::RecordNotFound
-    cart = Cart.create
-    session[:cart_id] = cart.id
-    cart
-  end
-
   def form_field_hash field_names, applicant
     result = Hash.new
 
@@ -34,10 +26,10 @@ class ApplicationController < ActionController::Base
     destination_pdf
   end
 
-  def generate_pdf_archive cart
+  def generate_pdf_archive forms, applicant
     stringio = Zip::OutputStream::write_buffer do |zio|
-      cart.forms.each do |form|
-        filled_form = fill_form(form, cart.applicant)
+      forms.each do |form|
+        filled_form = fill_form(form, applicant)
         zio.put_next_entry(form.name)
         zio.write(filled_form.read)
         filled_form.unlink
@@ -45,6 +37,10 @@ class ApplicationController < ActionController::Base
     end
     stringio.rewind
     stringio.sysread
+  end
+
+  def current_applicant
+    current_user.applicants.first
   end
 
 end
