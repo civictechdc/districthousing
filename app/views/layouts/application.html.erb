@@ -2,26 +2,32 @@
 <html>
 <head>
   <title><%= content_for?(:title) ? content_for(:title) : "District Housing" %></title>
+  <meta name="viewport" content="initial-scale=1">
+  <link rel="stylesheet" id="tw-bootstrap-css" href="http://ouzy.co/wp-content/themes/the-bootstrap/css/bootstrap.min.css?ver=2.0.3" type="text/css" media="all">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <link rel="stylesheet" id="tw-bootstrap-css" href="http://ouzy.co/wp-content/themes/the-bootstrap/css/bootstrap.min.css?ver=2.0.3" type="text/css" media="all">
+  
   <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="//use.typekit.net/vxq1ncp.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
   <!--font awesome-->
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 
 </head>
 
-<body id=<%= @landing ? "landing" : ""%>>
+<body id=<%= @landing ? "landing" : ""%>
   <div class="fluid-container">
+    <div class="edge-bar"></div>
+    <div class="logo-image" id="fade-in"><img src="http://f.cl.ly/items/1z451g1M3v450Z3j2H3p/affordable-housing-logo-small.png"></div>
     <div class ="row-fluid">
       <% unless @no_sidebar %>
 
         <%= render "layouts/sidebar" %>
 
-        <div class="span11 main">
+        <div class="span8 main">
 
           <%= yield %>
 

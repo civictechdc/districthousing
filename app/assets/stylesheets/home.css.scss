@@ -5,8 +5,8 @@
 /*variables and reused blocks*/
 
 $red : #e74c3c;
-$font-stack: 'Nevis';
-
+$font-stack: 'Montserrat', sans-serif;
+$font-secondary: "ff-tisa-web-pro",serif;
 .hover-behavior {
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
@@ -14,30 +14,57 @@ $font-stack: 'Nevis';
 
 /* ******************** */
 
+*, *:before, *:after {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern=1";
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  /*font-family: verdana, arial, helvetica, sans-serif;*/
+  font-family: $font-secondary;
   font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  /*font-family: verdana, arial, helvetica, sans-serif;*/
+  font-family: $font-secondary;
+  font-size: 1.2em;
   line-height: 18px;
 }
 
 a {
   background-color: transparent;
   &:hover {
+    color: $red;
     background-color: transparent;
     text-decoration: none;
+    @extend .hover-behavior;
   }
 }
 
-.about-text {
-  margin: 5% 0 5% 5%;
+h1, h2, h3, h4, h5 {
+    font-family: $font-stack !important;
+    text-transform: none;
+  }
+
+
+.edge-bar {
+  background-color: $red;
+  height: 3px;
+  width: 100%;
 }
 
 #sidebar {
@@ -50,13 +77,18 @@ a {
 }
 
 .main {
-  padding-left: 400px;
+  width: 50%;
   margin-top: 50px;
   height: 100%;
 
   h1, h2, h3, h4, h5 {
-    font-family: $font-stack;
-    text-transform: uppercase;
+    font-family: $font-stack !important;
+    text-transform: none;
+  }
+
+  .about-text {
+  margin: 5% 0 5% 5%;
+  font-size: 18px;
   }
 }
 
@@ -77,14 +109,81 @@ a {
   /*margin-right: auto;*/
 }
 
-#login-button {
-  position: absolute;
-  bottom: 3em;
-  margin-left: 4em;
-
-  .button-text {
-    margin-top: 5%;
+.apply-button, .login-button {
+  border: 5px solid $red;
+  width: 200px;
+  height: 50px;
+  background-color: $red;
+  font-size: 2em;
+  font-family: $font-stack;
+  display: block;
+  float: none;
+  margin: 2% auto;
+  line-height: 35px;
+  color: white;
+  &:visited {
+    color: white ;
   }
+  &:hover {
+    color: $red;
+    background-color: white;
+    @extend .hover-behavior;
+  }
+}
+
+.signup-button
+  {
+  border: 5px solid #27ae60;
+  width: 250px !important;
+  height: 35px;
+  background-color: #27ae60;
+  font-size: 2em;
+  font-family: $font-stack;
+  display: block;
+  float: none;
+  margin: 2% auto;
+  line-height: 20px;
+  color: white;
+  font-size: 18px;
+  .reset-pw {
+    width: 250px !important;
+  }
+  &:visited {
+    color: white ;
+  }
+  &:hover {
+    color: #27ae60;
+    background-color: white;
+    @extend .hover-behavior;
+  }  
+}
+
+
+.reset-pw
+  {
+  border: 5px solid #27ae60;
+  width: 400px !important;
+  height: 35px;
+  background-color: #27ae60;
+  font-size: 2em;
+  font-family: $font-stack;
+  display: block;
+  float: none;
+  margin: 2% auto;
+  line-height: 20px;
+  color: white;
+  font-size: 18px;
+  .reset-pw {
+    width: 250px !important;
+  }
+  &:visited {
+    color: white ;
+  }
+  &:hover {
+    color: #27ae60;
+    background-color: white;
+    @extend .hover-behavior;
+  }  
 }
 
 .headshot-text{
@@ -119,7 +218,7 @@ a {
 .side-button {
   text-align: center;
   max-width: 200px;
-  height: 2em;
+  height: 35px;
   background-color: $red;
   border-style: solid;
   border-width: 4px;
@@ -212,56 +311,160 @@ a {
 }
 
 /*** LANDING BODY STYLES ****/
-body#landing {
+body {
+  #landing {
   margin: 0;
-  background-color: lightblue;
-  color: #333;
+  /*background-color: lightblue;*/
+  color: #2c3e50;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  }
 }
 
 /*** LANDING PAGE ***/
-.center_signup.header_row {
-  margin: 0;
-  color: #c64942;
-  text-transform: uppercase;
-  background-color: #fff;
-  height: 100px;
 
+#fade-in {
+  /*opacity: 0;*/
+}
+
+.center_signup {
+  text-align: center;
+  color: #2c3e50;
+  padding: 1% 0 1% 0;
+}
+
+.center_signup {
+  .header_row {
+    margin: 0;
+    background-color: $red;
+    height: 100px;
+    
+  }
   .h1 {
+    color: white !important;
     font-weight: normal;
     font-size: 18px;
   }
 }
 
+.logo-image {
+    float: left;
+    clear: both;
+    padding-left: 3%;
+    padding-top: 1%;
+    position: absolute;
+    
+      img { 
+        display: inline;
+        float: left;
+        display: inline;
+        max-width: 20% !important;
+        height: auto;
+        -moz-transition: all 0.6s ease-in-out;
+        -webkit-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+        &:hover {
+          -moz-transform: rotate(360deg);
+          -webkit-transform: rotate(360deg);
+          -o-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    }
+
+
+
 .center_signup {
-  text-align: center;
-  color: #fff;
-}
+  p {
+    font-size: 1.2em;
+    line-height: 1.8em;
+    display: block;
+    float: none;
+    margin: 0 auto;
+    width: 40%;
+  }
+  #about {
+    padding-top: 3%;
+  }
+  #more-about {
+    padding-top: 6%;
+    text-transform: uppercase;
+    font-family: $font-stack;
+  }
+  .icon-arrow-right{
+    padding-left: 5px;
+    color: $red;
+  }
 
-.center_signup p {
-  font-size: 30px;
-  line-height: 30px;
-}
 
-.center_signup.description {
-  font-weight: normal;
-  font-size: 18px;
-}
+  .description {
+    font-weight: normal;
+    font-size: 18px;
+    p {
+      font-size: 18px;
+      line-height: 24px;
+      width: 40%;
+      display: block;
+      float: none;
+      margin: 0 auto;
+      margin-top: 1%;
+    }
+  }
 
-.center_signup.description h2 {
+  h2 {
   font-size: 40px;
   font-weight: normal;
-}
-
-.center_signup.description p {
-  font-size: 18px;
-  line-height: 24px;
+  display: block;
+  float: none;
+  margin: 0 auto;
+  margin-top: 5%;
+  }
 }
 
 /*** SIGN IN/SIGN UP STYLING ***/
 
 .devise_main {
   text-align: center;
+  padding-top: 1%;
 }
+
+
+/******/
+.btn-success {
+  font-family: $font-stack;
+  text-transform: uppercase;
+  background-color: $red;
+}
+
+.simplebox
+{
+  margin-top: -20px;
+  outline: none;
+  border-radius: 0 !important;
+  box-shadow:none !important;
+  height: 30px !important;
+  font-family: $font-secondary;
+  
+  &:focus {
+    border: 1px solid #cccccc !important;
+  }
+}
+
+.links {
+  font-family: $font-stack;
+  text-transform: uppercase;
+}
+
+.spacer {
+  height: 50px;
+  width: 100%;
+}
+
+.icon-arrow-left {
+    padding-right: 5px;
+    color: $red;
+  }

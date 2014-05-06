@@ -3,20 +3,20 @@
 
 <div class="devise_main">
   <h2>Sign up for a District Housing account</h2>
-
+  <div class="spacer"></div>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
     <div><%= f.label :email %><br />
-    <%= f.email_field :email, :autofocus => true %></div>
+    <%= f.email_field :email, :autofocus => true, class: 'simplebox' %></div>
 
     <div><%= f.label :password %><br />
-    <%= f.password_field :password %></div>
+    <%= f.password_field :password, class: 'simplebox'%></div>
 
     <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %></div>
+    <%= f.password_field :password_confirmation, class: 'simplebox' %></div>
 
-    <div><%= f.submit "Sign up", :class => 'btn btn-success' %></div>
+    <div><%= f.submit "Sign up", :class => 'signup-button' %></div>
   <% end %>
 
   <%= render "devise/shared/links" %>

@@ -89,7 +89,6 @@ GEM
     multi_json (1.7.9)
     orm_adapter (0.4.0)
     pdf-forms (0.5.5)
-    pg (0.17.1)
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -176,7 +175,6 @@ DEPENDENCIES
   guard-test
   jquery-rails
   pdf-forms
-  pg
   pry
   rails (= 3.2.13)
   rails_12factor

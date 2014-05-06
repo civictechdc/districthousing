@@ -1,20 +1,22 @@
 <div>
-
-  <div class="center_signup header_row">
+  
+  
+  <div class="center_signup header_row" id="fade-in">
     <h1>District Housing</h1>
   </div>
 
   <div class="center_signup">
-    <p><%= link_to "Apply", new_user_registration_path %></p>
-    <p><%= link_to "Log In", new_user_session_path %></p>
+    
+    <%= link_to "Apply", new_user_registration_path, class: "apply-button"%>
+    <%= link_to "Log In", new_user_session_path, class: "login-button"%>
   </div>
 
   <div class="center_signup description">
     <h2>Bringing DC closer to home</h2>
 
-    <p>Bread for the City and Code for DC are proud to present District Housing, a complete, streamlined application that opens the door to the various affordable housing options in Washington, DC.</p>
-
-    <p><%= link_to "More about us", about_path %></p>
+    <p id="about">Bread for the City and Code for DC are proud to present District Housing, a complete, streamlined application that opens the door to the various affordable housing options in Washington, DC.</p>
+    <p id="more-about"><%= link_to "More about us", about_path %><i class="icon-arrow-right"></i></p>
   </div>
 
 </div>
+<script type="text/javascript">$("#fade-in").delay(300).animate({opacity:1}, 500);</script>

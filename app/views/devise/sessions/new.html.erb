@@ -3,19 +3,19 @@
 
 <div class="devise_main">
   <h2>Sign in to District Housing</h2>
-
+  <div class="spacer"></div>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <div><%= f.label :email %><br />
-    <%= f.email_field :email, :autofocus => true %></div>
+    <%= f.email_field :email, :autofocus => true, class: 'simplebox' %></div>
 
     <div><%= f.label :password %><br />
-    <%= f.password_field :password %></div>
+    <%= f.password_field :password, class: 'simplebox' %></div>
 
     <% if devise_mapping.rememberable? -%>
       <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
     <% end -%>
 
-    <div><%= f.submit "Sign in", :class => 'btn btn-success' %></div>
+    <div><%= f.submit "Sign in", :class => 'signup-button' %></div>
   <% end %>
 
   <%= render "devise/shared/links" %>
