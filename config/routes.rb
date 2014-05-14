@@ -3,8 +3,6 @@ DchousingApps::Application.routes.draw do
 
   resources :buildings
   resources :housing_forms
-  resources :line_items
-  resources :carts
   resources :housing_forms
   resources :salesforce, :only => [:index]
 

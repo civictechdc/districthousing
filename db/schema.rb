@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503045606) do
+ActiveRecord::Schema.define(version: 20140514195500) do
 
   create_table "aliases", force: true do |t|
     t.string  "name"
@@ -26,12 +26,6 @@ ActiveRecord::Schema.define(version: 20140503045606) do
   end
 
   add_index "applicants", ["user_id"], name: "index_applicants_on_user_id"
-
-  create_table "carts", force: true do |t|
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "applicant_id"
-  end
 
   create_table "form_fields", force: true do |t|
     t.string   "name"
@@ -49,13 +43,6 @@ ActiveRecord::Schema.define(version: 20140503045606) do
     t.string   "uri"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "line_items", force: true do |t|
-    t.integer  "housing_form_id"
-    t.integer  "cart_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
   end
 
   create_table "people", force: true do |t|

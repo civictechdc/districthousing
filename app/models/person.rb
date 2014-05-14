@@ -9,7 +9,6 @@ class Person < ActiveRecord::Base
   has_many :previous_ssns
 
   belongs_to :user
-  has_many :carts
 
   def description
     "#{first_name} #{last_name}"

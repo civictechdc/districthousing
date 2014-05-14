@@ -39,16 +39,4 @@ class HousingFormsControllerTest < ActionController::TestCase
     put :update, id: @housing_form, housing_form: { name: @housing_form.name, uri: @housing_form.uri }
     assert_redirected_to housing_form_path(assigns(:housing_form))
   end
-
-  test "should destroy housing_form if unreferenced by line_item" do
-    assert_no_difference('HousingForm.count') do
-      delete :destroy, id: @housing_form
-    end
-
-    assert_redirected_to housing_forms_path
-
-    assert_difference('HousingForm.count', -1) do
-      delete :destroy, id: @unreferenced_housing_form
-    end
-  end
 end
