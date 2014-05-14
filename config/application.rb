@@ -54,5 +54,7 @@ module DchousingApps
 
     # TODO Remove this in Rails 4.1
     config.secret_key_base = YAML.load(File.open("#{Rails.root}/config/secrets.yml"))[Rails.env]['secret_key_base']
+
+    config.i18n.enforce_available_locales = true
   end
 end
