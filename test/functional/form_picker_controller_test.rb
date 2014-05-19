@@ -5,12 +5,10 @@ class FormPickerControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   test "should get index" do
-    get :index, {}, {'cart_id' => '1'}
+    sign_in User.first
+    get :index
     assert_response :success
-    assert_not_nil assigns[:cart]
-    assert_not_nil assigns[:housing_forms]
     assert_not_nil assigns[:applicant]
-    assert_not_nil assigns[:pdf_field_names]
 
     assert_not_equal [], assigns[:pdf_field_names]
     assert_not_equal nil, assigns[:applicant]

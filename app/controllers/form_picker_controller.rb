@@ -1,4 +1,7 @@
 class FormPickerController < ApplicationController
+
+  before_filter :authenticate_user!
+
   def index
     @applicant = current_applicant
 
@@ -12,4 +15,5 @@ class FormPickerController < ApplicationController
       filename: 'housingforms.zip',
       type: 'application/zip'
   end
+
 end
