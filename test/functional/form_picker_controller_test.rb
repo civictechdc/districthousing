@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class FormPickerControllerTest < ActionController::TestCase
+
+  include Devise::TestHelpers
+
   test "should get index" do
     get :index, {}, {'cart_id' => '1'}
     assert_response :success

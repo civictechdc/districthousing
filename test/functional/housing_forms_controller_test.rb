@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class HousingFormsControllerTest < ActionController::TestCase
+
+  include Devise::TestHelpers
+
   setup do
     @housing_form = housing_forms(:one)
     @unreferenced_housing_form = housing_forms(:unreferenced)
