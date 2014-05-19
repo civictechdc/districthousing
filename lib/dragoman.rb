@@ -19,10 +19,6 @@ module Dragoman
     end
   end
 
-  # The Dragoman was asked about a particular field, but it doesn't have any
-  # rules that match the field name.
-  class NoMatchError < StandardError; end
-
   class Rule
     attr_reader :pattern, :productions
 
@@ -83,7 +79,7 @@ module Dragoman
     end
 
     def matching_rule target
-      rules.detect { |rule| rule.pattern =~ target } or raise NoMatchError, "Unrecognized field \"#{target}\""
+      rules.detect { |rule| rule.pattern =~ target } or Rule.new(//, [->(){""}])
     end
 
     def self.extended klass
