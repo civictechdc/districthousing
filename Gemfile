@@ -24,3 +24,4 @@ gem "less-rails"
 gem "sass-rails"
 gem "coffee-rails"
 gem 'twitter-bootstrap-rails'
+gem 'minitest-rails'
