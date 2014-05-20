@@ -49,7 +49,7 @@ class Applicant < ActiveRecord::Base
 
   learn(/FirstName/, ->(first_name) { first_name })
   learn(/LastName/, ->(last_name) { last_name })
-  learn(/FullName/, ->(first_name, middle_name, last_name) { "#{first_name} #{middle_name} #{last_name}" })
+  learn(/Name/, ->(first_name, middle_name, last_name) { "#{first_name} #{middle_name} #{last_name}" })
   learn(/DOB/, ->(dob) { dob })
   learn(/SSN/, ->(ssn) { ssn })
   learn(/WorkPhone/, ->(work_phone) { work_phone })
