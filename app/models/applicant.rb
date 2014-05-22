@@ -1,7 +1,5 @@
 class Applicant < ActiveRecord::Base
 
-  include Dragoman
-
   belongs_to :identity, :class_name => "Person", :foreign_key => "self_id"
   belongs_to :user
 
@@ -31,6 +29,8 @@ class Applicant < ActiveRecord::Base
     :mail_state,
     :mail_street_address,
     :mail_zip,
+    :dob_date,
+    :age,
     to: :identity
 
   def preferred_attrs_for field_names
@@ -47,27 +47,50 @@ class Applicant < ActiveRecord::Base
     identity.description
   end
 
-  learn(/FirstName/, ->(first_name) { first_name })
-  learn(/LastName/, ->(last_name) { last_name })
-  learn(/Name/, ->(first_name, middle_name, last_name) { "#{first_name} #{middle_name} #{last_name}" })
-  learn(/DOB/, ->(dob) { dob })
-  learn(/SSN/, ->(ssn) { ssn })
-  learn(/WorkPhone/, ->(work_phone) { work_phone })
-  learn(/CellPhone/, ->(cell_phone) { cell_phone })
-  learn(/HomePhone/, ->(home_phone) { home_phone })
-  learn(/Phone/, ->(phone) { phone })
-  learn(/MailAddStreet/, ->(mail_street_address) { mail_street_address })
-  learn(/MailAddCity/, ->(mail_city) { mail_city })
-  learn(/MailAddState/, ->(mail_state) { mail_state })
-  learn(/MailAddZip/, ->(mail_zip) { mail_zip })
-  learn(/PreferredPhone/, ->(preferred_phone) { preferred_phone })
-  learn(/WorkPhone/, ->(work_phone) { work_phone })
-  learn(/RaceWhiChk/, ->(race) { race =~ /white/i and "Yes"  or "" })
-  learn(/RaceIndChk/, ->(race) { race =~ /american indian/i and "Yes"  or "" })
-  learn(/RaceIndChk/, ->(race) { race =~ /american indian/i and "Yes"  or "" })
-  learn(/^HispChk/, ->(race) { race =~ /hispanic/i and "Yes"  or "" })
-  learn(/NonHispChk/, ->(race) { race =~ /hispanic/i and ""  or "Yes" })
-  learn(/RaceBlChk/, ->(race) { race =~ /black/i and "Yes"  or "" })
-  learn(/RaceAsianChk/, ->(race) { race =~ /asian/i and "Yes"  or "" })
-  learn(/NoAns/, ->(race) { race =~ /No answer/i and "Yes"  or "" })
+  def field field_name
+    case field_name
+    when "FirstName"
+      first_name
+    when "LastName"
+      last_name
+    when /^(Full)?Name\d*/
+      "#{first_name} #{middle_name} #{last_name}"
+    when "DOB"
+      dob_date
+    when "Age"
+      age
+    when "SSN"
+      ssn
+    when "WorkPhone"
+      work_phone
+    when "CellPhone"
+      cell_phone
+    when "HomePhone"
+      home_phone
+    when "Phone"
+      phone
+    when "Email"
+      email
+    when "GenderInitial"
+      gender[0]
+    when "Gender"
+      gender
+    when "MailAddStreet"
+      mail_street_address
+    when "MailAddCity"
+      mail_city
+    when "MailAddState"
+      mail_state
+    when "MailAddZip"
+      mail_zip
+    when "PreferredPhone"
+      preferred_phone
+    when "WorkPhone"
+      work_phone
+    when "Nationality"
+      nationality
+    else
+      ""
+    end
+  end
 end

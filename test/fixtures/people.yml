@@ -4,7 +4,7 @@ one:
   last_name: McOne
   middle_name: John
   ssn: 111-11-1111
-  dob: 1981-01-01 01:01:01
+  dob: 1981-02-03
   gender: Male
   res_street_address: 111 Fake Street
   res_apt: 111
@@ -15,6 +15,8 @@ one:
   work_phone: (202) 586-5000
   home_phone: (202) 272-0167
   cell_phone: (202) 208-4743
+  email: one@districthousing.org
+  nationality: USA
 
 two:
   first_name: Two
@@ -28,3 +30,4 @@ two:
   res_city: Two Town
   res_state: Maryland
   res_zip: 22222
+  email: two@districthousing.org

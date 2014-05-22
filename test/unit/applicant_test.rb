@@ -7,24 +7,21 @@ class ApplicantTest < ActiveSupport::TestCase
   end
 
   test "fills basic personal information" do
+    assert_equal "One John McOne", @one.field("Name")
     assert_equal "One John McOne", @one.field("FullName")
     assert_equal "One John McOne", @one.field("FullName1")
     assert_equal "(202) 586-5000", @one.field("WorkPhone")
-    assert_equal "", @one.field("Age")
-    assert_equal "", @one.field("Citizen")
-    assert_equal "1981-01-01 01:01:01 UTC", @one.field("DOB")
-    assert_equal "", @one.field("Email")
+    assert_equal "02/03/1981", @one.field("DOB")
+    assert_equal "one@districthousing.org", @one.field("Email")
     assert_equal "One", @one.field("FirstName")
     assert_equal "McOne", @one.field("LastName")
-    assert_equal "One John McOne", @one.field("Name")
     assert_equal "(202) 208-4743", @one.field("CellPhone")
     assert_equal "(202) 272-0167", @one.field("HomePhone")
     assert_equal "(202) 456-1111", @one.field("Phone")
     assert_equal "111-11-1111", @one.field("SSN")
-    assert_equal "", @one.field("Gender")
-    assert_equal "", @one.field("GenderInitial")
-    assert_equal "", @one.field("Nationality")
-    assert_equal "", @one.field("NonCit")
+    assert_equal "Male", @one.field("Gender")
+    assert_equal "M", @one.field("GenderInitial")
+    assert_equal "USA", @one.field("Nationality")
   end
 
   test "fills addresses" do
