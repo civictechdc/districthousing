@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/rails/sass-rails.git
+  revision: 3a9e47db7d769221157c82229fc1bade55b580f0
+  specs:
+    sass-rails (4.0.1)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.2)
+      sprockets (~> 2.12)
+      sprockets-rails (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -32,9 +42,6 @@ GEM
     builder (3.2.2)
     celluloid (0.15.2)
       timers (~> 1.1.0)
-    celluloid-io (0.15.0)
-      celluloid (>= 0.15.0)
-      nio4r (>= 0.5.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -65,8 +72,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
-    formatador (0.2.4)
-    guard (2.6.0)
+    formatador (0.2.5)
+    guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
       lumberjack (~> 1.0)
@@ -89,9 +96,8 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.5.0)
     libv8 (3.16.14.3)
-    listen (2.7.3)
+    listen (2.7.5)
       celluloid (>= 0.15.2)
-      celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     lumberjack (1.0.5)
@@ -104,13 +110,12 @@ GEM
     minitest-rails (2.0.1)
       minitest (>= 5.3.3, < 6.0)
       railties (~> 4.1)
-    multi_json (1.10.0)
-    nio4r (1.0.0)
+    multi_json (1.10.1)
     orm_adapter (0.5.0)
     pdf-forms (0.5.7)
     polyglot (0.3.4)
-    protected_attributes (1.0.3)
-      activemodel (>= 4.0.0, < 5.0)
+    protected_attributes (1.0.7)
+      activemodel (>= 4.0.1, < 5.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -144,18 +149,14 @@ GEM
       ffi (>= 0.5.0)
     ref (1.0.5)
     rubyzip (1.1.3)
-    sass (3.3.6)
-    sass-rails (4.0.1)
-      railties (>= 4.0.0, < 5.0)
-      sass (>= 3.1.10)
-      sprockets-rails (~> 2.0.0)
+    sass (3.3.7)
     slop (3.5.0)
     sprockets (2.12.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.1)
+    sprockets-rails (2.1.3)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
@@ -206,7 +207,7 @@ DEPENDENCIES
   rails (= 4.1.1)
   rails_12factor
   rubyzip
-  sass-rails
+  sass-rails!
   sqlite3
   therubyracer
   thin
