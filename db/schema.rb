@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514195500) do
+ActiveRecord::Schema.define(version: 20140527201825) do
+
+  create_table "addresses", force: true do |t|
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "apt"
+  end
 
   create_table "aliases", force: true do |t|
     t.string  "name"
@@ -52,13 +60,8 @@ ActiveRecord::Schema.define(version: 20140514195500) do
     t.string   "ssn"
     t.datetime "dob"
     t.string   "gender"
-    t.string   "res_street_address"
-    t.string   "res_apt"
-    t.string   "res_city"
-    t.string   "res_state"
-    t.string   "res_zip"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "phone"
     t.string   "work_phone"
     t.string   "home_phone"
@@ -69,11 +72,9 @@ ActiveRecord::Schema.define(version: 20140514195500) do
     t.string   "race"
     t.string   "student_status"
     t.string   "marital_status"
-    t.string   "mail_street_address"
-    t.string   "mail_city"
-    t.string   "mail_state"
-    t.string   "mail_zip"
     t.string   "preferred_phone"
+    t.integer  "residence_id"
+    t.integer  "mail_id"
   end
 
   create_table "previous_ssns", force: true do |t|
