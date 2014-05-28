@@ -1,10 +1,12 @@
 class Person < ActiveRecord::Base
   attr_accessible :dob, :first_name, :gender, :last_name, :middle_name, :res_apt
-  attr_accessible :res_city, :res_state, :res_street_address, :res_zip, :ssn
+  attr_accessible :ssn
   attr_accessible :phone, :work_phone, :home_phone, :cell_phone, :preferred_phone
   attr_accessible :citizenship
   attr_accessible :nationality, :email, :race, :student_status, :marital_status
-  attr_accessible :mail_city, :mail_state, :mail_street_address, :mail_zip
+
+  belongs_to :residence, class_name: "Address"
+  belongs_to :mail, class_name: "Address"
 
   has_many :previous_ssns
 

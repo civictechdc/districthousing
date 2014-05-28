@@ -8,11 +8,6 @@ class Applicant < ActiveRecord::Base
     :gender,
     :last_name,
     :middle_name,
-    :res_apt,
-    :res_city,
-    :res_state,
-    :res_street_address,
-    :res_zip,
     :ssn,
     :phone,
     :work_phone,
@@ -25,12 +20,10 @@ class Applicant < ActiveRecord::Base
     :race,
     :student_status,
     :marital_status,
-    :mail_city,
-    :mail_state,
-    :mail_street_address,
-    :mail_zip,
     :dob_date,
     :age,
+    :residence,
+    :mail,
     to: :identity
 
   def preferred_attrs_for field_names
@@ -75,14 +68,26 @@ class Applicant < ActiveRecord::Base
       gender[0]
     when "Gender"
       gender
-    when "MailAddStreet"
-      mail_street_address
-    when "MailAddCity"
-      mail_city
-    when "MailAddState"
-      mail_state
-    when "MailAddZip"
-      mail_zip
+    when "AddressStreet"
+      residence.street
+    when "AddressCity"
+      residence.city
+    when "AddressState"
+      residence.state
+    when "AddressZip"
+      residence.zip
+    when "Address"
+      residence.full
+    when "MailStreet"
+      mail.street
+    when "MailCity"
+      mail.city
+    when "MailState"
+      mail.state
+    when "MailZip"
+      mail.zip
+    when "Mail"
+      mail.full
     when "PreferredPhone"
       preferred_phone
     when "WorkPhone"

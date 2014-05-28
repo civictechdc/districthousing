@@ -25,17 +25,17 @@ class ApplicantTest < ActiveSupport::TestCase
   end
 
   test "fills addresses" do
-    assert_equal "", @one.field("AddressApt")
-    assert_equal "", @one.field("AddressCity")
-    assert_equal "", @one.field("AddressState")
-    assert_equal "", @one.field("AddressStreet")
-    assert_equal "", @one.field("AddressZip")
-    assert_equal "", @one.field("MailAddress")
-    assert_equal "", @one.field("ResAddApt")
-    assert_equal "", @one.field("ResAddCity")
-    assert_equal "", @one.field("ResAddState")
-    assert_equal "", @one.field("ResAddStreet")
-    assert_equal "", @one.field("ResAddZip")
+    assert_equal "111 Fake Street, Oneville, DC, 11111", @one.field("Address")
+    assert_equal "Oneville", @one.field("AddressCity")
+    assert_equal "DC", @one.field("AddressState")
+    assert_equal "111 Fake Street", @one.field("AddressStreet")
+    assert_equal "11111", @one.field("AddressZip")
+
+    assert_equal "222 Fake Street, Two Town, AK, 22222", @one.field("Mail")
+    assert_equal "Two Town", @one.field("MailCity")
+    assert_equal "AK", @one.field("MailState")
+    assert_equal "222 Fake Street", @one.field("MailStreet")
+    assert_equal "22222", @one.field("MailZip")
   end
 
   test "fills contact information" do

@@ -1,0 +1,14 @@
+one:
+  id: 1
+  street: 111 Fake Street
+  apt: 111
+  city: Oneville
+  state: DC
+  zip: 11111
+
+two:
+  id: 2
+  street: 222 Fake Street
+  city: Two Town
+  state: AK
+  zip: 22222
