@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   private
-  
+
   def generate_pdf_archive forms, applicant
     stringio = Zip::OutputStream::write_buffer do |zio|
       forms.each do |form|

@@ -1,2 +1,14 @@
-<script type="text/javascript" src="http://www.formstack.com/forms/js.php?1721573-qkkmpdNPHb-v3"></script><noscript><a href="http://www.formstack.com/forms/?1721573-qkkmpdNPHb" title="Online Form">Online Form - District Housing - v2</a></noscript><div style="text-align:right; font-size:x-small;"><a href="http://www.formstack.com?utm_source=jsembed&utm_medium=product&utm_campaign=product+branding&fa=h,1721573" title="Online Form Generator">Online Form Generator</a></div>
+<%= form_for @applicant do |f| %>
+  <%= f.fields_for :identity do |builder|  %>
+    <p>
+      <%= builder.label :first_name, "First Name" %> <br />
+      <%= builder.text_field :first_name %>
+    </p>
+  <% end %>
+  <%= f.button("Update") %>
+<% end %>
+
+<%= debug @applicant %>
+<%= debug @applicant.identity %>
+
 <%= button_to 'Download forms', "/download" %>

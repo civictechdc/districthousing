@@ -2,6 +2,7 @@ class Applicant < ActiveRecord::Base
 
   belongs_to :identity, :class_name => "Person", :foreign_key => "self_id"
   belongs_to :user
+  accepts_nested_attributes_for :identity
 
   delegate :dob,
     :first_name,
