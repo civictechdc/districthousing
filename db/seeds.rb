@@ -4,7 +4,7 @@ Dir.glob(Rails.root.join("public/forms/*.pdf")) do |pdf_path|
   pdf_name = File.basename pdf_path
   form = HousingForm.create(name: pdf_name, uri: pdf_path)
   PDF_FORMS.get_field_names(pdf_path).each do |field_name|
-     form.form_fields << FormField.find_or_create_by_name(field_name)
+     form.form_fields << FormField.where(name: field_name).first_or_create
   end
 end
 
