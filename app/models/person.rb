@@ -17,10 +17,14 @@ class Person < ActiveRecord::Base
   end
 
   def dob_date
+    return "" if dob.nil?
+
     dob.strftime("%m/%d/%Y")
   end
 
   def age
+    return "" if dob.nil?
+
     now = Time.now.utc.to_date
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
