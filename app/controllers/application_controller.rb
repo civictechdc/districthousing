@@ -19,6 +19,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_applicant
-    current_user.applicants.first
+    current_user.applicants.first_or_create.tap do |applicant|
+      applicant.create_identity if applicant.identity.nil?
+      applicant.save
+    end
   end
 end
