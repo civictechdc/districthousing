@@ -1,8 +1,10 @@
+require 'zip'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
   private
-  
+
   def generate_pdf_archive forms, applicant
     stringio = Zip::OutputStream::write_buffer do |zio|
       forms.each do |form|
@@ -17,6 +19,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_applicant
-    current_user.applicants.first
+    current_user.applicants.first_or_create.tap do |applicant|
+      applicant.create_identity if applicant.identity.nil?
+      applicant.save
+    end
   end
 end

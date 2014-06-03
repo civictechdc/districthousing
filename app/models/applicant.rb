@@ -2,6 +2,8 @@ class Applicant < ActiveRecord::Base
 
   belongs_to :identity, :class_name => "Person", :foreign_key => "self_id"
   belongs_to :user
+  accepts_nested_attributes_for :identity
+  attr_accessible :identity_attributes
 
   delegate :dob,
     :first_name,
@@ -41,6 +43,10 @@ class Applicant < ActiveRecord::Base
   end
 
   def field field_name
+    value_for_field(field_name).to_s
+  end
+
+  def value_for_field field_name
     case field_name
     when "FirstName"
       first_name
@@ -65,29 +71,29 @@ class Applicant < ActiveRecord::Base
     when "Email"
       email
     when "GenderInitial"
-      gender[0]
+      gender && gender[0] || ""
     when "Gender"
       gender
     when "AddressStreet"
-      residence.street
+      residence && residence.street
     when "AddressCity"
-      residence.city
+      residence && residence.city
     when "AddressState"
-      residence.state
+      residence && residence.state
     when "AddressZip"
-      residence.zip
+      residence && residence.zip
     when "Address"
-      residence.full
+      residence && residence.full
     when "MailStreet"
-      mail.street
+      mail && mail.street
     when "MailCity"
-      mail.city
+      mail && mail.city
     when "MailState"
-      mail.state
+      mail && mail.state
     when "MailZip"
-      mail.zip
+      mail && mail.zip
     when "Mail"
-      mail.full
+      mail && mail.full
     when "PreferredPhone"
       preferred_phone
     when "WorkPhone"
