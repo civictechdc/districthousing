@@ -1,0 +1,2 @@
+class HouseholdMember < Person
+end

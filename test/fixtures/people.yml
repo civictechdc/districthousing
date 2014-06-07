@@ -14,6 +14,8 @@ one:
   cell_phone: (202) 208-4743
   email: one@districthousing.org
   nationality: USA
+  applicant_id: 1
+  type: Identity
 
 two:
   id: 2
@@ -26,3 +28,5 @@ two:
   residence_id: 1
   mail_id: 2
   email: two@districthousing.org
+  applicant_id: 2
+  type: Identity

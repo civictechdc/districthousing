@@ -1,6 +1,9 @@
 class Applicant < ActiveRecord::Base
 
-  belongs_to :identity, :class_name => "Person", :foreign_key => "self_id"
+  has_one :identity
+  has_many :landlords
+  has_many :household_members
+
   belongs_to :user
   accepts_nested_attributes_for :identity
   attr_accessible :identity_attributes

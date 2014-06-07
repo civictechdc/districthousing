@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527201825) do
+ActiveRecord::Schema.define(version: 20140607153321) do
 
   create_table "addresses", force: true do |t|
     t.string "street"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20140527201825) do
   end
 
   create_table "applicants", force: true do |t|
-    t.integer  "self_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
@@ -75,6 +74,8 @@ ActiveRecord::Schema.define(version: 20140527201825) do
     t.string   "preferred_phone"
     t.integer  "residence_id"
     t.integer  "mail_id"
+    t.string   "type"
+    t.integer  "applicant_id"
   end
 
   create_table "previous_ssns", force: true do |t|

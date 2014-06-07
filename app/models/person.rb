@@ -8,6 +8,8 @@ class Person < ActiveRecord::Base
   belongs_to :residence, class_name: "Address"
   belongs_to :mail, class_name: "Address"
 
+  belongs_to :applicant
+
   has_many :previous_ssns
 
   belongs_to :user
