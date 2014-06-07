@@ -1,16 +1,7 @@
 <%= form_for @applicant do |f| %>
   <%= f.fields_for :identity do |builder|  %>
     <p>
-      <%= builder.label :first_name, "First Name" %>
-      <%= builder.text_field :first_name %>
-      <%= builder.label :middle_name, "Middle Name" %>
-      <%= builder.text_field :middle_name %>
-      <%= builder.label :last_name, "Last Name" %>
-      <%= builder.text_field :last_name %>
-      <%= builder.label :ssn, "Social Security Number" %>
-      <%= builder.text_field :ssn %>
-      <%= builder.label :dob, "Date of Birth" %>
-      <%= builder.date_field :dob %>
+      <%= render partial: "person_form", locals: { builder: builder } %>
     </p>
   <% end %>
   <%= f.button("Update") %>
