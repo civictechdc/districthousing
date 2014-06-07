@@ -1,10 +1,30 @@
 # Load information from all PDFs in public/forms
-HousingForm.destroy_all
+HousingForm.delete_all
+FormField.delete_all
+
+pdf_names_and_fields = Hash.new
+
 Dir.glob(Rails.root.join("public/forms/*.pdf")) do |pdf_path|
-  pdf_name = File.basename pdf_path
-  form = HousingForm.create(name: pdf_name, uri: pdf_path)
+  pdf_names_and_fields[pdf_path] = Array.new
+
   PDF_FORMS.get_field_names(pdf_path).each do |field_name|
-     form.form_fields << FormField.where(name: field_name).first_or_create
+    pdf_names_and_fields[pdf_path] << field_name
+  end
+end
+
+FormField.transaction do
+  pdf_names_and_fields.each_value.reduce(:|).each do |field_name|
+    FormField.create(name:field_name)
+  end
+end
+
+HousingForm.transaction do
+  pdf_names_and_fields.each do |pdf_path, field_names|
+    pdf_name = File.basename pdf_path
+    form = HousingForm.create(name: pdf_name, uri: pdf_path)
+    field_names.each do |field_name|
+      form.form_fields << FormField.where(name: field_name)
+    end
   end
 end
 
