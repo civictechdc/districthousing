@@ -6,6 +6,9 @@ class Person < ActiveRecord::Base
   attr_accessible :nationality, :email, :race, :student_status, :marital_status
 
   belongs_to :residence, class_name: "Address"
+  accepts_nested_attributes_for :residence
+  attr_accessible :residence_attributes
+
   belongs_to :mail, class_name: "Address"
 
   belongs_to :applicant
