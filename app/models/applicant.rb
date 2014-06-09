@@ -3,9 +3,9 @@ class Applicant < ActiveRecord::Base
   has_one :identity, dependent: :destroy
   accepts_nested_attributes_for :identity
   has_many :landlords, dependent: :destroy
-  accepts_nested_attributes_for :landlords
+  accepts_nested_attributes_for :landlords, allow_destroy: true
   has_many :household_members, dependent: :destroy
-  accepts_nested_attributes_for :household_members
+  accepts_nested_attributes_for :household_members, allow_destroy: true
 
   belongs_to :user
   attr_accessible :identity_attributes, :landlords_attributes, :household_members_attributes
