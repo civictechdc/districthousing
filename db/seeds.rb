@@ -70,7 +70,7 @@ test_identity = make_a_person(Identity)
 test_residence = Residence.create(
   street: "742 Evergreen Terrace",
   city: "Springfield",
-  state: "Kentucky",
+  state: Faker::Address.state,
   zip: 11111,
 )
 
