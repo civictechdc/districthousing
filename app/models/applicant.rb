@@ -1,12 +1,14 @@
 class Applicant < ActiveRecord::Base
 
-  has_one :identity
-  has_many :landlords
-  has_many :household_members
+  has_one :identity, dependent: :destroy
+  accepts_nested_attributes_for :identity
+  has_many :landlords, dependent: :destroy
+  accepts_nested_attributes_for :landlords
+  has_many :household_members, dependent: :destroy
+  accepts_nested_attributes_for :household_members
 
   belongs_to :user
-  accepts_nested_attributes_for :identity
-  attr_accessible :identity_attributes
+  attr_accessible :identity_attributes, :landlords_attributes, :household_members_attributes
 
   delegate :dob,
     :first_name,
