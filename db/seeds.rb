@@ -41,13 +41,22 @@ test_user = User.create(
 )
 test_user.save
 
+def make_an_address(address_class=Address)
+  address_class.create(
+    street: Faker::Address.street_address,
+    city: Faker::Address.city,
+    state: Faker::Address.state,
+    zip: Faker::Address.zip,
+  )
+end
+
 def make_a_person(person_class=Person)
   person_class.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     middle_name: Faker::Name.first_name,
-    ssn: Faker::Number.number(9),
-    dob:"7/9/1959",
+    ssn: "%s-%s-%s" % [Faker::Number.number(3), Faker::Number.number(2), Faker::Number.number(4)],
+    dob: rand(120*365).days.ago,
     gender: ["Female", "Male"].sample,
     phone: Faker::PhoneNumber.phone_number,
     work_phone: Faker::PhoneNumber.phone_number,
@@ -62,31 +71,13 @@ def make_a_person(person_class=Person)
     race: ["White", "Black", "American Indian", "Asian", "Pacific Islander"].sample,
     student_status: ["Not a student", "Part-time", "Full-time"].sample,
     marital_status: ["Never married", "Married", "Widowed", "Divorced"].sample,
-  )
+  ).tap do |new_person|
+    new_person.residence = make_an_address(Residence)
+    new_person.mail_address = make_an_address(MailAddress)
+  end
 end
 
 test_identity = make_a_person(Identity)
-
-test_residence = Residence.create(
-  street: "742 Evergreen Terrace",
-  city: "Springfield",
-  state: Faker::Address.state,
-  zip: 11111,
-)
-
-test_mail = MailAddress.create(
-  street: "1600 Clifton Road",
-  city: "Atlanta",
-  state: "GA",
-  zip: "30333",
-)
-
-test_identity.residence = test_residence
-test_identity.mail_address = test_mail
-
-test_identity.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))
-test_identity.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))
-test_identity.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))
 test_identity.save
 
 test_applicant = Applicant.create
@@ -94,12 +85,7 @@ test_applicant.user = test_user
 
 test_applicant.identity = test_identity
 
-3.times do
-  test_applicant.landlords << make_a_person(Landlord)
-end
-
-3.times do
-  test_applicant.household_members << make_a_person(HouseholdMember)
-end
+3.times { test_applicant.landlords << make_a_person(Landlord) }
+3.times { test_applicant.household_members << make_a_person(HouseholdMember) }
 
 test_applicant.save
