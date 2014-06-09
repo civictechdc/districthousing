@@ -8,16 +8,17 @@
 <%= builder.text_field :ssn %><br />
 <%= builder.label :dob, "Date of Birth" %>
 <%= builder.date_field :dob %><br />
-<%= builder.check_box :_destroy %>
-<%= builder.label :_destroy, "Remove person" %>
 
 <%= builder.fields_for :residence do |residence_builder| %>
   <%= residence_builder.label :street, "Street" %>
-  <%= residence_builder.text_field :street %>
+  <%= residence_builder.text_field :street %><br />
   <%= residence_builder.label :city, "City" %>
-  <%= residence_builder.text_field :city %>
+  <%= residence_builder.text_field :city %><br />
   <%= residence_builder.label :state, "State" %>
-  <%= residence_builder.text_field :state %>
+  <%= residence_builder.text_field :state %><br />
   <%= residence_builder.label :zip, "Zip" %>
-  <%= residence_builder.text_field :zip %>
+  <%= residence_builder.text_field :zip %><br />
 <% end %>
+
+<%= builder.check_box :_destroy %>
+<%= builder.label :_destroy, "Remove person" %>

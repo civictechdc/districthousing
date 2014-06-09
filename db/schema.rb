@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140607153321) do
+ActiveRecord::Schema.define(version: 20140609201050) do
 
   create_table "addresses", force: true do |t|
-    t.string "street"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
-    t.string "apt"
+    t.string  "street"
+    t.string  "city"
+    t.string  "state"
+    t.string  "zip"
+    t.string  "apt"
+    t.string  "type"
+    t.integer "person_id"
   end
 
   create_table "aliases", force: true do |t|
@@ -72,8 +74,6 @@ ActiveRecord::Schema.define(version: 20140607153321) do
     t.string   "student_status"
     t.string   "marital_status"
     t.string   "preferred_phone"
-    t.integer  "residence_id"
-    t.integer  "mail_id"
     t.string   "type"
     t.integer  "applicant_id"
   end

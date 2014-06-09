@@ -67,14 +67,14 @@ end
 
 test_identity = make_a_person(Identity)
 
-test_residence = Address.create(
+test_residence = Residence.create(
   street: "742 Evergreen Terrace",
   city: "Springfield",
   state: "Kentucky",
   zip: 11111,
 )
 
-test_mail = Address.create(
+test_mail = MailAddress.create(
   street: "1600 Clifton Road",
   city: "Atlanta",
   state: "GA",
@@ -82,7 +82,7 @@ test_mail = Address.create(
 )
 
 test_identity.residence = test_residence
-test_identity.mail = test_mail
+test_identity.mail_address = test_mail
 
 test_identity.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))
 test_identity.previous_ssns << PreviousSsn.create( number: Faker::Number.number(8))

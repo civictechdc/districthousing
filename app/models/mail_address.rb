@@ -1,0 +1,2 @@
+class MailAddress < Address
+end

@@ -1,0 +1,2 @@
+class Residence < Address
+end
