@@ -2,6 +2,8 @@ DchousingApps::Application.routes.draw do
   devise_for :users
 
   resources :applicant
+  resources :household_member
+  resources :landlord
   resources :salesforce, :only => [:index]
 
   get "home/index"

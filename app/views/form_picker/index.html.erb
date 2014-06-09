@@ -12,6 +12,8 @@
     <%= render partial: "person_fields", locals: { builder: builder } %>
     <hr />
   <% end %>
+  <%= link_to("Add a household member", new_household_member_path) %> <br />
+  <hr />
   <%= f.button("Update") %>
 
   <h2>Your landlords</h2>
@@ -19,6 +21,8 @@
     <%= render partial: "person_fields", locals: { builder: builder } %>
     <hr />
   <% end %>
+  <%= link_to("Add a landlord", new_landlord_path) %> <br />
+  <hr />
   <%= f.button("Update") %>
 
 <% end %>
