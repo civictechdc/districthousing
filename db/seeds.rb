@@ -46,7 +46,7 @@ def make_a_person(person_class=Person)
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     middle_name: Faker::Name.first_name,
-    ssn: Faker::Number.number(8),
+    ssn: Faker::Number.number(9),
     dob:"7/9/1959",
     gender: ["Female", "Male"].sample,
     phone: Faker::PhoneNumber.phone_number,
