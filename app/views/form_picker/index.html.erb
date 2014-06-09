@@ -2,27 +2,21 @@
 
   <h2>About you</h2>
   <%= f.fields_for :identity do |builder|  %>
-    <p>
-      <%= render partial: "person_form", locals: { builder: builder } %>
-    </p>
+    <%= render partial: "person_form", locals: { builder: builder } %>
     <hr>
   <% end %>
   <%= f.button("Update") %>
 
   <h2>Houshold members</h2>
   <%= f.fields_for :household_members do |builder|  %>
-    <p>
-      <%= render partial: "person_form", locals: { builder: builder } %>
-    </p>
+    <%= render partial: "person_form", locals: { builder: builder } %>
     <hr>
   <% end %>
   <%= f.button("Update") %>
 
   <h2>Your landlords</h2>
   <%= f.fields_for :landlords do |builder|  %>
-    <p>
-      <%= render partial: "person_form", locals: { builder: builder } %>
-    </p>
+    <%= render partial: "person_form", locals: { builder: builder } %>
     <hr>
   <% end %>
   <%= f.button("Update") %>
