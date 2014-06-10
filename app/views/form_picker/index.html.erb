@@ -1,19 +1,29 @@
 <%= form_for @applicant do |f| %>
-  <%= f.fields_for :identity do |builder|  %>
-    <p>
-      <%= builder.label :first_name, "First Name" %>
-      <%= builder.text_field :first_name %>
-      <%= builder.label :middle_name, "Middle Name" %>
-      <%= builder.text_field :middle_name %>
-      <%= builder.label :last_name, "Last Name" %>
-      <%= builder.text_field :last_name %>
-      <%= builder.label :ssn, "Social Security Number" %>
-      <%= builder.text_field :ssn %>
-      <%= builder.label :dob, "Date of Birth" %>
-      <%= builder.date_field :dob %>
-    </p>
+
+  <h2>About you</h2>
+  <%= f.fields_for :identity do |builder| %>
+    <%= render partial: "person_fields", locals: { builder: builder } %>
+    <hr />
   <% end %>
   <%= f.button("Update") %>
-<% end %>
 
+  <h2>Houshold members</h2>
+  <%= f.fields_for :household_members do |builder| %>
+    <%= render partial: "person_fields", locals: { builder: builder } %>
+    <hr />
+  <% end %>
+  <%= link_to("Add a household member", new_household_member_path) %> <br />
+  <hr />
+  <%= f.button("Update") %>
+
+  <h2>Your landlords</h2>
+  <%= f.fields_for :landlords do |builder| %>
+    <%= render partial: "person_fields", locals: { builder: builder } %>
+    <hr />
+  <% end %>
+  <%= link_to("Add a landlord", new_landlord_path) %> <br />
+  <hr />
+  <%= f.button("Update") %>
+
+<% end %>
 <%= button_to 'Download forms', "/download" %>

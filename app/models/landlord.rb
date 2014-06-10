@@ -1,0 +1,2 @@
+class Landlord < Person
+end

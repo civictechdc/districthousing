@@ -14,7 +14,7 @@ gem 'thin'
 gem 'pry'
 gem 'faker'
 gem 'guard'
-gem 'guard-test'
+gem 'guard-minitest'
 gem 'guard-rails'
 gem 'pdf-forms'
 gem 'dotenv-rails', groups: [:development, :test]

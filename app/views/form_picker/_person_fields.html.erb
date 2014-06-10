@@ -1,0 +1,34 @@
+<% %i(
+  first_name
+  middle_name
+  last_name
+  cell_phone
+  home_phone
+  work_phone
+  citizenship
+  nationality
+  email
+  race
+  student_status
+  marital_status
+).each do |person_attribute| %>
+  <%= labeled_text_field builder, person_attribute %>
+<% end %>
+
+<%= labeled_text_field builder, :ssn, "Social security number" %>
+<%= builder.label :dob, "Date of Birth" %>
+<%= builder.date_field :dob %><br />
+
+<%= builder.fields_for :residence do |residence_builder| %>
+  <%= residence_builder.label :street, "Street" %>
+  <%= residence_builder.text_field :street %><br />
+  <%= residence_builder.label :city, "City" %>
+  <%= residence_builder.text_field :city %><br />
+  <%= residence_builder.label :state, "State" %>
+  <%= residence_builder.text_field :state %><br />
+  <%= residence_builder.label :zip, "Zip" %>
+  <%= residence_builder.text_field :zip %><br />
+<% end %>
+
+<%= builder.check_box :_destroy %>
+<%= builder.label :_destroy, "Remove person" %>
