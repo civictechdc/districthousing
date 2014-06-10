@@ -6,8 +6,6 @@ one:
   ssn: 111-11-1111
   dob: 1981-02-03
   gender: Male
-  residence_id: 1
-  mail_id: 2
   phone: (202) 456-1111
   work_phone: (202) 586-5000
   home_phone: (202) 272-0167
@@ -25,8 +23,6 @@ two:
   ssn: 222-22-2222
   dob: 2013-06-23 22:26:43
   gender: Female
-  residence_id: 1
-  mail_id: 2
   email: two@districthousing.org
   applicant_id: 2
   type: Identity
