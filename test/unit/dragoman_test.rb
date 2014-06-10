@@ -1,5 +1,3 @@
-require "test/unit"
-
 require "dragoman"
 
 class ConcreteDragoman
@@ -18,7 +16,7 @@ class ConcreteDragoman
         ->(phone_number) { phone_number } )
 end
 
-class TestDragoman < Test::Unit::TestCase
+class TestDragoman < ActiveSupport::TestCase
   def setup
     @d = ConcreteDragoman.new
     @d.first_name = "Walter"
