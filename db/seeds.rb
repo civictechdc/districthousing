@@ -62,7 +62,6 @@ def make_a_person(person_class=Person)
     work_phone: Faker::PhoneNumber.phone_number,
     home_phone: Faker::PhoneNumber.phone_number,
     cell_phone: Faker::PhoneNumber.phone_number,
-    preferred_phone: Faker::PhoneNumber.phone_number,
     citizenship: Faker::Address.country,
     nationality: Faker::Address.country,
     email: Faker::Internet.email,
