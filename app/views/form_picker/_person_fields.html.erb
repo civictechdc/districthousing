@@ -1,11 +1,21 @@
-<%= builder.label :first_name, "First Name" %>
-<%= builder.text_field :first_name %><br />
-<%= builder.label :middle_name, "Middle Name" %>
-<%= builder.text_field :middle_name %><br />
-<%= builder.label :last_name, "Last Name" %>
-<%= builder.text_field :last_name %><br />
-<%= builder.label :ssn, "Social Security Number" %>
-<%= builder.text_field :ssn %><br />
+<% %i(
+  first_name
+  middle_name
+  last_name
+  cell_phone
+  home_phone
+  work_phone
+  citizenship
+  nationality
+  email
+  race
+  student_status
+  marital_status
+).each do |person_attribute| %>
+  <%= labeled_text_field builder, person_attribute %>
+<% end %>
+
+<%= labeled_text_field builder, :ssn, "Social security number" %>
 <%= builder.label :dob, "Date of Birth" %>
 <%= builder.date_field :dob %><br />
 
