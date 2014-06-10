@@ -10,29 +10,6 @@ class Applicant < ActiveRecord::Base
   belongs_to :user
   attr_accessible :identity_attributes, :landlords_attributes, :household_members_attributes
 
-  delegate :dob,
-    :first_name,
-    :gender,
-    :last_name,
-    :middle_name,
-    :ssn,
-    :phone,
-    :work_phone,
-    :home_phone,
-    :cell_phone,
-    :preferred_phone,
-    :citizenship,
-    :nationality,
-    :email,
-    :race,
-    :student_status,
-    :marital_status,
-    :dob_date,
-    :age,
-    :residence,
-    :mail_address,
-    to: :identity
-
   def preferred_attrs_for field_names
     field_names.map do |field_name|
       begin
@@ -51,62 +28,20 @@ class Applicant < ActiveRecord::Base
     value_for_field(field_name).to_s
   end
 
+  def delegate_field_to item, field_name
+    item && item.value_for_field(field_name) || ""
+  end
+
   def value_for_field field_name
     case field_name
-    when "FirstName"
-      first_name
-    when "LastName"
-      last_name
-    when /^(Full)?Name\d*/
-      "#{first_name} #{middle_name} #{last_name}"
-    when "DOB"
-      dob_date
-    when "Age"
-      age
-    when "SSN"
-      ssn
-    when "WorkPhone"
-      work_phone
-    when "CellPhone"
-      cell_phone
-    when "HomePhone"
-      home_phone
-    when "Phone"
-      phone
-    when "Email"
-      email
-    when "GenderInitial"
-      gender && gender[0] || ""
-    when "Gender"
-      gender
-    when "AddressStreet"
-      residence && residence.street
-    when "AddressCity"
-      residence && residence.city
-    when "AddressState"
-      residence && residence.state
-    when "AddressZip"
-      residence && residence.zip
-    when "Address"
-      residence && residence.full
-    when "MailStreet"
-      mail_address && mail_address.street
-    when "MailCity"
-      mail_address && mail_address.city
-    when "MailState"
-      mail_address && mail_address.state
-    when "MailZip"
-      mail_address && mail_address.zip
-    when "Mail"
-      mail_address && mail_address.full
-    when "PreferredPhone"
-      preferred_phone
-    when "WorkPhone"
-      work_phone
-    when "Nationality"
-      nationality
+    when /^HH(\d+)(.*)$/
+      index = $1.to_i - 1
+      delegate_field_to household_members[index], $2
+    when /^LL(\d+)(.*)$/
+      index = $1.to_i - 1
+      delegate_field_to landlords[index], $2
     else
-      ""
+      identity.value_for_field(field_name)
     end
   end
 end

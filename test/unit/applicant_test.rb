@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ApplicantTest < ActiveSupport::TestCase
+
   def setup
     @one = applicants(:one)
     @two = applicants(:two)
@@ -54,19 +55,19 @@ class ApplicantTest < ActiveSupport::TestCase
     assert_equal "", @one.field("HH1Age")
     assert_equal "", @one.field("HH1CitizenYN")
     assert_equal "", @one.field("HH1DOB")
-    assert_equal "", @one.field("HH1FirstName")
+    assert_equal "HH1", @one.field("HH1FirstName")
     assert_equal "", @one.field("HH1Gender")
     assert_equal "", @one.field("HH1LastName")
-    assert_equal "", @one.field("HH1Name")
+    assert_equal "HH1", @one.field("HH1Name")
     assert_equal "", @one.field("HH1Relationship")
     assert_equal "", @one.field("HH1SSN")
     assert_equal "", @one.field("HH2Age")
     assert_equal "", @one.field("HH2CitizenYN")
     assert_equal "", @one.field("HH2DOB")
-    assert_equal "", @one.field("HH2FirstName")
+    assert_equal "HH2", @one.field("HH2FirstName")
     assert_equal "", @one.field("HH2Gender")
     assert_equal "", @one.field("HH2LastName")
-    assert_equal "", @one.field("HH2Name")
+    assert_equal "HH2", @one.field("HH2Name")
     assert_equal "", @one.field("HH2Relationship")
     assert_equal "", @one.field("HH2SSN")
     assert_equal "", @one.field("HH3Age")
@@ -100,10 +101,10 @@ class ApplicantTest < ActiveSupport::TestCase
 
   test "fills landlord information" do
     assert_equal "", @one.field("LL1Address")
-    assert_equal "", @one.field("LL1Name")
+    assert_equal "LL1", @one.field("LL1Name")
     assert_equal "", @one.field("LL1Phone")
     assert_equal "", @one.field("LL2Address")
-    assert_equal "", @one.field("LL2Name")
+    assert_equal "LL2", @one.field("LL2Name")
     assert_equal "", @one.field("LL2Phone")
   end
 
