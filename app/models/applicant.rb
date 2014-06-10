@@ -30,7 +30,7 @@ class Applicant < ActiveRecord::Base
     :dob_date,
     :age,
     :residence,
-    :mail,
+    :mail_address,
     to: :identity
 
   def preferred_attrs_for field_names
@@ -90,15 +90,15 @@ class Applicant < ActiveRecord::Base
     when "Address"
       residence && residence.full
     when "MailStreet"
-      mail && mail.street
+      mail_address && mail_address.street
     when "MailCity"
-      mail && mail.city
+      mail_address && mail_address.city
     when "MailState"
-      mail && mail.state
+      mail_address && mail_address.state
     when "MailZip"
-      mail && mail.zip
+      mail_address && mail_address.zip
     when "Mail"
-      mail && mail.full
+      mail_address && mail_address.full
     when "PreferredPhone"
       preferred_phone
     when "WorkPhone"
