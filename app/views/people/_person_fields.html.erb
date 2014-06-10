@@ -12,7 +12,7 @@
   student_status
   marital_status
 ).each do |person_attribute| %>
-  <%= labeled_text_field builder, person_attribute %>
+  <%= labeled_text_field builder, person_attribute %><br />
 <% end %>
 
 <%= labeled_text_field builder, :ssn, "Social security number" %>
