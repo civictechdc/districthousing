@@ -89,7 +89,7 @@ class Person < ActiveRecord::Base
     when "Mail"
       mail_address && mail_address.full
     when "PreferredPhone"
-      preferred_phone
+      cell_phone
     when "WorkPhone"
       work_phone
     when "Nationality"
