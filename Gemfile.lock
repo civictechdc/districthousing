@@ -39,6 +39,8 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     builder (3.2.2)
     celluloid (0.15.2)
       timers (~> 1.1.0)
@@ -50,7 +52,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
-    commonjs (0.2.7)
     daemons (1.1.9)
     devise (3.2.4)
       bcrypt (~> 3.0)
@@ -90,11 +91,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    less (2.5.1)
-      commonjs (~> 0.2.7)
-    less-rails (2.5.0)
-      actionpack (>= 3.1)
-      less (~> 2.5.0)
     libv8 (3.16.14.3)
     listen (2.7.7)
       celluloid (>= 0.15.2)
@@ -175,11 +171,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.2.8)
-      actionpack (>= 3.1)
-      execjs
-      rails (>= 3.1)
-      railties (>= 3.1)
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
     warden (1.2.3)
@@ -189,6 +180,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   coffee-rails
   devise
   dotenv-rails
@@ -198,7 +190,6 @@ DEPENDENCIES
   guard-minitest
   guard-rails
   jquery-rails
-  less-rails
   minitest-rails
   pdf-forms
   protected_attributes
@@ -210,4 +201,3 @@ DEPENDENCIES
   sqlite3
   therubyracer
   thin
-  twitter-bootstrap-rails

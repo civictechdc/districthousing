@@ -20,8 +20,7 @@ gem 'pdf-forms'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'protected_attributes'
 gem "therubyracer"
-gem "less-rails"
 gem 'sass-rails', github: 'rails/sass-rails'
 gem "coffee-rails"
-gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass'
 gem 'minitest-rails'

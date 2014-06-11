@@ -1,29 +1,3 @@
-<%= form_for @applicant do |f| %>
-
-  <h2>About you</h2>
-  <%= f.fields_for :identity do |builder| %>
-    <%= render partial: "person_fields", locals: { builder: builder } %>
-    <hr />
-  <% end %>
-  <%= f.button("Update") %>
-
-  <h2>Houshold members</h2>
-  <%= f.fields_for :household_members do |builder| %>
-    <%= render partial: "person_fields", locals: { builder: builder } %>
-    <hr />
-  <% end %>
-  <%= link_to("Add a household member", new_household_member_path) %> <br />
-  <hr />
-  <%= f.button("Update") %>
-
-  <h2>Your landlords</h2>
-  <%= f.fields_for :landlords do |builder| %>
-    <%= render partial: "person_fields", locals: { builder: builder } %>
-    <hr />
-  <% end %>
-  <%= link_to("Add a landlord", new_landlord_path) %> <br />
-  <hr />
-  <%= f.button("Update") %>
-
-<% end %>
-<%= button_to 'Download forms', "/download" %>
+<div id="applicantForm" class="container">
+<%= render "applicant/form", applicant: @applicant%>
+</div>
