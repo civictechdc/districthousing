@@ -6,7 +6,7 @@ class ApplicantController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to picker_path }
-      format.js
+      format.js { render action: "refresh_form" }
     end
   end
 
