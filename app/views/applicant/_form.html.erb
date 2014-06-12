@@ -1,4 +1,4 @@
-<%= form_for(applicant) do |f| %>
+<%= form_for(applicant, remote: true) do |f| %>
 
   <h2>About you</h2>
   <%= f.fields_for :identity do |builder| %>
@@ -12,7 +12,7 @@
     <%= render partial: "people/person_fields", locals: { builder: builder } %>
     <hr />
   <% end %>
-  <%= link_to("Add a household member", new_household_member_path) %> <br />
+  <%= link_to("Add a household member", new_household_member_path, remote: true) %> <br />
   <hr />
   <%= f.button("Update") %>
 
@@ -21,7 +21,7 @@
     <%= render partial: "people/person_fields", locals: { builder: builder } %>
     <hr />
   <% end %>
-  <%= link_to("Add a landlord", new_landlord_path) %> <br />
+  <%= link_to("Add a landlord", new_landlord_path, remote: true) %> <br />
   <hr />
   <%= f.button("Update") %>
 

@@ -5,8 +5,11 @@ class HouseholdMemberController < ApplicationController
       hh.residence = Residence.create
     end
 
+    @applicant = current_applicant
+
     respond_to do |format|
       format.html { redirect_to picker_path }
+      format.js { render action: "refresh_form" }
     end
   end
 
