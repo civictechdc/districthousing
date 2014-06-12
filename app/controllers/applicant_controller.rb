@@ -1,7 +1,7 @@
 class ApplicantController < ApplicationController
 
   def update
-    @applicant = Applicant.find(params[:id])
+    @applicant = current_applicant
     @applicant.update_attributes(params[:applicant])
 
     respond_to do |format|
