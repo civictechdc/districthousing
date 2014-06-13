@@ -292,8 +292,6 @@ body {
       }
     }
 
-
-
 .center_signup {
   p {
     font-size: 1.2em;
@@ -384,3 +382,8 @@ body {
     padding-right: 5px;
     color: $red;
   }
+
+.footer-logo {
+  max-width: 100px;
+  margin-bottom: 30px;
+}
