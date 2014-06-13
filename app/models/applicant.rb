@@ -40,8 +40,14 @@ class Applicant < ActiveRecord::Base
     when /^LL(\d+)(.*)$/
       index = $1.to_i - 1
       delegate_field_to landlords[index], $2
+    when "Today"
+      Date.today
+    when "Now"
+      now = Time.now
+      "%d:%d" % [now.hour, now.sec]
     else
       identity.value_for_field(field_name)
     end
   end
+
 end
