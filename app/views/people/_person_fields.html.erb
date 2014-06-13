@@ -11,7 +11,7 @@
       work_phone
       email
     ).each do |person_attribute| %>
-      <%= builder.text_field person_attribute %><br />
+      <%= builder.text_field person_attribute %>
     <% end %>
     <%= builder.text_field :ssn, label: "Social Security Number" %>
   </div>
@@ -19,10 +19,10 @@
   <div class="col-md-4">
     <h4>Address</h4>
     <%= builder.fields_for :residence do |residence_builder| %>
-      <%= residence_builder.text_field :street, label: "Street Address" %><br />
-      <%= residence_builder.text_field :city %><br />
-      <%= residence_builder.text_field :state %><br />
-      <%= residence_builder.text_field :zip, label: "Zip Code" %><br />
+      <%= residence_builder.text_field :street, label: "Street Address" %>
+      <%= residence_builder.text_field :city %>
+      <%= residence_builder.text_field :state %>
+      <%= residence_builder.text_field :zip, label: "Zip Code" %>
     <% end %>
   </div>
 
@@ -36,7 +36,7 @@
       student_status
       marital_status
     ).each do |person_attribute| %>
-      <%= builder.text_field person_attribute %><br />
+      <%= builder.text_field person_attribute %>
     <% end %>
   </div>
 

@@ -44,8 +44,16 @@ class Person < ActiveRecord::Base
     case field_name
     when "FirstName"
       first_name
+    when "FirstInitial"
+      first_name.first.upcase
     when "LastName"
       last_name
+    when "LastInitial"
+      last_name.first.upcase
+    when "MiddleName"
+      middle_name
+    when "MiddleInitial"
+      middle_name.first.upcase
     when /^(Full)?Name\d*/
       full_name
     when "DOB"
@@ -94,6 +102,10 @@ class Person < ActiveRecord::Base
       work_phone
     when "Nationality"
       nationality
+    when "MaritalStatus"
+      marital_status
+    when "Student"
+      student_status
     else
       ""
     end
