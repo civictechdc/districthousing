@@ -1,0 +1,22 @@
+{
+  "status": "Alpha",
+  "thumbnailUrl":"",
+  "needs": [
+    {"need":"Ruby"},
+    {"need":"Salesforce"},
+    {"need":"Passionate People"}
+  ],
+  "bornAt": "Code for DC",
+  "type": "",
+  "categories": [], 
+  "geography": "Washington, DC",
+  "contact": [
+    {
+      "name": "Marcus Louie",
+      "email": "",
+      "twitter": "@mlouie"
+    }
+  ],
+  "communityPartner": "Bread for City",
+  "moreInfoLink": "https://hackpad.com/Code-for-DC-District-Housing-KlQ2UbX0Imc"
+}
