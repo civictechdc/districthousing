@@ -11,6 +11,7 @@ class ApplicantTest < ActiveSupport::TestCase
     assert_equal "One John McOne", @one.field("Name")
     assert_equal "One John McOne", @one.field("FullName")
     assert_equal "One John McOne", @one.field("FullName1")
+    assert_equal "J", @one.field("MiddleInitial")
     assert_equal "(202) 586-5000", @one.field("WorkPhone")
     assert_equal "02/03/1981", @one.field("DOB")
     assert_equal "one@districthousing.org", @one.field("Email")
