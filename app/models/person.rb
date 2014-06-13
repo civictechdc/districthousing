@@ -104,6 +104,8 @@ class Person < ActiveRecord::Base
       nationality
     when "MaritalStatus"
       marital_status
+    when "Student"
+      student_status
     else
       ""
     end
