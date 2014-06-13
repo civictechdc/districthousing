@@ -5,7 +5,7 @@
     <%= render partial: "people/person_fields", locals: { builder: builder } %>
     <hr />
   <% end %>
-  <%= f.button("Update") %>
+  <%= f.button("Update", { class:"btn btn-default" }) %>
 
   <h2>Houshold members</h2>
   <%= f.fields_for :household_members do |builder| %>
@@ -14,7 +14,7 @@
   <% end %>
   <%= link_to("Add a household member", new_household_member_path, remote: true) %> <br />
   <hr />
-  <%= f.button("Update") %>
+  <%= f.button("Update", { class:"btn btn-default" }) %>
 
   <h2>Your landlords</h2>
   <%= f.fields_for :landlords do |builder| %>
@@ -23,7 +23,8 @@
   <% end %>
   <%= link_to("Add a landlord", new_landlord_path, remote: true) %> <br />
   <hr />
-  <%= f.button("Update") %>
+  <%= f.button("Update", { class:"btn btn-default" }) %>
 
 <% end %>
-<%= button_to 'Download forms', "/download" %>
+<hr />
+<%= button_to 'Download forms', "/download", { class:"btn btn-default btn-lg" } %>
