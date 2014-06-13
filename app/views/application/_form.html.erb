@@ -2,24 +2,30 @@
 
   <h2>About you</h2>
   <%= f.fields_for :identity do |builder| %>
-    <%= render partial: "people/person_fields", locals: { builder: builder } %>
+    <%= render partial: "person_fields", locals: { builder: builder } %>
     <hr />
   <% end %>
   <%= f.button("Update", { class:"btn btn-default" }) %>
 
   <h2>Houshold members</h2>
-  <%= f.fields_for :household_members do |builder| %>
-    <%= render partial: "people/person_fields", locals: { builder: builder } %>
-    <hr />
+  <% applicant.household_members.each.with_index do |hh, index| %>
+    <%= f.fields_for :household_members, hh do |builder| %>
+      <h3><%= "Household Member #{index + 1}" %></h3>
+      <%= render partial: "person_fields", locals: { builder: builder } %>
+      <hr />
+    <% end %>
   <% end %>
   <%= link_to("Add a household member", new_household_member_path, remote: true) %> <br />
   <hr />
   <%= f.button("Update", { class:"btn btn-default" }) %>
 
   <h2>Your landlords</h2>
-  <%= f.fields_for :landlords do |builder| %>
-    <%= render partial: "people/person_fields", locals: { builder: builder } %>
-    <hr />
+  <% applicant.landlords.each.with_index do |landlord, index| %>
+    <%= f.fields_for :landlords, landlord do |builder| %>
+      <h3><%= "Landlord #{index + 1}" %></h3>
+      <%= render partial: "person_fields", locals: { builder: builder } %>
+      <hr />
+    <% end %>
   <% end %>
   <%= link_to("Add a landlord", new_landlord_path, remote: true) %> <br />
   <hr />
