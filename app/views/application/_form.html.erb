@@ -7,7 +7,7 @@
   <% end %>
   <%= f.button("Update", { class:"btn btn-default" }) %>
 
-  <h2>Houshold members</h2>
+  <h2>Houshold members <small>People who will live with you</small></h2>
   <% applicant.household_members.each.with_index do |hh, index| %>
     <%= f.fields_for :household_members, hh do |builder| %>
       <h3><%= "Household Member #{index + 1}" %></h3>
