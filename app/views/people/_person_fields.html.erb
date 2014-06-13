@@ -30,11 +30,13 @@
     <h4>Demographic</h4>
     <%= builder.text_field :dob, label: "Date of Birth" %>
     <% %i(
+      gender
       race
       citizenship
       nationality
       student_status
       marital_status
+      occupation
     ).each do |person_attribute| %>
       <%= builder.text_field person_attribute %>
     <% end %>

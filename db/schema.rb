@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610071019) do
+ActiveRecord::Schema.define(version: 20140613145724) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20140610071019) do
     t.string   "marital_status"
     t.string   "type"
     t.integer  "applicant_id"
+    t.string   "occupation"
   end
 
   create_table "previous_ssns", force: true do |t|

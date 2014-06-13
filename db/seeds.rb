@@ -70,6 +70,7 @@ def make_a_person(person_class=Person)
     race: ["White", "Black", "American Indian", "Asian", "Pacific Islander"].sample,
     student_status: ["Not a student", "Part-time", "Full-time"].sample,
     marital_status: ["Never married", "Married", "Widowed", "Divorced"].sample,
+    occupation: ["Butcher", "Baker", "Candlestick Maker"].sample,
   ).tap do |new_person|
     new_person.residence = make_an_address(Residence)
     new_person.mail_address = make_an_address(MailAddress)

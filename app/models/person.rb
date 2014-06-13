@@ -4,6 +4,7 @@ class Person < ActiveRecord::Base
   attr_accessible :phone, :work_phone, :home_phone, :cell_phone, :preferred_phone
   attr_accessible :citizenship
   attr_accessible :nationality, :email, :race, :student_status, :marital_status
+  attr_accessible :occupation
 
   has_one :residence, dependent: :destroy
   accepts_nested_attributes_for :residence
@@ -106,6 +107,8 @@ class Person < ActiveRecord::Base
       marital_status
     when "Student"
       student_status
+    when "Occupation"
+      occupation
     else
       ""
     end
