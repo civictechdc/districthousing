@@ -102,6 +102,8 @@ class Person < ActiveRecord::Base
       work_phone
     when "Nationality"
       nationality
+    when "MaritalStatus"
+      marital_status
     else
       ""
     end
