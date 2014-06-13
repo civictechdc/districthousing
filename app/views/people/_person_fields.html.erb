@@ -11,29 +11,24 @@
       work_phone
       email
     ).each do |person_attribute| %>
-      <%= labeled_text_field builder, person_attribute %><br />
+      <%= builder.text_field person_attribute %><br />
     <% end %>
-    <%= labeled_text_field builder, :ssn, "Social security number" %><br />
+    <%= builder.text_field :ssn, label: "Social Security Number" %>
   </div>
 
   <div class="col-md-4">
     <h4>Address</h4>
     <%= builder.fields_for :residence do |residence_builder| %>
-      <%= residence_builder.label :street, "Street" %>
-      <%= residence_builder.text_field :street %><br />
-      <%= residence_builder.label :city, "City" %>
+      <%= residence_builder.text_field :street, label: "Street Address" %><br />
       <%= residence_builder.text_field :city %><br />
-      <%= residence_builder.label :state, "State" %>
       <%= residence_builder.text_field :state %><br />
-      <%= residence_builder.label :zip, "Zip" %>
-      <%= residence_builder.text_field :zip %><br />
+      <%= residence_builder.text_field :zip, label: "Zip Code" %><br />
     <% end %>
   </div>
 
   <div class="col-md-4">
     <h4>Demographic</h4>
-    <%= builder.label :dob, "Date of Birth" %>
-    <%= builder.date_field :dob %><br />
+    <%= builder.text_field :dob, label: "Date of Birth" %>
     <% %i(
       race
       citizenship
@@ -41,7 +36,7 @@
       student_status
       marital_status
     ).each do |person_attribute| %>
-      <%= labeled_text_field builder, person_attribute %><br />
+      <%= builder.text_field person_attribute %><br />
     <% end %>
   </div>
 

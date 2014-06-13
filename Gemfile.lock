@@ -41,6 +41,7 @@ GEM
     bcrypt (3.1.7)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
+    bootstrap_form (2.1.1)
     builder (3.2.2)
     celluloid (0.15.2)
       timers (~> 1.1.0)
@@ -181,6 +182,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  bootstrap_form
   coffee-rails
   devise
   dotenv-rails
