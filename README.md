@@ -13,5 +13,5 @@ The application can generate random seed data for testing.  To get the applicati
 
 The seed data creates a test user account with information pre-populated.  The login for the test user is:
 
-Username: testuser@districthousing.org
-Password: password
+    Username: testuser@districthousing.org
+    Password: password
