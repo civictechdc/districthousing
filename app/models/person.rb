@@ -43,6 +43,10 @@ class Person < ActiveRecord::Base
 
   def value_for_field field_name
     case field_name
+    when /^Address(.*)/
+      residence && residence.value_for_field($1)
+    when /^Mail(.*)/
+      mail_address && mail_address.value_for_field($1)
     when "FirstName"
       first_name
     when "FirstInitial"
@@ -77,26 +81,6 @@ class Person < ActiveRecord::Base
       gender && gender[0] || ""
     when "Gender"
       gender
-    when "AddressStreet"
-      residence && residence.street
-    when "AddressCity"
-      residence && residence.city
-    when "AddressState"
-      residence && residence.state
-    when "AddressZip"
-      residence && residence.zip
-    when "Address"
-      residence && residence.full
-    when "MailStreet"
-      mail_address && mail_address.street
-    when "MailCity"
-      mail_address && mail_address.city
-    when "MailState"
-      mail_address && mail_address.state
-    when "MailZip"
-      mail_address && mail_address.zip
-    when "Mail"
-      mail_address && mail_address.full
     when "PreferredPhone"
       cell_phone
     when "WorkPhone"
