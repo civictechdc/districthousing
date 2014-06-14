@@ -22,6 +22,7 @@
     <h4>Address</h4>
     <%= builder.fields_for :residence do |residence_builder| %>
       <%= residence_builder.text_field :street, label: "Street address" %>
+      <%= residence_builder.text_field :apt, label: "Apartment" %>
       <%= residence_builder.text_field :city %>
       <%= residence_builder.text_field :state %>
       <%= residence_builder.text_field :zip, label: "Zip code" %>

@@ -1,8 +1,25 @@
 class Address < ActiveRecord::Base
-  attr_accessible :street, :city, :state, :zip
+
+  attr_accessible :street, :city, :state, :zip, :apt
   has_many :residents, class_name: :person, through: :person, source: :residence
 
-  def full
-    "#{street}, #{city}, #{state}, #{zip}"
+  def apartment
+    case apt
+    when /^\d+[[:alpha:]]?$/ # For a string of digits without "Apartment" or "Unit" in the prefix
+      "##{apt}"
+    when /^\w$/ # For single letter apartment numbers
+      "##{apt}"
+    else # Otherwise, just use whatever they put
+      apt
+    end
   end
+
+  def full
+    if street.to_s.empty? or city.to_s.empty?
+      ""
+    else
+    "#{street}, #{apartment}, #{city}, #{state}, #{zip}".gsub(/( ,)+/, "").strip.sub(/,$/, "")
+    end
+  end
+
 end
