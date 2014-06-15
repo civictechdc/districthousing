@@ -15,17 +15,21 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><%= link_to "Home", root_path %></li>
+
+          <li><%= link_to "Apply", root_path %></li>
+
+          <li><%= link_to "Forms", housing_forms_path %></li>
+
           <% if current_user && current_user.is_admin? %>
             <li><%= link_to "Salesforce", salesforce_index_path %></li>
           <% end %>
-          <% unless current_user %>
-            <li><%= link_to "Apply", new_user_registration_path %></li>
-          <% end %>
+
           <li><%= link_to "About", about_path %></li>
+
           <% if current_user %>
             <li><%= link_to "Sign Out", destroy_user_session_path, :method => "delete" %></li>
           <% end %>
+
         </ul>
 
       </div><!-- /.navbar-collapse -->
