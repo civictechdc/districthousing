@@ -4,27 +4,27 @@
 
 $ ->
 
-	changeSection = ->
-		hash = window.location.hash
-		sectionId = hash.substring 1
-		$('.section').each ()->
-			section = $ this
-			if section.attr('id') is sectionId
-				section.toggleClass 'hide', false
-			else
-				section.toggleClass 'hide', true
-		$('.wizard-nav a').each ()->
-			link = $ this
-			parent = link.parent()
-			if link.attr('href') is hash
-				parent.toggleClass 'active', true
-			else
-				parent.toggleClass 'active', false
+  changeSection = ->
+    hash = window.location.hash
+    sectionId = hash.substring 1
+    $('.section').each ()->
+      section = $ this
+      if section.attr('id') is sectionId
+        section.toggleClass 'hide', false
+      else
+        section.toggleClass 'hide', true
+    $('.wizard-nav a').each ()->
+      link = $ this
+      parent = link.parent()
+      if link.attr('href') is hash
+        parent.toggleClass 'active', true
+      else
+        parent.toggleClass 'active', false
 
-	$(window).on 'hashchange', changeSection
+  $(window).on 'hashchange', changeSection
 
-	firstSectionHash = $('.wizard-nav a').eq(0).attr 'href'
-	if not window.location.hash.length
-		window.location.hash = firstSectionHash
-	else
-		changeSection()
+  firstSectionHash = $('.wizard-nav a').eq(0).attr 'href'
+  if not window.location.hash.length
+    window.location.hash = firstSectionHash
+  else
+    changeSection()
