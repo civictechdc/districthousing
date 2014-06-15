@@ -15,10 +15,6 @@
       float: left;
       margin: 0px;
 
-      &:first-child {
-        margin-left: 15px;
-      }
-
       a {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 14px;
@@ -36,13 +32,13 @@
           outline: none;
         }
 
-        .progress-hr {
+        .progress-line {
           position: relative;
-          float: left;
-          width: 100%;
+          width: 50%;
           border-top : 3px solid #fff;
+          height: 1px;
           margin: -14px 0px 0px 0px;
-          z-index: -1; 
+          z-index: -1;
         }
 
 
@@ -71,6 +67,10 @@
           }
         }
       }
+
+      &:first-child {
+        margin-left: 15px;
+      }
       
       &.finished {
       
@@ -94,7 +94,7 @@
         a {
           font-weight: bold;
 
-          .progress-hr {
+          .progress-line {
             margin: -16px 0px 0px 0px;
           }
           .check {
