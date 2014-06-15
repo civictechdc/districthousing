@@ -1,5 +1,5 @@
 class HousingForm < ActiveRecord::Base
-  attr_accessible :name, :uri, :location
+  attr_accessible :name, :uri, :location, :lat, :long
   has_and_belongs_to_many :form_fields
 
   def detect_location!
