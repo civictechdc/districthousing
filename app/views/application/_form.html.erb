@@ -1,38 +1,51 @@
+<nav class="wizard-container">
+  <ul class="wizard-nav">
+    <li><a href="#demographic">Demographic Information<span class="check"><span class="circle"></span></span><hr class="progress-hr"></a></li>
+    <li><a href="#household">Household Information<span class="check"><span class="circle"></span></span><hr class="progress-hr"></a></li>
+    <li><a href="#residential-history">Residential History<span class="check"><span class="circle"></span></span><hr class="progress-hr"></a></li>
+    <li><a href="#income-employment">Income and Employment<span class="check"><span class="circle"></span></span><hr class="progress-hr"></a></li>
+    <li><a href="#criminal-history">Criminal History<span class="check"><span class="circle"></span><hr class="progress-hr"></a></li>
+    <li><a href="#other">Other Information<span class="check"><span class="circle"></span><hr class="progress-hr"></a></li>
+  </ul>
+</nav>
 <%= bootstrap_form_for(applicant, remote: true) do |f| %>
-
-  <h2>About you</h2>
-  <%= f.fields_for :identity do |builder| %>
-    <%= render partial: "person_fields", locals: { builder: builder } %>
+  <div id="demographic" class="section hide">
+    <h2>About you</h2>
+    <%= f.fields_for :identity do |builder| %>
+      <%= render partial: "person_fields", locals: { builder: builder } %>
+      <hr />
+    <% end %>
+    <%= f.button("Update", { class:"btn btn-default" }) %>
+  </div>
+  <div id="household" class="section hide">
+    <h2>Houshold members <small>People who will live with you</small></h2>
+    <% applicant.household_members.each.with_index do |hh, index| %>
+      <%= f.fields_for :household_members, hh do |builder| %>
+        <h3><%= "Household Member #{index + 1}" %></h3>
+        <%= render partial: "person_fields", locals: { builder: builder } %>
+        <hr />
+      <% end %>
+    <% end %>
+    <%= link_to("Add a household member", new_household_member_path, remote: true) %> <br />
     <hr />
-  <% end %>
-  <%= f.button("Update", { class:"btn btn-default" }) %>
-
-  <h2>Houshold members <small>People who will live with you</small></h2>
-  <% applicant.household_members.each.with_index do |hh, index| %>
-    <%= f.fields_for :household_members, hh do |builder| %>
-      <h3><%= "Household Member #{index + 1}" %></h3>
-      <%= render partial: "person_fields", locals: { builder: builder } %>
-      <hr />
+    <%= f.button("Update", { class:"btn btn-default" }) %>
+  </div>
+  <div id="residential-history" class="section hide">
+    <h2>Your landlords</h2>
+    <% applicant.landlords.each.with_index do |landlord, index| %>
+      <%= f.fields_for :landlords, landlord do |builder| %>
+        <h3><%= "Landlord #{index + 1}" %></h3>
+        <%= render partial: "person_fields", locals: { builder: builder } %>
+        <hr />
+      <% end %>
     <% end %>
-  <% end %>
-  <%= link_to("Add a household member", new_household_member_path, remote: true) %> <br />
-  <hr />
-  <%= f.button("Update", { class:"btn btn-default" }) %>
-
-  <h2>Your landlords</h2>
-  <% applicant.landlords.each.with_index do |landlord, index| %>
-    <%= f.fields_for :landlords, landlord do |builder| %>
-      <h3><%= "Landlord #{index + 1}" %></h3>
-      <%= render partial: "person_fields", locals: { builder: builder } %>
-      <hr />
-    <% end %>
-  <% end %>
-  <%= link_to("Add a landlord", new_landlord_path, remote: true) %> <br />
-  <hr />
-  <%= f.button("Update", { class:"btn btn-default" }) %>
-
+    <%= link_to("Add a landlord", new_landlord_path, remote: true) %> <br />
+    <hr />
+    <%= f.button("Update", { class:"btn btn-default" }) %>
+  </div>
 <% end %>
 <hr />
-
-<%= button_to 'Download forms', "/download", { class:"btn btn-default btn-lg" } %>
-Remember to proofread the forms for completeness and accuracy after you download them.
+<div id="download">
+  <%= button_to 'Download forms', "/download", { class:"btn btn-default btn-lg" } %>
+  Remember to proofread the forms for completeness and accuracy after you download them.
+</div>

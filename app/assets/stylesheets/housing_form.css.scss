@@ -1,0 +1,113 @@
+.wizard-container {
+  background: $red;
+
+  .wizard-nav { 
+    list-style: none; 
+    overflow: hidden; 
+    font: 18px;
+    margin: 0 auto;
+    text-align: center;
+    padding-left: 0px;
+    width: 1170px;
+    margin: 0 auto;
+
+    li {
+      float: left;
+      margin: 0px;
+
+      &:first-child {
+        margin-left: 15px;
+      }
+
+      a {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        text-decoration: none;
+        text-align: center;
+        height: 120px;
+        padding-top: 30px;
+        width: 185px;
+        color: #fff;
+        position: relative; 
+        display: block;
+        z-index: 0;
+
+        .progress-hr {
+          position: relative;
+          float: left;
+          width: 100%;
+          border-top : 3px solid #fff;
+          margin: -14px 0px 0px 0px;
+          z-index: -1; 
+        }
+
+
+        .check {
+          display: block;
+          float: left;
+          width: 100%;
+          text-align: center;
+          margin-top: 10px;
+
+          .circle {
+            font-family: 'Glyphicons Halflings';
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
+            padding-right: 2px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            width: 25px;
+            height: 25px;
+            padding-left: 1px;
+            line-height: 21px;
+            background: $red;
+            color: $red;
+
+          }
+        }
+      }
+      
+      &.finished {
+      
+        a {
+
+          .check {
+
+            .circle {
+              background: #fff;
+                
+              &:before {
+                content: "\e013";
+              }
+            }
+          }
+        }
+      }
+
+      &.active {
+
+        a {
+          font-weight: bold;
+
+          .progress-hr {
+            margin: -16px 0px 0px 0px;
+          }
+          .check {
+
+            .circle {
+              background: orange;
+              width: 30px;
+              height: 30px;
+              margin-top: -3px;
+
+              &:before {
+                content:"";
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
