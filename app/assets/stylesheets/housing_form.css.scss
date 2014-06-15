@@ -32,6 +32,10 @@
         display: block;
         z-index: 0;
 
+        &:focus, &:active {
+          outline: none;
+        }
+
         .progress-hr {
           position: relative;
           float: left;
