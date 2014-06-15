@@ -25,6 +25,8 @@ HousingForm.transaction do
     field_names.each do |field_name|
       form.form_fields << FormField.where(name: field_name)
     end
+
+    form.detect_location!
   end
 end
 
