@@ -38,6 +38,29 @@ Address       | Applicant's current residential address
 MaritalStatus | Applicant's marital status (Single, Married, Divorced, Widowed)
 Occupation    |
 
+Add location metadata
+---------------------
+
+You can optionally attach location metadata to your PDF.  If you do
+this, you'll be able to see the building it corresponds to on a map.
+
+If you don't do this before uploading the file to District Housing,
+you can edit the building location manually from within the Locations
+screen.
+
+To add location metadata to your PDF:
+
+1. Open your PDF in Acrobat.
+2. Click File menu -> Properties...
+3. Click the Custom tab.
+4. In the "Name" field, type "Location".
+5. In the "Value" field, enter the address of this housing location.
+   This should be something that Google Maps could find your building
+   with.
+6. Click "Add".
+7. Click "OK".
+8. Save your PDF.
+
 Make fillable PDFs that work well
 ---------------------------------
 
