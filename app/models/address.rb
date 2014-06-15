@@ -22,4 +22,21 @@ class Address < ActiveRecord::Base
     end
   end
 
+  def value_for_field field_name
+    case field_name
+    when "Street"
+      street
+    when "City"
+      city
+    when "State"
+      state
+    when "Zip"
+      zip
+    when ""
+      full
+    else
+      ""
+    end
+  end
+
 end

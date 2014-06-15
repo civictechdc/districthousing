@@ -1,9 +1,9 @@
-<h1>Listing housing_forms</h1>
+<h1>Housing forms</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Name</th>
-    <th>Uri</th>
+    <th>Location</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @housing_forms.each do |housing_form| %>
   <tr>
     <td><%= housing_form.name %></td>
-    <td><%= housing_form.uri %></td>
+    <td><%= housing_form.location %></td>
     <td><%= link_to 'Show', housing_form %></td>
     <td><%= link_to 'Edit', edit_housing_form_path(housing_form) %></td>
     <td><%= link_to 'Destroy', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,4 +22,7 @@
 
 <br />
 
+<!--
+Not yet.  This would require PDF file uploads.
 <%= link_to 'New Housing form', new_housing_form_path %>
+-->

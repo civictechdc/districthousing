@@ -4,6 +4,7 @@ DchousingApps::Application.routes.draw do
   resources :applicant
   resources :household_member
   resources :landlord
+  resources :housing_forms
   resources :salesforce, :only => [:index]
 
   get "home/index"

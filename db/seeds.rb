@@ -47,7 +47,7 @@ def make_an_address(address_class=Address)
     city: Faker::Address.city,
     state: Faker::Address.state,
     zip: Faker::Address.zip,
-    apt: ["", "Apartment #{rand 999}", "Unit #{('A'..'Z').to_a.sample}"].sample
+    apt: ["", "#{rand 999}", "Apartment #{rand 999}", "Unit #{('A'..'Z').to_a.sample}"].sample
   )
 end
 
