@@ -14,7 +14,7 @@ $ ->
       else
         section.toggleClass 'hide', true
     $('.wizard-nav a').each ()->
-      link = $ this
+      link = $ @
       parent = link.parent()
       if link.attr('href') is hash
         parent.toggleClass 'active', true
@@ -22,9 +22,13 @@ $ ->
         parent.toggleClass 'active', false
 
   $(window).on 'hashchange', changeSection
-
-  firstSectionHash = $('.wizard-nav a').eq(0).attr 'href'
-  if not window.location.hash.length
-    window.location.hash = firstSectionHash
-  else
-    changeSection()
+  
+  initialize = ->
+    firstSectionHash = $('.wizard-nav a').eq(0).attr 'href'
+    if not window.location.hash.length
+      window.location.hash = firstSectionHash
+    else
+      changeSection()
+  
+  $(document).ajaxComplete initialize
+  initialize()
