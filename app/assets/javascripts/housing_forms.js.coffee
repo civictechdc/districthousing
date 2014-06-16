@@ -8,7 +8,7 @@ $ ->
     hash = window.location.hash
     sectionId = hash.substring 1
     $('.section').each ()->
-      section = $ this
+      section = $ @
       if section.attr('id') is sectionId
         section.toggleClass 'hide', false
       else
