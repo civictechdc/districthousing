@@ -4,6 +4,11 @@ class HousingFormsController < ApplicationController
   # GET /housing_forms
   def index
     @housing_forms = HousingForm.all
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @housing_forms }
+    end
   end
 
   # GET /housing_forms/1
