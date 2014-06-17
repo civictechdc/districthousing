@@ -23,9 +23,13 @@ $ ->
 
   $(window).on 'hashchange', changeSection
   
+  showDownloadWarning = ->
+    $('#download-warning').modal()
+
   initialize = ->
+    $('.download-forms').click(showDownloadWarning)
     firstSectionHash = $('.wizard-nav a').eq(0).attr 'href'
-    if not window.location.hash.length
+    if window.location.hash.length <= 1
       window.location.hash = firstSectionHash
     else
       changeSection()
