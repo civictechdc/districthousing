@@ -2,7 +2,6 @@
 
 $red : #e74c3c;
 $font-stack: 'Montserrat', sans-serif;
-$font-secondary: "ff-tisa-web-pro",serif;
 .hover-behavior {
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
@@ -29,14 +28,12 @@ body {
   background-color: #fff;
   color: #333;
   /*font-family: verdana, arial, helvetica, sans-serif;*/
-  font-family: $font-secondary;
   font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
   /*font-family: verdana, arial, helvetica, sans-serif;*/
-  font-family: $font-secondary;
   font-size: 1.2em;
   line-height: 18px;
 }
@@ -361,7 +358,6 @@ body {
   border-radius: 0 !important;
   box-shadow:none !important;
   height: 30px !important;
-  font-family: $font-secondary;
 
   &:focus {
     border: 1px solid #cccccc !important;
