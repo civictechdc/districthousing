@@ -1,12 +1,12 @@
-Prepare your own PDF
+Use your own PDF
 ====================
 
 If you obtain a PDF of a housing application, you can use it with
-District Housing.
+District Housing.  Here are the steps:
 
-You'll need Acrobat Pro to edit form fields.  Peparing a PDF is mainly a
-task of adding text input fields to the form, and naming those fields
-correctly so we know how to fill it in.
+1. Use Adobe Acrobat Pro to add fields to the document.  Name these
+   fields according to our field name dictionary.
+2. Upload the PDF to District Housing from the "Locations" tab.
 
 Field name dictionary
 ---------------------
