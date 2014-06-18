@@ -25,3 +25,4 @@ gem "coffee-rails"
 gem 'bootstrap-sass'
 gem 'minitest-rails'
 gem 'bootstrap_form'
+gem 'markdown-rails'
