@@ -1,0 +1,130 @@
+.wizard-container {
+  background: $red;
+
+  .wizard-nav { 
+    list-style: none; 
+    overflow: hidden; 
+    font: 18px;
+    margin: 0 auto;
+    text-align: center;
+    padding-left: 0px;
+    width: 1170px;
+    margin: 0 auto;
+
+    li {
+      float: left;
+      margin: 0px;
+
+      a {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        text-decoration: none;
+        text-align: center;
+        height: 120px;
+        padding-top: 30px;
+        width: 185px;
+        color: #fff;
+        position: relative; 
+        display: block;
+        z-index: 0;
+
+        &:focus, &:active {
+          outline: none;
+        }
+
+        .progress-line {
+          position: relative;
+          width: 50%;
+          border-top : 3px solid #fff;
+          height: 1px;
+          margin: -14px 0px 0px 0px;
+          z-index: -1;
+        }
+
+
+        .check {
+          float: left;
+          width: 100%;
+          text-align: center;
+          margin-top: 10px;
+
+          .circle {
+            font-family: 'Glyphicons Halflings';
+            font-size: 16px;
+            margin: 0 auto;
+            padding-right: 2px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            width: 25px;
+            height: 25px;
+            padding-left: 1px;
+            line-height: 21px;
+            background: $red;
+            color: $red;
+
+          }
+        }
+      }
+
+      &:first-child {
+        margin-left: 15px;
+      }
+      
+      &.finished {
+      
+        a {
+
+          .check {
+
+            .circle {
+              background: #fff;
+                
+              &:before {
+                content: "\e013";
+              }
+            }
+          }
+        }
+      }
+
+      &.active {
+
+        a {
+          font-weight: bold;
+
+          .progress-line {
+            margin: -16px 0px 0px 0px;
+          }
+          .check {
+
+            .circle {
+              background: orange;
+              width: 30px;
+              height: 30px;
+              margin-top: -3px;
+              color: #fff;
+              padding-top: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#download-warning {
+
+	.modal-header {
+
+		.glyphicon {
+			padding-right: 10px;
+		}
+	}
+
+	.modal-body {
+
+		.well {
+			margin-bottom: 0px;
+		}
+	}
+}

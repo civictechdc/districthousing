@@ -4,6 +4,8 @@
   <tr>
     <th>Name</th>
     <th>Location</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +15,8 @@
   <tr>
     <td><%= housing_form.name %></td>
     <td><%= housing_form.location %></td>
+    <td><%= housing_form.lat %></td>
+    <td><%= housing_form.long %></td>
     <td><%= link_to 'Show', housing_form %></td>
     <td><%= link_to 'Edit', edit_housing_form_path(housing_form) %></td>
     <td><%= link_to 'Destroy', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
