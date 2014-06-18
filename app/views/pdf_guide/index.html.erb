@@ -122,7 +122,7 @@
       [ "Email", "Applicant's e-mail address"],
       [ "Address", "Applicant's current residential address"],
       [ "MaritalStatus", "Applicant's marital status (Single, Married, Divorced, Widowed)"],
-      [ "Occupation", "The user's occupation"],
+      [ "Occupation", "Applicant's occupation"],
     ].each do |row| %>
       <%= render "pdf_guide/field_row", name: row[0], what: row[1] %>
     <% end %>
