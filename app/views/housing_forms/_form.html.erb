@@ -1,4 +1,4 @@
-<%= form_for(@housing_form) do |f| %>
+<%= bootstrap_form_for(@housing_form) do |f| %>
   <% if @housing_form.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@housing_form.errors.count, "error") %> prohibited this housing_form from being saved:</h2>
@@ -12,19 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :location %><br />
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :lat, "Latitude" %><br />
     <%= f.text_field :lat %>
   </div>
   <div class="field">
-    <%= f.label :long, "Longitude" %><br />
     <%= f.text_field :long %>
   </div>
   <div class="actions">
