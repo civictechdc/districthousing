@@ -63,13 +63,7 @@
     <% end %>
     <%= f.button("Update", { class:"btn btn-default" }) %>
     <hr />
-    <div class="row">
-      <div class="col-lg-12">
-        <a href="#household" class="btn btn-default pull-right">
-          Next Section <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-      </div>
-    </div>
+    <%= render "section_buttons", next_section: "household" %>
   </div>
   <div id="household" class="section hide">
     <h2>Houshold members <small>People who will live with you</small></h2>
@@ -84,16 +78,7 @@
     <hr />
     <%= f.button("Update", { class:"btn btn-default" }) %>
     <hr />
-    <div class="row">
-      <div class="col-lg-12">
-        <a href="#demographic" class="btn btn-default pull-left">
-          <span class="glyphicon glyphicon-chevron-left"></span> Previous Section
-        </a>
-        <a href="#residential-history" class="btn btn-default pull-right">
-          Next Section <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-      </div>
-    </div>
+    <%= render "section_buttons", next_section: "residential-history", previous_section: "demographic" %>
   </div>
   <div id="residential-history" class="section hide">
     <h2>Your landlords</h2>
@@ -108,16 +93,7 @@
     <hr />
     <%= f.button("Update", { class:"btn btn-default" }) %>
     <hr />
-    <div class="row">
-      <div class="col-lg-12">
-        <a href="#household" class="btn btn-default pull-left">
-          <span class="glyphicon glyphicon-chevron-left"></span> Previous Section
-        </a>
-        <a href="#income-employment" class="btn btn-default pull-right">
-          Next Section <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-      </div>
-    </div>
+    <%= render "section_buttons", next_section: "income-employment", previous_section: "household" %>
   </div>
 <% end %>
 <hr />
