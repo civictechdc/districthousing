@@ -1,0 +1,12 @@
+<%= builder.date_field :dob, label: "Date of birth" %>
+<%= builder.collection_select :marital_status, ["", "Never married", "Married", "Widowed", "Divorced"], :to_s, :to_s %>
+<%= builder.collection_select :student_status, ["", "Full-time", "Part-time", "Not a student"], :to_s, :to_s %>
+<% %i(
+  gender
+  race
+  citizenship
+  nationality
+  occupation
+).each do |person_attribute| %>
+  <%= builder.text_field person_attribute %>
+<% end %>

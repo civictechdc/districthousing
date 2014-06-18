@@ -9,8 +9,8 @@ DchousingApps::Application.routes.draw do
 
   get "home/index"
   get "/about", to: "home#about"
-  post "/download", to: "form_picker#download"
-  get "/picker", to: "form_picker#index"
+  post "/download", to: "main_form#download"
+  get "/form", to: "main_form#index"
   get "/pdf_guide", to: "pdf_guide#index"
 
   root to: 'home#index'

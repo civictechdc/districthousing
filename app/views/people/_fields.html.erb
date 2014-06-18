@@ -1,0 +1,24 @@
+<%= builder.check_box :_destroy, label: "Remove person" %>
+
+<div class="row">
+
+  <div class="col-md-4">
+    <h4>About</h4>
+    <%= render "people/name", builder: builder %>
+    <%= render "people/contact", builder: builder %>
+    <%= builder.text_field :ssn, label: "Social security number" %>
+  </div>
+
+  <div class="col-md-4">
+    <h4>Address</h4>
+    <%= builder.fields_for :residence do |residence_builder| %>
+      <%= render "addresses/fields", builder: residence_builder %>
+    <% end %>
+  </div>
+
+  <div class="col-md-4">
+    <h4>Demographic</h4>
+    <%= render "people/demographic", builder: builder %>
+  </div>
+
+</div>
