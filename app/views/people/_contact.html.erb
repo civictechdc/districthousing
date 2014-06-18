@@ -1,0 +1,8 @@
+<% %i(
+  cell_phone
+  home_phone
+  work_phone
+  email
+).each do |person_attribute| %>
+  <%= builder.text_field person_attribute %>
+<% end %>

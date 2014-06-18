@@ -1,4 +1,4 @@
 <h2>About you</h2>
 <%= builder.fields_for :identity do |builder| %>
-  <%= render partial: "person_fields", locals: { builder: builder } %>
+  <%= render partial: "people/fields", locals: { builder: builder } %>
 <% end %>
