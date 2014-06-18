@@ -67,7 +67,7 @@
     )
     section_names.each_with_index do |section_name, index| %>
       <div id="<%=section_name%>" class="section hide">
-        <%= render "form_picker/#{section_name}_section", builder: f, applicant: applicant %>
+        <%= render "main_form/#{section_name}_section", builder: f, applicant: applicant %>
       <hr />
       <%= f.button("Update", { class:"btn btn-default" }) %>
       <hr />

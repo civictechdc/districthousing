@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FormPickerControllerTest < ActionController::TestCase
+class MainFormControllerTest < ActionController::TestCase
 
   include Devise::TestHelpers
 

@@ -5,7 +5,7 @@ class ApplicantController < ApplicationController
     @applicant.update_attributes(params[:applicant])
 
     respond_to do |format|
-      format.html { redirect_to picker_path }
+      format.html { redirect_to form_path }
       format.js { render action: "refresh_form" }
     end
   end
