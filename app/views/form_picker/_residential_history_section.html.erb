@@ -1,0 +1,9 @@
+<h2>Your landlords</h2>
+<% applicant.landlords.each.with_index do |landlord, index| %>
+  <%= builder.fields_for :landlords, landlord do |builder| %>
+    <h3><%= "Landlord #{index + 1}" %></h3>
+    <%= render partial: "person_fields", locals: { builder: builder } %>
+    <hr />
+  <% end %>
+<% end %>
+<%= link_to("Add a landlord", new_landlord_path, remote: true) %> <br />
