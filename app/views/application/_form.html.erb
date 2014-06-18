@@ -18,7 +18,7 @@
       </a>
     </li>
     <li>
-    <a href="#residential_history">Residential History
+    <a href="#residential">Residential History
       <div class="check">
         <div class="circle"></div>
       </div>
@@ -27,7 +27,7 @@
     </a>
   </li>
   <li>
-    <a href="#income_employment">Income and Employment
+    <a href="#income">Income and Employment
       <div class="check">
         <div class="circle"></div>
       </div>
@@ -36,7 +36,7 @@
     </a>
   </li>
   <li>
-    <a href="#criminal_history">Criminal History
+    <a href="#criminal">Criminal History
       <div class="check">
         <div class="circle"></div>
       </div>
@@ -52,32 +52,33 @@
       <div class="progress-line pull-left"></div>
     </a>
   </li>
-  </ul>
+</ul>
 </nav>
+
 <%= bootstrap_form_for(applicant, remote: true) do |f| %>
-  <div id="demographic" class="section hide">
-    <%= render "form_picker/demographic_section", builder: f %>
-    <hr />
-    <%= f.button("Update", { class:"btn btn-default" }) %>
-    <hr />
-    <%= render "section_buttons", next_section: "household" %>
-  </div>
-  <div id="household" class="section hide">
-    <%= render "form_picker/household_section", builder: f, applicant: applicant %>
-    <hr />
-    <%= f.button("Update", { class:"btn btn-default" }) %>
-    <hr />
-    <%= render "section_buttons", next_section: "residential_history", previous_section: "demographic" %>
-  </div>
-  <div id="residential_history" class="section hide">
-    <%= render "form_picker/residential_history_section", builder: f, applicant: applicant %>
-    <hr />
-    <%= f.button("Update", { class:"btn btn-default" }) %>
-    <hr />
-    <%= render "section_buttons", next_section: "income_employment", previous_section: "household" %>
-  </div>
+  <%
+    section_names = %w(
+      demographic
+      household
+      residential
+      income
+      criminal
+      other
+    )
+    section_names.each_with_index do |section_name, index| %>
+      <div id="<%=section_name%>" class="section hide">
+        <%= render "form_picker/#{section_name}_section", builder: f, applicant: applicant %>
+      <hr />
+      <%= f.button("Update", { class:"btn btn-default" }) %>
+      <hr />
+      <%= render("section_buttons",
+                 next_section: section_names[index + 1],
+                 previous_section: (section_names[index - 1] if index > 0)) %>
+    </div>
+  <% end %>
 <% end %>
 <hr />
+
 <div id="download">
   <%= button_to 'Download forms', "/download", { class:"btn btn-default btn-lg download-forms" } %>
 </div>
