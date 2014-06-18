@@ -4,45 +4,21 @@
 
   <div class="col-md-4">
     <h4>About</h4>
-    <% %i(
-      first_name
-      middle_name
-      last_name
-      cell_phone
-      home_phone
-      work_phone
-      email
-    ).each do |person_attribute| %>
-      <%= builder.text_field person_attribute %>
-    <% end %>
+    <%= render "people/name", builder: builder %>
+    <%= render "people/contact", builder: builder %>
     <%= builder.text_field :ssn, label: "Social security number" %>
   </div>
 
   <div class="col-md-4">
     <h4>Address</h4>
     <%= builder.fields_for :residence do |residence_builder| %>
-      <%= residence_builder.text_field :street, label: "Street address" %>
-      <%= residence_builder.text_field :apt, label: "Apartment" %>
-      <%= residence_builder.text_field :city %>
-      <%= residence_builder.text_field :state %>
-      <%= residence_builder.text_field :zip, label: "Zip code" %>
+      <%= render "addresses/fields", builder: residence_builder %>
     <% end %>
   </div>
 
   <div class="col-md-4">
     <h4>Demographic</h4>
-    <%= builder.date_field :dob, label: "Date of birth" %>
-    <%= builder.collection_select :marital_status, ["", "Never married", "Married", "Widowed", "Divorced"], :to_s, :to_s %>
-    <%= builder.collection_select :student_status, ["", "Full-time", "Part-time", "Not a student"], :to_s, :to_s %>
-    <% %i(
-      gender
-      race
-      citizenship
-      nationality
-      occupation
-    ).each do |person_attribute| %>
-      <%= builder.text_field person_attribute %>
-    <% end %>
+    <%= render "people/demographic", builder: builder %>
   </div>
 
 </div>
