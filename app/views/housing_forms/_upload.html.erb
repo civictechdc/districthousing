@@ -11,19 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.text_field :lat %>
-  </div>
-  <div class="field">
-    <%= f.text_field :long %>
-  </div>
+  <%= f.file_field :new_form %>
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
