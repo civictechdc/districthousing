@@ -1,4 +1,4 @@
-class FormPickerController < ApplicationController
+class MainFormController < ApplicationController
 
   before_filter :authenticate_user!
 
