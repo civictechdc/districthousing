@@ -1,0 +1,9 @@
+.pdf-guide {
+  img {
+    @include img-responsive();
+    border-radius: $border-radius-large;
+    margin: 2em;
+    padding: 1em;
+    background-color: #eeeeee;
+  }
+}
