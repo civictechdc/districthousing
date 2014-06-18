@@ -28,6 +28,16 @@ class HousingFormsController < ApplicationController
   def create
     @housing_form = HousingForm.new(housing_form_params)
 
+    uploaded_file = housing_form_params[:new_form]
+    new_file_path = Rails.root.join("public", "forms", uploaded_file.original_filename)
+
+    File.open(new_file_path, "wb") do |file|
+      file.write(uploaded_file.read)
+    end
+
+    @housing_form.uri = new_file_path.to_s
+    @housing_form.name = uploaded_file.original_filename
+
     if @housing_form.save
       redirect_to @housing_form, notice: 'Housing form was successfully created.'
     else
