@@ -1,65 +1,78 @@
 <h1>Use your own PDF</h1>
 
 <p>If you obtain a PDF of a housing application, you can use it with
-District Housing.  Here are the steps:</p>
+  District Housing.  Here are the steps:</p>
 
 <ol>
-<li>Use Adobe Acrobat Pro to add fields to the document.  Name these
-fields according to our field name dictionary.</li>
-<li>Upload the PDF to District Housing from the "Locations" tab.</li>
+  <li>Use Adobe Acrobat Pro to add fields to the document.  Name these
+    fields according to our field name dictionary.</li>
+  <li>Upload the PDF to District Housing from the "Locations" tab.</li>
 </ol>
 
 <h2>Field name dictionary</h2>
 
 <p>Here, we will list some basic fields you can fill in for the main
-applicant.</p>
+  applicant.</p>
 
-<p>Field value   | What you get
----           | ---
-Name          | Full name
-FirstName     | First name
-MiddleInitial | Middle initial
-MiddleName    | Middle name
-LastName      | Last name
-SSN           | Social security number
-DOB           | Date of birth
-BirthState    | State of birth
-BirthCity     | City of birth
-Nationality   | Nationality/citizenship
-Gender        |
-GenderInitial | First letter of gender
-Mail          | Applicant's mailing address (suffixed with Address attributes)
-Phone         | Applicant's phone number
-HomePhone     | Applicant's home phone number
-WorkPhone     | Applicant's work phone number
-CellPhone     | Applicant's cell phone number
-Email         | Applicant's e-mail address
-Address       | Applicant's current residential address
-MaritalStatus | Applicant's marital status (Single, Married, Divorced, Widowed)
-Occupation    |</p>
+<table class="table table-striped">
+  <tr>
+    <th>
+      Field value
+    </th>
+    <th>
+      What you get
+    </th>
+  </tr>
+  <%
+    [
+      [ "Name", "Full name" ],
+      [ "FirstName", "First name"],
+      [ "MiddleInitial", "Middle initial"],
+      [ "MiddleName", "Middle name"],
+      [ "LastName", "Last name"],
+      [ "SSN", "Social security number"],
+      [ "DOB", "Date of birth"],
+      [ "BirthState", "State of birth"],
+      [ "BirthCity", "City of birth"],
+      [ "Nationality", "Nationality/citizenship"],
+      [ "Gender", "The person's gender"],
+      [ "GenderInitial", "First letter of gender"],
+      [ "Mail", "Applicant's mailing address (suffixed with Address attdibutes)"],
+      [ "Phone", "Applicant's phone number"],
+      [ "HomePhone", "Applicant's home phone number"],
+      [ "WorkPhone", "Applicant's work phone number"],
+      [ "CellPhone", "Applicant's cell phone number"],
+      [ "Email", "Applicant's e-mail address"],
+      [ "Address", "Applicant's current residential address"],
+      [ "MaritalStatus", "Applicant's marital status (Single, Married, Divorced, Widowed)"],
+      [ "Occupation", "The user's occupation"],
+    ].each do |row| %>
+      <%= render "pdf_guide/field_row", name: row[0], what: row[1] %>
+    <% end %>
+</table>
 
 <h2>Add location metadata</h2>
 
 <p>You can optionally attach location metadata to your PDF.  If you do
-this, you'll be able to see the building it corresponds to on a map.</p>
+  this, you'll be able to see the building it corresponds to on a map.</p>
 
 <p>If you don't do this before uploading the file to District Housing,
-you can edit the building location manually from within the Locations
-screen.</p>
+  you can edit the building location manually from within the Locations
+  screen.</p>
 
 <p>To add location metadata to your PDF:</p>
 
 <ol>
-<li>Open your PDF in Acrobat.</li>
-<li>Click File menu -> Properties...</li>
-<li>Click the Custom tab.</li>
-<li>In the "Name" field, type "Location".</li>
-<li>In the "Value" field, enter the address of this housing location.
-This should be something that Google Maps could find your building
-with.</li>
-<li>Click "Add".</li>
-<li>Click "OK".</li>
-<li>Save your PDF.</li>
+  <li>Open your PDF in Acrobat.</li>
+  <li>Click File menu -> Properties...</li>
+  <li>Click the Custom tab.</li>
+  <li>In the "Name" field, type "Location".</li>
+  <li>In the "Value" field, enter the address of this housing location.
+    This should be something that Google Maps could find your building
+    with.</li>
+  <li>Click "Add".</li>
+  <li>Click "OK".</li>
+  <li>Save your PDF.</li>
 </ol>
 
 <h2>Make fillable PDFs that work well</h2>
@@ -69,27 +82,27 @@ with.</li>
 <h3>Fill the whole space with a single field box</h3>
 
 <p>Don't make text fields shorter than they have to be.  Try not to use two
-boxes where one will do.  For example, in a field asking for the
-applicant's name, use one input field called "Name", not two input
-fields called "FirstName" and "LastName".</p>
+  boxes where one will do.  For example, in a field asking for the
+  applicant's name, use one input field called "Name", not two input
+  fields called "FirstName" and "LastName".</p>
 
 <h3>Set the font size to 6 points</h3>
 
 <p>Small fonts mean more text can fit in the box.</p>
 
 <p>You might be tempted to use the "auto" font size setting, but be warned,
-this also makes short text entries very large, and makes the form look
-weird.</p>
+  this also makes short text entries very large, and makes the form look
+  weird.</p>
 
 <h3>Enable the "Multi-line" option</h3>
 
 <p>Long fields, like full names and addresses, risk being longer than the
-length of the field box.  If "Multi-line" is enabled, then long text will
-wrap to a new line, instead of getting chopped.</p>
+  length of the field box.  If "Multi-line" is enabled, then long text will
+  wrap to a new line, instead of getting chopped.</p>
 
 <h3>Set default properties for new fields</h3>
 
 <p>When you set a field to 6 points with multi-line, you should then
-right-click it and choose "Use Current Properties as New Defaults".
-Labeling PDFs is tedious; this will save you the trouble of setting
-those options on every field.</p>
+  right-click it and choose "Use Current Properties as New Defaults".
+  Labeling PDFs is tedious; this will save you the trouble of setting
+  those options on every field.</p>
