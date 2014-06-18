@@ -9,10 +9,82 @@
   <li>Upload the PDF to District Housing from the "Locations" tab.</li>
 </ol>
 
-<h2>Field name dictionary</h2>
+<h2>Adding form fields to a PDF</h2>
 
-<p>Here, we will list some basic fields you can fill in for the main
-  applicant.</p>
+<p>
+  We aren't aware of any free PDF form editors.  This guide will assume you
+  a paid version of Adobe Acrobat.
+</p>
+
+<p>
+  To edit form fields, open your PDF in Acrobat and click:
+  <ol>
+    <li>Tools</li>
+    <li>Forms</li>
+    <li>Edit</li>
+  </ol>
+</p>
+
+<%= image_tag "pdf_guide/edit_forms.png" %>
+
+<p>
+  Add a new text field to the form by right-clicking where you want the field
+  to go.
+</p>
+
+<%= image_tag "pdf_guide/add_text_field.png" %>
+
+<p>
+  Expand the field to take up the whole space.  If you make the field too
+  small, you risk cutting off text.
+</p>
+
+<%= image_tag "pdf_guide/use_whole_space.png" %>
+
+<p>
+  Give the field a name from our Field Name Dictionary.  The field name determines
+  what gets written in that field.  Check your spelling!
+</p>
+
+<%= image_tag "pdf_guide/set_field_name.png" %>
+
+<p>
+  Double-click on a field to edit its properties.  In the General properties
+  tab, you can change the name.
+</p>
+
+<%= image_tag "pdf_guide/properties_general.png" %>
+
+<p>
+  In the Appearance tab, set the font size to something small, such as 6 or 8
+  points.  This makes it less likely that text will be cut off when fields are
+  filled.
+</p>
+
+<%= image_tag "pdf_guide/properties_appearance.png" %>
+
+<p>
+  In the Options tab, set the Alignment to "Left", and consider checking the
+  "Multi-line" box, especially if this field will have lengthy content, like an
+  address.
+</p>
+
+<%= image_tag "pdf_guide/properties_options.png" %>
+
+<p>
+  Once you've set all the options, you can right-click the field and click 
+  "Use Current Properties as New Defaults".  Then you can save yourself the
+  trouble of setting these options for all other new forms.
+</p>
+
+<%= image_tag "pdf_guide/new_defaults.png" %>
+
+<h2>Field Name Dictionary</h2>
+
+<p>
+  Here, we will list some basic fields you can fill in for the main
+  applicant.
+</p>
 
 <table class="table table-striped">
   <tr>
