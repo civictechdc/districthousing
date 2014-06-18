@@ -17,10 +17,13 @@
 <table class="table table-striped">
   <tr>
     <th>
-      Field value
+      Field name
     </th>
     <th>
       What you get
+    </th>
+    <th>
+      Value for <%= @applicant.identity.full_name %>
     </th>
   </tr>
   <%
@@ -37,7 +40,7 @@
       [ "Nationality", "Nationality/citizenship"],
       [ "Gender", "The person's gender"],
       [ "GenderInitial", "First letter of gender"],
-      [ "Mail", "Applicant's mailing address (suffixed with Address attdibutes)"],
+      [ "Mail", "Applicant's mailing address"],
       [ "Phone", "Applicant's phone number"],
       [ "HomePhone", "Applicant's home phone number"],
       [ "WorkPhone", "Applicant's work phone number"],

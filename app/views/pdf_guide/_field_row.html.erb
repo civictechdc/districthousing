@@ -1,1 +1,5 @@
-<tr><td><%= name %></td><td><%= what %></td></tr>
+<tr>
+  <td><%= name %></td>
+  <td><%= what %></td>
+  <td><%= @applicant.value_for_field( name ) %></td>
+</tr>
