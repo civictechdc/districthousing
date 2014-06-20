@@ -128,6 +128,35 @@
     <% end %>
 </table>
 
+<p>
+  Addresses can be suffixed with address components to get just that part of the address.  For example:
+</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>
+      Field name
+    </th>
+    <th>
+      What you get
+    </th>
+    <th>
+      Value for <%= @applicant.identity.full_name %>
+    </th>
+  </tr>
+  <%
+    [
+      [ "Address", "Full address" ],
+      [ "AddressStreet", "Street address" ],
+      [ "AddressCity", "City" ],
+      [ "AddressState", "State" ],
+      [ "AddressZip", "Zip code" ],
+      [ "AddressApt", "Apartment" ],
+    ].each do |row| %>
+      <%= render "pdf_guide/field_row", name: row[0], what: row[1] %>
+    <% end %>
+</table>
+
 <h2>Add location metadata</h2>
 
 <p>You can optionally attach location metadata to your PDF.  If you do
