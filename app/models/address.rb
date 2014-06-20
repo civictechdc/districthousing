@@ -32,6 +32,8 @@ class Address < ActiveRecord::Base
       state
     when "Zip"
       zip
+    when "Apt"
+      apartment
     when ""
       full
     else
