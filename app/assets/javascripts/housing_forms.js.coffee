@@ -4,7 +4,7 @@
 if window.location.pathname.match(/\/form$/)
 	$ ->
 
-		changeSection = ->
+		changeSection = (e, noscroll)->
 			hash = window.location.hash
 			sectionId = hash.substring 1
 			$('.section').each ()->
@@ -20,20 +20,20 @@ if window.location.pathname.match(/\/form$/)
 					parent.toggleClass 'active', true
 				else
 					parent.toggleClass 'active', false
-			window.scrollTo 0, 0
+			window.scrollTo 0, 0 unless noscroll
 
 		$(window).on 'hashchange', changeSection
 		
 		showDownloadWarning = ->
 			$('#download-warning').modal()
 
-		initialize = ->
+		initialize = (e)->
 			$('.download-forms').click(showDownloadWarning)
 			firstSectionHash = $('.wizard-nav a').eq(0).attr 'href'
 			if window.location.hash.length <= 1
 				window.location.hash = firstSectionHash
 			else
-				changeSection()
+				changeSection null, !!e
 	 
 		$(document).ajaxComplete initialize
 		initialize()
