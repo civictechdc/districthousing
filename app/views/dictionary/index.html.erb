@@ -86,6 +86,30 @@
     <% end %>
 </table>
 
+<p>Increment the prefix number to select the next person of that type:</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>
+      Field name
+    </th>
+    <th>
+      What you get
+    </th>
+    <th>
+      Value for <%= @applicant.identity.full_name %>
+    </th>
+  </tr>
+  <%
+    [
+      [ "HH1Name", "First household member's full name" ],
+      [ "HH2Name", "Second household member's full name" ],
+      [ "HH3Name", "Third household member's full name" ],
+    ].each do |row| %>
+      <%= render "field_row", name: row[0], what: row[1] %>
+    <% end %>
+  </table>
+
 <p>
   Addresses can be suffixed with address components to get just that part of the address.  For example:
 </p>
