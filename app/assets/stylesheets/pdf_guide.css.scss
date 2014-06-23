@@ -1,9 +1,12 @@
 .pdf-guide {
+  img, table {
+    margin: 2em;
+  }
+
   img {
     @include img-responsive();
     border-radius: $border-radius-large;
-    margin: 2em;
-    padding: 1em;
     background-color: #eeeeee;
+    padding: 1em;
   }
 }
