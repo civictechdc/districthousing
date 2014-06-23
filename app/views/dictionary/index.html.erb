@@ -14,20 +14,7 @@
   applicant.
 </p>
 
-<table class="table table-striped">
-  <tr>
-    <th>
-      Field name
-    </th>
-    <th>
-      What you get
-    </th>
-    <th>
-      Value for <%= @applicant.identity.full_name %>
-    </th>
-  </tr>
-  <%
-    [
+<%= render "table", field_name_descriptions: [
       [ "Name", "Full name" ],
       [ "FirstName", "First name"],
       [ "MiddleInitial", "Middle initial"],
@@ -49,10 +36,7 @@
       [ "Address", "Applicant's current residential address"],
       [ "MaritalStatus", "Applicant's marital status (Single, Married, Divorced, Widowed)"],
       [ "Occupation", "Applicant's occupation"],
-    ].each do |row| %>
-      <%= render "field_row", name: row[0], what: row[1] %>
-    <% end %>
-</table>
+] %>
 
 <p>
   Personal field names can be prefixed with certain patterns to change which person it refers to.
@@ -60,20 +44,7 @@
   <code>HH1</code> prefix, as this table shows:
 </p>
 
-<table class="table table-striped">
-  <tr>
-    <th>
-      Field name
-    </th>
-    <th>
-      What you get
-    </th>
-    <th>
-      Value for <%= @applicant.identity.full_name %>
-    </th>
-  </tr>
-  <%
-    [
+<%= render "table", field_name_descriptions: [
       [ "HH1Name", "First household member's full name" ],
       [ "HH1Gender", "First household member's gender"],
       [ "HH1Mail", "First household member's mailing address"],
@@ -81,53 +52,21 @@
       [ "HH1Email", "First household member's e-mail address"],
       [ "HH1Address", "First household member's current residential address"],
       [ "HH1Occupation", "First household member's occupation"],
-    ].each do |row| %>
-      <%= render "field_row", name: row[0], what: row[1] %>
-    <% end %>
-</table>
+] %>
 
 <p>Increment the prefix number to select the next person of that type:</p>
 
-<table class="table table-striped">
-  <tr>
-    <th>
-      Field name
-    </th>
-    <th>
-      What you get
-    </th>
-    <th>
-      Value for <%= @applicant.identity.full_name %>
-    </th>
-  </tr>
-  <%
-    [
+<%= render "table", field_name_descriptions: [
       [ "HH1Name", "First household member's full name" ],
       [ "HH2Name", "Second household member's full name" ],
       [ "HH3Name", "Third household member's full name" ],
-    ].each do |row| %>
-      <%= render "field_row", name: row[0], what: row[1] %>
-    <% end %>
-  </table>
+] %>
 
 <p>
   Addresses can be suffixed with address components to get just that part of the address.  For example:
 </p>
 
-<table class="table table-striped">
-  <tr>
-    <th>
-      Field name
-    </th>
-    <th>
-      What you get
-    </th>
-    <th>
-      Value for <%= @applicant.identity.full_name %>
-    </th>
-  </tr>
-  <%
-    [
+<%= render "table", field_name_descriptions: [
       [ "Address", "Full address" ],
       [ "AddressStreet", "Street address" ],
       [ "AddressCity", "City" ],
@@ -140,9 +79,6 @@
       [ "MailState", "Mailing state" ],
       [ "MailZip", "Mailing zip code" ],
       [ "MailApt", "Mailing apartment" ],
-    ].each do |row| %>
-      <%= render "field_row", name: row[0], what: row[1] %>
-    <% end %>
-</table>
+] %>
 
 </div>
