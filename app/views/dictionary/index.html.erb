@@ -110,6 +110,12 @@
       [ "AddressState", "State" ],
       [ "AddressZip", "Zip code" ],
       [ "AddressApt", "Apartment" ],
+      [ "Mail", "Mailing full address" ],
+      [ "MailStreet", "Mailing street address" ],
+      [ "MailCity", "Mailing city" ],
+      [ "MailState", "Mailing state" ],
+      [ "MailZip", "Mailing zip code" ],
+      [ "MailApt", "Mailing apartment" ],
     ].each do |row| %>
       <%= render "field_row", name: row[0], what: row[1] %>
     <% end %>
