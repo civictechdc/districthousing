@@ -1,0 +1,118 @@
+<div class="pdf-guide">
+
+<h2>Field Name Dictionary</h2>
+
+<p>
+  PDFs used with District Housing must be labeled correctly, or the forms will not be filled.
+  This guide is a dictionary of all the kinds of field names that are supported for form filling.
+</p>
+
+<h3>Basic personal information</h3>
+
+<p>
+  Here, we will list some basic fields you can fill in for the main
+  applicant.
+</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>
+      Field name
+    </th>
+    <th>
+      What you get
+    </th>
+    <th>
+      Value for <%= @applicant.identity.full_name %>
+    </th>
+  </tr>
+  <%
+    [
+      [ "Name", "Full name" ],
+      [ "FirstName", "First name"],
+      [ "MiddleInitial", "Middle initial"],
+      [ "MiddleName", "Middle name"],
+      [ "LastName", "Last name"],
+      [ "SSN", "Social security number"],
+      [ "DOB", "Date of birth"],
+      [ "BirthState", "State of birth"],
+      [ "BirthCity", "City of birth"],
+      [ "Nationality", "Nationality/citizenship"],
+      [ "Gender", "The person's gender"],
+      [ "GenderInitial", "First letter of gender"],
+      [ "Mail", "Applicant's mailing address"],
+      [ "Phone", "Applicant's phone number"],
+      [ "HomePhone", "Applicant's home phone number"],
+      [ "WorkPhone", "Applicant's work phone number"],
+      [ "CellPhone", "Applicant's cell phone number"],
+      [ "Email", "Applicant's e-mail address"],
+      [ "Address", "Applicant's current residential address"],
+      [ "MaritalStatus", "Applicant's marital status (Single, Married, Divorced, Widowed)"],
+      [ "Occupation", "Applicant's occupation"],
+    ].each do |row| %>
+      <%= render "field_row", name: row[0], what: row[1] %>
+    <% end %>
+</table>
+
+<p>
+  Personal field names can be prefixed with certain patterns to change which person it refers to.
+  For example, you can get personal information for the first household member with the
+  <code>HH1</code> prefix, as this table shows:
+</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>
+      Field name
+    </th>
+    <th>
+      What you get
+    </th>
+    <th>
+      Value for <%= @applicant.identity.full_name %>
+    </th>
+  </tr>
+  <%
+    [
+      [ "HH1Name", "First household member's full name" ],
+      [ "HH1Gender", "First household member's gender"],
+      [ "HH1Mail", "First household member's mailing address"],
+      [ "HH1Phone", "First household member's phone number"],
+      [ "HH1Email", "First household member's e-mail address"],
+      [ "HH1Address", "First household member's current residential address"],
+      [ "HH1Occupation", "First household member's occupation"],
+    ].each do |row| %>
+      <%= render "field_row", name: row[0], what: row[1] %>
+    <% end %>
+</table>
+
+<p>
+  Addresses can be suffixed with address components to get just that part of the address.  For example:
+</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>
+      Field name
+    </th>
+    <th>
+      What you get
+    </th>
+    <th>
+      Value for <%= @applicant.identity.full_name %>
+    </th>
+  </tr>
+  <%
+    [
+      [ "Address", "Full address" ],
+      [ "AddressStreet", "Street address" ],
+      [ "AddressCity", "City" ],
+      [ "AddressState", "State" ],
+      [ "AddressZip", "Zip code" ],
+      [ "AddressApt", "Apartment" ],
+    ].each do |row| %>
+      <%= render "field_row", name: row[0], what: row[1] %>
+    <% end %>
+</table>
+
+</div>

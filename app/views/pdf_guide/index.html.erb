@@ -7,7 +7,7 @@
 
 <ol>
   <li>Use Adobe Acrobat Pro to add fields to the document.  Name these
-    fields according to our field name dictionary.</li>
+    fields according to our <a href="/dictionary">field name dictionary.</a></li>
   <li>Upload the PDF to District Housing from the "Locations" tab.</li>
 </ol>
 
@@ -80,82 +80,6 @@
 </p>
 
 <%= image_tag "pdf_guide/new_defaults.png" %>
-
-<h2>Field Name Dictionary</h2>
-
-<p>
-  Here, we will list some basic fields you can fill in for the main
-  applicant.
-</p>
-
-<table class="table table-striped">
-  <tr>
-    <th>
-      Field name
-    </th>
-    <th>
-      What you get
-    </th>
-    <th>
-      Value for <%= @applicant.identity.full_name %>
-    </th>
-  </tr>
-  <%
-    [
-      [ "Name", "Full name" ],
-      [ "FirstName", "First name"],
-      [ "MiddleInitial", "Middle initial"],
-      [ "MiddleName", "Middle name"],
-      [ "LastName", "Last name"],
-      [ "SSN", "Social security number"],
-      [ "DOB", "Date of birth"],
-      [ "BirthState", "State of birth"],
-      [ "BirthCity", "City of birth"],
-      [ "Nationality", "Nationality/citizenship"],
-      [ "Gender", "The person's gender"],
-      [ "GenderInitial", "First letter of gender"],
-      [ "Mail", "Applicant's mailing address"],
-      [ "Phone", "Applicant's phone number"],
-      [ "HomePhone", "Applicant's home phone number"],
-      [ "WorkPhone", "Applicant's work phone number"],
-      [ "CellPhone", "Applicant's cell phone number"],
-      [ "Email", "Applicant's e-mail address"],
-      [ "Address", "Applicant's current residential address"],
-      [ "MaritalStatus", "Applicant's marital status (Single, Married, Divorced, Widowed)"],
-      [ "Occupation", "Applicant's occupation"],
-    ].each do |row| %>
-      <%= render "pdf_guide/field_row", name: row[0], what: row[1] %>
-    <% end %>
-</table>
-
-<p>
-  Addresses can be suffixed with address components to get just that part of the address.  For example:
-</p>
-
-<table class="table table-striped">
-  <tr>
-    <th>
-      Field name
-    </th>
-    <th>
-      What you get
-    </th>
-    <th>
-      Value for <%= @applicant.identity.full_name %>
-    </th>
-  </tr>
-  <%
-    [
-      [ "Address", "Full address" ],
-      [ "AddressStreet", "Street address" ],
-      [ "AddressCity", "City" ],
-      [ "AddressState", "State" ],
-      [ "AddressZip", "Zip code" ],
-      [ "AddressApt", "Apartment" ],
-    ].each do |row| %>
-      <%= render "pdf_guide/field_row", name: row[0], what: row[1] %>
-    <% end %>
-</table>
 
 <h2>Add location metadata</h2>
 
