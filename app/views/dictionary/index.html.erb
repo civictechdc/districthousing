@@ -15,28 +15,30 @@
 </p>
 
 <%= render "table", field_name_descriptions: [
-      [ "Name", "Full name" ],
-      [ "FirstName", "First name"],
-      [ "MiddleInitial", "Middle initial"],
-      [ "MiddleName", "Middle name"],
-      [ "LastName", "Last name"],
-      [ "SSN", "Social security number"],
-      [ "DOB", "Date of birth"],
-      [ "BirthState", "State of birth"],
-      [ "BirthCity", "City of birth"],
-      [ "Nationality", "Nationality/citizenship"],
-      [ "Gender", "The person's gender"],
-      [ "GenderInitial", "First letter of gender"],
-      [ "Mail", "Applicant's mailing address"],
-      [ "Phone", "Applicant's phone number"],
-      [ "HomePhone", "Applicant's home phone number"],
-      [ "WorkPhone", "Applicant's work phone number"],
-      [ "CellPhone", "Applicant's cell phone number"],
-      [ "Email", "Applicant's e-mail address"],
-      [ "Address", "Applicant's current residential address"],
-      [ "MaritalStatus", "Applicant's marital status (Single, Married, Divorced, Widowed)"],
-      [ "Occupation", "Applicant's occupation"],
+  [ "Name", "Full name" ],
+  [ "FirstName", "First name"],
+  [ "MiddleInitial", "Middle initial"],
+  [ "MiddleName", "Middle name"],
+  [ "LastName", "Last name"],
+  [ "SSN", "Social security number"],
+  [ "DOB", "Date of birth"],
+  [ "BirthState", "State of birth"],
+  [ "BirthCity", "City of birth"],
+  [ "Nationality", "Nationality/citizenship"],
+  [ "Gender", "The person's gender"],
+  [ "GenderInitial", "First letter of gender"],
+  [ "Mail", "Applicant's mailing address"],
+  [ "Phone", "Applicant's phone number"],
+  [ "HomePhone", "Applicant's home phone number"],
+  [ "WorkPhone", "Applicant's work phone number"],
+  [ "CellPhone", "Applicant's cell phone number"],
+  [ "Email", "Applicant's e-mail address"],
+  [ "Address", "Applicant's current residential address"],
+  [ "MaritalStatus", "Applicant's marital status (Single, Married, Divorced, Widowed)"],
+  [ "Occupation", "Applicant's occupation"],
 ] %>
+
+<h4>Person prefixes</h4>
 
 <p>
   Personal field names can be prefixed with certain patterns to change which person it refers to.
@@ -45,40 +47,79 @@
 </p>
 
 <%= render "table", field_name_descriptions: [
-      [ "HH1Name", "First household member's full name" ],
-      [ "HH1Gender", "First household member's gender"],
-      [ "HH1Mail", "First household member's mailing address"],
-      [ "HH1Phone", "First household member's phone number"],
-      [ "HH1Email", "First household member's e-mail address"],
-      [ "HH1Address", "First household member's current residential address"],
-      [ "HH1Occupation", "First household member's occupation"],
+  [ "HH1Name", "First household member's full name" ],
+  [ "HH1Gender", "First household member's gender"],
+  [ "HH1Mail", "First household member's mailing address"],
+  [ "HH1Phone", "First household member's phone number"],
+  [ "HH1Email", "First household member's e-mail address"],
+  [ "HH1Address", "First household member's current residential address"],
+  [ "HH1Occupation", "First household member's occupation"],
 ] %>
 
 <p>Increment the prefix number to select the next person of that type:</p>
 
 <%= render "table", field_name_descriptions: [
-      [ "HH1Name", "First household member's full name" ],
-      [ "HH2Name", "Second household member's full name" ],
-      [ "HH3Name", "Third household member's full name" ],
+  [ "HH1Name", "First household member's full name" ],
+  [ "HH2Name", "Second household member's full name" ],
+  [ "HH3Name", "Third household member's full name" ],
 ] %>
+
+<p>
+  The available person prefixes are:
+</p>
+
+<%= render "prefix_table", prefix_descriptions: [
+  [ "LL", "Landlord, starting with current. Matches <code>Address</code> of the same number" ],
+  [ "HH", "Household member" ],
+] %>
+
+<h3>Addresses</h3>
 
 <p>
   Addresses can be suffixed with address components to get just that part of the address.  For example:
 </p>
 
 <%= render "table", field_name_descriptions: [
-      [ "Address", "Full address" ],
-      [ "AddressStreet", "Street address" ],
-      [ "AddressCity", "City" ],
-      [ "AddressState", "State" ],
-      [ "AddressZip", "Zip code" ],
-      [ "AddressApt", "Apartment" ],
-      [ "Mail", "Mailing full address" ],
-      [ "MailStreet", "Mailing street address" ],
-      [ "MailCity", "Mailing city" ],
-      [ "MailState", "Mailing state" ],
-      [ "MailZip", "Mailing zip code" ],
-      [ "MailApt", "Mailing apartment" ],
+  [ "Address", "Full address" ],
+  [ "AddressStreet", "Street address" ],
+  [ "AddressCity", "City" ],
+  [ "AddressState", "State" ],
+  [ "AddressZip", "Zip code" ],
+  [ "AddressApt", "Apartment" ],
+  [ "Mail", "Mailing full address" ],
+  [ "MailStreet", "Mailing street address" ],
+  [ "MailCity", "Mailing city" ],
+  [ "MailState", "Mailing state" ],
+  [ "MailZip", "Mailing zip code" ],
+  [ "MailApt", "Mailing apartment" ],
+] %>
+
+<p>
+  Addresses can be numbered to indicate previous residence addresses.  <code>Address1</code> is the same
+  as <code>Address</code>, <code>Address2</code> is the first previous residence address, and so on.
+  Component suffixes work for previous addresses the same way they do for the current address.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "Address", "Current residence address" ],
+  [ "Address1", "Current residence address" ],
+  [ "Address1City", "Current residence address city" ],
+  [ "Address2", "First previous residence address" ],
+  [ "Address2State", "First previous residence address state" ],
+  [ "Address3", "Second previous residence address" ],
+  [ "Address4", "Third previous residence address" ],
+] %>
+
+<p>
+  You can use person prefixes with addresses.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "Address", "Current residence address of applicant" ],
+  [ "HH1AddressZip", "First household member's address zip code" ],
+  [ "HH2AddressStreet", "Second household member's street address" ],
+  [ "LL1Address", "First landlord's address" ],
+  [ "LL2AddressState", "Second landlord's address state" ],
 ] %>
 
 </div>
