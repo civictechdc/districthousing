@@ -25,8 +25,10 @@
   <%= link_to 'Edit', edit_housing_form_path(@housing_form) %> |
   <%= link_to 'Back', housing_forms_path %>
 
+  <%= render "field_table", fields: @known_fields %>
+
 </div>
 
 <div class="col-md-6">
-<%= render "field_table", applicant: @applicant, fields: @housing_form.form_fields %>
+  <%= render "unknown_field_table", fields: @unknown_fields %>
 </div>

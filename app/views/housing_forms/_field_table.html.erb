@@ -9,16 +9,13 @@
     </th>
   </tr>
 
-  <% @housing_form.form_fields.each do |field| %>
-    <% value = @applicant.value_for_field(field.name) %>
-
+  <% fields.each do |name, value| %>
     <% row_style = "" %>
     <% row_style = "success" unless value.to_s.empty? %>
-    <% row_style = "warning" if value.is_a? UnknownField %>
 
     <tr class="<%= row_style%>">
       <td>
-        <%= field.name %>
+        <%= name %>
       </td>
       <td>
         <%= value.to_s %>
