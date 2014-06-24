@@ -1,0 +1,27 @@
+<table class="table table-condensed">
+
+  <tr>
+    <th>
+      Fields
+    </th>
+    <th>
+      Value for <%= @applicant.identity.full_name %>
+    </th>
+  </tr>
+
+  <% @housing_form.form_fields.each do |field| %>
+    <% value = @applicant.value_for_field(field.name).to_s %>
+    <% row_style = value.empty? ? "" : "success" %>
+
+    <tr class="<%= row_style%>">
+      <td>
+        <%= field.name %>
+      </td>
+      <td>
+        <%= value %>
+      </td>
+    </tr>
+
+  <% end %>
+
+</table>
