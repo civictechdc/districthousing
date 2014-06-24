@@ -10,15 +10,18 @@
   </tr>
 
   <% @housing_form.form_fields.each do |field| %>
-    <% value = @applicant.value_for_field(field.name).to_s %>
-    <% row_style = value.empty? ? "" : "success" %>
+    <% value = @applicant.value_for_field(field.name) %>
+
+    <% row_style = "" %>
+    <% row_style = "success" unless value.to_s.empty? %>
+    <% row_style = "warning" if value.is_a? UnknownField %>
 
     <tr class="<%= row_style%>">
       <td>
         <%= field.name %>
       </td>
       <td>
-        <%= value %>
+        <%= value.to_s %>
       </td>
     </tr>
 

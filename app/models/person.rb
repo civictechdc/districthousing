@@ -94,7 +94,7 @@ class Person < ActiveRecord::Base
     when "Occupation"
       occupation
     else
-      ""
+      UnknownField.new
     end
   end
 
