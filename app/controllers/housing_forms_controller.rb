@@ -13,6 +13,7 @@ class HousingFormsController < ApplicationController
 
   # GET /housing_forms/1
   def show
+    @applicant = current_applicant
   end
 
   # GET /housing_forms/new
