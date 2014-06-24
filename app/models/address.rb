@@ -37,7 +37,7 @@ class Address < ActiveRecord::Base
     when ""
       full
     else
-      ""
+      UnknownField.new
     end
   end
 

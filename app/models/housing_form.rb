@@ -23,4 +23,8 @@ class HousingForm < ActiveRecord::Base
       update(location: $1)
     end
   end
+
+  def field_results applicant
+    form_fields.map { |f| [f.name, applicant.value_for_field(f.name)] }.to_h
+  end
 end

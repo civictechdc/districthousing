@@ -1,0 +1,27 @@
+<table class="table table-condensed">
+
+  <tr>
+    <th>
+      Fields
+    </th>
+    <th>
+      Value for <%= @applicant.identity.full_name %>
+    </th>
+  </tr>
+
+  <% fields.each do |name, value| %>
+    <% row_style = "" %>
+    <% row_style = "success" unless value.to_s.empty? %>
+
+    <tr class="<%= row_style%>">
+      <td>
+        <%= name %>
+      </td>
+      <td>
+        <%= value.to_s %>
+      </td>
+    </tr>
+
+  <% end %>
+
+</table>

@@ -1,24 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @housing_form.name %>
-</p>
+<div class="col-md-6">
 
-<p>
-  <b>Location:</b>
-  <%= @housing_form.location %>
-</p>
+  <p>
+    <b>Name:</b>
+    <%= @housing_form.name %>
+  </p>
 
-<p>
-  <b>Latitude:</b>
-  <%= @housing_form.lat %>
-</p>
+  <p>
+    <b>Location:</b>
+    <%= @housing_form.location %>
+  </p>
 
-<p>
-  <b>Longitude:</b>
-  <%= @housing_form.long %>
-</p>
+  <p>
+    <b>Latitude:</b>
+    <%= @housing_form.lat %>
+  </p>
 
-<%= link_to 'Edit', edit_housing_form_path(@housing_form) %> |
-<%= link_to 'Back', housing_forms_path %>
+  <p>
+    <b>Longitude:</b>
+    <%= @housing_form.long %>
+  </p>
+
+  <%= link_to 'Edit', edit_housing_form_path(@housing_form) %> |
+  <%= link_to 'Back', housing_forms_path %>
+
+  <%= render "field_table", fields: @known_fields %>
+
+</div>
+
+<div class="col-md-6">
+  <%= render "unknown_field_table", fields: @unknown_fields %>
+</div>
