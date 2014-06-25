@@ -55,17 +55,17 @@
 </ul>
 </nav>
 
-<%= bootstrap_form_for(applicant, remote: true) do |f| %>
-  <%
-    section_names = %w(
-      demographic
-      household
-      residential
-      income
-      criminal
-      other
-    )
-    section_names.each_with_index do |section_name, index| %>
+<%
+  section_names = %w(
+    demographic
+    household
+    residential
+    income
+    criminal
+    other
+  )
+  section_names.each_with_index do |section_name, index| %>
+    <%= bootstrap_form_for(applicant, remote: true) do |f| %>
       <div id="<%=section_name%>" class="section hide">
         <%= render "main_form/#{section_name}_section", builder: f, applicant: applicant %>
       <hr />
@@ -82,6 +82,7 @@
 <div id="download">
   <%= button_to 'Download forms', "/download", { class:"btn btn-default btn-lg download-forms" } %>
 </div>
+
 <div id="download-warning" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
