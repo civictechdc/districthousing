@@ -152,4 +152,16 @@
   [ "MarriedYN", "Y if married, N if not" ],
   [ "MarriedYesNo", "Yes if married, No if not" ],
 ] %>
+
+<h3>Tickboxes</h3>
+
+<p>
+  Tickboxes should be suffixed with "TickYes" or "TickNo".
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "MarriedTickYes", "Ticked if married, empty if not" ],
+  [ "MarriedTickNo", "Empty if married, ticked if not" ],
+] %>
+
 </div>
