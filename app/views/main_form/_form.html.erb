@@ -1,5 +1,3 @@
-<%= render "nav" %>
-
 <% section_names = %w(
     demographic
     household
@@ -7,8 +5,11 @@
     income
     criminal
     other
-)
-section_names.each_with_index do |name, index| %>
+) %>
+
+<%= render "nav", section_names: section_names %>
+
+<% section_names.each_with_index do |name, index| %>
   <%= render("section", applicant: applicant, name: name, index: index, next_section: section_names[index + 1], previous_section: (section_names[index - 1] if index > 0)) %>
 <% end %>
 
