@@ -1,27 +1,17 @@
 <%= render "nav" %>
 
-<%
-  section_names = %w(
+<% section_names = %w(
     demographic
     household
     residential
     income
     criminal
     other
-  )
-  section_names.each_with_index do |section_name, index| %>
-    <%= bootstrap_form_for(applicant, remote: true) do |f| %>
-      <div id="<%=section_name%>" class="section hide">
-        <%= render "main_form/#{section_name}_section", builder: f, applicant: applicant %>
-      <hr />
-      <%= f.button("Update", { class:"btn btn-default" }) %>
-      <hr />
-      <%= render("section_buttons",
-                 next_section: section_names[index + 1],
-                 previous_section: (section_names[index - 1] if index > 0)) %>
-    </div>
-  <% end %>
+)
+section_names.each_with_index do |name, index| %>
+  <%= render("section", applicant: applicant, name: name, index: index, next_section: section_names[index + 1], previous_section: (section_names[index - 1] if index > 0)) %>
 <% end %>
+
 <hr />
 
 <%= render "download_button" %>
