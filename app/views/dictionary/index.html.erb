@@ -20,7 +20,10 @@
   [ "MiddleName", "Middle name"],
   [ "LastName", "Last name"],
   [ "SSN", "Social security number"],
-  [ "DOB", "Date of birth"],
+  [ "DOB", "Date of birth in MM/DD/YYYY format"],
+  [ "DOBMM", "Date of birth two-digit month"],
+  [ "DOBDD", "Date of birth two-digit day"],
+  [ "DOBYYYY", "Date of birth four-digit year"],
   [ "Age", "Age"],
   [ "BirthState", "State of birth"],
   [ "BirthCity", "City of birth"],
@@ -36,6 +39,9 @@
   [ "Address", "Applicant's current residential address"],
   [ "MaritalStatus", "Applicant's marital status (Single, Married, Divorced, Widowed)"],
   [ "Occupation", "Applicant's occupation"],
+  [ "DriverLicense", "Driver's license number"],
+  [ "DriverLicenseState", "Driver's license state"],
+  [ "Relationship", "Relationship to the applicant"],
 ] %>
 
 <h4>Person prefixes</h4>
@@ -122,4 +128,23 @@
   [ "LL2AddressState", "Previous landlord's address state" ],
 ] %>
 
+<h3>Conditional values</h3>
+
+<p>
+Some forms ask for personal information in a yes/no question.  In general, personal
+fields can be suffixed with YN to produce either "Yes" or "No" as the field value.
+</p>
+
+<p>
+When there are more than two states for a status, you can suffix a field name with the
+state you're interested in, followed by "YN".  The following table should clarify.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "StudentStatus", "Description of student status" ],
+  [ "StudentStatusFullTimeYN", "Yes/no for full-time student" ],
+  [ "StudentStatusPartTimeYN", "Yes/no for part-time student" ],
+  [ "StudentStatusYN", "Yes/no for any kind of student" ],
+  [ "MarriedYN", "Yes if married, no if not" ],
+] %>
 </div>
