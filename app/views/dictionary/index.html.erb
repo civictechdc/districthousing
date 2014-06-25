@@ -128,23 +128,28 @@
   [ "LL2AddressState", "Previous landlord's address state" ],
 ] %>
 
-<h3>Conditional values</h3>
+<h3>Yes/No values</h3>
 
 <p>
-Some forms ask for personal information in a yes/no question.  In general, personal
-fields can be suffixed with YN to produce either "Yes" or "No" as the field value.
+  Some forms ask for personal information in a yes/no question.  In general, personal
+  fields can be suffixed with YN to produce either "Y" or "N" as the field value.  A
+  field suffixed with "YesNo" will produce either "Yes" or "No".
 </p>
 
 <p>
-When there are more than two states for a status, you can suffix a field name with the
-state you're interested in, followed by "YN".  The following table should clarify.
+  When there are more than two states, you can suffix a field name with the
+  state you're interested in, followed by "YN" or "YesNo".
+</p>
+
+<p>
+  The following table should clarify.
 </p>
 
 <%= render "table", field_name_descriptions: [
   [ "StudentStatus", "Description of student status" ],
-  [ "StudentStatusFullTimeYN", "Yes/no for full-time student" ],
-  [ "StudentStatusPartTimeYN", "Yes/no for part-time student" ],
-  [ "StudentStatusYN", "Yes/no for any kind of student" ],
-  [ "MarriedYN", "Yes if married, no if not" ],
+  [ "StudentStatusFullTimeYN", "Y if full-time, N if part-time or not a student" ],
+  [ "StudentStatusYN", "Y if full-time or part-time, N if not a student" ],
+  [ "MarriedYN", "Y if married, N if not" ],
+  [ "MarriedYesNo", "Yes if married, No if not" ],
 ] %>
 </div>
