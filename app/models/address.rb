@@ -1,7 +1,6 @@
 class Address < ActiveRecord::Base
 
   attr_accessible :street, :city, :state, :zip, :apt
-  has_many :residents, class_name: :person, through: :person, source: :residence
 
   def apartment
     case apt

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Applicant:</strong>
+  <%= @residence.applicant %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @residence.address %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @residence.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @residence.end %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @residence.reason %>
+</p>
+
+<p>
+  <strong>Landlord:</strong>
+  <%= @residence.landlord %>
+</p>
+
+<%= link_to 'Edit', edit_residence_path(@residence) %> |
+<%= link_to 'Back', residences_path %>

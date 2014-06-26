@@ -6,16 +6,6 @@ class Person < ActiveRecord::Base
   attr_accessible :nationality, :email, :race, :student_status, :marital_status
   attr_accessible :occupation
 
-  has_one :residence, dependent: :destroy
-  accepts_nested_attributes_for :residence
-  attr_accessible :residence_attributes
-
-  has_one :mail_address, dependent: :destroy
-  accepts_nested_attributes_for :mail_address
-  attr_accessible :mail_address_attributes
-
-  belongs_to :applicant
-
   has_many :previous_ssns
 
   belongs_to :user

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615185524) do
+ActiveRecord::Schema.define(version: 20140625230643) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -87,6 +87,27 @@ ActiveRecord::Schema.define(version: 20140615185524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "relationships", id: false, force: true do |t|
+    t.integer "applicant_id", null: false
+    t.integer "person_id",    null: false
+    t.string  "kind"
+  end
+
+  create_table "residences", force: true do |t|
+    t.integer  "applicant_id"
+    t.integer  "address_id"
+    t.date     "start"
+    t.date     "end"
+    t.string   "reason"
+    t.integer  "landlord_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "residences", ["address_id"], name: "index_residences_on_address_id"
+  add_index "residences", ["applicant_id"], name: "index_residences_on_applicant_id"
+  add_index "residences", ["landlord_id"], name: "index_residences_on_landlord_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
