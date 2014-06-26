@@ -1,5 +1,7 @@
 class Address < ActiveRecord::Base
 
+  belongs_to :applicant, dependent: :destroy
+
   attr_accessible :street, :city, :state, :zip, :apt
 
   def apartment

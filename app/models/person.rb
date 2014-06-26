@@ -8,7 +8,7 @@ class Person < ActiveRecord::Base
 
   has_many :previous_ssns
 
-  belongs_to :user
+  belongs_to :applicant, dependent: :destroy
 
   def description
     "#{first_name} #{last_name}"
