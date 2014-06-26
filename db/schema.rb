@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625230643) do
+ActiveRecord::Schema.define(version: 20140626013618) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -19,8 +19,7 @@ ActiveRecord::Schema.define(version: 20140625230643) do
     t.string  "state"
     t.string  "zip"
     t.string  "apt"
-    t.string  "type"
-    t.integer "person_id"
+    t.integer "applicant_id"
   end
 
   create_table "aliases", force: true do |t|
@@ -47,6 +46,15 @@ ActiveRecord::Schema.define(version: 20140625230643) do
     t.integer "housing_form_id"
   end
 
+  create_table "household_members", force: true do |t|
+    t.integer "applicant_id"
+    t.integer "person_id"
+    t.string  "relationship"
+  end
+
+  add_index "household_members", ["applicant_id"], name: "index_household_members_on_applicant_id"
+  add_index "household_members", ["person_id"], name: "index_household_members_on_person_id"
+
   create_table "housing_forms", force: true do |t|
     t.string   "name"
     t.string   "uri"
@@ -55,6 +63,11 @@ ActiveRecord::Schema.define(version: 20140625230643) do
     t.string   "location"
     t.float    "lat"
     t.float    "long"
+  end
+
+  create_table "mail", id: false, force: true do |t|
+    t.integer "person_id",  null: false
+    t.integer "address_id", null: false
   end
 
   create_table "people", force: true do |t|
@@ -76,7 +89,6 @@ ActiveRecord::Schema.define(version: 20140625230643) do
     t.string   "race"
     t.string   "student_status"
     t.string   "marital_status"
-    t.string   "type"
     t.integer  "applicant_id"
     t.string   "occupation"
   end
@@ -86,12 +98,6 @@ ActiveRecord::Schema.define(version: 20140625230643) do
     t.integer  "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "relationships", id: false, force: true do |t|
-    t.integer "applicant_id", null: false
-    t.integer "person_id",    null: false
-    t.string  "kind"
   end
 
   create_table "residences", force: true do |t|
