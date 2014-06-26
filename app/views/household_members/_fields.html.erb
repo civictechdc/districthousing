@@ -1,5 +1,28 @@
 <%= builder.fields_for :person do |person_builder| %>
-  <%= render partial: "people/fields", locals: { builder: person_builder } %>
-<% end %>
+  <%= person_builder.check_box :_destroy, label: "Remove person" %>
 
-<%= builder.text_field :relationship %>
+  <div class="row">
+
+    <div class="col-md-4">
+      <h4>About</h4>
+      <%= render "people/name", builder: person_builder %>
+      <%= render "people/contact", builder: person_builder %>
+      <%= person_builder.text_field :ssn, label: "Social security number" %>
+
+      <%= builder.text_field :relationship, label: "Relationship to you" %>
+    </div>
+
+    <div class="col-md-4">
+      <h4>Mail Address</h4>
+      <%= person_builder.fields_for :mail_address do |m| %>
+        <%= render "addresses/fields", builder: m %>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <h4>Demographic</h4>
+      <%= render "people/demographic", builder: person_builder %>
+    </div>
+
+  </div>
+<% end %>

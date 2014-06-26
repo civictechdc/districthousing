@@ -8,12 +8,13 @@ class Applicant < ActiveRecord::Base
   accepts_nested_attributes_for :identity
 
   has_many :residences, dependent: :destroy
+  accepts_nested_attributes_for :residences, allow_destroy: true
   has_many :landlords, through: :residences, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :landlords, allow_destroy: true
 
   belongs_to :user
 
-  attr_accessible :identity_attributes, :landlords_attributes, :household_members_attributes
+  attr_accessible :identity_attributes, :landlords_attributes, :household_members_attributes, :residences_attributes
 
   def preferred_attrs_for field_names
     field_names.map do |field_name|
