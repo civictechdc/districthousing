@@ -1,2 +1,0 @@
-class MailAddress < Address
-end
