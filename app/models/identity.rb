@@ -1,2 +1,0 @@
-class Identity < Person
-end

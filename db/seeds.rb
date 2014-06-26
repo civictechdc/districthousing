@@ -35,8 +35,8 @@ def make_an_address
   )
 end
 
-def make_a_person(person_class=Person)
-  person_class.create(
+def make_a_person
+  Person.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     middle_name: Faker::Name.first_name,
@@ -80,6 +80,6 @@ test_applicant.user = test_user
 3.times { test_applicant.residences << make_a_residence }
 3.times { test_applicant.household_members << make_a_household_member }
 
-test_applicant.identity = make_a_person(Identity)
+test_applicant.identity = make_a_person
 
 test_applicant.save

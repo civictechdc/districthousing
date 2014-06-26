@@ -4,7 +4,7 @@ class Applicant < ActiveRecord::Base
   has_many :household_members_people, through: :household_members, source: :person, class_name: "Person"
   accepts_nested_attributes_for :household_members, allow_destroy: true
 
-  has_one :identity
+  belongs_to :identity, class_name: "Person"
   accepts_nested_attributes_for :identity
 
   has_many :residences

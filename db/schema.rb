@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626031323) do
+ActiveRecord::Schema.define(version: 20140626032728) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -28,9 +28,10 @@ ActiveRecord::Schema.define(version: 20140626031323) do
   end
 
   create_table "applicants", force: true do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.integer  "identity_id"
   end
 
   add_index "applicants", ["user_id"], name: "index_applicants_on_user_id"
@@ -96,7 +97,6 @@ ActiveRecord::Schema.define(version: 20140626031323) do
     t.string   "marital_status"
     t.integer  "applicant_id"
     t.string   "occupation"
-    t.string   "type"
     t.integer  "mail_address_id"
   end
 
