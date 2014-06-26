@@ -1,16 +1,18 @@
 class Applicant < ActiveRecord::Base
 
-  has_one :identity, class_name: "Person", dependent: :destroy
+  has_many :household_members
+  has_many :household_members_people, through: :household_members, source: :person, class_name: "Person"
+  accepts_nested_attributes_for :household_members, allow_destroy: true
+
+  has_one :identity
   accepts_nested_attributes_for :identity
 
   has_many :residences
-  has_many :landlords, through: :residences, class_name: "Person", dependent: :destroy
+  has_many :landlords, through: :residences, class_name: "Person"
   accepts_nested_attributes_for :landlords, allow_destroy: true
 
-  has_many :household_members, dependent: :destroy
-  accepts_nested_attributes_for :household_members, allow_destroy: true
-
   belongs_to :user
+
   attr_accessible :identity_attributes, :landlords_attributes, :household_members_attributes
 
   def preferred_attrs_for field_names
