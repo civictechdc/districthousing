@@ -2,7 +2,8 @@
 <% applicant.household_members.each.with_index do |hh, index| %>
   <%= builder.fields_for :household_members, hh do |builder| %>
     <h3><%= "Household Member #{index + 1}" %></h3>
-    <%= render partial: "people/fields", locals: { builder: builder } %>
+
+    <%= render partial: "household_members/fields", locals: { builder: builder } %>
     <hr />
   <% end %>
 <% end %>

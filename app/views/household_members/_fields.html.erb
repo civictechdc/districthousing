@@ -1,0 +1,5 @@
+<%= builder.fields_for :person do |person_builder| %>
+  <%= render partial: "people/fields", locals: { builder: person_builder } %>
+<% end %>
+
+<%= builder.text_field :relationship %>
