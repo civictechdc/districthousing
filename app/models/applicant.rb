@@ -1,14 +1,14 @@
 class Applicant < ActiveRecord::Base
 
-  has_many :household_members
-  has_many :household_members_people, through: :household_members, source: :person, class_name: "Person"
+  has_many :household_members, dependent: :destroy
+  has_many :household_members_people, through: :household_members, source: :person, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :household_members, allow_destroy: true
 
-  belongs_to :identity, class_name: "Person"
+  belongs_to :identity, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :identity
 
-  has_many :residences
-  has_many :landlords, through: :residences, class_name: "Person"
+  has_many :residences, dependent: :destroy
+  has_many :landlords, through: :residences, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :landlords, allow_destroy: true
 
   belongs_to :user

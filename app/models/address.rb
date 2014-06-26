@@ -1,6 +1,6 @@
 class Address < ActiveRecord::Base
 
-  belongs_to :applicant, dependent: :destroy
+  belongs_to :applicant
 
   attr_accessible :street, :city, :state, :zip, :apt
 
