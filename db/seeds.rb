@@ -62,7 +62,11 @@ def make_a_person
 end
 
 def make_a_residence
-  Residence.create do |r|
+  Residence.create(
+    start: rand(10*365).days.ago,
+    end: rand(10*365).days.ago,
+    reason: ["Evicted", "Voluntary"].sample
+  ) do |r|
     r.address = make_an_address
     r.landlord = make_a_person
   end
