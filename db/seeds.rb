@@ -56,7 +56,9 @@ def make_a_person(person_class=Person)
     student_status: ["Not a student", "Part-time", "Full-time"].sample,
     marital_status: ["Never married", "Married", "Widowed", "Divorced"].sample,
     occupation: ["Butcher", "Baker", "Candlestick Maker"].sample,
-  )
+  ) do |p|
+    p.mail_address = make_an_address
+  end
 end
 
 def make_a_residence

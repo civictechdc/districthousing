@@ -6,6 +6,8 @@ class Person < ActiveRecord::Base
   attr_accessible :nationality, :email, :race, :student_status, :marital_status
   attr_accessible :occupation
 
+  belongs_to :mail_address, class_name: "Address"
+
   has_many :previous_ssns
 
   belongs_to :applicant
