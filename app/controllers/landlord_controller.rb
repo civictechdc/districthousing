@@ -9,7 +9,6 @@ class LandlordController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to form_path }
-      format.js { render action: "refresh_form" }
     end
   end
 

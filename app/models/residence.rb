@@ -8,6 +8,7 @@ class Residence < ActiveRecord::Base
 
   accepts_nested_attributes_for :address
   attr_accessible :address_attributes
+
   attr_accessible :reason
   attr_accessible :start
   attr_accessible :end
