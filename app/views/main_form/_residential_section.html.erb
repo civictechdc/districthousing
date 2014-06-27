@@ -1,11 +1,13 @@
 <h2>Residence history</h2>
 <% counter = 1 %>
-<%= builder.fields_for :residences do |f| %>
-  <h3><%= "Residence #{counter}" %></h3>
-  <%= render partial: "residences/fields", locals: { f: f } %>
-  <hr />
-  <%= builder.button("Update", { class:"btn btn-default" }) %>
-  <% counter += 1 %>
+<%= bootstrap_form_for(applicant) do |f| %>
+  <%= f.fields_for :residences do |f| %>
+    <h3><%= "Residence #{counter}" %></h3>
+    <%= render partial: "residences/fields", locals: { f: f } %>
+    <hr />
+    <%= f.button("Update", { class:"btn btn-default" }) %>
+    <% counter += 1 %>
+  <% end %>
 <% end %>
 <hr />
 <%= link_to("Add a residence", new_residence_path, remote: true) %> <br />

@@ -1,28 +1,32 @@
 <h2>About you</h2>
-<%= builder.fields_for :identity do |person_builder| %>
+<%= bootstrap_form_for(applicant) do |f| %>
+  <%= f.fields_for :identity do |person_builder| %>
 
-  <div class="row">
+    <div class="row">
 
-    <div class="col-md-4">
-      <h4>About</h4>
-      <%= render "people/name", builder: person_builder %>
-      <%= render "people/contact", builder: person_builder %>
-      <%= person_builder.text_field :ssn, label: "Social security number" %>
+      <div class="col-md-4">
+        <h4>About</h4>
+        <%= render "people/name", builder: person_builder %>
+        <%= render "people/contact", builder: person_builder %>
+        <%= person_builder.text_field :ssn, label: "Social security number" %>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Mail Address</h4>
+        <%= person_builder.fields_for :mail_address do |m| %>
+          <%= render "addresses/fields", builder: m %>
+        <% end %>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Demographic</h4>
+        <%= render "people/demographic", builder: person_builder %>
+      </div>
+
     </div>
+  <% end %>
 
-    <div class="col-md-4">
-      <h4>Mail Address</h4>
-      <%= person_builder.fields_for :mail_address do |m| %>
-        <%= render "addresses/fields", builder: m %>
-      <% end %>
-    </div>
+  <%= f.button("Update", { class:"btn btn-default" }) %>
 
-    <div class="col-md-4">
-      <h4>Demographic</h4>
-      <%= render "people/demographic", builder: person_builder %>
-    </div>
-
-  </div>
 <% end %>
 
-<%= builder.button("Update", { class:"btn btn-default" }) %>

@@ -1,16 +1,13 @@
-<% section_names = %w(
-    demographic
-    household
-    residential
-    income
-    criminal
-    other
-) %>
-
-<%= render "nav", section_names: section_names %>
-
 <% section_names.each_with_index do |name, index| %>
-  <%= render("section", applicant: applicant, name: name, index: index, next_section: section_names[index + 1], previous_section: (section_names[index - 1] if index > 0)) %>
+
+  <div id="<%= name %>" class="section hide">
+    <%= render "main_form/#{name}_section", applicant: applicant %>
+  </div>
+
+  <hr />
+
+  <%= render "section_buttons", next_section: section_names[index + 1], previous_section: (section_names[index - 1] if index > 0) %>
+
 <% end %>
 
 <hr />

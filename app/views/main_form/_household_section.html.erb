@@ -1,13 +1,21 @@
 <h2>Houshold members <small>People who will live with you</small></h2>
 
-<% applicant.household_members.each.with_index do |hh, index| %>
-  <%= builder.fields_for :household_members, hh do |builder| %>
-    <h3><%= "Household Member #{index + 1}" %></h3>
-    <%= render partial: "household_members/fields", locals: { builder: builder } %>
+<%= bootstrap_form_for(applicant) do |f| %>
+
+  <% applicant.household_members.each.with_index do |hh, index| %>
+
+    <%= f.fields_for :household_members, hh do |builder| %>
+      <h3><%= "Household Member #{index + 1}" %></h3>
+      <%= render partial: "household_members/fields", locals: { builder: builder } %>
+      <hr />
+    <% end %>
+
     <hr />
+
   <% end %>
-  <%= builder.button("Update", { class:"btn btn-default" }) %>
-  <hr />
+
+  <%= f.button("Update", { class:"btn btn-default" }) %>
+
 <% end %>
 
 <%= link_to("Add a household member", new_household_member_path, remote: true) %> <br />

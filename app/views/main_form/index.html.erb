@@ -1,3 +1,14 @@
+<% section_names = %w(
+    demographic
+    household
+    residential
+    income
+    criminal
+    other
+) %>
+
+<%= render "nav", section_names: section_names %>
+
 <div id="applicantForm">
-<%= render "form", applicant: @applicant%>
+  <%= render "form", applicant: @applicant, section_names: section_names %>
 </div>
