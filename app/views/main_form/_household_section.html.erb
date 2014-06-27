@@ -7,7 +7,6 @@
     <%= f.fields_for :household_members, hh do |builder| %>
       <h3><%= "Household Member #{index + 1}" %></h3>
       <%= render partial: "household_members/fields", locals: { builder: builder } %>
-      <hr />
     <% end %>
 
     <hr />
@@ -17,5 +16,7 @@
   <%= f.button("Update", { class:"btn btn-default" }) %>
 
 <% end %>
+
+<hr />
 
 <%= link_to("Add a household member", new_household_member_path, remote: true) %> <br />
