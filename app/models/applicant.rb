@@ -10,6 +10,7 @@ class Applicant < ActiveRecord::Base
   has_many :residences, dependent: :destroy
   accepts_nested_attributes_for :residences, allow_destroy: true
   has_many :landlords, through: :residences, class_name: "Person", dependent: :destroy
+  has_many :addresses, through: :residences, class_name: "Address", dependent: :destroy
   accepts_nested_attributes_for :landlords, allow_destroy: true
 
   belongs_to :user
@@ -46,6 +47,9 @@ class Applicant < ActiveRecord::Base
     when /^LL(\d+)(.*)$/
       index = $1.to_i - 1
       delegate_field_to landlords[index], $2
+    when /^Address(\d+)(.*)$/
+      index = $1.to_i - 1
+      delegate_field_to addresses[index], $2
     when "Today"
       Date.today
     when "Now"

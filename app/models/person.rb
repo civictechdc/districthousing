@@ -37,8 +37,6 @@ class Person < ActiveRecord::Base
 
   def value_for_field field_name
     case field_name
-    when /^Address(.*)/
-      residence && residence.value_for_field($1)
     when /^Mail(.*)/
       mail_address && mail_address.value_for_field($1)
     when "FirstName"
