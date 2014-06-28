@@ -69,7 +69,7 @@
       <div id="<%=section_name%>" class="section hide">
         <%= render "main_form/#{section_name}_section", builder: f, applicant: applicant %>
       <hr />
-      <%= f.button("Update", { class:"btn btn-default" }) %>
+      <%= f.button("Update", { id: "update-button", class:"btn btn-default" }) %>
       <hr />
       <%= render("section_buttons",
                  next_section: section_names[index + 1],
@@ -80,7 +80,12 @@
 <hr />
 
 <div id="download">
-  <%= button_to 'Download forms', "/download", { class:"btn btn-default btn-lg download-forms" } %>
+  <%= button_to 'Download forms', "/download", { class:"btn btn-default btn-lg download-forms", id: 'download-button'  } %>
+  <%= content_for :javascript do %>
+    <%= javascript_tag do %>
+      $("#download-button").click(function(){$("#update-button").submit();});
+    <% end %>
+  <% end %>
 </div>
 <div id="download-warning" class="modal fade">
   <div class="modal-dialog">
