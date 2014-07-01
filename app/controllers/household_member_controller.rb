@@ -2,15 +2,8 @@ class HouseholdMemberController < ApplicationController
   before_action :set_household_member, only: [:show, :edit, :update, :destroy]
 
   def new
-    current_applicant.household_members << HouseholdMember.create do |hh|
-      hh.residence = Residence.create
-    end
-
-    @applicant = current_applicant
-
-    respond_to do |format|
-      format.html { redirect_to form_path }
-    end
+    current_applicant.household_members << HouseholdMember.create
+    redirect_to form_path
   end
 
   def update
