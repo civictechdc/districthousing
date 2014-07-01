@@ -1,18 +1,10 @@
 class ResidencesController < ApplicationController
   before_action :set_residence, only: [:show, :edit, :update, :destroy]
 
-  # GET /residences
-  def index
-    @residences = Residence.all
-  end
-
-  # GET /residences/1
-  def show
-  end
-
-  # GET /residences/new
   def new
-    @residence = Residence.new
+    current_applicant.residences << Residence.create
+
+    redirect_to form_path
   end
 
   # GET /residences/1/edit
