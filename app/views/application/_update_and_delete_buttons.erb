@@ -5,6 +5,6 @@
   <div class="col-md-6">
   </div>
   <div class="col-md-3">
-    <%= button_to 'Delete', f.object, method: :delete, class: "btn btn-danger btn-block" %>
+    <%= link_to 'Delete', f.object, method: :delete, class: "btn btn-danger btn-block", remote: true %>
   </div>
 </div>

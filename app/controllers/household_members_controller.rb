@@ -16,7 +16,7 @@ class HouseholdMembersController < ApplicationController
 
   def destroy
     @household_member.destroy
-    redirect_to form_path, notice: 'Household member removed'
+    redirect_to form_path, notice: 'Household member removed', status: :see_other
   end
 
   private
