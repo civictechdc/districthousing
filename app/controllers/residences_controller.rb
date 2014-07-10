@@ -34,7 +34,7 @@ class ResidencesController < ApplicationController
   # DELETE /residences/1
   def destroy
     @residence.destroy
-    redirect_to residences_url, notice: 'Residence was successfully destroyed.'
+    redirect_to form_path, notice: 'Residence was successfully destroyed.'
   end
 
   private

@@ -5,7 +5,8 @@
     <h3><%= "Household Member #{index + 1}" %></h3>
     <%= render partial: "household_members/fields", locals: { builder: f } %>
     <hr />
-    <%= f.button("Update", { class:"btn btn-default" }) %>
+
+    <%= render "update_and_delete_buttons", f: f %>
   <% end %>
 <% end %>
 <hr />

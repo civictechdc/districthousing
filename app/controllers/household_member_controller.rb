@@ -14,6 +14,11 @@ class HouseholdMemberController < ApplicationController
     end
   end
 
+  def destroy
+    @household_member.destroy
+    redirect_to form_path, notice: 'Household member removed'
+  end
+
   private
 
   def set_household_member

@@ -1,6 +1,4 @@
 <%= builder.fields_for :person do |person_builder| %>
-  <%= person_builder.check_box :_destroy, label: "Remove person" %>
-
   <div class="row">
 
     <div class="col-md-4">
@@ -23,6 +21,4 @@
       <h4>Demographic</h4>
       <%= render "people/demographic", builder: person_builder %>
     </div>
-
-  </div>
 <% end %>
