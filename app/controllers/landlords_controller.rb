@@ -1,4 +1,4 @@
-class LandlordController < ApplicationController
+class LandlordsController < ApplicationController
 
   def new
     current_applicant.landlords << Landlord.create do |ll|

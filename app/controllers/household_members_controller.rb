@@ -1,4 +1,4 @@
-class HouseholdMemberController < ApplicationController
+class HouseholdMembersController < ApplicationController
   before_action :set_household_member, only: [:show, :edit, :update, :destroy]
 
   def new

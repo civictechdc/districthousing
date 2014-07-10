@@ -1,4 +1,4 @@
-class ApplicantController < ApplicationController
+class ApplicantsController < ApplicationController
 
   def update
     @applicant = current_applicant
