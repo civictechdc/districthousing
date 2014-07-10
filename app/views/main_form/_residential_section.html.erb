@@ -1,7 +1,7 @@
 <h2>Residence history</h2>
 
 <% applicant.residences.each.with_index do |residence, index| %>
-  <%= bootstrap_form_for(residence) do |f| %>
+  <%= bootstrap_form_for(residence, remote: true) do |f| %>
     <h3><%= "Residence #{index + 1}" %></h3>
     <%= render partial: "residences/fields", locals: { f: f } %>
     <hr />

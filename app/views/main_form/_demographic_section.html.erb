@@ -1,5 +1,5 @@
 <h2>About you</h2>
-<%= bootstrap_form_for(applicant) do |f| %>
+<%= bootstrap_form_for(applicant, remote: true) do |f| %>
   <%= f.fields_for :identity do |person_builder| %>
 
     <div class="row">
@@ -33,4 +33,3 @@
   </div>
 
 <% end %>
-
