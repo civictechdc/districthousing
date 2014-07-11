@@ -2,7 +2,7 @@ class HouseholdMembersController < ApplicationController
   before_action :set_household_member, only: [:show, :edit, :update, :destroy]
 
   def new
-    current_applicant.household_members << HouseholdMember.create
+    current_applicant.household_members << HouseholdMember.make_a_household_member
     redirect_to form_path
   end
 
@@ -28,4 +28,5 @@ class HouseholdMembersController < ApplicationController
   def household_member_params
     params[:household_member]
   end
+
 end

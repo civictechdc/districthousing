@@ -14,6 +14,15 @@ class Person < ActiveRecord::Base
 
   belongs_to :applicant
 
+  validates :mail_address, presence: true
+  validates_associated :mail_address
+
+  def self.make_a_person
+    create do |p|
+      p.mail_address = Address.create
+    end
+  end
+
   def description
     "#{first_name} #{last_name}"
   end

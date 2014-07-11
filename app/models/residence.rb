@@ -12,4 +12,14 @@ class Residence < ActiveRecord::Base
   attr_accessible :reason
   attr_accessible :start
   attr_accessible :end
+
+  validates :applicant, :address, :landlord, presence: true
+  validates_associated :address, :landlord
+
+  def self.make_a_residence
+    create do |r|
+      r.landlord = Person.make_a_person
+      r.address = Address.create
+    end
+  end
 end

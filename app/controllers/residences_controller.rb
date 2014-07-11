@@ -2,7 +2,7 @@ class ResidencesController < ApplicationController
   before_action :set_residence, only: [:show, :edit, :update, :destroy]
 
   def new
-    current_applicant.residences << Residence.create
+    current_applicant.residences << Residence.make_a_residence
 
     redirect_to form_path
   end
