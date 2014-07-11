@@ -73,7 +73,9 @@ def make_a_residence
 end
 
 def make_a_household_member
-  HouseholdMember.create do |h|
+  HouseholdMember.create(
+    relationship: %w(Mother Father Brother Sister Daughter Son Grandfather Grandmother Friend).sample
+  ) do |h|
     h.person = make_a_person
   end
 end
