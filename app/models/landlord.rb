@@ -1,2 +1,0 @@
-class Landlord < Person
-end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615185524) do
+ActiveRecord::Schema.define(version: 20140626032728) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -19,8 +19,7 @@ ActiveRecord::Schema.define(version: 20140615185524) do
     t.string  "state"
     t.string  "zip"
     t.string  "apt"
-    t.string  "type"
-    t.integer "person_id"
+    t.integer "applicant_id"
   end
 
   create_table "aliases", force: true do |t|
@@ -29,9 +28,10 @@ ActiveRecord::Schema.define(version: 20140615185524) do
   end
 
   create_table "applicants", force: true do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.integer  "identity_id"
   end
 
   add_index "applicants", ["user_id"], name: "index_applicants_on_user_id"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 20140615185524) do
     t.integer "housing_form_id"
   end
 
+  create_table "household_members", force: true do |t|
+    t.integer "applicant_id"
+    t.integer "person_id"
+    t.string  "relationship"
+  end
+
+  add_index "household_members", ["applicant_id"], name: "index_household_members_on_applicant_id"
+  add_index "household_members", ["person_id"], name: "index_household_members_on_person_id"
+
   create_table "housing_forms", force: true do |t|
     t.string   "name"
     t.string   "uri"
@@ -57,6 +66,16 @@ ActiveRecord::Schema.define(version: 20140615185524) do
     t.float    "long"
   end
 
+  create_table "identities", id: false, force: true do |t|
+    t.integer "applicant_id", null: false
+    t.integer "person_id",    null: false
+  end
+
+  create_table "mail", id: false, force: true do |t|
+    t.integer "person_id",  null: false
+    t.integer "address_id", null: false
+  end
+
   create_table "people", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -64,8 +83,8 @@ ActiveRecord::Schema.define(version: 20140615185524) do
     t.string   "ssn"
     t.datetime "dob"
     t.string   "gender"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "phone"
     t.string   "work_phone"
     t.string   "home_phone"
@@ -76,9 +95,9 @@ ActiveRecord::Schema.define(version: 20140615185524) do
     t.string   "race"
     t.string   "student_status"
     t.string   "marital_status"
-    t.string   "type"
     t.integer  "applicant_id"
     t.string   "occupation"
+    t.integer  "mail_address_id"
   end
 
   create_table "previous_ssns", force: true do |t|
@@ -87,6 +106,21 @@ ActiveRecord::Schema.define(version: 20140615185524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "residences", force: true do |t|
+    t.integer  "applicant_id"
+    t.integer  "address_id"
+    t.date     "start"
+    t.date     "end"
+    t.string   "reason"
+    t.integer  "landlord_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "residences", ["address_id"], name: "index_residences_on_address_id"
+  add_index "residences", ["applicant_id"], name: "index_residences_on_applicant_id"
+  add_index "residences", ["landlord_id"], name: "index_residences_on_landlord_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

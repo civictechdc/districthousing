@@ -1,9 +1,13 @@
-<h2>Your landlords</h2>
-<% applicant.landlords.each.with_index do |landlord, index| %>
-  <%= builder.fields_for :landlords, landlord do |builder| %>
-    <h3><%= "Landlord #{index + 1}" %></h3>
-    <%= render partial: "landlords/fields", locals: { builder: builder } %>
+<h2>Residence history</h2>
+
+<% applicant.residences.each.with_index do |residence, index| %>
+  <%= bootstrap_form_for(residence, remote: true) do |f| %>
+    <h3><%= "Residence #{index + 1}" %></h3>
+    <%= render partial: "residences/fields", locals: { f: f } %>
     <hr />
+
+    <%= render "update_and_delete_buttons", f: f %>
   <% end %>
 <% end %>
-<%= link_to("Add a landlord", new_landlord_path, remote: true) %> <br />
+<hr />
+<%= link_to("Add a residence", new_residence_path, remote: true) %> <br />

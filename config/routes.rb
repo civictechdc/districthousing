@@ -1,15 +1,17 @@
 DchousingApps::Application.routes.draw do
+  resources :residences
+
   devise_for :users
 
-  resources :applicant
-  resources :household_member
-  resources :landlord
+  resources :applicants
+  resources :household_members
+  resources :landlords
   resources :housing_forms
   resources :salesforce, :only => [:index]
 
   get "home/index"
   get "/about", to: "home#about"
-  post "/download", to: "main_form#download"
+  get "/download", to: "main_form#download"
   get "/form", to: "main_form#index"
 
   get "/pdf_guide", to: "pdf_guide#index"

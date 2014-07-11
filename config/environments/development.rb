@@ -23,8 +23,11 @@ DchousingApps::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false
   config.serve_static_assets = true
 
   config.eager_load = false
+
+  config.action_view.logger = nil
+  config.active_record.logger = nil
 end

@@ -1,0 +1,2 @@
+module ResidencesHelper
+end

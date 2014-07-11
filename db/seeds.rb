@@ -15,6 +15,8 @@ require 'faker'
 Applicant.destroy_all
 Person.destroy_all
 User.destroy_all
+Residence.destroy_all
+Address.destroy_all
 
 # Seed a test user
 test_user = User.create(
@@ -23,8 +25,8 @@ test_user = User.create(
 )
 test_user.save
 
-def make_an_address(address_class=Address)
-  address_class.create(
+def make_an_address
+  Address.create(
     street: Faker::Address.street_address,
     city: Faker::Address.city,
     state: Faker::Address.state,
@@ -33,8 +35,8 @@ def make_an_address(address_class=Address)
   )
 end
 
-def make_a_person(person_class=Person)
-  person_class.create(
+def make_a_person
+  Person.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     middle_name: Faker::Name.first_name,
@@ -54,21 +56,36 @@ def make_a_person(person_class=Person)
     student_status: ["Not a student", "Part-time", "Full-time"].sample,
     marital_status: ["Never married", "Married", "Widowed", "Divorced"].sample,
     occupation: ["Butcher", "Baker", "Candlestick Maker"].sample,
-  ).tap do |new_person|
-    new_person.residence = make_an_address(Residence)
-    new_person.mail_address = make_an_address(MailAddress)
+  ) do |p|
+    p.mail_address = make_an_address
   end
 end
 
-test_identity = make_a_person(Identity)
-test_identity.save
+def make_a_residence
+  Residence.create(
+    start: rand(10*365).days.ago,
+    end: rand(10*365).days.ago,
+    reason: ["Evicted", "Voluntary"].sample
+  ) do |r|
+    r.address = make_an_address
+    r.landlord = make_a_person
+  end
+end
+
+def make_a_household_member
+  HouseholdMember.create(
+    relationship: %w(Mother Father Brother Sister Daughter Son Grandfather Grandmother Friend).sample
+  ) do |h|
+    h.person = make_a_person
+  end
+end
 
 test_applicant = Applicant.create
 test_applicant.user = test_user
 
-test_applicant.identity = test_identity
+3.times { test_applicant.residences << make_a_residence }
+3.times { test_applicant.household_members << make_a_household_member }
 
-3.times { test_applicant.landlords << make_a_person(Landlord) }
-3.times { test_applicant.household_members << make_a_person(HouseholdMember) }
+test_applicant.identity = make_a_person
 
 test_applicant.save

@@ -6,19 +6,22 @@ class Person < ActiveRecord::Base
   attr_accessible :nationality, :email, :race, :student_status, :marital_status
   attr_accessible :occupation
 
-  has_one :residence, dependent: :destroy
-  accepts_nested_attributes_for :residence
-  attr_accessible :residence_attributes
-
-  has_one :mail_address, dependent: :destroy
+  belongs_to :mail_address, class_name: "Address"
   accepts_nested_attributes_for :mail_address
   attr_accessible :mail_address_attributes
 
-  belongs_to :applicant
-
   has_many :previous_ssns
 
-  belongs_to :user
+  belongs_to :applicant
+
+  validates :mail_address, presence: true
+  validates_associated :mail_address
+
+  def self.make_a_person
+    create do |p|
+      p.mail_address = Address.create
+    end
+  end
 
   def description
     "#{first_name} #{last_name}"
@@ -43,8 +46,6 @@ class Person < ActiveRecord::Base
 
   def value_for_field field_name
     case field_name
-    when /^Address(.*)/
-      residence && residence.value_for_field($1)
     when /^Mail(.*)/
       mail_address && mail_address.value_for_field($1)
     when "FirstName"
