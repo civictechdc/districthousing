@@ -26,9 +26,15 @@ if window.location.pathname.match(/\/form$/)
 		
 		showDownloadWarning = ->
 			$('#download-warning').modal()
-
+ 
+		submitUpdateForm = ->
+			$('#update-button').submit()
+                
 		initialize = (e)->
-			$('.download-forms').click(showDownloadWarning)
+			$('.download-forms').click(
+				showDownloadWarning
+				submitUpdateForm 
+			)
 			firstSectionHash = $('.wizard-nav a').eq(0).attr 'href'
 			if window.location.hash.length <= 1
 				window.location.hash = firstSectionHash
