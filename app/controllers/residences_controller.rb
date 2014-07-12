@@ -4,7 +4,7 @@ class ResidencesController < ApplicationController
   def new
     current_applicant.residences << Residence.make_a_residence
 
-    redirect_to form_path
+    redirect_to apply_path
   end
 
   # GET /residences/1/edit
@@ -25,16 +25,16 @@ class ResidencesController < ApplicationController
   # PATCH/PUT /residences/1
   def update
     if @residence.update(residence_params)
-      redirect_to form_path, notice: 'Residence was successfully updated.'
+      redirect_to apply_path, notice: 'Residence was successfully updated.'
     else
-      redirect_to form_path, notice: 'Residence could not be updated.'
+      redirect_to apply_path, notice: 'Residence could not be updated.'
     end
   end
 
   # DELETE /residences/1
   def destroy
     @residence.destroy
-    redirect_to form_path, notice: 'Residence was successfully destroyed.', status: :see_other
+    redirect_to apply_path, notice: 'Residence was successfully destroyed.', status: :see_other
   end
 
   private

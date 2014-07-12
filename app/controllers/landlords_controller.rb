@@ -8,7 +8,7 @@ class LandlordsController < ApplicationController
     @applicant = current_applicant
 
     respond_to do |format|
-      format.html { redirect_to form_path }
+      format.html { redirect_to apply_path }
     end
   end
 

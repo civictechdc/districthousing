@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @landing = true
 
     if current_user
-      redirect_to form_path
+      redirect_to apply_path
     end
   end
 

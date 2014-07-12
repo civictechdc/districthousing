@@ -5,7 +5,7 @@ class ApplicantsController < ApplicationController
     @applicant.update_attributes(params[:applicant])
 
     respond_to do |format|
-      format.html { redirect_to form_path }
+      format.html { redirect_to apply_path }
     end
   end
 
