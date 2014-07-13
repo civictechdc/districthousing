@@ -1,7 +1,7 @@
 if window.location.pathname.match(/\/apply$/)
   $ ->
 
-    changeSection = (e, noscroll)->
+    changeSection = ->
       hash = window.location.hash
       sectionId = hash.substring 1
       $('.section').each ()->
@@ -17,9 +17,12 @@ if window.location.pathname.match(/\/apply$/)
           parent.toggleClass 'active', true
         else
           parent.toggleClass 'active', false
-      window.scrollTo 0, 0 unless noscroll
+
+    scrollToTop = ->
+      window.scrollTo 0, 0
 
     $(window).on 'hashchange', changeSection
+    $(window).on 'hashchange', scrollToTop
 
     showDownloadWarning = ->
       $('#download-warning').modal()
@@ -36,7 +39,7 @@ if window.location.pathname.match(/\/apply$/)
       if window.location.hash.length <= 1
         window.location.hash = firstSectionHash
       else
-        changeSection null, !!e
+        changeSection()
 
     $(document).ajaxComplete initialize
     initialize()
