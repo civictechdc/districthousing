@@ -2,13 +2,7 @@ class HousingForm < ActiveRecord::Base
   attr_accessible :name, :uri, :location, :lat, :long
   has_and_belongs_to_many :form_fields
 
-  class << self
-    def create_from_path path
-      new_form = new(uri: path)
-      new_form.initialize_from_disk!
-      new_form.save
-    end
-  end
+  after_create { initialize_from_disk! }
 
   def initialize_from_disk!
     read_fields!

@@ -5,7 +5,7 @@ FormField.delete_all
 HousingForm.transaction do
   FormField.transaction do
     Dir.glob(Rails.root.join("public/forms/*.pdf")) do |pdf_path|
-      HousingForm.create_from_path pdf_path
+      HousingForm.create(uri: pdf_path)
     end
   end
 end
