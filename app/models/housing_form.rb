@@ -5,15 +5,14 @@ class HousingForm < ActiveRecord::Base
   class << self
     def create_from_path path
       new_form = new(uri: path)
-
-      PDF_FORMS.get_field_names(path).each do |field_name|
-        new_form.form_fields << FormField.find_or_create_by(name: field_name)
-      end
-
-      new_form.detect_location!
-
+      new_form.initialize_from_disk!
       new_form.save
     end
+  end
+
+  def initialize_from_disk!
+    read_fields!
+    detect_location!
   end
 
   def name
@@ -21,6 +20,12 @@ class HousingForm < ActiveRecord::Base
       read_attribute(:name).to_s
     else
       File.basename read_attribute(:uri)
+    end
+  end
+
+  def read_fields!
+    PDF_FORMS.get_field_names(uri).each do |field_name|
+      form_fields << FormField.find_or_create_by(name: field_name)
     end
   end
 
