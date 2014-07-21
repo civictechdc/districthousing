@@ -19,9 +19,17 @@ class HousingFormsControllerTest < ActionController::TestCase
   end
 
   def test_create
+    destination = Rails.root.join("public", "forms", "form.pdf")
+
     assert_difference('HousingForm.count') do
-      post :create, housing_form: {  }
+      post :create, housing_form: {
+        new_form: fixture_file_upload('form.pdf', 'application/pdf')
+      }
     end
+
+    File.unlink destination if File.exists? destination
+
+    assert_not_nil assigns(:housing_form)
 
     assert_redirected_to housing_form_path(assigns(:housing_form))
   end

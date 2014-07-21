@@ -37,8 +37,9 @@ class HousingFormsController < ApplicationController
       file.write(uploaded_file.read)
     end
 
-    if HousingForm.create(uri: new_file_path.to_s)
-      redirect_to housing_forms_url, notice: 'Housing form was successfully created.'
+    @housing_form = HousingForm.create(uri: new_file_path.to_s)
+    if @housing_form
+      redirect_to @housing_form, notice: 'Housing form was successfully created.'
     else
       render :new
     end
