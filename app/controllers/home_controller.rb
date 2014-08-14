@@ -5,8 +5,11 @@ class HomeController < ApplicationController
     @landing = true
 
     if current_user
-      redirect_to form_path
+      redirect_to onboarding_path
     end
+  end
+
+  def onboarding
   end
 
 end
