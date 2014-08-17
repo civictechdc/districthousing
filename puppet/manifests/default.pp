@@ -107,7 +107,7 @@ class dc-housing-setup {
     command => "${as_vagrant} ${rubyhome}/bundle install",
     cwd => "/vagrant",
     logoutput => true,
-    timeout => 1800 # Bundle install takes a while
+    timeout => 900 # Bundle install takes a while
   }
 
   # Can't quite get this to work, so you'll have to do it manually the first time you log in to the server
