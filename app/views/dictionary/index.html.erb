@@ -76,7 +76,7 @@
 
 <%= render "prefix_table", prefix_descriptions: [
   [ "LL", "Landlord, starting with current. Matches <code>Address</code> of the same number" ],
-  [ "HH", "Household member" ],
+  [ "HH", "Household member other than the applicant" ],
 ] %>
 
 <h3>Addresses</h3>
@@ -162,6 +162,7 @@
 <%= render "table", field_name_descriptions: [
   [ "MarriedTickYes", "Ticked if married, empty if not" ],
   [ "MarriedTickNo", "Empty if married, ticked if not" ],
+  [ "USCitizenTick"]
 ] %>
 
 </div>
