@@ -1,4 +1,5 @@
 class Income < ActiveRecord::Base
   belongs_to :household_member
-  attr_accessible :amount, :type
+  belongs_to :income_type
+  attr_accessible :amount
 end
