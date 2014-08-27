@@ -28,6 +28,7 @@
   [ "BirthState", "State of birth"],
   [ "BirthCity", "City of birth"],
   [ "Nationality", "Nationality/citizenship"],
+  [ "USCitizen", "Is the person a US Citizen?"],
   [ "Gender", "The person's gender"],
   [ "GenderInitial", "First letter of gender"],
   [ "Mail", "Applicant's mailing address"],
@@ -79,6 +80,21 @@
   [ "HH", "Household member other than the applicant" ],
 ] %>
 
+<h3>Race and Ethnicity </h3>
+
+<%= render "table", field_name_descriptions: [
+  [ "RaceBlackT", "Applicant race identity:Black yes or no" ],
+  [ "RaceWhiteT", "Applicant race identity:White yes or no" ],
+  [ "RaceNativeAmericanT", "Applicant race identity:AmericanIndian yes or no" ],
+  [ "RaceAsianT", "Applicant race identity:Asian yes or no" ],
+  [ "RacePacificIslanderT", "Race is Hawaiian or other Pacific Islander" ],
+  [ "RaceOtherT", "Race is \"Other\"" ],
+  [ "RaceDeclineT", "Applicant race identity:Do not wish to Answer yes or no" ],
+  [ "EthnicityHispanicT", "Applicant race identity:Hispanic yes or no" ],
+  [ "EthnicityNonHispanicT", "Applicant race identity:NonHispanic yes or no" ],
+  [ "EthnicityDeclineT", "Applicant race identity:No Answer yes or no" ],
+] %>
+
 <h3>Addresses</h3>
 
 <p>
@@ -92,6 +108,10 @@
   [ "AddressState", "State" ],
   [ "AddressZip", "Zip code" ],
   [ "AddressApt", "Apartment" ],
+  [ "AddressStart", "Start date of this address" ],
+  [ "AddressEnd", "Start date of this address" ],
+  [ "AddressLeaseExpDate", "Date that the lease expires at this address" ],
+  [ "AddressRent", "Rent amount in USD at this address" ],
   [ "Mail", "Mailing full address" ],
   [ "MailStreet", "Mailing street address" ],
   [ "MailCity", "Mailing city" ],
@@ -128,6 +148,73 @@
   [ "LL2AddressState", "Previous landlord's address state" ],
 ] %>
 
+<h3>Income</h3>
+<%= render "table", field_name_descriptions: [
+  [ "IncomeMain", "" ],  
+  [ "IncomeMainAmt", ""], 
+  [ "IncomeAddlSS",  "Social Security Benefits" ],
+  [ "IncomeAddlDB",  "Disability Benefits" ],
+  [ "IncomeAddlRB",  "Retirement Benefits" ],
+  [ "IncomeAddlMI",  "Military Income" ],
+  [ "IncomeAddlPT",  "Part-time Employment Income" ],
+  [ "IncomeAddlOT",  "Overtime Income" ],
+  [ "IncomeAddlC", "Commissions" ],
+  [ "IncomeAddlCS",  "Child Support" ],
+  [ "IncomeAddlAssets", "Assets Income" ],
+  [ "IncomeAddlGA",  "Government Assistance" ],
+  [ "IncomeAddlSelfEmp", "Self Employment Income" ],
+  [ "IncomeAddlGift",  "Cash Gifts" ],
+  [ "IncomeAddlWC",  "Worker's Compensation" ],
+  [ "IncomeAddlUI",  "Unemployment Income" ],
+  [ "IncomeAddlSev",  "Severance" ],
+  [ "IncomeAddlIns", "Insurance Income" ],
+  [ "IncomeAddlAl",  "Alimony" ],
+  [ "IncomeAddlP", "Pension" ],
+  [ "IncomeAddlVB",  "Veterans Benefits" ],
+  [ "IncomeAddlLot", "Lottery" ],
+  [ "IncomeAddlLI",  "Life Insurance Income" ],
+  [ "IncomeAddlRI",  "Rental Income" ],
+  [ "IncomeAddlStock", "Stock Income" ],
+  [ "IncomeAddlTF",  "Trust Fund Income" ],
+  [ "IncomeAddlSch", "Scolarship" ]
+] %>
+
+<h3>Employment</h3>
+
+<%= render "table", field_name_descriptions: [
+  [ "EmploymentStatus", "" ],
+  [ "CurrJobTitle", "" ],
+  [ "CurrJobStartDate", "" ],
+  [ "CurJobEndDate", "" ],
+  [ "CurrEmployer", "" ],
+  [ "CurrJobAddLine1", "" ],
+  [ "CurrJobAddLine2", "" ],
+  [ "CurrJobAddCity", "" ],
+  [ "CurrJobAddState", "" ],
+  [ "CurrJobAddZip", "" ],
+  [ "CurrJobPhone", "" ],
+  [ "CurrJobTitle", "" ],
+  [ "CurrJobStartDate", "" ],
+  [ "CurJobEndDate", "" ],
+  [ "CurrEmployer", "" ],
+  [ "PrevJob1AddLine1", "" ],
+  [ "PrevJob1AddLine2", "" ],
+  [ "PrevJob1AddCity", "" ],
+  [ "PrevJob1AddState", "" ],
+  [ "PrevJob1AddZip", "" ],
+  [ "PrevJob1Phone", "" ],
+  [ "CurrJobTitle", "" ],
+  [ "PrevJob2StartDate", "" ],
+  [ "CurJobEndDate", "" ],
+  [ "CurrEmployer", "" ],
+  [ "PrevJob2AddLine1", "" ],
+  [ "PrevJob2AddLine2", "" ],
+  [ "PrevJob2AddCity", "" ],
+  [ "PrevJob2AddState", "" ],
+  [ "PrevJob2AddZip", "" ],
+  [ "PrevJob2Phone", "" ],
+] %>
+
 <h3>Yes/No values</h3>
 
 <p>
@@ -162,7 +249,7 @@
 <%= render "table", field_name_descriptions: [
   [ "MarriedTickYes", "Ticked if married, empty if not" ],
   [ "MarriedTickNo", "Empty if married, ticked if not" ],
-  [ "USCitizenTick"]
+  [ "USCitizenTickYes", "Ticked if US Citizen, empty if not" ]
 ] %>
 
 </div>
