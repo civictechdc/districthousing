@@ -1,6 +1,7 @@
 class HouseholdMember < ActiveRecord::Base
   belongs_to :applicant
   belongs_to :person
+  has_many :incomes
 
   validates :applicant, :person, presence: true
   validates_associated :person
