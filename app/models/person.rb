@@ -14,7 +14,7 @@ class Person < ActiveRecord::Base
 
   belongs_to :applicant
 
-  validates :mail_address, presence: true
+  validates :mail_address, presence: { message: "Mail address is missing" }
   validates_associated :mail_address
 
   def self.make_a_person
@@ -46,8 +46,8 @@ class Person < ActiveRecord::Base
 
   def value_for_field field_name
     case field_name
-    when /^Mail(.*)/
-      mail_address && mail_address.value_for_field($1)
+    when /^Address(.*)/
+      mail_address.value_for_field($1)
     when "FirstName"
       first_name
     when "FirstInitial"

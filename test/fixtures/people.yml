@@ -13,7 +13,7 @@ one:
   email: one@districthousing.org
   nationality: USA
   applicant_id: 1
-  type: Identity
+  mail_address_id: 1
 
 two:
   id: 2
@@ -25,29 +25,24 @@ two:
   gender: Female
   email: two@districthousing.org
   applicant_id: 2
-  type: Identity
 
 hh1:
   id: 3
   applicant_id: 1
-  type: HouseholdMember
   first_name: HH1
 
 hh2:
   id: 4
   applicant_id: 1
-  type: HouseholdMember
   first_name: HH2
 
 ll1:
   id: 5
   applicant_id: 1
-  type: Landlord
   first_name: LL1
 
 ll2:
   id: 6
   applicant_id: 1
-  type: Landlord
   first_name: LL2
 

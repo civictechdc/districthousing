@@ -4,7 +4,8 @@ class ApplicantTest < ActiveSupport::TestCase
 
   def setup
     @one = applicants(:one)
-    @two = applicants(:two)
+    valid = @one.valid?
+    assert valid, @one.errors.messages
   end
 
   test "fills basic personal information" do

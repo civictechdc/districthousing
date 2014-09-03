@@ -21,7 +21,11 @@ class ResidencesControllerTest < ActionController::TestCase
 
   def test_create
     assert_difference('Residence.count') do
-      post :create, residence: { address_id: @residence.address_id, applicant_id: @residence.applicant_id, end: @residence.end, landlord_id: @residence.landlord_id, reason: @residence.reason, start: @residence.start }
+      post :create, residence: {
+        end: residence.end,
+        reason: residence.reason,
+        start: residence.start
+      }
     end
 
     assert_redirected_to residence_path(assigns(:residence))

@@ -4,8 +4,6 @@ one:
   city: Oneville
   state: DC
   zip: 11111
-  type: "Residence"
-  person_id: 1
 
 two:
   id: 2
@@ -13,5 +11,3 @@ two:
   city: Two Town
   state: AK
   zip: 22222
-  type: "MailAddress"
-  person_id: 1
