@@ -1,5 +1,6 @@
 DchousingApps::Application.routes.draw do
   resources :residences
+  resources :incomes
 
   devise_for :users
 
