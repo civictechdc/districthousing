@@ -1,0 +1,19 @@
+<% if income.errors.any? %>abc
+  <div class="validation">
+    <h2>The following <%= pluralize(income.errors.count, "error") %> prohibited this income from being saved:</h2>
+    <ul>
+      <% income.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-md-4">
+    <%= f.collection_select :income_type_id, IncomeType.all, :id, :label, include_blank: true %>
+  </div>
+
+  <div class="col-md-4">
+    <%= f.text_field :amount, label: "Amount" %>
+  </div>
+</div>
