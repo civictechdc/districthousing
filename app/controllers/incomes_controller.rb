@@ -23,8 +23,11 @@ class IncomesController < ApplicationController
       redirect_to form_path, notice: 'Income was successfully updated.'
     else
       #TODO: store errors in flash and display on redirect (@income.errors.full_messages)
+      flash[:errors] = @income.errors.full_messages
       redirect_to form_path, notice: 'Unable to update income.'
     end
+    logger.debug "#{current_applicant}"
+    logger.debug "#{current_applicant.incomes_by_type.inspect}"
   end
 
   # DELETE /incomes/1

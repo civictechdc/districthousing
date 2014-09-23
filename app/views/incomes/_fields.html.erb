@@ -1,8 +1,8 @@
-<% if income.errors.any? %>abc
+<% if flash[:errors] != nil && flash[:errors].any? %>
   <div class="validation">
-    <h2>The following <%= pluralize(income.errors.count, "error") %> prohibited this income from being saved:</h2>
+    The following error(s) prohibited this income from being saved:
     <ul>
-      <% income.errors.full_messages.each do |msg| %>
+      <% flash[:errors].each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
