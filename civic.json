@@ -8,7 +8,9 @@
   ],
   "bornAt": "Code for DC",
   "type": "",
-  "categories": [], 
+  "categories": [
+    {"category":"Housing"}
+  ], 
   "geography": "Washington, DC",
   "contact": [
     {
@@ -17,6 +19,6 @@
       "twitter": "@mlouie"
     }
   ],
-  "communityPartner": "Bread for City",
-  "moreInfoLink": "https://hackpad.com/Code-for-DC-District-Housing-KlQ2UbX0Imc"
+  "communityPartner": {"Bread for City":"http://www.breadforthecity.org/"},
+  "moreInfo": "https://hackpad.com/Code-for-DC-District-Housing-KlQ2UbX0Imc"
 }
