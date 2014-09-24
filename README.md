@@ -15,3 +15,5 @@ The seed data creates a test user account with information pre-populated.  The l
 
     Username: testuser@districthousing.org
     Password: password
+
+As a demo, the app can be found at http://districthousing.runningen.net/
