@@ -59,5 +59,17 @@ class Applicant < ActiveRecord::Base
       identity.value_for_field(field_name)
     end
   end
+  
+  # returns an inumerable of incomes, aggregated by type and regardless of household member
+  def incomes_by_type
+    incomes = Hash.new(0)
+    household_members.each do |member|
+      member.incomes.each do |income|
+        incomes[income.income_type_id] += income.amount
+      end
+    end
+    # replace income type ID with Label value and sort in descending order
+    Hash[incomes.map {|k, v| [IncomeType.find(k).label, v] }].sort_by {|k, v| v}.reverse
+  end
 
 end

@@ -17,6 +17,7 @@ Person.destroy_all
 User.destroy_all
 Residence.destroy_all
 Address.destroy_all
+Income.destroy_all
 
 # Seed a test user
 test_user = User.create(
@@ -89,3 +90,31 @@ test_applicant.user = test_user
 test_applicant.identity = make_a_person
 
 test_applicant.save
+
+#Populate income_types
+IncomeType.destroy_all
+IncomeType.create(name: "salary", label: "Salary / Full-Time Employment Income", active: true)
+IncomeType.create(name: "military", label: "Military Income", active: true)
+IncomeType.create(name: "part-time", label: "Part-Time Employment Income", active: true)
+IncomeType.create(name: "self", label: "Self-Employment Income", active: true)
+IncomeType.create(name: "social_security", label: "Social Security Income", active: true)
+IncomeType.create(name: "disability_benefits", label: "Disability Benefits", active: true)
+IncomeType.create(name: "military", label: "Military Income", active: true)
+IncomeType.create(name: "veterans_benefits", label: "Veterans Benefits", active: true)
+IncomeType.create(name: "commissions", label: "Commissions", active: true)
+IncomeType.create(name: "child_support", label: "Child Support", active: true)
+IncomeType.create(name: "rental", label: "Rental Income", active: true)
+IncomeType.create(name: "stock", label: "Stock Income", active: true)
+IncomeType.create(name: "insurance", label: "Insurance Income", active: true)
+IncomeType.create(name: "trust_fund", label: "Trust Fund Income", active: true)
+IncomeType.create(name: "government_assistance", label: "Government Assistance", active: true)
+IncomeType.create(name: "cash_gifts", label: "Cash Gifts", active: true)
+IncomeType.create(name: "workers_compensation", label: "Worker's Compensation", active: true)
+IncomeType.create(name: "severance", label: "Severance", active: true)
+IncomeType.create(name: "lottery", label: "Lottery", active: true)
+IncomeType.create(name: "alimony", label: "Alimony", active: true)
+IncomeType.create(name: "scholarship", label: "Scholarship", active: true)
+
+
+
+

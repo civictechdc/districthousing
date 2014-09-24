@@ -1,0 +1,19 @@
+<% if flash[:errors] != nil && flash[:errors].any? %>
+  <div class="validation">
+    The following error(s) prohibited this income from being saved:
+    <ul>
+      <% flash[:errors].each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-md-4">
+    <%= f.collection_select :income_type_id, IncomeType.all, :id, :label, include_blank: true %>
+  </div>
+
+  <div class="col-md-4">
+    <%= f.text_field :amount, label: "Amount" %>
+  </div>
+</div>
