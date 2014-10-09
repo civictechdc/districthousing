@@ -1,5 +1,5 @@
 class PdfGuideController < ApplicationController
   def index
-    @applicant = current_applicant
+    @applicant = sample_applicant
   end
 end
