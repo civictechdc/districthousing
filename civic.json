@@ -12,13 +12,11 @@
     {"category":"Housing"}
   ], 
   "geography": "Washington, DC",
-  "contact": [
-    {
+  "contact": {
       "name": "Marcus Louie",
       "email": "",
       "twitter": "@mlouie"
-    }
-  ],
+  },
   "communityPartner": {"Bread for City":"http://www.breadforthecity.org/"},
   "politicalEntity": {},
   "governmentPartner": {},
