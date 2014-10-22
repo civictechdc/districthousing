@@ -9,14 +9,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">District Housing</a>
+        <%= link_to "District Housing", root_path, class: 'navbar-brand'%>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
 
-          <li><%= link_to "Apply", root_path %></li>
+          <li><%= link_to "Apply", form_path %></li>
           <li><%= link_to "Locations", housing_forms_path %></li>
           <li><%= link_to "How to Add a PDF", pdf_guide_path %></li>
           <li><%= link_to "Field Name Dictionary", dictionary_path %></li>

@@ -22,13 +22,14 @@ showDownloadWarning = ->
   $('#download-warning').modal()
 
 submitUpdateForm = ->
-  $('#update-button').submit()
+  $('.update-button').submit()
+
+handleDownloadButton = ->
+  showDownloadWarning()
+  submitUpdateForm()
 
 initialize = (e)->
-  $('.download-forms').click(
-    showDownloadWarning
-    submitUpdateForm
-  )
+  $('#download-button').click(handleDownloadButton)
   firstSectionHash = $('.wizard-nav a').eq(0).attr 'href'
   if window.location.hash.length <= 1
     window.location.hash = firstSectionHash

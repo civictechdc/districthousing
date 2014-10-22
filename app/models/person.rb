@@ -90,7 +90,7 @@ class Person < ActiveRecord::Base
       nationality
     when "MaritalStatus"
       marital_status
-    when "Student"
+    when "StudentStatus"
       student_status
     when "Occupation"
       occupation
