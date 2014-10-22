@@ -9,17 +9,20 @@ class ResidencesControllerTest < ActionController::TestCase
   end
 
   def test_index
+    sign_in users(:one)
     get :index
     assert_response :success
     assert_not_nil assigns(:residences)
   end
 
   def test_new
+    sign_in users(:one)
     get :new
     assert_response :success
   end
 
   def test_create
+    sign_in users(:one)
     assert_difference('Residence.count') do
       post :create, residence: {
         end: residence.end,
@@ -32,11 +35,13 @@ class ResidencesControllerTest < ActionController::TestCase
   end
 
   def test_show
+    sign_in users(:one)
     get :show, id: residence
     assert_response :success
   end
 
   def test_edit
+    sign_in users(:one)
     get :edit, id: residence
     assert_response :success
   end
@@ -47,6 +52,7 @@ class ResidencesControllerTest < ActionController::TestCase
   end
 
   def test_destroy
+    sign_in users(:one)
     assert_difference('Residence.count', -1) do
       delete :destroy, id: residence
     end

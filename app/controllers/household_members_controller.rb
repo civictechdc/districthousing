@@ -1,4 +1,5 @@
 class HouseholdMembersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_household_member, only: [:show, :edit, :update, :destroy]
 
   def new

@@ -19,6 +19,7 @@ class HousingFormsControllerTest < ActionController::TestCase
   end
 
   def test_create
+    sign_in users(:one)
     destination = Rails.root.join("public", "forms", "form.pdf")
 
     assert_difference('HousingForm.count') do
@@ -50,6 +51,7 @@ class HousingFormsControllerTest < ActionController::TestCase
   end
 
   def test_destroy
+    sign_in users(:one)
     assert_difference('HousingForm.count', -1) do
       delete :destroy, id: housing_form
     end

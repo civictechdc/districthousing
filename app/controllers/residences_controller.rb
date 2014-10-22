@@ -1,4 +1,7 @@
 class ResidencesController < ApplicationController
+  respond_to :json
+
+  before_action :authenticate_user!
   before_action :set_residence, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -16,7 +19,7 @@ class ResidencesController < ApplicationController
     @residence = Residence.new(residence_params)
 
     if @residence.save
-      redirect_to @residence, notice: 'Residence was successfully created.'
+      format.json { render :show, status: :created, location: @residence }
     else
       render :new
     end

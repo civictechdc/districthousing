@@ -1,0 +1,9 @@
+three:
+  applicant_id: 1
+  person_id: 3
+  relationship: Grandmother
+
+four:
+  applicant_id: 1
+  person_id: 4
+  relationship: Son

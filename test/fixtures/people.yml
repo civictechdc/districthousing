@@ -28,21 +28,27 @@ two:
 
 hh1:
   id: 3
+  phone: (333) 333-3333
   applicant_id: 1
   first_name: HH1
 
 hh2:
   id: 4
+  phone: (444) 444-4444
   applicant_id: 1
   first_name: HH2
 
 ll1:
   id: 5
+  phone: (555) 555-5555
   applicant_id: 1
   first_name: LL1
+  mail_address_id: 1
 
 ll2:
   id: 6
+  phone: (666) 666-6666
   applicant_id: 1
   first_name: LL2
+  mail_address_id: 2
 

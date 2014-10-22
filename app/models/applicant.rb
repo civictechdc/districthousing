@@ -7,7 +7,7 @@ class Applicant < ActiveRecord::Base
   belongs_to :identity, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :identity
 
-  has_many :residences, dependent: :destroy
+  has_many :residences, ->{ order(end: :desc) }, dependent: :destroy
   accepts_nested_attributes_for :residences, allow_destroy: true
   has_many :landlords, through: :residences, class_name: "Person", dependent: :destroy
   has_many :addresses, through: :residences, class_name: "Address", dependent: :destroy

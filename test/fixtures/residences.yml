@@ -2,17 +2,17 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  applicant: 
-  address: 
-  start: 2014-06-25
+  applicant_id: 1
+  address_id: 1
+  start: 2013-06-25
   end: 2014-06-25
-  reason: MyString
-  landlord: 
+  reason: Changed jobs
+  landlord_id: 5
 
 two:
-  applicant: 
-  address: 
-  start: 2014-06-25
-  end: 2014-06-25
-  reason: MyString
-  landlord: 
+  applicant_id: 1
+  address_id: 2
+  start: 2012-06-25
+  end: 2013-06-25
+  reason: Neighbors annoying
+  landlord_id: 6

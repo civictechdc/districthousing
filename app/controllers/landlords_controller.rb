@@ -1,4 +1,5 @@
 class LandlordsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     current_applicant.landlords << Landlord.create do |ll|

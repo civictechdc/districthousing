@@ -1,4 +1,5 @@
 class ApplicantsController < ApplicationController
+  before_action :authenticate_user!
 
   def update
     @applicant = current_applicant
