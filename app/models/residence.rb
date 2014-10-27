@@ -12,6 +12,9 @@ class Residence < ActiveRecord::Base
   attr_accessible :reason
   attr_accessible :start
   attr_accessible :end
+  attr_accessible :applicant_id
+  attr_accessible :address_id
+  attr_accessible :landlord_id
 
   validates :applicant, :address, :landlord, presence: true
   validates_associated :address, :landlord

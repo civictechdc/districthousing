@@ -8,12 +8,14 @@ class HousingFormsControllerTest < ActionController::TestCase
   end
 
   def test_index
+    sign_in users(:one)
     get :index
     assert_response :success
     assert_not_nil assigns(:housing_forms)
   end
 
   def test_new
+    sign_in users(:one)
     get :new
     assert_response :success
   end
@@ -36,16 +38,19 @@ class HousingFormsControllerTest < ActionController::TestCase
   end
 
   def test_show
+    sign_in users(:one)
     get :show, id: housing_form
     assert_response :success
   end
 
   def test_edit
+    sign_in users(:one)
     get :edit, id: housing_form
     assert_response :success
   end
 
   def test_update
+    sign_in users(:one)
     put :update, id: housing_form, housing_form: {  }
     assert_redirected_to housing_form_path(assigns(:housing_form))
   end
