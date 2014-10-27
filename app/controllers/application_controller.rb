@@ -22,4 +22,10 @@ class ApplicationController < ActionController::Base
       applicant.save
     end
   end
+
+  def sample_applicant
+    # FIXME: Add an actual sample applicant with a whole life story and everything.
+    Applicant.first
+  end
+
 end
