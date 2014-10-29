@@ -114,7 +114,3 @@ IncomeType.create(name: "severance", label: "Severance", active: true)
 IncomeType.create(name: "lottery", label: "Lottery", active: true)
 IncomeType.create(name: "alimony", label: "Alimony", active: true)
 IncomeType.create(name: "scholarship", label: "Scholarship", active: true)
-
-
-
-
