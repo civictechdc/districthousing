@@ -1,5 +1,5 @@
 class HousingFormsController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_housing_form, only: [:show, :edit, :update, :destroy]
 
   # GET /housing_forms

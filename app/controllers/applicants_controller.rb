@@ -1,5 +1,21 @@
 class ApplicantsController < ApplicationController
-  before_action :authenticate_user!
+
+  def create
+    @applicant = Applicant.new
+
+    @applicant.identity = Person.new
+    @applicant.identity.mail_address = Address.new
+
+    if @applicant.save
+      redirect_to @applicant
+    else
+      render :new
+    end
+  end
+
+  def show
+    @applicant = Applicant.find(params[:id])
+  end
 
   def update
     @applicant = current_applicant

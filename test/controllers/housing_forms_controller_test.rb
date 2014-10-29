@@ -8,7 +8,6 @@ class HousingFormsControllerTest < ActionController::TestCase
   end
 
   def test_index
-    sign_in users(:one)
     get :index
     assert_response :success
     assert_not_nil assigns(:housing_forms)
@@ -38,7 +37,6 @@ class HousingFormsControllerTest < ActionController::TestCase
   end
 
   def test_show
-    sign_in users(:one)
     get :show, id: housing_form
     assert_response :success
   end
