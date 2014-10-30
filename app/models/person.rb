@@ -51,15 +51,15 @@ class Person < ActiveRecord::Base
     when "FirstName"
       first_name
     when "FirstInitial"
-      first_name.first.upcase
+      first_name.to_s.first.upcase
     when "LastName"
       last_name
     when "LastInitial"
-      last_name.first.upcase
+      last_name.to_s.first.upcase
     when "MiddleName"
       middle_name
     when "MiddleInitial"
-      middle_name.first.upcase
+      middle_name.to_s.first.upcase
     when /^(Full)?Name\d*/
       full_name
     when "DOB"
@@ -79,7 +79,7 @@ class Person < ActiveRecord::Base
     when "Email"
       email
     when "GenderInitial"
-      gender && gender[0] || ""
+      gender.to_s.first
     when "Gender"
       gender
     when "PreferredPhone"
