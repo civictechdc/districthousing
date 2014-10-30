@@ -5,6 +5,6 @@ class PdfGuideControllerTest < ActionController::TestCase
 
   def test_index
     get :index
-    assert_not_nil assigns(:applicant)
   end
+
 end

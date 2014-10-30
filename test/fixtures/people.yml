@@ -52,3 +52,7 @@ ll2:
   first_name: LL2
   mail_address_id: 2
 
+sample:
+  id: 7
+  first_name: Mister
+  last_name: Sample

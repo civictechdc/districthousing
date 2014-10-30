@@ -5,3 +5,8 @@ one:
 
 two:
   id: 2
+
+sample:
+  id: 3
+  user_id: 3
+  identity_id: 7

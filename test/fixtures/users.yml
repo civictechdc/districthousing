@@ -5,3 +5,7 @@ one:
 two:
   id: 2
   email: fizzbuzz@bar.baz
+
+sample:
+  id: 3
+  role: <%= User::USER_ROLES[:sample] %>

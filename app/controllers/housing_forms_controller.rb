@@ -14,7 +14,7 @@ class HousingFormsController < ApplicationController
 
   # GET /housing_forms/1
   def show
-    @applicant = sample_applicant
+    @applicant = current_applicant
     field_results = @housing_form.field_results @applicant
     @unknown_fields = field_results.select { |k,v| v.is_a? UnknownField }
     @known_fields = field_results.reject { |k,v| v.is_a? UnknownField }

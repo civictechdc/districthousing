@@ -18,15 +18,18 @@ class ApplicationController < ActionController::Base
   end
 
   def current_applicant
-    current_user.applicants.first_or_create.tap do |applicant|
-      applicant.create_identity if applicant.identity.nil?
-      applicant.save
+    if user_signed_in?
+      current_user.applicants.first_or_create.tap do |applicant|
+        applicant.create_identity if applicant.identity.nil?
+        applicant.save
+      end
+    else
+      sample_applicant
     end
   end
 
   def sample_applicant
-    # FIXME: Add an actual sample applicant with a whole life story and everything.
-    Applicant.first
+    User.find_by(role: User::USER_ROLES[:sample]).applicants.first
   end
 
 end

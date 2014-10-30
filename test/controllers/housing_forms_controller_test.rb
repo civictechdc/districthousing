@@ -37,8 +37,18 @@ class HousingFormsControllerTest < ActionController::TestCase
   end
 
   def test_show
+    sign_in users(:one)
     get :show, id: housing_form
     assert_response :success
+
+    assert_equal 1, assigns(:applicant).id
+  end
+
+  def test_show_no_login
+    get :show, id: housing_form
+    assert_response :success
+
+    assert_equal 3, assigns(:applicant).id
   end
 
   def test_edit
