@@ -16,20 +16,22 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
 
+          <li><%= link_to "About", about_path %></li>
           <li><%= link_to "Apply", apply_path %></li>
           <li><%= link_to "Locations", housing_forms_path %></li>
           <li><%= link_to "How to Add a PDF", pdf_guide_path %></li>
           <li><%= link_to "Field Name Dictionary", dictionary_path %></li>
+          <% if current_user %>
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => "delete" %></li>
+          <% else %>
+            <li><%= link_to "Log In", new_user_session_path %></li>
+            <li><%= link_to "Create an Account", new_user_registration_path %></li>
+          <% end %>
 
           <% if current_user && current_user.is_admin? %>
             <li><%= link_to "Salesforce", salesforce_index_path %></li>
           <% end %>
 
-          <li><%= link_to "About", about_path %></li>
-
-          <% if current_user %>
-            <li><%= link_to "Sign Out", destroy_user_session_path, :method => "delete" %></li>
-          <% end %>
 
         </ul>
 

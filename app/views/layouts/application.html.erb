@@ -13,13 +13,9 @@
 
 </head>
 
-<body <%= "id=landing" if @landing %> >
+<body>
 
-  <% if @no_sidebar %>
-    <div class="logo-image" id="fade-in"><%= image_tag "district-housing-logo-small.png" %></div>
-  <% else %>
-    <%= render "layouts/navbar" %>
-  <% end %>
+  <%= render "layouts/navbar" %>
 
   <div class="container">
     <%= yield %>

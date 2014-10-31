@@ -1,22 +1,5 @@
-<div>
-
-  <div class="center_signup header_row" id="fade-in">
-    <h1>District Housing</h1>
-  </div>
-
-  <div class="center_signup">
-    <%= link_to "Apply", new_user_registration_path, class: "apply-button"%>
-    <%= link_to "Log In", new_user_session_path, class: "login-button"%>
-    <%= link_to "Form Field Dictionary", dictionary_path, class: "btn btn-info"%>
-    <%= link_to "How to prepare a PDF", pdf_guide_path, class: "btn btn-info"%>
-  </div>
-
-  <div class="center_signup description">
-    <h2>Bringing DC closer to home</h2>
-
-    <p id="about">Bread for the City and Code for DC are proud to present District Housing, a complete, streamlined application that opens the door to the various affordable housing options in Washington, DC.</p>
-    <p id="more-about"><%= link_to "More about us", about_path %><i class="icon-arrow-right"></i></p>
-  </div>
-
-</div>
-<script type="text/javascript">$("#fade-in").delay(300).animate({opacity:1}, 500);</script>
+<h1>District Housing <small>Bringing DC closer to home</small></h1>
+<div class="center-block">
+  <p><%= link_to "Log In", new_user_session_path, class: "btn btn-lg btn-info"%></p>
+  <p><%= link_to "More about us", about_path %><i class="icon-arrow-right"></i></p>
+</div

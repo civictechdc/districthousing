@@ -47,9 +47,9 @@ a {
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: $font-stack !important;
-    text-transform: none;
-  }
+  font-family: $font-stack !important;
+  text-transform: none;
+}
 
 
 .edge-bar {
@@ -69,8 +69,8 @@ h1, h2, h3, h4, h5 {
   }
 
   .about-text {
-  margin: 5% 0 5% 5%;
-  font-size: 18px;
+    margin: 5% 0 5% 5%;
+    font-size: 18px;
   }
 }
 
@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .signup-button
-  {
+{
   border: 5px solid #27ae60;
   width: 250px !important;
   height: 35px;
@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5 {
 
 
 .reset-pw
-  {
+{
   border: 5px solid #27ae60;
   width: 400px !important;
   height: 35px;
@@ -235,57 +235,45 @@ body {
 
 /*** LANDING PAGE ***/
 
-#fade-in {
-  /*opacity: 0;*/
-}
-
 .center_signup {
   text-align: center;
   color: #2c3e50;
   padding: 1% 0 1% 0;
-}
 
-.center_signup {
   .header_row {
     margin: 0;
     background-color: $red;
     height: 100px;
-
-  }
-  .h1 {
-    color: white !important;
-    font-weight: normal;
-    font-size: 18px;
   }
 }
 
 .logo-image {
-    float: left;
-    clear: both;
-    padding-left: 3%;
-    padding-top: 1%;
-    position: absolute;
+  float: left;
+  clear: both;
+  padding-left: 3%;
+  padding-top: 1%;
+  position: absolute;
 
-      img {
-        display: inline;
-        float: left;
-        display: inline;
-        max-width: 20% !important;
-        height: auto;
-        -moz-transition: all 0.6s ease-in-out;
-        -webkit-transition: all 0.6s ease-in-out;
-        -o-transition: all 0.6s ease-in-out;
-        -ms-transition: all 0.6s ease-in-out;
-        transition: all 0.6s ease-in-out;
-        &:hover {
-          -moz-transform: rotate(360deg);
-          -webkit-transform: rotate(360deg);
-          -o-transform: rotate(360deg);
-          -ms-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
-      }
+  img {
+    display: inline;
+    float: left;
+    display: inline;
+    max-width: 20% !important;
+    height: auto;
+    -moz-transition: all 0.6s ease-in-out;
+    -webkit-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    -ms-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+    &:hover {
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
+  }
+}
 
 .center_signup {
   p {
@@ -325,12 +313,12 @@ body {
   }
 
   h2 {
-  font-size: 40px;
-  font-weight: normal;
-  display: block;
-  float: none;
-  margin: 0 auto;
-  margin-top: 5%;
+    font-size: 40px;
+    font-weight: normal;
+    display: block;
+    float: none;
+    margin: 0 auto;
+    margin-top: 5%;
   }
 }
 
@@ -373,9 +361,9 @@ body {
 }
 
 .icon-arrow-left {
-    padding-right: 5px;
-    color: $red;
-  }
+  padding-right: 5px;
+  color: $red;
+}
 
 .footer-logo {
   max-width: 100px;
