@@ -1,0 +1,10 @@
+<% unless @applicants.empty? %>
+  <p>Who is applying for housing?<p>
+  <% @applicants.each do |applicant| %>
+    <%= link_to applicant.description, applicant, class: "btn btn-lg btn-info"%>
+  <% end %>
+<% else %>
+  <p>Looks like you don't have any applicants yet.  You should create one!</p>
+<% end %>
+
+<p><%= link_to "Create a new applicant", new_applicant_path, class: "btn btn-lg btn-success"%></p>

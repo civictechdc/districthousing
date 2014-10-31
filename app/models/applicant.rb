@@ -62,7 +62,7 @@ class Applicant < ActiveRecord::Base
       identity && identity.value_for_field(field_name) || ""
     end
   end
-  
+
   # returns an inumerable of incomes, aggregated by type and regardless of household member
   def incomes_by_type
     incomes = Hash.new(0)

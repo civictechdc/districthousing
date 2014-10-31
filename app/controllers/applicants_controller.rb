@@ -7,7 +7,7 @@ class ApplicantsController < ApplicationController
     @applicant.identity.mail_address = Address.new
 
     if @applicant.save
-      redirect_to @applicant
+      redirect_to apply_path
     else
       render :new
     end
