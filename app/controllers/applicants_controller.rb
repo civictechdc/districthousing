@@ -1,13 +1,22 @@
 class ApplicantsController < ApplicationController
 
+  def new
+  end
+
   def create
     @applicant = Applicant.new
 
-    @applicant.identity = Person.new
+    @applicant.identity = Person.new(
+      first_name: params[:first_name],
+      last_name: params[:last_name]
+    )
+
+    @applicant.user = current_user
+
     @applicant.identity.mail_address = Address.new
 
     if @applicant.save
-      redirect_to apply_path
+      redirect_to home_index_path
     else
       render :new
     end
