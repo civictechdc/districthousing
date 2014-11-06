@@ -9,6 +9,7 @@ DchousingApps::Application.routes.draw do
   resources :landlords
   resources :housing_forms
   resources :salesforce, :only => [:index]
+  resources :people
 
   get "home/index"
   get "/about", to: "home#about"

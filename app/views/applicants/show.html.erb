@@ -1,10 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<div class="col-md-6">
+<div class="row">
+  <h2>Identity</h2>
+  <%= render partial: 'people/summary', locals: { person: @applicant.identity } %>
+  <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
+</div>
 
-  <p>
-  <b>Identity:</b>
-  <%= @applicant.description %>
-  </p>
+<div class="row">
+  <h2>Household members</h2>
+  <% @applicant.household_members_people.each do |h| %>
+    <%= render partial: 'people/summary', locals: { person: h } %>
+  <%= link_to "Edit", edit_person_path(h), class: "btn btn-info"%>
+  <% end %>
+</div>
 
+<div class="row">
+  <h2>Residence history</h2>
+  <% @applicant.residences.each do |r| %>
+    <%= render partial: 'residences/summary', locals: { residence: r } %>
+    <%= link_to "Edit", edit_residence_path(r), class: "btn btn-info"%>
+  <% end %>
 </div>

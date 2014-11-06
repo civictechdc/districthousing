@@ -6,16 +6,25 @@ class ApplicantsController < ApplicationController
   def create
     @applicant = Applicant.new
 
-    @applicant.identity = Person.new(
+    identity = Person.new(
       first_name: params[:first_name],
-      last_name: params[:last_name]
+      last_name: params[:last_name],
     )
 
-    @applicant.user = current_user
+    identity.applicant = @applicant
 
+    @applicant.identity = identity
+    @applicant.user = current_user
     @applicant.identity.mail_address = Address.new
 
-    if @applicant.save
+    success = false
+
+    Applicant.transaction do
+      success = @applicant.save
+      success = identity.save && success
+    end
+
+    if success
       redirect_to home_index_path
     else
       render :new

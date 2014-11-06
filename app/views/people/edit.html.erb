@@ -1,0 +1,31 @@
+<h2>About the applicant</h2>
+
+<%= bootstrap_form_for(@person) do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>About</h4>
+      <%= render 'people/name', builder: f %>
+      <%= render "people/contact", builder: f %>
+      <%= f.text_field :ssn, label: "Social security number" %>
+    </div>
+
+    <div class="col-md-4">
+      <h4>Mail Address</h4>
+      <%= f.fields_for :mail_address do |m| %>
+        <%= render "addresses/fields", builder: m %>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <h4>Demographic</h4>
+      <%= render "people/demographic", builder: f %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <%= f.button("Update", { class:"btn btn-default btn-primary btn-block update-button" }) %>
+    </div>
+  </div>
+
+<% end %>
