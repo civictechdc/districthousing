@@ -24,19 +24,19 @@ test_user = User.create(
   :email => "testuser@districthousing.org",
   :password => "password"
 )
-test_user.save
 
 test_applicant = ApplicantFactory.make_a_sample_applicant
 test_applicant.user = test_user
 test_applicant.save
+test_user.save
 
 sample_user = User.new
 sample_user.role = User::USER_ROLES[:sample]
-sample_user.save(validate: false)
 
 sample_applicant = ApplicantFactory.make_a_sample_applicant
 sample_applicant.user = sample_user
 sample_applicant.save
+sample_user.save(validate: false)
 
 #Populate income_types
 IncomeType.destroy_all

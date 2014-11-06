@@ -17,9 +17,6 @@ class Applicant < ActiveRecord::Base
 
   attr_accessible :identity_attributes, :landlords_attributes, :household_members_attributes, :residences_attributes
 
-  validates :identity, presence: true
-  validates_associated :identity
-
   def preferred_attrs_for field_names
     field_names.map do |field_name|
       begin

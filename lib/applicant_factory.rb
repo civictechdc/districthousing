@@ -12,7 +12,7 @@ module ApplicantFactory
       )
     end
 
-    def make_a_person
+    def make_a_person(applicant)
       Person.create(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
@@ -32,38 +32,41 @@ module ApplicantFactory
         race: ["White", "Black", "American Indian", "Asian", "Pacific Islander"].sample,
         student_status: ["Not a student", "Part-time", "Full-time"].sample,
         marital_status: ["Never married", "Married", "Widowed", "Divorced"].sample,
-        occupation: ["Butcher", "Baker", "Candlestick Maker"].sample,
+        occupation: ["Butcher", "Baker", "Candlestick Maker"].sample
       ) do |p|
         p.mail_address = make_an_address
+        p.applicant = applicant
       end
     end
 
-    def make_a_residence
+    def make_a_residence(applicant)
       Residence.create(
         start: rand(10*365).days.ago,
         end: rand(10*365).days.ago,
         reason: ["Evicted", "Voluntary"].sample
       ) do |r|
         r.address = make_an_address
-        r.landlord = make_a_person
+        r.landlord = make_a_person(applicant)
       end
     end
 
-    def make_a_household_member
+    def make_a_household_member(applicant)
       HouseholdMember.create(
         relationship: %w(Mother Father Brother Sister Daughter Son Grandfather Grandmother Friend).sample
       ) do |h|
-        h.person = make_a_person
+        h.person = make_a_person(applicant)
       end
     end
 
     def make_a_sample_applicant
       test_applicant = Applicant.create
 
-      3.times { test_applicant.residences << make_a_residence }
-      3.times { test_applicant.household_members << make_a_household_member }
+      3.times { test_applicant.residences << make_a_residence(test_applicant) }
+      3.times { test_applicant.household_members << make_a_household_member(test_applicant) }
 
-      test_applicant.identity = make_a_person
+      test_applicant.identity = make_a_person(test_applicant)
+
+      test_applicant.save
 
       test_applicant
     end
