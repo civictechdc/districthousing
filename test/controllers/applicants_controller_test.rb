@@ -15,13 +15,14 @@ class ApplicantsControllerTest < ActionController::TestCase
       first_name: "test_first_name",
       last_name: "test_last_name"
     }
-    assert_redirected_to home_index_path
 
     created_applicant = Applicant.joins(:identity).
       where(
         people: {
           first_name: "test_first_name",
           last_name: "test_last_name" })
+
+    assert_redirected_to created_applicant.first
 
     assert_equal users(:one).id, created_applicant.first.user_id
   end

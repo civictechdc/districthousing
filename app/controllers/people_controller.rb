@@ -13,6 +13,11 @@ class PeopleController < ApplicationController
     end
   end
 
+  def destroy
+    Person.find(params[:id]).destroy
+    redirect_to current_applicant, notice: 'Person removed', status: :see_other
+  end
+
   private
 
   def housing_form_params

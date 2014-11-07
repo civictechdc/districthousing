@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <h2>Identity</h2>
+  <h2>Applicant</h2>
   <%= render partial: 'people/summary', locals: { person: @applicant.identity } %>
   <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
 </div>
@@ -11,7 +11,11 @@
   <% @applicant.household_members_people.each do |h| %>
     <%= render partial: 'people/summary', locals: { person: h } %>
   <%= link_to "Edit", edit_person_path(h), class: "btn btn-info"%>
+  <%= link_to 'Delete', h, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
   <% end %>
+</div>
+<div class="row">
+  <%= link_to "New", new_household_member_path, class: "btn btn-success"%>
 </div>
 
 <div class="row">
@@ -19,5 +23,6 @@
   <% @applicant.residences.each do |r| %>
     <%= render partial: 'residences/summary', locals: { residence: r } %>
     <%= link_to "Edit", edit_residence_path(r), class: "btn btn-info"%>
+    <%= link_to 'Delete', r, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
   <% end %>
 </div>

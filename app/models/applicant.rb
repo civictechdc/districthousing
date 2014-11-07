@@ -1,5 +1,6 @@
 class Applicant < ActiveRecord::Base
 
+  has_many :people
   has_many :household_members, dependent: :destroy
   has_many :household_members_people, through: :household_members, source: :person, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :household_members, allow_destroy: true

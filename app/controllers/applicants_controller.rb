@@ -25,7 +25,7 @@ class ApplicantsController < ApplicationController
     end
 
     if success
-      redirect_to home_index_path
+      redirect_to @applicant
     else
       render :new
     end

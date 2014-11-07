@@ -14,8 +14,7 @@ class Person < ActiveRecord::Base
 
   belongs_to :applicant
 
-  validates :mail_address, presence: { message: "Mail address is missing" }
-  validates_associated :mail_address
+  validates :applicant, presence: true
 
   def self.make_a_person
     create do |p|
