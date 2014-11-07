@@ -17,8 +17,19 @@
 
   <%= render "layouts/navbar" %>
 
+
   <div class="container">
+
+    <% if flash[:notice] %>
+      <p class="bg-info"><%= flash[:notice] %></p>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <p class="bg-danger"><%= flash[:alert] %></p>
+    <% end %>
+
     <%= yield %>
+
   </div>
 
   <%= image_tag "district-housing-logo-small.png", class: "center-block footer-logo" %>
