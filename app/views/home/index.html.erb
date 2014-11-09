@@ -1,5 +1,11 @@
-<h1>District Housing <small>Bringing DC closer to home</small></h1>
+<h1>
+  <p>District Housing</p> <p><small>Bringing DC closer to home</small></p>
+</h1>
 <div class="center-block">
   <p><%= link_to "Log In", new_user_session_path, class: "btn btn-lg btn-info"%></p>
-  <p><%= link_to "More about us", about_path %><i class="icon-arrow-right"></i></p>
+  <p>
+    <a href="<%= about_path %>", class="btn btn-lg btn-default">
+    <i class="icon-arrow-right"></i> More about us
+    </a>
+  </p>
 </div
