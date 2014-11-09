@@ -40,8 +40,11 @@ class HousingFormsControllerTest < ActionController::TestCase
     sign_in users(:one)
     get :show, id: housing_form
     assert_response :success
-
-    assert_equal 1, assigns(:applicant).id
+    assert_equal applicants(:sample), assigns(:applicant)
+    session[:current_applicant_id] = applicants(:one).id
+    get :show, id: housing_form
+    assert_response :success
+    assert_equal applicants(:one), assigns(:applicant)
   end
 
   def test_show_no_login

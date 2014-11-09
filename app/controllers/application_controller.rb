@@ -18,11 +18,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_applicant
-    if user_signed_in?
-      current_user.applicants.first_or_create.tap do |applicant|
-        applicant.create_identity if applicant.identity.nil?
-        applicant.save
-      end
+    if user_signed_in? and not session[:current_applicant_id].nil?
+      Applicant.find(session[:current_applicant_id])
     else
       sample_applicant
     end
