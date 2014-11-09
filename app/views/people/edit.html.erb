@@ -1,3 +1,9 @@
+<ol class="breadcrumb">
+  <li><%= link_to current_user.email, root_path %></li>
+  <li><%= link_to @current_applicant.description, @current_applicant %></li>
+  <li><%= @person.description %></li>
+</ol>
+
 <h2>About <%= @person.description %></h2>
 
 <%= bootstrap_form_for(@person) do |f| %>

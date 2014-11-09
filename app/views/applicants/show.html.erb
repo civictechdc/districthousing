@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<ol class="breadcrumb">
+  <li><%= link_to current_user.email, root_path %></li>
+  <li><%= @applicant.description %></li>
+</ol>
+
 <div class="row">
   <h2>Applicant</h2>
   <%= render partial: 'people/summary', locals: { person: @applicant.identity } %>
