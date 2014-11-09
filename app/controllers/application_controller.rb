@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :authenticate_user!
+  before_action :assign_current_applicant
 
   private
+
+  def assign_current_applicant
+    @current_applicant = current_applicant
+  end
 
   def generate_pdf_archive forms, applicant
     stringio = Zip::OutputStream::write_buffer do |zio|
