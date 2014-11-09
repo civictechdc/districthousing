@@ -23,8 +23,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_applicant
-    if user_signed_in? and not session[:current_applicant_id].nil?
-      Applicant.find(session[:current_applicant_id])
+    if user_signed_in?
+      begin
+        Applicant.find(session[:current_applicant_id])
+      rescue ActiveRecord::RecordNotFound
+        session.delete(:current_applicant_id)
+        sample_applicant
+      end
     else
       sample_applicant
     end
