@@ -3,35 +3,46 @@ class ResidencesController < ApplicationController
   before_action :set_residence, only: [:show, :edit, :update, :destroy]
 
   def new
-    current_applicant.residences << Residence.make_a_residence
-
-    redirect_to apply_path
+    @residence = Residence.new
   end
 
   # POST /residences
   def create
-    @residence = Residence.new(residence_params)
+    @residence = Residence.new(
+      start: params[:start],
+      end: params[:end],
+      reason: params[:reason]
+    )
+
+    @residence.applicant = current_applicant
+    @residence.address = Address.new
 
     if @residence.save
-      redirect_to @residence
+      redirect_to edit_residence_path(@residence)
     else
-      redirect_to :new
+      flash.alert = "Error: #{@residence.errors.messages}"
+      render :new
     end
+  end
+
+  def edit
+    @residence = Residence.find(params[:id])
   end
 
   # PATCH/PUT /residences/1
   def update
     if @residence.update(residence_params)
-      redirect_to apply_path, notice: 'Residence was successfully updated.'
+      redirect_to current_applicant
     else
-      redirect_to apply_path, notice: 'Residence could not be updated.'
+      flash.alert = "Error: #{@residence.errors.messages}"
+      redirect_to update_residence_path(@residence)
     end
   end
 
   # DELETE /residences/1
   def destroy
     @residence.destroy
-    redirect_to apply_path, notice: 'Residence was successfully destroyed.', status: :see_other
+    redirect_to current_applicant
   end
 
   private
@@ -42,15 +53,6 @@ class ResidencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def residence_params
-      params.require(:residence).permit(
-        :applicant_id,
-        :address_id,
-        :start,
-        :end,
-        :reason,
-        :landlord_id,
-        address_attributes: [ :street, :apt, :city, :state, :zip, :id ],
-        landlord_attributes: [ :first_name, :middle_name, :last_name,
-          :cell_phone, :home_phone, :work_phone, :email, :id ] )
+      params.permit(residence: [:applicant_id, :address_id, :start, :end, :reason, :landlord_id, {address_attributes: [:street, :apt, :city, :state, :zip, :id]}, {landlord_attributes: [:first_name, :middle_name, :last_name, :cell_phone, :home_phone, :work_phone, :email, :id]}])[:residence]
     end
 end

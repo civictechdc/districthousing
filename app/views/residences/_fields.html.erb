@@ -1,23 +1,3 @@
-<div class="row">
-  <div class="col-md-4">
-    <h4>Where</h4>
-    <%= f.fields_for :address do |builder| %>
-      <%= render "addresses/fields", builder: builder%>
-    <% end %>
-  </div>
-
-  <div class="col-md-4">
-    <h4>When</h4>
-    <%= f.date_field :start %>
-    <%= f.date_field :end %>
-    <%= f.text_field :reason, label: "Reason for leaving" %>
-  </div>
-
-  <div class="col-md-4">
-    <h4>Landlord</h4>
-    <%= f.fields_for :landlord do |builder| %>
-      <%= render "people/name", builder: builder %>
-      <%= render "people/contact", builder: builder %>
-    <% end %>
-  </div>
-</div>
+<%= f.date_field :start %>
+<%= f.date_field :end %>
+<%= f.text_field :reason, label: "Reason for leaving" %>

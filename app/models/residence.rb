@@ -16,7 +16,6 @@ class Residence < ActiveRecord::Base
   attr_accessible :address_id
   attr_accessible :landlord_id
 
-  validates :address, :landlord, presence: true
   validates_associated :address, :landlord
 
   def self.make_a_residence
@@ -25,4 +24,9 @@ class Residence < ActiveRecord::Base
       r.address = Address.create
     end
   end
+
+  def description
+    "Residence from #{start} - #{self.end}"
+  end
+
 end

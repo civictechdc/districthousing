@@ -1,0 +1,17 @@
+<ol class="breadcrumb">
+  <li><%= link_to current_user.email, root_path %></li>
+  <li><%= link_to @current_applicant.description, @current_applicant %></li>
+  <li><%= @residence.description %></li>
+</ol>
+
+<%= bootstrap_form_for(@residence) do |f| %>
+
+  <%= render "fields", f: f %>
+
+  <h2>Address</h2>
+  <%= f.fields_for :address do |a| %>
+    <%= render "addresses/fields", builder: a %>
+  <% end %>
+
+  <%= render "buttons_update_back", f: f %>
+<% end %>
