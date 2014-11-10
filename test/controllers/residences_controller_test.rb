@@ -11,7 +11,7 @@ class ResidencesControllerTest < ActionController::TestCase
   def test_new
     sign_in users(:one)
     get :new
-    assert_redirected_to apply_path
+    assert_response :success
   end
 
   def test_create
@@ -20,27 +20,23 @@ class ResidencesControllerTest < ActionController::TestCase
       post :create, residence: residence.attributes
     end
 
-    assert_redirected_to residence_path(assigns(:residence))
-  end
-
-  def test_show
-    sign_in users(:one)
-    get :show, id: residence
-    assert_response :success
+    assert_redirected_to edit_residence_path(assigns(:residence))
   end
 
   def test_update
     sign_in users(:one)
+    session[:current_applicant_id] = 1
     put :update, id: residence, residence: residence.attributes
-    assert_redirected_to apply_path
+    assert_redirected_to applicant_path(applicants(:one))
   end
 
   def test_destroy
     sign_in users(:one)
+    session[:current_applicant_id] = 1
     assert_difference('Residence.count', -1) do
       delete :destroy, id: residence
     end
 
-    assert_redirected_to apply_path
+    assert_redirected_to applicant_path(applicants(:one))
   end
 end

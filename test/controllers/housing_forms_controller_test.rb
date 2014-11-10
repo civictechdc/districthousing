@@ -62,7 +62,7 @@ class HousingFormsControllerTest < ActionController::TestCase
 
   def test_update
     sign_in users(:one)
-    put :update, id: housing_form, housing_form: {  }
+    put :update, id: housing_form, housing_form: {}
     assert_redirected_to housing_form_path(assigns(:housing_form))
   end
 

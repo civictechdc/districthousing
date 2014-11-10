@@ -28,10 +28,9 @@ class ApplicationController < ActionController::Base
         Applicant.find(session[:current_applicant_id])
       rescue ActiveRecord::RecordNotFound
         session.delete(:current_applicant_id)
-        sample_applicant
       end
     else
-      sample_applicant
+      nil
     end
   end
 

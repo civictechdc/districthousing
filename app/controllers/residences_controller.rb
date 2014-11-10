@@ -1,6 +1,6 @@
 class ResidencesController < ApplicationController
 
-  before_action :set_residence, only: [:show, :edit, :update, :destroy]
+  before_action :set_residence, only: [:edit, :update, :destroy]
 
   def new
     @residence = Residence.new
@@ -26,7 +26,6 @@ class ResidencesController < ApplicationController
   end
 
   def edit
-    @residence = Residence.find(params[:id])
   end
 
   # PATCH/PUT /residences/1
