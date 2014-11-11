@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827002016) do
+ActiveRecord::Schema.define(version: 20141111024516) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -83,12 +83,12 @@ ActiveRecord::Schema.define(version: 20140827002016) do
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "household_member_id"
+    t.integer  "person_id"
     t.integer  "income_type_id"
   end
 
-  add_index "incomes", ["household_member_id"], name: "index_incomes_on_household_member_id"
   add_index "incomes", ["income_type_id"], name: "index_incomes_on_income_type_id"
+  add_index "incomes", ["person_id"], name: "index_incomes_on_person_id"
 
   create_table "mail", id: false, force: true do |t|
     t.integer "person_id",  null: false

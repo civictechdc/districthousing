@@ -58,13 +58,21 @@ module ApplicantFactory
       end
     end
 
+    def make_an_income
+      Income.create(
+        income_type_id: IncomeType.all.sample.id,
+        amount: rand(100000)
+      )
+    end
+
     def make_a_sample_applicant
       test_applicant = Applicant.create
 
+      test_applicant.identity = make_a_person(test_applicant)
+
       3.times { test_applicant.residences << make_a_residence(test_applicant) }
       3.times { test_applicant.household_members << make_a_household_member(test_applicant) }
-
-      test_applicant.identity = make_a_person(test_applicant)
+      3.times { test_applicant.identity.incomes << make_an_income }
 
       test_applicant.save
 

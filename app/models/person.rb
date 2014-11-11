@@ -10,6 +10,7 @@ class Person < ActiveRecord::Base
   accepts_nested_attributes_for :mail_address
   attr_accessible :mail_address_attributes
 
+  has_many :incomes
   has_many :previous_ssns
 
   belongs_to :applicant

@@ -38,3 +38,12 @@
   <%= link_to "New", new_residence_path, class: "btn btn-success"%>
   </p>
 </div>
+
+<div class="row">
+  <h2>Income</h2>
+  <% @applicant.identity.incomes.each do |income| %>
+    <p>
+      <%= render partial: "incomes/summary", locals: { income: income } %>
+    </p>
+  <% end %>
+</div>

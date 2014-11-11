@@ -19,28 +19,6 @@ Residence.destroy_all
 Address.destroy_all
 Income.destroy_all
 
-# Seed a test user
-test_user = User.create(
-  :email => "testuser@districthousing.org",
-  :password => "password"
-)
-
-test_applicant = ApplicantFactory.make_a_sample_applicant
-test_applicant.user = test_user
-test_applicant.save
-test_user.save
-
-sample_user = User.create(
-  :email => "sampleuser@districthousing.org",
-  :password => "password"
-)
-sample_user.role = User::USER_ROLES[:sample]
-
-sample_applicant = ApplicantFactory.make_a_sample_applicant
-sample_applicant.user = sample_user
-sample_applicant.save
-sample_user.save
-
 #Populate income_types
 IncomeType.destroy_all
 IncomeType.create(name: "salary", label: "Salary / Full-Time Employment Income", active: true)
@@ -64,3 +42,25 @@ IncomeType.create(name: "severance", label: "Severance", active: true)
 IncomeType.create(name: "lottery", label: "Lottery", active: true)
 IncomeType.create(name: "alimony", label: "Alimony", active: true)
 IncomeType.create(name: "scholarship", label: "Scholarship", active: true)
+
+# Seed a test user
+test_user = User.create(
+  :email => "testuser@districthousing.org",
+  :password => "password"
+)
+
+test_applicant = ApplicantFactory.make_a_sample_applicant
+test_applicant.user = test_user
+test_applicant.save
+test_user.save
+
+sample_user = User.create(
+  :email => "sampleuser@districthousing.org",
+  :password => "password"
+)
+sample_user.role = User::USER_ROLES[:sample]
+
+sample_applicant = ApplicantFactory.make_a_sample_applicant
+sample_applicant.user = sample_user
+sample_applicant.save
+sample_user.save
