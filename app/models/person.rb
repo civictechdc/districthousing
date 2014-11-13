@@ -33,6 +33,21 @@ class Person < ActiveRecord::Base
     dob.strftime("%m/%d/%Y")
   end
 
+  def dob_dd
+    return "" if dob.nil?
+    dob.strftime("%d")
+  end
+
+  def dob_mm
+    return "" if dob.nil?
+    dob.strftime("%m")
+  end
+
+  def dob_yyyy
+    return "" if dob.nil?
+    dob.strftime("%Y")
+  end
+
   def age
     return "" if dob.nil?
 
@@ -64,6 +79,12 @@ class Person < ActiveRecord::Base
       full_name
     when "DOB"
       dob_date
+    when "DOBDD"
+      dob_dd
+    when "DOBMM"
+      dob_mm
+    when "DOBYYYY"
+      dob_yyyy
     when "Age"
       age
     when "SSN"
