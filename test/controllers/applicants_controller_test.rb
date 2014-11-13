@@ -32,4 +32,13 @@ class ApplicantsControllerTest < ActionController::TestCase
     get :show, id: users(:one).id
     assert_response :success
   end
+
+  def test_destroy
+    sign_in users(:one)
+    assert_difference('Applicant.count', -1) do
+      delete :destroy, id: applicants(:one)
+    end
+
+    assert_redirected_to root_path
+  end
 end

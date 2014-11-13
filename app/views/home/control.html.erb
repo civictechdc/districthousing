@@ -1,8 +1,11 @@
+<!-- FIXME: This view is quickly turning into what should be applicants/index.html.erb -->
+
 <% unless @applicants.empty? %>
   <p>Who is applying for housing?<p>
   <% @applicants.each do |applicant| %>
     <p>
       <%= link_to applicant.description, applicant, class: "btn btn-lg btn-info"%>
+      <%= link_to 'Delete', applicant, class: "btn btn-lg btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
     </p>
   <% end %>
 <% else %>

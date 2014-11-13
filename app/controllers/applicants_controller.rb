@@ -45,4 +45,9 @@ class ApplicantsController < ApplicationController
     end
   end
 
+  def destroy
+    applicant = Applicant.find(params[:id])
+    applicant.destroy if applicant
+    redirect_to root_path
+  end
 end
