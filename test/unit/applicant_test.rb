@@ -35,11 +35,22 @@ class ApplicantTest < ActiveSupport::TestCase
   end
 
   test "fills addresses" do
-    assert_equal "111 Fake Street, Oneville, DC, 11111", @one.field("Address")
-    assert_equal "Oneville", @one.field("AddressCity")
-    assert_equal "DC", @one.field("AddressState")
-    assert_equal "111 Fake Street", @one.field("AddressStreet")
-    assert_equal "11111", @one.field("AddressZip")
+    assert_equal "1 Residence Lane, Residenceburg, MD, 33333", @one.field("Address")
+    assert_equal "1 Residence Lane, Residenceburg, MD, 33333", @one.field("Address1")
+    assert_equal "Residenceburg", @one.field("AddressCity")
+    assert_equal "MD", @one.field("AddressState")
+    assert_equal "1 Residence Lane", @one.field("AddressStreet")
+    assert_equal "33333", @one.field("AddressZip")
+    assert_equal "2 Residence Grove, New Residenceville, OK, 44444", @one.field("Address2")
+    assert_equal "New Residenceville", @one.field("Address2City")
+    assert_equal "OK", @one.field("Address2State")
+    assert_equal "2 Residence Grove", @one.field("Address2Street")
+    assert_equal "44444", @one.field("Address2Zip")
+    assert_equal "111 Fake Street, Oneville, DC, 11111", @one.field("Mail")
+    assert_equal "Oneville", @one.field("MailCity")
+    assert_equal "DC", @one.field("MailState")
+    assert_equal "111 Fake Street", @one.field("MailStreet")
+    assert_equal "11111", @one.field("MailZip")
   end
 
   test "fills contact information" do
@@ -103,10 +114,10 @@ class ApplicantTest < ActiveSupport::TestCase
   end
 
   test "fills landlord information" do
-    assert_equal "111 Fake Street, Oneville, DC, 11111", @one.field("LL1Address")
+    assert_equal "111 Fake Street, Oneville, DC, 11111", @one.field("LL1Mail")
     assert_equal "LL1", @one.field("LL1Name")
     assert_equal "(555) 555-5555", @one.field("LL1Phone")
-    assert_equal "222 Fake Street, Two Town, AK, 22222", @one.field("LL2Address")
+    assert_equal "222 Fake Street, Two Town, AK, 22222", @one.field("LL2Mail")
     assert_equal "LL2", @one.field("LL2Name")
     assert_equal "(666) 666-6666", @one.field("LL2Phone")
   end

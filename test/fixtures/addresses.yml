@@ -11,3 +11,17 @@ two:
   city: Two Town
   state: AK
   zip: 22222
+
+residence_one:
+  id: 3
+  street: 1 Residence Lane
+  city: Residenceburg
+  state: MD
+  zip: 33333
+
+residence_two:
+  id: 4
+  street: 2 Residence Grove
+  city: New Residenceville
+  state: OK
+  zip: 44444
