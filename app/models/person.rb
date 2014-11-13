@@ -5,6 +5,7 @@ class Person < ActiveRecord::Base
   attr_accessible :citizenship
   attr_accessible :nationality, :email, :race, :student_status, :marital_status
   attr_accessible :occupation
+  attr_accessible :state_of_birth, :city_of_birth
 
   belongs_to :mail_address, class_name: "Address"
   accepts_nested_attributes_for :mail_address
@@ -115,6 +116,10 @@ class Person < ActiveRecord::Base
       student_status
     when "Occupation"
       occupation
+    when "BirthState"
+      state_of_birth
+    when "BirthCity"
+      city_of_birth
     else
       UnknownField.new
     end

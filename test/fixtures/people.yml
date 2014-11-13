@@ -14,6 +14,8 @@ one:
   nationality: USA
   applicant_id: 1
   mail_address_id: 1
+  state_of_birth: Virginia
+  city_of_birth: Springfield
 
 two:
   id: 2

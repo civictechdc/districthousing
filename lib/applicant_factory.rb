@@ -26,6 +26,8 @@ module ApplicantFactory
         cell_phone: Faker::PhoneNumber.phone_number,
         citizenship: Faker::Address.country,
         nationality: Faker::Address.country,
+        state_of_birth: Faker::Address.state,
+        city_of_birth: Faker::Address.city,
         email: Faker::Internet.email,
         # Sample races from US Census
         # http://www.census.gov/topics/population/race/about.html
