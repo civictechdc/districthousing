@@ -16,6 +16,7 @@ one:
   mail_address_id: 1
   state_of_birth: Virginia
   city_of_birth: Springfield
+  citizenship: USA
 
 two:
   id: 2

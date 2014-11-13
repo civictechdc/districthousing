@@ -32,6 +32,7 @@ class ApplicantTest < ActiveSupport::TestCase
     assert_equal "USA", @one.field("Nationality")
     assert_equal "Virginia", @one.field("BirthState")
     assert_equal "Springfield", @one.field("BirthCity")
+    assert_equal "Yes", @one.field("USCitizenYesNo")
   end
 
   test "fills addresses" do

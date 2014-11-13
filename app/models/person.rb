@@ -60,6 +60,12 @@ class Person < ActiveRecord::Base
     "#{first_name} #{middle_name} #{last_name}".strip.squeeze(" ")
   end
 
+  def us_citizen?
+    # FIXME: Instead of using regexes for this, country of citizenship should
+    # be normalized
+    return /^(United States|US|USA|U.S.A.)$/i =~ citizenship
+  end
+
   def value_for_field field_name
     case field_name
     when /^Mail(.*)/
@@ -120,6 +126,18 @@ class Person < ActiveRecord::Base
       state_of_birth
     when "BirthCity"
       city_of_birth
+    when "USCitizenYN"
+      if us_citizen?
+        "Y"
+      else
+        "N"
+      end
+    when "USCitizenYesNo"
+      if us_citizen?
+        "Yes"
+      else
+        "No"
+      end
     else
       UnknownField.new
     end
