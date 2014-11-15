@@ -5,45 +5,45 @@ class IncomesController < ApplicationController
     @income = Income.new
   end
 
-  # POST /incomes
   def create
-    member = HouseholdMember.find(params[:memberId]);
-    
-    # if member doesn't exist or belongs to other applicant do not create income
-    if (member != nil && current_applicant.household_members.include?(member))
-      member.incomes << Income.create
+    income = Income.create(income_params)
+
+    if income.save
+      redirect_to current_applicant
+    else
+      redirect_to :new
     end
-    
-    redirect_to form_path
   end
 
-  # PATCH/PUT /incomes/1
   def update
     if @income.update(income_params)
-      redirect_to form_path, notice: 'Income was successfully updated.'
+      redirect_to current_applicant, notice: 'Income was successfully updated.'
     else
       flash[:errors] = @income.errors.full_messages
-      redirect_to form_path, notice: 'Unable to update income.'
+      redirect_to current_applicant, notice: 'Unable to update income.'
     end
   end
 
-  # DELETE /incomes/1
+  def edit
+  end
+
   def destroy
     @income.destroy
-    redirect_to form_path, notice: 'Income was successfully destroyed.', status: :see_other
+    redirect_to current_applicant, notice: 'Income was successfully destroyed.', status: :see_other
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_income
-      @income = Income.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_income
+    @income = Income.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def income_params
-      params.require(:income).permit(
-        :income_type_id,
-        :amount
-        )
-    end
+  # Only allow a trusted parameter "white list" through.
+  def income_params
+    params.require(:income).permit(
+      :income_type_id,
+      :amount,
+      :person_id,
+    )
+  end
 end

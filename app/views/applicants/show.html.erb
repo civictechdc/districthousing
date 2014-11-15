@@ -41,9 +41,14 @@
 
 <div class="row">
   <h2>Income</h2>
-  <% @applicant.identity.incomes.each do |income| %>
+  <% @applicant.incomes.each do |i| %>
     <p>
-      <%= render partial: "incomes/summary", locals: { income: income } %>
+      <%= render partial: "incomes/summary", locals: { income: i } %>
+      <%= link_to "Edit", edit_income_path(i), class: "btn btn-info"%>
+      <%= link_to 'Delete', i, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
     </p>
   <% end %>
+  <p>
+  <%= link_to "New", new_income_path, class: "btn btn-success"%>
+  </p>
 </div>

@@ -1,11 +1,11 @@
 class Income < ActiveRecord::Base
-  #TODO: enable validation (currently 'add' buttons create new, blank entries)
-  #validates :amount, presence: true, numericality: {only_integer: true}
-  #validates :income_type_id, presence: true
-
   belongs_to :applicant
   belongs_to :person
   belongs_to :income_type
 
-  attr_accessible :amount, :income_type_id
+  attr_accessible :amount, :income_type_id, :person_id
+
+  def to_s
+    "Income of $#{amount} monthly from #{income_type.label}"
+  end
 end

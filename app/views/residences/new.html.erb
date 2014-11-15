@@ -1,7 +1,5 @@
 <%= bootstrap_form_for(@residence) do |f| %>
   When did you live at this location?
   <%= render "residences/fields", f: f %>
-  <%= f.submit 'Add new residence', class: "btn btn-success" %>
+  <%= render "buttons_update_back", f: f, submit_action: "New" %>
 <% end %>
-
-<%= link_to 'Back', @current_applicant %>

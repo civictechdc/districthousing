@@ -29,6 +29,10 @@ class Person < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def to_s
+    description
+  end
+
   def dob_date
     return "" if dob.nil?
 

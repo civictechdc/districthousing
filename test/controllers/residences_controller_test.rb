@@ -10,6 +10,7 @@ class ResidencesControllerTest < ActionController::TestCase
 
   def test_new
     sign_in users(:one)
+    session[:current_applicant_id] = 1
     get :new
     assert_response :success
   end

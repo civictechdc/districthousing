@@ -65,7 +65,7 @@ module ApplicantFactory
     def make_an_income
       Income.create(
         income_type_id: IncomeType.all.sample.id,
-        amount: rand(100000)
+        amount: rand(1000)
       )
     end
 
@@ -77,6 +77,10 @@ module ApplicantFactory
       3.times { test_applicant.residences << make_a_residence(test_applicant) }
       3.times { test_applicant.household_members << make_a_household_member(test_applicant) }
       3.times { test_applicant.identity.incomes << make_an_income }
+
+      test_applicant.household_members_including_self.each do |p|
+        p.incomes << make_an_income
+      end
 
       test_applicant.save
 

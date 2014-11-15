@@ -18,6 +18,14 @@ class Applicant < ActiveRecord::Base
 
   attr_accessible :identity_attributes, :landlords_attributes, :household_members_attributes, :residences_attributes
 
+  def incomes
+    identity.incomes + household_members_people.map { |h| h.incomes }.flatten
+  end
+
+  def household_members_including_self
+    [identity, household_members_people].flatten
+  end
+
   def preferred_attrs_for field_names
     field_names.map do |field_name|
       begin
