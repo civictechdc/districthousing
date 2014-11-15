@@ -36,6 +36,30 @@ hh1:
   phone: (333) 333-3333
   applicant_id: 1
   first_name: HH1
+  last_name: Schaefer
+  middle_name: Charley
+  ssn: 555-44-8271
+  dob: 1918-01-07 00:04:18.419142000 Z
+  gender: Male
+  created_at: 2014-11-15 00:04:18.434773000 Z
+  updated_at: 2014-11-15 00:04:18.434773000 Z
+  phone: 1-202-858-8941 x40526
+  work_phone: 788-243-3188 x97905
+  home_phone: 1-437-053-5113 x41799
+  cell_phone: 839.897.3785 x24946
+  citizenship: Mayotte
+  nationality: Bosnia and Herzegovina
+  email: ryan@parker.info
+  race: Pacific Islander
+  student_status: Not a student
+  marital_status: Married
+  applicant_id: 37
+  occupation: Candlestick Maker
+  mail_address_id: 337
+  state_of_birth: Georgia
+  city_of_birth: Port Elvaside
+  driver_license_number: '8308313763'
+  driver_license_state: West Virginia
 
 hh2:
   id: 4

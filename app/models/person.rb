@@ -143,6 +143,8 @@ class Person < ActiveRecord::Base
       driver_license_number
     when "DriverLicenseState"
       driver_license_state
+    when "Relationship"
+      "Self"
     else
       UnknownField.new
     end
