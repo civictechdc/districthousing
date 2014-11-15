@@ -8,6 +8,8 @@ DchousingApps::Application.routes.draw do
   resources :household_members
   resources :landlords
   resources :housing_forms
+  get '/download/:id', to: 'housing_forms#download', as: 'download_housing_form'
+
   resources :salesforce, :only => [:index]
   resources :people
 

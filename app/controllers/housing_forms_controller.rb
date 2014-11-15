@@ -1,6 +1,6 @@
 class HousingFormsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_housing_form, only: [:show, :edit, :update, :destroy]
+  before_action :set_housing_form, only: [:show, :edit, :update, :destroy, :download]
 
   # GET /housing_forms
   def index
@@ -59,6 +59,13 @@ class HousingFormsController < ApplicationController
   def destroy
     @housing_form.destroy
     redirect_to housing_forms_url, notice: 'Housing form was successfully destroyed.'
+  end
+
+  def download
+    filled_file = OutputPDF.new(@housing_form, current_applicant || sample_applicant).to_file
+    send_file(filled_file.path,
+             type: 'application/pdf',
+             filename: @housing_form.name)
   end
 
   private
