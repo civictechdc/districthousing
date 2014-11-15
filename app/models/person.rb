@@ -6,6 +6,7 @@ class Person < ActiveRecord::Base
   attr_accessible :nationality, :email, :race, :student_status, :marital_status
   attr_accessible :occupation
   attr_accessible :state_of_birth, :city_of_birth
+  attr_accessible :driver_license_number, :driver_license_state
 
   belongs_to :mail_address, class_name: "Address"
   accepts_nested_attributes_for :mail_address
@@ -138,6 +139,10 @@ class Person < ActiveRecord::Base
       else
         "No"
       end
+    when "DriverLicense"
+      driver_license_number
+    when "DriverLicenseState"
+      driver_license_state
     else
       UnknownField.new
     end

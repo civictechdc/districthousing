@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113011342) do
+ActiveRecord::Schema.define(version: 20141114233912) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(version: 20141113011342) do
     t.string   "ssn"
     t.datetime "dob"
     t.string   "gender"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.string   "phone"
     t.string   "work_phone"
     t.string   "home_phone"
@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(version: 20141113011342) do
     t.integer  "mail_address_id"
     t.string   "state_of_birth"
     t.string   "city_of_birth"
+    t.string   "driver_license_number"
+    t.string   "driver_license_state"
   end
 
   create_table "previous_ssns", force: true do |t|

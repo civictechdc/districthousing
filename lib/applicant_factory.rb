@@ -34,7 +34,9 @@ module ApplicantFactory
         race: ["White", "Black", "American Indian", "Asian", "Pacific Islander"].sample,
         student_status: ["Not a student", "Part-time", "Full-time"].sample,
         marital_status: ["Never married", "Married", "Widowed", "Divorced"].sample,
-        occupation: ["Butcher", "Baker", "Candlestick Maker"].sample
+        occupation: ["Butcher", "Baker", "Candlestick Maker"].sample,
+        driver_license_number: Faker::Number.number(10),
+        driver_license_state: Faker::Address.state,
       ) do |p|
         p.mail_address = make_an_address
         p.applicant = applicant
