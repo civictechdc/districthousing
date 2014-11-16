@@ -52,3 +52,17 @@
   <%= link_to "New", new_income_path, class: "btn btn-success"%>
   </p>
 </div>
+
+<div class="row">
+  <h2>Employment</h2>
+  <% @applicant.identity.employments.each do |e| %>
+    <p>
+      <%= render partial: "employments/summary", locals: { employment: e } %>
+      <%= link_to "Edit", edit_employment_path(e), class: "btn btn-info"%>
+      <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
+  <p>
+  <%= link_to "New", new_employment_path, class: "btn btn-success"%>
+  </p>
+</div>
