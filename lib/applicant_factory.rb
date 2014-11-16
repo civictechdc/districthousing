@@ -69,6 +69,18 @@ module ApplicantFactory
       )
     end
 
+    def make_an_employment
+      Employment.create do |e|
+        e.start_date = rand(2*365).days.ago
+        e.end_date = rand(2*365).days.ago
+        e.employer_name = "#{Faker::Company.name} #{Faker::Company.suffix}"
+        e.supervisor_name = Faker::Name.name
+        e.position = Faker::Name.title
+        e.phone = Faker::PhoneNumber.phone_number
+        e.address = make_an_address
+      end
+    end
+
     def make_a_sample_applicant
       test_applicant = Applicant.create
 
@@ -77,6 +89,7 @@ module ApplicantFactory
       3.times { test_applicant.residences << make_a_residence(test_applicant) }
       3.times { test_applicant.household_members << make_a_household_member(test_applicant) }
       3.times { test_applicant.identity.incomes << make_an_income }
+      3.times { test_applicant.identity.employments << make_an_employment }
 
       test_applicant.household_members_including_self.each do |p|
         p.incomes << make_an_income

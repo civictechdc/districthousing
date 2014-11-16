@@ -13,6 +13,7 @@ class Person < ActiveRecord::Base
   attr_accessible :mail_address_attributes
 
   has_many :incomes
+  has_many :employments
   has_many :previous_ssns
 
   belongs_to :applicant
