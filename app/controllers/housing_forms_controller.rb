@@ -76,6 +76,6 @@ class HousingFormsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def housing_form_params
-      params[:housing_form]
+      params.require(:housing_form).permit(:name, :uri, :location, :lat, :long, :new_form)
     end
 end
