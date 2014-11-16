@@ -1,4 +1,6 @@
 DchousingApps::Application.routes.draw do
+  resources :employments
+
   resources :residences
   resources :incomes
 
