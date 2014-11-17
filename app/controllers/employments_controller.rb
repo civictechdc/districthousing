@@ -13,6 +13,7 @@ class EmploymentsController < ApplicationController
   # GET /employments/new
   def new
     @employment = Employment.new
+    @employment.address = Address.new
   end
 
   # GET /employments/1/edit
@@ -53,6 +54,21 @@ class EmploymentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def employment_params
-      params.require(:employment).permit(:person_id, :start_date, :end_date, :employer_name, :supervisor_name, :position, :address_id, :phone)
+      params.require(:employment).permit(
+        :person_id,
+        :start_date,
+        :end_date,
+        :employer_name,
+        :supervisor_name,
+        :position,
+        :address_id,
+        :phone,
+        {address_attributes: [
+          :street,
+          :city,
+          :state,
+          :zip,
+          :apt,
+        ]})
     end
 end

@@ -30,11 +30,12 @@
     <%= f.text_field :position %>
   </div>
   <div class="field">
-    <%= f.number_field :address_id %>
-  </div>
-  <div class="field">
     <%= f.text_field :phone %>
   </div>
+  <h3>Employer Address</h3>
+  <%= f.fields_for :address do |a| %>
+    <%= render "addresses/fields", builder: a %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
