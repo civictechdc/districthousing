@@ -36,7 +36,5 @@
   <%= f.fields_for :address do |a| %>
     <%= render "addresses/fields", builder: a %>
   <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= render "buttons_update_back", f: f %>
 <% end %>
