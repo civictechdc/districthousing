@@ -23,6 +23,10 @@ class Address < ActiveRecord::Base
     end
   end
 
+  def to_s
+    full
+  end
+
   def value_for_field field_name
     case field_name
     when "Street"

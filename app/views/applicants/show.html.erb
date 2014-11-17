@@ -55,7 +55,7 @@
 
 <div class="row">
   <h2>Employment</h2>
-  <% @applicant.identity.employments.each do |e| %>
+  <% @applicant.employments.each do |e| %>
     <p>
       <%= render partial: "employments/summary", locals: { employment: e } %>
       <%= link_to "Edit", edit_employment_path(e), class: "btn btn-info"%>
