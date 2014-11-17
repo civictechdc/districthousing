@@ -8,11 +8,7 @@ class ResidencesController < ApplicationController
 
   # POST /residences
   def create
-    @residence = Residence.new(
-      start: params[:start],
-      end: params[:end],
-      reason: params[:reason]
-    )
+    @residence = Residence.new(residence_params)
 
     @residence.applicant = current_applicant
     @residence.address = Address.new
