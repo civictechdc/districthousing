@@ -56,5 +56,8 @@ module DchousingApps
     config.secret_key_base = YAML.load(File.open("#{Rails.root}/config/secrets.yml"))[Rails.env]['secret_key_base']
 
     config.i18n.enforce_available_locales = true
+
+    # Don't require attr_accessible for model attibutes set by params
+    config.active_record.whitelist_attributes = false
   end
 end
