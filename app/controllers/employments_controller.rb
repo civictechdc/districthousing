@@ -24,7 +24,7 @@ class EmploymentsController < ApplicationController
     @employment = Employment.new(employment_params)
 
     if @employment.save
-      redirect_to @employment, notice: 'Employment was successfully created.'
+      redirect_to current_applicant
     else
       render :new
     end
@@ -33,7 +33,7 @@ class EmploymentsController < ApplicationController
   # PATCH/PUT /employments/1
   def update
     if @employment.update(employment_params)
-      redirect_to @employment, notice: 'Employment was successfully updated.'
+      redirect_to current_applicant
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class EmploymentsController < ApplicationController
   # DELETE /employments/1
   def destroy
     @employment.destroy
-    redirect_to employments_url, notice: 'Employment was successfully destroyed.'
+    redirect_to current_applicant
   end
 
   private

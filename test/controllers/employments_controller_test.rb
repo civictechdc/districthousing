@@ -5,6 +5,7 @@ class EmploymentsControllerTest < ActionController::TestCase
 
   def setup
     sign_in users(:one)
+    session[:current_applicant_id] = 1
   end
 
   def employment
@@ -18,7 +19,6 @@ class EmploymentsControllerTest < ActionController::TestCase
   end
 
   def test_new
-    session[:current_applicant_id] = 1
     get :new
     assert_response :success
   end
@@ -28,7 +28,7 @@ class EmploymentsControllerTest < ActionController::TestCase
       post :create, employment: { address_id: employment.address_id, employer_name: employment.employer_name, end_date: employment.end_date, person_id: employment.person_id, phone: employment.phone, position: employment.position, start_date: employment.start_date, supervisor_name: employment.supervisor_name }
     end
 
-    assert_redirected_to employment_path(assigns(:employment))
+    assert_redirected_to applicant_path(applicants(:one))
   end
 
   def test_show
@@ -37,7 +37,6 @@ class EmploymentsControllerTest < ActionController::TestCase
   end
 
   def test_edit
-    session[:current_applicant_id] = 1
     get :edit, id: employment
     assert_response :success
   end
@@ -45,7 +44,7 @@ class EmploymentsControllerTest < ActionController::TestCase
   def test_update
     put :update, id: employment, employment: { address_id: employment.address_id, employer_name: "New Employer Name", end_date: employment.end_date, person_id: employment.person_id, phone: employment.phone, position: employment.position, start_date: employment.start_date, supervisor_name: employment.supervisor_name }
     assert_equal("New Employer Name", Employment.find(employment.id).employer_name)
-    assert_redirected_to employment_path(assigns(:employment))
+    assert_redirected_to applicant_path(applicants(:one))
   end
 
   def test_destroy
@@ -53,6 +52,6 @@ class EmploymentsControllerTest < ActionController::TestCase
       delete :destroy, id: employment
     end
 
-    assert_redirected_to employments_path
+    assert_redirected_to applicant_path(applicants(:one))
   end
 end
