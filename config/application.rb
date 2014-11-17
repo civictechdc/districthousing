@@ -57,7 +57,6 @@ module DchousingApps
 
     config.i18n.enforce_available_locales = true
 
-    # Don't require attr_accessible for model attibutes set by params
     config.active_record.whitelist_attributes = false
   end
 end

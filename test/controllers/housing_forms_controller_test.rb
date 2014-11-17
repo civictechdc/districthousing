@@ -62,7 +62,14 @@ class HousingFormsControllerTest < ActionController::TestCase
 
   def test_update
     sign_in users(:one)
-    put :update, id: housing_form, housing_form: {name: 'NewName'}
+    housing_form_update_hash = {
+      name: "x",
+      location: "x",
+      lat: "1",
+      long: "1",
+    }
+    put :update, id: housing_form, housing_form: housing_form_update_hash
+    assert_attributes_were_updated housing_forms(:one), housing_form_update_hash.keys
     assert_redirected_to housing_form_path(assigns(:housing_form))
   end
 

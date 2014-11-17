@@ -41,12 +41,7 @@ class PeopleControllerTest < ActionController::TestCase
     }
     put :update, id: people(:one).id, person: person_update_hash
 
-    updated_person = Person.find(people(:one).id)
-    original_person = people(:one)
-    person_update_hash.keys.each do |k|
-      assert_not_equal(original_person.attributes[k.to_s], updated_person.attributes[k.to_s],
-        "Failure for attribute #{k}")
-    end
+    assert_attributes_were_updated people(:one), person_update_hash.keys
 
     assert_redirected_to applicants(:one)
   end

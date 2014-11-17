@@ -52,6 +52,14 @@ class ResidencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def residence_params
-      params.permit(residence: [:applicant_id, :address_id, :start, :end, :reason, :landlord_id, {address_attributes: [:street, :apt, :city, :state, :zip, :id]}, {landlord_attributes: [:first_name, :middle_name, :last_name, :cell_phone, :home_phone, :work_phone, :email, :id]}])[:residence]
+      params.require(:residence).permit(
+        :applicant_id,
+        :address_id,
+        :start,
+        :end,
+        :reason,
+        :landlord_id,
+        {address_attributes: [:street, :apt, :city, :state, :zip, :id]},
+        {landlord_attributes: [:first_name, :middle_name, :last_name, :cell_phone, :home_phone, :work_phone, :email, :id]})
     end
 end

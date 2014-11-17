@@ -27,7 +27,13 @@ class ResidencesControllerTest < ActionController::TestCase
   def test_update
     sign_in users(:one)
     session[:current_applicant_id] = 1
-    put :update, id: residence, residence: residence.attributes
+    residence_update_hash = {
+      start: "2000-01-01",
+      end: "2010-01-01",
+      reason: "x",
+    }
+    put :update, id: residence, residence: residence_update_hash
+    assert_attributes_were_updated residences(:one), residence_update_hash.keys
     assert_redirected_to applicant_path(applicants(:one))
   end
 

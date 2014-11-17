@@ -16,8 +16,6 @@ class Applicant < ActiveRecord::Base
 
   belongs_to :user
 
-  attr_accessible :identity_attributes, :landlords_attributes, :household_members_attributes, :residences_attributes
-
   def incomes
     identity.incomes + household_members_people.map { |h| h.incomes }.flatten
   end

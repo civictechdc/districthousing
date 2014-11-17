@@ -1,5 +1,4 @@
 class HousingForm < ActiveRecord::Base
-  attr_accessible :uri
   has_and_belongs_to_many :form_fields
 
   after_create { initialize_from_disk! }

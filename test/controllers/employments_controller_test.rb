@@ -42,8 +42,16 @@ class EmploymentsControllerTest < ActionController::TestCase
   end
 
   def test_update
-    put :update, id: employment, employment: { address_id: employment.address_id, employer_name: "New Employer Name", end_date: employment.end_date, person_id: employment.person_id, phone: employment.phone, position: employment.position, start_date: employment.start_date, supervisor_name: employment.supervisor_name }
-    assert_equal("New Employer Name", Employment.find(employment.id).employer_name)
+    employment_update_hash = {
+      employer_name: "x",
+      end_date: "2000-01-01",
+      phone: "x",
+      position: "x",
+      start_date: "2000-01-01",
+      supervisor_name: "x",
+    }
+    put :update, id: employment, employment: employment_update_hash
+    assert_attributes_were_updated employments(:one), employment_update_hash.keys
     assert_redirected_to applicant_path(applicants(:one))
   end
 

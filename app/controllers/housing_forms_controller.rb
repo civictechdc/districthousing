@@ -31,7 +31,7 @@ class HousingFormsController < ApplicationController
 
   # POST /housing_forms
   def create
-    uploaded_file = housing_form_params[:new_form]
+    uploaded_file = params[:housing_form][:new_form]
     new_file_path = Rails.root.join("public", "forms", uploaded_file.original_filename)
 
     File.open(new_file_path, "wb") do |file|
@@ -76,6 +76,11 @@ class HousingFormsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def housing_form_params
-      params.require(:housing_form).permit(:name, :uri, :location, :lat, :long, :new_form)
+      params.require(:housing_form).permit(
+        :name,
+        :location,
+        :lat,
+        :long,
+      )
     end
 end
