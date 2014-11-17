@@ -1,16 +1,6 @@
 class Person < ActiveRecord::Base
-  attr_accessible :dob, :first_name, :gender, :last_name, :middle_name, :res_apt
-  attr_accessible :ssn
-  attr_accessible :phone, :work_phone, :home_phone, :cell_phone, :preferred_phone
-  attr_accessible :citizenship
-  attr_accessible :nationality, :email, :race, :student_status, :marital_status
-  attr_accessible :occupation
-  attr_accessible :state_of_birth, :city_of_birth
-  attr_accessible :driver_license_number, :driver_license_state
-
   belongs_to :mail_address, class_name: "Address"
   accepts_nested_attributes_for :mail_address
-  attr_accessible :mail_address_attributes
 
   has_many :incomes
   has_many :employments
