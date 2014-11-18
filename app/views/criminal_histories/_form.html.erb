@@ -1,0 +1,33 @@
+<%= form_for(@criminal_history) do |f| %>
+  <% if @criminal_history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@criminal_history.errors.count, "error") %> prohibited this criminal_history from being saved:</h2>
+
+      <ul>
+      <% @criminal_history.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :person_id %><br>
+    <%= f.number_field :person_id %>
+  </div>
+  <div class="field">
+    <%= f.label :crime_type_id %><br>
+    <%= f.number_field :crime_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.date_select :year %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

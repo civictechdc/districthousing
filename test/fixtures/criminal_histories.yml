@@ -1,0 +1,14 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  person_id: 1
+  crime_type_id: 1
+  description: MyString
+  year: 2014-11-17
+
+two:
+  person_id: 1
+  crime_type_id: 1
+  description: MyString
+  year: 2014-11-17

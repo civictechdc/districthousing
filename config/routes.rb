@@ -1,4 +1,6 @@
 DchousingApps::Application.routes.draw do
+  resources :criminal_histories
+
   resources :employments
 
   resources :residences
