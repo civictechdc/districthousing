@@ -81,6 +81,32 @@ module ApplicantFactory
       end
     end
 
+    def make_a_sex_offense
+      CriminalHistory.create(
+        year: rand(10*365).days.ago,
+      ) do |f|
+        f.crime_type = CrimeType.find_by(name: "sex_offense")
+      end
+    end
+
+    def make_a_felony
+      CriminalHistory.create(
+        description: [
+          "Wearing white after Labor Day.",
+          "Tearing the tag off a mattress.",
+          "Not keeping off the grass.",
+          "Landing on the \"Go directly to jail\" space.",
+          "Entering through the \"Exit\" door at the grocery store.",
+          "Outsider trading.",
+          "Having 11 items in the express checkout lane.",
+          "Going 26 in a 25.",
+        ].sample,
+        year: rand(10*365).days.ago,
+      ) do |f|
+        f.crime_type = CrimeType.find_by(name: "felony")
+      end
+    end
+
     def make_a_sample_applicant
       test_applicant = Applicant.create
 
@@ -90,6 +116,9 @@ module ApplicantFactory
       3.times { test_applicant.household_members << make_a_household_member(test_applicant) }
       3.times { test_applicant.identity.incomes << make_an_income }
       3.times { test_applicant.identity.employments << make_an_employment }
+      3.times { test_applicant.identity.criminal_histories << make_a_felony }
+
+      test_applicant.identity.criminal_histories << make_a_sex_offense
 
       test_applicant.household_members_including_self.each do |p|
         p.incomes << make_an_income

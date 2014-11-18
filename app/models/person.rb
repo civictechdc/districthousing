@@ -4,6 +4,7 @@ class Person < ActiveRecord::Base
 
   has_many :incomes
   has_many :employments
+  has_many :criminal_histories
   has_many :previous_ssns
 
   belongs_to :applicant
