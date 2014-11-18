@@ -12,6 +12,9 @@ class ResidencesController < ApplicationController
 
     @residence.applicant = current_applicant
     @residence.address = Address.new
+    @residence.landlord = Person.new
+    @residence.landlord.mail_address = Address.new
+    @residence.landlord.applicant = current_applicant
 
     if @residence.save
       redirect_to edit_residence_path(@residence)
