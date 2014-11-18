@@ -24,6 +24,10 @@ class Applicant < ActiveRecord::Base
     identity.employments + household_members_people.map { |h| h.employments }.flatten
   end
 
+  def criminal_histories
+    identity.criminal_histories + household_members_people.map { |h| h.criminal_histories }.flatten
+  end
+
   def household_members_including_self
     [identity, household_members_people].flatten
   end

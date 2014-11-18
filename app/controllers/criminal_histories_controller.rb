@@ -24,7 +24,7 @@ class CriminalHistoriesController < ApplicationController
     @criminal_history = CriminalHistory.new(criminal_history_params)
 
     if @criminal_history.save
-      redirect_to @criminal_history, notice: 'Criminal history was successfully created.'
+      redirect_to current_applicant
     else
       render :new
     end
@@ -33,7 +33,7 @@ class CriminalHistoriesController < ApplicationController
   # PATCH/PUT /criminal_histories/1
   def update
     if @criminal_history.update(criminal_history_params)
-      redirect_to @criminal_history, notice: 'Criminal history was successfully updated.'
+      redirect_to current_applicant
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class CriminalHistoriesController < ApplicationController
   # DELETE /criminal_histories/1
   def destroy
     @criminal_history.destroy
-    redirect_to criminal_histories_url, notice: 'Criminal history was successfully destroyed.'
+    redirect_to current_applicant
   end
 
   private

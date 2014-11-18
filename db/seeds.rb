@@ -18,6 +18,10 @@ User.destroy_all
 Residence.destroy_all
 Address.destroy_all
 Income.destroy_all
+IncomeType.destroy_all
+Employment.destroy_all
+CriminalHistory.destroy_all
+CrimeType.destroy_all
 
 # Populate income_types
 IncomeType.destroy_all

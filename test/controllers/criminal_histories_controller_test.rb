@@ -5,6 +5,7 @@ class CriminalHistoriesControllerTest < ActionController::TestCase
 
   def setup
     sign_in users(:one)
+    session[:current_applicant_id] = 1
   end
 
   def criminal_history
@@ -27,7 +28,7 @@ class CriminalHistoriesControllerTest < ActionController::TestCase
       post :create, criminal_history: { crime_type_id: criminal_history.crime_type_id, description: criminal_history.description, person_id: criminal_history.person_id, year: criminal_history.year }
     end
 
-    assert_redirected_to criminal_history_path(assigns(:criminal_history))
+    assert_redirected_to applicants(:one)
   end
 
   def test_show
@@ -42,7 +43,7 @@ class CriminalHistoriesControllerTest < ActionController::TestCase
 
   def test_update
     put :update, id: criminal_history, criminal_history: { crime_type_id: @criminal_history.crime_type_id, description: @criminal_history.description, person_id: @criminal_history.person_id, year: @criminal_history.year }
-    assert_redirected_to criminal_history_path(assigns(:criminal_history))
+    assert_redirected_to applicants(:one)
   end
 
   def test_destroy
@@ -50,6 +51,6 @@ class CriminalHistoriesControllerTest < ActionController::TestCase
       delete :destroy, id: criminal_history
     end
 
-    assert_redirected_to criminal_histories_path
+    assert_redirected_to applicants(:one)
   end
 end

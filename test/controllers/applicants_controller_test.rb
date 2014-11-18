@@ -29,7 +29,7 @@ class ApplicantsControllerTest < ActionController::TestCase
 
   def test_show
     sign_in users(:one)
-    get :show, id: users(:one).id
+    get :show, id: applicants(:one)
     assert_response :success
   end
 

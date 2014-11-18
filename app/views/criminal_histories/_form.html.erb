@@ -1,4 +1,4 @@
-<%= form_for(@criminal_history) do |f| %>
+<%= bootstrap_form_for(@criminal_history) do |f| %>
   <% if @criminal_history.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@criminal_history.errors.count, "error") %> prohibited this criminal_history from being saved:</h2>
@@ -12,22 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :person_id %><br>
-    <%= f.number_field :person_id %>
+    <%= f.collection_select :person_id, @current_applicant.household_members_including_self, :id, :description, label: "Person" %>
   </div>
   <div class="field">
-    <%= f.label :crime_type_id %><br>
-    <%= f.number_field :crime_type_id %>
+    <%= f.collection_select :crime_type_id, CrimeType.all, :id, :label %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :year %><br>
-    <%= f.date_select :year %>
+    <%= f.date_field :year, label: "Date" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <%= render "buttons_update_back", f: f %>
 <% end %>

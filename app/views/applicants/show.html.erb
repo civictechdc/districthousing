@@ -66,3 +66,17 @@
   <%= link_to "New", new_employment_path, class: "btn btn-success"%>
   </p>
 </div>
+
+<div class="row">
+  <h2>Criminal history</h2>
+  <% @applicant.criminal_histories.each do |e| %>
+    <p>
+      <%= render partial: "criminal_histories/summary", locals: { criminal_history: e } %>
+      <%= link_to "Edit", edit_criminal_history_path(e), class: "btn btn-info"%>
+      <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
+  <p>
+  <%= link_to "New", new_criminal_history_path, class: "btn btn-success"%>
+  </p>
+</div>
