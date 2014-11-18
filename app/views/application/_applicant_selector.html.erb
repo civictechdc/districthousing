@@ -1,5 +1,0 @@
-<%= form_tag(submit_path, method: "post") do %>
-  <%= label_tag(:applicant_id, "Preview with applicant:") %>
-  <%= select_tag(:applicant_id, options_for_select(current_user.applicants.map { |a| [a.to_s, a.id]})) %>
-  <%= submit_tag("Preview") %>
-<% end %>

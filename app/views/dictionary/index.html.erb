@@ -7,7 +7,11 @@
   This guide is a dictionary of all the kinds of field names that are supported for form filling.
 </p>
 
-<%= render "applicant_selector", submit_path: "/dictionary" %>
+<%= form_tag("/dictionary", method: "post") do %>
+  <%= label_tag(:applicant_id, "Preview with applicant:") %>
+  <%= select_tag(:applicant_id, options_for_select(current_user.applicants.map { |a| [a.to_s, a.id]})) %>
+  <%= submit_tag("Preview") %>
+<% end %>
 
 <h3>Information about people</h3>
 
