@@ -16,6 +16,10 @@ class Applicant < ActiveRecord::Base
 
   belongs_to :user
 
+  def to_s
+    identity.to_s
+  end
+
   def incomes
     identity.incomes + household_members_people.map { |h| h.incomes }.flatten
   end
