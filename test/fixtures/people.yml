@@ -55,7 +55,7 @@ hh1:
   marital_status: Married
   applicant_id: 37
   occupation: Candlestick Maker
-  mail_address_id: 337
+  mail_address_id: 1
   state_of_birth: Georgia
   city_of_birth: Port Elvaside
   driver_license_number: '8308313763'
@@ -66,6 +66,7 @@ hh2:
   phone: (444) 444-4444
   applicant_id: 1
   first_name: HH2
+  mail_address_id: 2
 
 ll1:
   id: 5
