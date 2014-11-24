@@ -20,4 +20,10 @@ As a demo, the app can be found at http://districthousing.org/.  Don't enter rea
 
 ## Dependencies
 
+Requires pdftk.  On OS X:
+
     brew cask install pdftk
+
+On Debian/Ubuntu:
+
+    apt-get install pdftk
