@@ -4,6 +4,7 @@ class HousingForm < ActiveRecord::Base
   after_create { initialize_from_disk! }
 
   def initialize_from_disk!
+    update(name: name)
     read_fields!
     detect_location!
   end
