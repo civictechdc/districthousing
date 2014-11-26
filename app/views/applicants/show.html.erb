@@ -7,8 +7,10 @@
 
 <h2>Applicant</h2>
 <div class="row">
-  <%= render partial: 'people/summary', locals: { person: @applicant.identity } %>
-  <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
+  <div class="col-md-4">
+    <%= render partial: 'people/summary', locals: { person: @applicant.identity } %>
+    <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
+  </div>
 </div>
 
 <h2>Household members</h2>
@@ -53,6 +55,7 @@
 
 <h2>Income</h2>
 <div class="row">
+  <div class="col-md-6">
   <% @applicant.incomes.each do |i| %>
     <p>
       <%= render partial: "incomes/summary", locals: { income: i } %>
@@ -63,6 +66,7 @@
   <p>
   <%= link_to "New", new_income_path, class: "btn btn-success"%>
   </p>
+  </div>
 </div>
 
 <h2>Employment</h2>
