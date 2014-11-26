@@ -31,13 +31,13 @@
   [ "USCitizenYesNo", "Is the person a US Citizen?"],
   [ "Gender", "The person's gender"],
   [ "GenderInitial", "First letter of gender"],
+  [ "Address", "Applicant's current residential address"],
   [ "Mail", "Applicant's mailing address"],
   [ "Phone", "Applicant's phone number"],
   [ "HomePhone", "Applicant's home phone number"],
   [ "WorkPhone", "Applicant's work phone number"],
   [ "CellPhone", "Applicant's cell phone number"],
   [ "Email", "Applicant's e-mail address"],
-  [ "Address", "Applicant's current residential address"],
   [ "MaritalStatus", "Applicant's marital status (Single, Married, Divorced, Widowed)"],
   [ "Occupation", "Applicant's occupation"],
   [ "DriverLicense", "Driver's license number"],
@@ -170,11 +170,11 @@
 </p>
 
 <%= render "table", field_name_descriptions: [
-  [ "Address", "Current residence address of applicant" ],
-  [ "HH1AddressZip", "First household member's address zip code" ],
-  [ "HH2AddressStreet", "Second household member's street address" ],
-  [ "LL1Address", "Current landlord's address" ],
-  [ "LL2AddressState", "Previous landlord's address state" ],
+  [ "Mail", "Current mailing address of applicant" ],
+  [ "HH1MailZip", "First household member's mailing address zip code" ],
+  [ "HH2MailStreet", "Second household member's street mailing address" ],
+  [ "LL1Mail", "Current landlord's mailing address" ],
+  [ "LL2MailState", "Previous landlord's mailing address state" ],
 ] %>
 
 <h3>Tickboxes</h3>
