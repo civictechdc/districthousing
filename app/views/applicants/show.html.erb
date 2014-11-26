@@ -5,14 +5,14 @@
   <li><%= @applicant.description %></li>
 </ol>
 
+<h2>Applicant</h2>
 <div class="row">
-  <h2>Applicant</h2>
   <%= render partial: 'people/summary', locals: { person: @applicant.identity } %>
   <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
 </div>
 
+<h2>Household members</h2>
 <div class="row">
-  <h2>Household members</h2>
   <% @applicant.household_members_people.each do |h| %>
     <div class="col-md-4">
       <p>
@@ -31,8 +31,8 @@
   </div>
 </div>
 
+<h2>Residence history</h2>
 <div class="row">
-  <h2>Residence history</h2>
   <% @applicant.residences.each do |r| %>
     <div class="col-md-4">
       <p>
@@ -51,8 +51,8 @@
   </div>
 </div>
 
+<h2>Income</h2>
 <div class="row">
-  <h2>Income</h2>
   <% @applicant.incomes.each do |i| %>
     <p>
       <%= render partial: "incomes/summary", locals: { income: i } %>
@@ -65,8 +65,8 @@
   </p>
 </div>
 
+<h2>Employment</h2>
 <div class="row">
-  <h2>Employment</h2>
   <% @applicant.employments.each do |e| %>
     <div class="col-md-4">
     <p>
@@ -85,8 +85,8 @@
   </div>
 </div>
 
+<h2>Criminal history</h2>
 <div class="row">
-  <h2>Criminal history</h2>
   <% @applicant.criminal_histories.each do |e| %>
     <div class="col-md-4">
     <p>
