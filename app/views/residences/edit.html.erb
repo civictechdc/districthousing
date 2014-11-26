@@ -6,12 +6,22 @@
 
 <%= bootstrap_form_for(@residence) do |f| %>
 
+  <h2>Time period</h2>
   <%= render "fields", f: f %>
 
-  <h2>Address</h2>
+  <h2>Residence Address</h2>
   <%= f.fields_for :address do |a| %>
     <%= render "addresses/fields", builder: a %>
   <% end %>
 
+  <h2>Landlord</h2>
+  <%= f.fields_for :landlord do |l| %>
+    <%= render "people/name", builder: l %>
+    <%= render "people/contact", builder: l %>
+    <h3>Landlord's address</h2>
+    <%= l.fields_for :mail_address do |m| %>
+      <%= render "addresses/fields", builder: m %>
+    <% end %>
+  <% end %>
   <%= render "buttons_update_back", f: f %>
 <% end %>

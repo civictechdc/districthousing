@@ -28,7 +28,7 @@
   [ "BirthState", "State of birth"],
   [ "BirthCity", "City of birth"],
   [ "Nationality", "Nationality/citizenship"],
-  [ "USCitizen", "Is the person a US Citizen?"],
+  [ "USCitizenYesNo", "Is the person a US Citizen?"],
   [ "Gender", "The person's gender"],
   [ "GenderInitial", "First letter of gender"],
   [ "Mail", "Applicant's mailing address"],
@@ -59,8 +59,8 @@
   [ "HH1Mail", "First household member's mailing address"],
   [ "HH1Phone", "First household member's phone number"],
   [ "HH1Email", "First household member's e-mail address"],
-  [ "HH1Address", "First household member's current residential address"],
   [ "HH1Occupation", "First household member's occupation"],
+  [ "HH1Relationship", "First household member's relationship to the applicant"],
 ] %>
 
 <p>Increment the prefix number to select the next person of that type:</p>
@@ -123,16 +123,20 @@
 <h3>Addresses</h3>
 
 <p>
+<code>Address</code> should be used when talking about a residence address.  <code>Mail</code> should be used when talking about a mailing address.
+</p>
+
+<p>
   Addresses can be suffixed with address components to get just that part of the address.  For example:
 </p>
 
 <%= render "table", field_name_descriptions: [
-  [ "Address", "Full address" ],
-  [ "AddressStreet", "Street address" ],
-  [ "AddressCity", "City" ],
-  [ "AddressState", "State" ],
-  [ "AddressZip", "Zip code" ],
-  [ "AddressApt", "Apartment" ],
+  [ "Address", "Full residence address" ],
+  [ "AddressStreet", "Residence street address" ],
+  [ "AddressCity", "Residence city" ],
+  [ "AddressState", "Residence state" ],
+  [ "AddressZip", "Residence zip code" ],
+  [ "AddressApt", "Residence apartment" ],
   [ "AddressStart", "Start date of this address" ],
   [ "AddressEnd", "Start date of this address" ],
   [ "AddressLeaseExpDate", "Date that the lease expires at this address" ],

@@ -42,7 +42,40 @@ class HouseholdMembersController < ApplicationController
   end
 
   def household_member_params
-    params[:household_member]
+    params.require(:household_member).permit(
+      person_attributes: [
+        :dob,
+        :first_name,
+        :gender,
+        :last_name,
+        :middle_name,
+        :res_apt,
+        :ssn,
+        :phone,
+        :work_phone,
+        :home_phone,
+        :cell_phone,
+        :preferred_phone,
+        :citizenship,
+        :nationality,
+        :email,
+        :race,
+        :student_status,
+        :marital_status,
+        :occupation,
+        :state_of_birth,
+        :city_of_birth,
+        :driver_license_number,
+        :driver_license_state,
+        mail_address_attributes: [
+          :street,
+          :city,
+          :state,
+          :zip,
+          :apt,
+        ]
+      ]
+    )
   end
 
   def selected_or_created_person

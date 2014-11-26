@@ -3,7 +3,7 @@
 
 one:
   applicant_id: 1
-  address_id: 1
+  address_id: 3
   start: 2013-06-25
   end: 2014-06-25
   reason: Changed jobs
@@ -11,7 +11,7 @@ one:
 
 two:
   applicant_id: 1
-  address_id: 2
+  address_id: 4
   start: 2012-06-25
   end: 2013-06-25
   reason: Neighbors annoying

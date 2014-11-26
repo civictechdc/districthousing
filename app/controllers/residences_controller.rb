@@ -8,14 +8,13 @@ class ResidencesController < ApplicationController
 
   # POST /residences
   def create
-    @residence = Residence.new(
-      start: params[:start],
-      end: params[:end],
-      reason: params[:reason]
-    )
+    @residence = Residence.new(residence_params)
 
     @residence.applicant = current_applicant
     @residence.address = Address.new
+    @residence.landlord = Person.new
+    @residence.landlord.mail_address = Address.new
+    @residence.landlord.applicant = current_applicant
 
     if @residence.save
       redirect_to edit_residence_path(@residence)
@@ -52,6 +51,15 @@ class ResidencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def residence_params
-      params.permit(residence: [:applicant_id, :address_id, :start, :end, :reason, :landlord_id, {address_attributes: [:street, :apt, :city, :state, :zip, :id]}, {landlord_attributes: [:first_name, :middle_name, :last_name, :cell_phone, :home_phone, :work_phone, :email, :id]}])[:residence]
+      params.require(:residence).permit(
+        :applicant_id,
+        :address_id,
+        :start,
+        :end,
+        :reason,
+        :landlord_id,
+        {address_attributes: [:street, :apt, :city, :state, :zip, :id]},
+        {landlord_attributes: [:first_name, :middle_name, :last_name, :cell_phone, :home_phone, :work_phone, :email, :id,
+                               mail_address_attributes: [:street, :apt, :city, :state, :zip, :id]]})
     end
 end

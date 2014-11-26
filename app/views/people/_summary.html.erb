@@ -1,8 +1,16 @@
 <ul>
-  <li>
-  <%= person.description %>
-  </li>
-  <li>
-  Born <%= person.dob_date %>
-  </li>
+  <% person.attribute_names.reject { |a|
+    %w(created_at updated_at applicant_id id).include? a
+  }.each do |attribute_name| %>
+    <li>
+    <% case attribute_name %>
+    <% when 'mail_address_id' %>
+      Address: <%= render 'maybe', object: person.mail_address.full %>
+    <% when 'dob' %>
+      Date of birth: <%= render 'maybe', object: person.dob_date %>
+    <% else %>
+      <%= attribute_name.humanize %>: <%= render 'maybe', object: person[attribute_name] %>
+    <% end %>
+    </li>
+  <% end %>
 </ul>

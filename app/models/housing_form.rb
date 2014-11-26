@@ -1,10 +1,10 @@
 class HousingForm < ActiveRecord::Base
-  attr_accessible :name, :uri, :location, :lat, :long
   has_and_belongs_to_many :form_fields
 
   after_create { initialize_from_disk! }
 
   def initialize_from_disk!
+    update(name: name)
     read_fields!
     detect_location!
   end

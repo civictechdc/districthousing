@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113011342) do
+ActiveRecord::Schema.define(version: 20141118010032) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -35,6 +35,35 @@ ActiveRecord::Schema.define(version: 20141113011342) do
   end
 
   add_index "applicants", ["user_id"], name: "index_applicants_on_user_id"
+
+  create_table "crime_types", force: true do |t|
+    t.string   "name"
+    t.string   "label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "criminal_histories", force: true do |t|
+    t.integer  "person_id"
+    t.integer  "crime_type_id"
+    t.string   "description"
+    t.date     "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "employments", force: true do |t|
+    t.integer  "person_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "employer_name"
+    t.string   "supervisor_name"
+    t.string   "position"
+    t.integer  "address_id"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "form_fields", force: true do |t|
     t.string   "name"
@@ -102,8 +131,8 @@ ActiveRecord::Schema.define(version: 20141113011342) do
     t.string   "ssn"
     t.datetime "dob"
     t.string   "gender"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.string   "phone"
     t.string   "work_phone"
     t.string   "home_phone"
@@ -119,6 +148,8 @@ ActiveRecord::Schema.define(version: 20141113011342) do
     t.integer  "mail_address_id"
     t.string   "state_of_birth"
     t.string   "city_of_birth"
+    t.string   "driver_license_number"
+    t.string   "driver_license_state"
   end
 
   create_table "previous_ssns", force: true do |t|

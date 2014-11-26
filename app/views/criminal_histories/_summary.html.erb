@@ -1,0 +1,14 @@
+<ul>
+  <li>
+  <%= criminal_history.person %>
+  </li>
+  <li>
+  <%= criminal_history.crime_type.label %>
+  <% unless criminal_history.description.blank? %>
+    - <%= criminal_history.description %>
+  <% end %>
+  </li>
+  <li>
+  <%= criminal_history.year %>
+  </li>
+</ul>

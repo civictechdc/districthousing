@@ -2,8 +2,6 @@ class Address < ActiveRecord::Base
 
   belongs_to :applicant
 
-  attr_accessible :street, :city, :state, :zip, :apt
-
   def apartment
     case apt
     when /^\d+[[:alpha:]]?$/ # For a string of digits without "Apartment" or "Unit" in the prefix
@@ -21,6 +19,10 @@ class Address < ActiveRecord::Base
     else
     "#{street}, #{apartment}, #{city}, #{state}, #{zip}".gsub(/( ,)+/, "").strip.sub(/,$/, "")
     end
+  end
+
+  def to_s
+    full
   end
 
   def value_for_field field_name

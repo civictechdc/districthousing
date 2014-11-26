@@ -18,8 +18,12 @@ User.destroy_all
 Residence.destroy_all
 Address.destroy_all
 Income.destroy_all
+IncomeType.destroy_all
+Employment.destroy_all
+CriminalHistory.destroy_all
+CrimeType.destroy_all
 
-#Populate income_types
+# Populate income_types
 IncomeType.destroy_all
 IncomeType.create(name: "salary", label: "Salary / Full-Time Employment Income", active: true)
 IncomeType.create(name: "military", label: "Military Income", active: true)
@@ -42,6 +46,12 @@ IncomeType.create(name: "severance", label: "Severance", active: true)
 IncomeType.create(name: "lottery", label: "Lottery", active: true)
 IncomeType.create(name: "alimony", label: "Alimony", active: true)
 IncomeType.create(name: "scholarship", label: "Scholarship", active: true)
+
+# Populate crime types
+CrimeType.create(name: "felony", label: "Felony")
+CrimeType.create(name: "sex_offense", label: "Sex Offense")
+CrimeType.create(name: "evicted_from_residence", label: "Evicted from your residence")
+CrimeType.create(name: "evicted_from_residence_for_drugs", label: "Evicted from your residence because of drug or stubstance abuse")
 
 # Seed a test user
 test_user = User.create(

@@ -1,10 +1,9 @@
-# Read about fixtures at
-# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
 one:
-  name: MyString
-  label: MyString
+  id: 1
+  name: Salary
+  label: Salary
 
 two:
-  name: MyString
-  label: MyString
+  id: 2
+  name: Tips
+  label: Tips

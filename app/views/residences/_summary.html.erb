@@ -1,5 +1,23 @@
 <ul>
   <li>
-  <%= residence.address.full if residence.address %>
+  From <%= render 'maybe', object: residence.start %> to <%= render 'maybe', object: residence.end %>
   </li>
+  <li>
+  At: <%= render 'maybe', object: residence.address.full %>
+  </li>
+</ul>
+
+<ul>
+  <h3>Landlord</h3>
+  <li>
+  Name: <%= render 'maybe', object: residence.landlord.full_name %>
+  </li>
+  <li>
+  Address: <%= render 'maybe', object: residence.landlord.mail_address.full %>
+  </li>
+  <% %w(cell_phone home_phone work_phone email).each do |attribute_name| %>
+  <li>
+    <%= attribute_name.humanize %>: <%= render 'maybe', object: residence.landlord[attribute_name] %>
+  </li>
+  <% end %>
 </ul>

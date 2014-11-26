@@ -16,7 +16,21 @@ class Applicant < ActiveRecord::Base
 
   belongs_to :user
 
-  attr_accessible :identity_attributes, :landlords_attributes, :household_members_attributes, :residences_attributes
+  def incomes
+    identity.incomes + household_members_people.map { |h| h.incomes }.flatten
+  end
+
+  def employments
+    identity.employments + household_members_people.map { |h| h.employments }.flatten
+  end
+
+  def criminal_histories
+    identity.criminal_histories + household_members_people.map { |h| h.criminal_histories }.flatten
+  end
+
+  def household_members_including_self
+    [identity, household_members_people].flatten
+  end
 
   def preferred_attrs_for field_names
     field_names.map do |field_name|
@@ -51,6 +65,8 @@ class Applicant < ActiveRecord::Base
     when /^Address(\d+)(.*)$/
       index = $1.to_i - 1
       delegate_field_to addresses[index], $2
+    when /^Address(.*)$/
+      delegate_field_to addresses[0], $1
     when "Today"
       Date.today
     when "Now"

@@ -6,7 +6,7 @@ class PeopleController < ApplicationController
   def update
     @person = Person.find(params[:id])
 
-    if @person.update(params[:person])
+    if @person.update(person_params)
       redirect_to @person.applicant
     else
       render :edit
@@ -20,7 +20,38 @@ class PeopleController < ApplicationController
 
   private
 
-  def housing_form_params
-    params[:person]
+  def person_params
+    params.require(:person).permit(
+      :dob,
+      :first_name,
+      :gender,
+      :last_name,
+      :middle_name,
+      :res_apt,
+      :ssn,
+      :phone,
+      :work_phone,
+      :home_phone,
+      :cell_phone,
+      :preferred_phone,
+      :citizenship,
+      :nationality,
+      :email,
+      :race,
+      :student_status,
+      :marital_status,
+      :occupation,
+      :state_of_birth,
+      :city_of_birth,
+      :driver_license_number,
+      :driver_license_state,
+      mail_address_attributes: [
+        :street,
+        :city,
+        :state,
+        :zip,
+        :apt,
+      ]
+    )
   end
 end

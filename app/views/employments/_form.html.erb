@@ -1,0 +1,40 @@
+<%= bootstrap_form_for(@employment) do |f| %>
+  <% if @employment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employment.errors.count, "error") %> prohibited this employment from being saved:</h2>
+
+      <ul>
+      <% @employment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.collection_select :person_id, @current_applicant.household_members_including_self, :id, :description, label: "Person employed" %>
+  </div>
+  <div class="field">
+    <%= f.date_field :start_date %>
+  </div>
+  <div class="field">
+    <%= f.date_field :end_date %>
+  </div>
+  <div class="field">
+    <%= f.text_field :employer_name %>
+  </div>
+  <div class="field">
+    <%= f.text_field :supervisor_name %>
+  </div>
+  <div class="field">
+    <%= f.text_field :position %>
+  </div>
+  <div class="field">
+    <%= f.text_field :phone %>
+  </div>
+  <h3>Employer Address</h3>
+  <%= f.fields_for :address do |a| %>
+    <%= render "addresses/fields", builder: a %>
+  <% end %>
+  <%= render "buttons_update_back", f: f %>
+<% end %>

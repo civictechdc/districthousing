@@ -1,6 +1,6 @@
 class HousingFormsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_housing_form, only: [:show, :edit, :update, :destroy]
+  before_action :set_housing_form, only: [:show, :edit, :update, :destroy, :download]
 
   # GET /housing_forms
   def index
@@ -31,7 +31,7 @@ class HousingFormsController < ApplicationController
 
   # POST /housing_forms
   def create
-    uploaded_file = housing_form_params[:new_form]
+    uploaded_file = params[:housing_form][:new_form]
     new_file_path = Rails.root.join("public", "forms", uploaded_file.original_filename)
 
     File.open(new_file_path, "wb") do |file|
@@ -61,6 +61,13 @@ class HousingFormsController < ApplicationController
     redirect_to housing_forms_url, notice: 'Housing form was successfully destroyed.'
   end
 
+  def download
+    filled_file = OutputPDF.new(@housing_form, current_applicant || sample_applicant).to_file
+    send_file(filled_file.path,
+             type: 'application/pdf',
+             filename: @housing_form.name)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_housing_form
@@ -69,6 +76,11 @@ class HousingFormsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def housing_form_params
-      params[:housing_form]
+      params.require(:housing_form).permit(
+        :name,
+        :location,
+        :lat,
+        :long,
+      )
     end
 end
