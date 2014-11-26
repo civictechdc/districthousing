@@ -20,7 +20,6 @@ module ApplicantFactory
         ssn: "%s-%s-%s" % [Faker::Number.number(3), Faker::Number.number(2), Faker::Number.number(4)],
         dob: rand(120*365).days.ago,
         gender: ["Female", "Male"].sample,
-        phone: Faker::PhoneNumber.phone_number,
         work_phone: Faker::PhoneNumber.phone_number,
         home_phone: Faker::PhoneNumber.phone_number,
         cell_phone: Faker::PhoneNumber.phone_number,

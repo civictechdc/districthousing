@@ -25,7 +25,7 @@ class ApplicantTest < ActiveSupport::TestCase
     assert_equal "McOne", @one.field("LastName")
     assert_equal "(202) 208-4743", @one.field("CellPhone")
     assert_equal "(202) 272-0167", @one.field("HomePhone")
-    assert_equal "(202) 456-1111", @one.field("Phone")
+    assert_equal "(202) 208-4743", @one.field("Phone")
     assert_equal "111-11-1111", @one.field("SSN")
     assert_equal "Male", @one.field("Gender")
     assert_equal "M", @one.field("GenderInitial")

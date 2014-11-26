@@ -23,7 +23,6 @@ class PeopleControllerTest < ActionController::TestCase
       dob: "2000-01-01",
       gender: "x",
       ssn: "x",
-      phone: "x",
       work_phone: "x",
       home_phone: "x",
       cell_phone: "x",

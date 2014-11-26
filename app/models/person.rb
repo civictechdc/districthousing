@@ -63,6 +63,11 @@ class Person < ActiveRecord::Base
     return /^(United States|US|USA|U.S.A.)$/i =~ citizenship
   end
 
+  def preferred_phone
+    # FIXME: Make preferred phone selectable
+    [cell_phone, home_phone, work_phone].reject{|p| p.blank?}.first
+  end
+
   def value_for_field field_name
     case field_name
     when /^Mail(.*)/
@@ -100,7 +105,7 @@ class Person < ActiveRecord::Base
     when "HomePhone"
       home_phone
     when "Phone"
-      phone
+      preferred_phone
     when "Email"
       email
     when "GenderInitial"
