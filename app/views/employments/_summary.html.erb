@@ -1,20 +1,9 @@
-<ul>
-  <li>
-  <%= employment.person.full_name %>
-  </li>
-  <li>
-  <%= employment.employer_name %>
-  </li>
-  <li>
-  <%= employment.address %>
-  </li>
-  <li>
-  <%= employment.position %>
-  </li>
-  <li>
-  Supervisor: <%= employment.supervisor_name %>
-  </li>
-  <li>
-  From <%= employment.start_date %> to <%= employment.end_date %>
-  </li>
+<ul class="list-group">
+  <%= render 'maybe', attribute: 'Name', object: employment.person.full_name %>
+  <%= render 'maybe', attribute: 'Employer', object: employment.employer_name %>
+  <%= render 'maybe', attribute: 'Employment address', object: employment.address %>
+  <%= render 'maybe', attribute: 'Position', object: employment.position %>
+  <%= render 'maybe', attribute: 'Supervisor', object: employment.supervisor_name %>
+  <%= render 'maybe', attribute: 'From', object: employment.start_date %> 
+  <%= render 'maybe', attribute: 'To', object: employment.end_date %>
 </ul>

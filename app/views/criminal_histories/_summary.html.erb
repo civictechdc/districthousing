@@ -1,14 +1,8 @@
-<ul>
-  <li>
-  <%= criminal_history.person %>
-  </li>
-  <li>
-  <%= criminal_history.crime_type.label %>
+<ul class="list-group">
+  <%= render 'maybe', attribute: 'Person', object: criminal_history.person %>
+  <%= render 'maybe', attribute: 'Type', object: criminal_history.crime_type.label %>
   <% unless criminal_history.description.blank? %>
-    - <%= criminal_history.description %>
+    <%= render 'maybe', attribute: 'Description', object: criminal_history.description %>
   <% end %>
-  </li>
-  <li>
-  <%= criminal_history.year %>
-  </li>
+  <%= render 'maybe', attribute: 'Year', object: criminal_history.year %>
 </ul>
