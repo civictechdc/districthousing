@@ -1,8 +1,7 @@
 <ul class="nav nav-tabs nav-justified">
-  <li role="presentation" class="active"><a href="#">Identity</a></li>
-  <li role="presentation"><a href="#">Household Members</a></li>
-  <li role="presentation"><a href="#">Residence History</a></li>
-  <li role="presentation"><a href="#">Income</a></li>
-  <li role="presentation"><a href="#">Employment</a></li>
-  <li role="presentation"><a href="#">Criminal History</a></li>
+  <% [:identity, :household_members, :residence_history, :income, :employment, :criminal_history].each do |section| %>
+    <li role="presentation" class="<%= 'active' if section == active_section %>">
+      <a href="#"><%= section.to_s.humanize %></a>
+    </li>
+  <% end %>
 </ul>
