@@ -1,6 +1,10 @@
 class HouseholdMembersController < ApplicationController
   before_action :set_household_member, only: [:show, :edit, :update, :destroy]
 
+  def edit
+    @person = Person.find(params[:id])
+  end
+
   def new
     @possible_people = current_applicant.people
   end

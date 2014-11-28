@@ -33,7 +33,7 @@
         <%= render partial: 'people/summary', locals: { person: h } %>
         <ul class="list-group">
           <li class="list-group-item">
-            <%= link_to "Edit", edit_person_path(h), class: "btn btn-info"%>
+            <%= link_to "Edit", edit_household_member_path(h), class: "btn btn-info"%>
             <%= link_to 'Delete', h, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
           </li>
         </ul>
