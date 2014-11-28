@@ -4,6 +4,8 @@
   <li><%= @income %></li>
 </ol>
 
+<%= render 'section_tabs' %>
+
 <%= bootstrap_form_for(@income) do |f| %>
 
   <%= render "fields", f: f %>
