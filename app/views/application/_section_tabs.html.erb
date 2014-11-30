@@ -7,9 +7,9 @@
       Household members <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <% @current_applicant.household_members_people.each_with_index do |h, index| %>
+      <% @current_applicant.household_members.each_with_index do |h, index| %>
         <li role="presentation">
-          <%= link_to "#{index + 1} - #{h.description}", edit_household_member_path(h) %>
+          <%= link_to "#{index + 1} - #{h.person.description}", edit_household_member_path(h) %>
         </li>
       <% end %>
       <li role="presentation">

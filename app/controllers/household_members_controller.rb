@@ -2,7 +2,8 @@ class HouseholdMembersController < ApplicationController
   before_action :set_household_member, only: [:show, :edit, :update, :destroy]
 
   def edit
-    @person = Person.find(params[:id])
+    @household_member = HouseholdMember.find(params[:id])
+    @person = @household_member.person
   end
 
   def new
