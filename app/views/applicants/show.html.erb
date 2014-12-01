@@ -24,13 +24,13 @@
 
 <h2>Household members</h2>
 <div class="row">
-  <% @applicant.household_members_people.each do |h| %>
+  <% @applicant.household_members.each do |h| %>
     <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <%= h.description %>
+          <%= h.person.description %>
         </div>
-        <%= render partial: 'people/summary', locals: { person: h } %>
+        <%= render partial: 'people/summary', locals: { person: h.person } %>
         <ul class="list-group">
           <li class="list-group-item">
             <%= link_to "Edit", edit_household_member_path(h), class: "btn btn-info"%>
