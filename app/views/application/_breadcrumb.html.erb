@@ -1,0 +1,9 @@
+<ol class="breadcrumb">
+  <li><%= link_to current_user.email, root_path %></li>
+  <% if defined? object %>
+    <li><%= link_to @current_applicant, @current_applicant %></li>
+    <li><%= object %></li>
+  <% else %>
+    <li><%= @current_applicant %></li>
+  <% end %>
+</ol>

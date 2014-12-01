@@ -42,8 +42,8 @@ class Applicant < ActiveRecord::Base
     end.flatten.reject(&:nil?).to_set
   end
 
-  def description
-    identity.description
+  def to_s
+    identity.to_s
   end
 
   def field field_name

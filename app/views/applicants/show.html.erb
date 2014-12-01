@@ -1,16 +1,13 @@
-<p id="notice"><%= notice %></p>
+<%= render 'breadcrumb' %>
 
-<ol class="breadcrumb">
-  <li><%= link_to current_user.email, root_path %></li>
-  <li><%= @applicant.description %></li>
-</ol>
+<p id="notice"><%= notice %></p>
 
 <h2>Applicant</h2>
 <div class="row">
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <%= @applicant.identity.description %>
+        <%= @applicant.identity %>
       </div>
       <%= render partial: 'people/summary', locals: { person: @applicant.identity } %>
       <ul class="list-group">
@@ -28,7 +25,7 @@
     <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <%= h.person.description %>
+          <%= h.person %>
         </div>
         <%= render partial: 'people/summary', locals: { person: h.person } %>
         <ul class="list-group">
@@ -55,7 +52,7 @@
     <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <%= r.description %>
+          <%= r %>
         </div>
         <%= render partial: 'residences/summary', locals: { residence: r } %>
         <ul class="list-group">
