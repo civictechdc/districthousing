@@ -6,6 +6,17 @@
 
 <%= render 'section_tabs', active_section: :income %>
 
+<% if flash[:errors] != nil && flash[:errors].any? %>
+  <div class="validation">
+    The following error(s) prohibited this income from being saved:
+    <ul>
+      <% flash[:errors].each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= bootstrap_form_for(@income) do |f| %>
 
   <%= render "fields", f: f %>
