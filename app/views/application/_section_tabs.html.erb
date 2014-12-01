@@ -9,7 +9,7 @@
     <ul class="dropdown-menu" role="menu">
       <% @current_applicant.household_members.each_with_index do |h, index| %>
         <li role="presentation">
-          <%= link_to "#{index + 1} - #{h.person.description}", edit_household_member_path(h) %>
+          <%= link_to "#{index + 1} - #{h.person}", edit_household_member_path(h) %>
         </li>
       <% end %>
       <li role="presentation">
@@ -26,7 +26,7 @@
     <ul class="dropdown-menu" role="menu">
       <% @current_applicant.residences.each_with_index do |r, index| %>
         <li role="presentation">
-          <%= link_to "Residence #{index + 1}", edit_residence_path(r) %>
+          <%= link_to "#{index + 1} - #{r}", edit_residence_path(r) %>
         </li>
       <% end %>
       <li role="presentation">
@@ -43,7 +43,7 @@
     <ul class="dropdown-menu" role="menu">
       <% @current_applicant.incomes.each_with_index do |i, index| %>
         <li role="presentation">
-          <%= link_to "Income #{index + 1}", edit_income_path(i) %>
+          <%= link_to "#{index + 1} - #{i}", edit_income_path(i) %>
         </li>
       <% end %>
       <li role="presentation">
@@ -60,7 +60,7 @@
     <ul class="dropdown-menu" role="menu">
       <% @current_applicant.employments.each_with_index do |e, index| %>
         <li role="presentation">
-            <%= link_to "Employment #{index + 1}", edit_employment_path(e) %>
+          <%= link_to "#{index + 1} - #{e}", edit_employment_path(e) %>
         </li>
       <% end %>
       <li role="presentation">
@@ -77,7 +77,7 @@
     <ul class="dropdown-menu" role="menu">
       <% @current_applicant.criminal_histories.each_with_index do |c, index| %>
         <li role="presentation">
-            <%= link_to "Criminal history #{index + 1}", edit_criminal_history_path(c) %>
+          <%= link_to "#{index + 1} - #{c}", edit_criminal_history_path(c) %>
         </li>
       <% end %>
       <li role="presentation">
