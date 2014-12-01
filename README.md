@@ -44,4 +44,4 @@ Install pdftk using apt-get and ensure that you are using ruby-2.1.2. You should
     rake db:setup
     rails s -b $IP -p $PORT
 
-Navigate to http://districthousing-c9-<username>.c9.io to see your app.
+Navigate to http://districthousing-c9-[username].c9.io to see your app.
