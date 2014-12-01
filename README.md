@@ -27,3 +27,20 @@ Requires pdftk.  On OS X:
 On Debian/Ubuntu:
 
     apt-get install pdftk
+
+## Installation with Cloud9
+
+If you do not want to go through the trouble of installing Rails on your machine, you can easily set up the development environment with [Cloud9](https://c9.io/). After forking the districthousing repo, sign up for a free Cloud9 account using your Github credentials.
+
+Your fork of districthousing should appear on the left side of your Cloud9 dashboard under 'Projects on Github.' Select it and click 'Clone to Edit.' Choose the pre-configured Ruby on Rails environment. The districthousing fork will now be listed under 'My Projects.' Once cloned, click 'Start Editing.'
+
+To continue using git, run the following in your workspace terminal:
+
+    git remote add districthousing 'git@github.com:[github username]/districthousing'
+
+Install pdftk using apt-get and ensure that you are using ruby-2.1.2. You should now be able to get the application up by running:
+
+    bundle install
+    rake db:setup
+    rails s -b $IP -p $PORT
+    
