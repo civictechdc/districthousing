@@ -24,9 +24,39 @@
 </ul>
 
 <%= bootstrap_form_tag(url: '/applicants') do |f| %>
+
+  <p>
+  Let's start with a few questions to help plan your application.  Don't worry, you can change these answers later.
+  </p>
+
   <%= f.text_field :first_name %>
   <%= f.text_field :last_name %>
-  <%= f.submit 'Create new applicant' %>
+
+  <p>
+  How many people will be living with you?
+  </p>
+
+  <%= f.text_field :household_member_count %>
+
+  <p>
+  How many residences have you had in the past two years, including your current residence?
+  </p>
+
+  <%= f.text_field :residence_count %>
+
+  <p>
+  How many sources of income do you and your household members have, combined?
+  </p>
+
+  <%= f.text_field :income_count %>
+
+  <p>
+  How many jobs have you and your household members had in the past two years?
+  </p>
+
+  <%= f.text_field :employment_count %>
+
+  <%= f.submit 'Get started' %>
 <% end %>
 
 <%= link_to 'Back', home_index_path %>
