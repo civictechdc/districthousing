@@ -1,23 +1,17 @@
-<ul>
-  <li>
-  From <%= render 'maybe', object: residence.start %> to <%= render 'maybe', object: residence.end %>
-  </li>
-  <li>
-  At: <%= render 'maybe', object: residence.address.full %>
-  </li>
+<ul class="list-group">
+  <%= render 'maybe', attribute: "From", object: residence.start %>
+  <%= render 'maybe', attribute: "To", object: residence.end %>
+  <%= render 'maybe', attribute: "At", object: residence.address.full %>
 </ul>
 
-<ul>
-  <h3>Landlord</h3>
-  <li>
-  Name: <%= render 'maybe', object: residence.landlord.full_name %>
-  </li>
-  <li>
-  Address: <%= render 'maybe', object: residence.landlord.mail_address.full %>
-  </li>
+<div class="panel-heading">
+Landlord
+</div>
+
+<ul class="list-group">
+  <%= render 'maybe', attribute: "Name", object: residence.landlord.full_name %>
+  <%= render 'maybe', attribute: "Address", object: residence.landlord.mail_address.full %>
   <% %w(cell_phone home_phone work_phone email).each do |attribute_name| %>
-  <li>
-    <%= attribute_name.humanize %>: <%= render 'maybe', object: residence.landlord[attribute_name] %>
-  </li>
+    <%= render 'maybe', attribute: attribute_name.humanize, object: residence.landlord[attribute_name] %>
   <% end %>
 </ul>

@@ -29,7 +29,6 @@ class PeopleController < ApplicationController
       :middle_name,
       :res_apt,
       :ssn,
-      :phone,
       :work_phone,
       :home_phone,
       :cell_phone,

@@ -16,7 +16,7 @@ class Residence < ActiveRecord::Base
     end
   end
 
-  def description
+  def to_s
     "Residence from #{start} - #{self.end}"
   end
 

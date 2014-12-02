@@ -1,8 +1,17 @@
-<ol class="breadcrumb">
-  <li><%= link_to current_user.email, root_path %></li>
-  <li><%= link_to @current_applicant.description, @current_applicant %></li>
-  <li><%= @income %></li>
-</ol>
+<%= render 'breadcrumb', object: @income %>
+
+<%= render 'section_tabs', active_section: :income %>
+
+<% if flash[:errors] != nil && flash[:errors].any? %>
+  <div class="validation">
+    The following error(s) prohibited this income from being saved:
+    <ul>
+      <% flash[:errors].each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= bootstrap_form_for(@income) do |f| %>
 

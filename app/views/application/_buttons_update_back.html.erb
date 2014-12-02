@@ -1,14 +1,18 @@
+<input type="hidden" name="submitType">
+
 <div class="row">
-  <div class="col-md-3">
-    <%= f.button("#{submit_action ||= "Update"}", { class:"btn btn-default btn-primary btn-block update-button" }) %>
-  </div>
-
-  <div class="col-md-6">
-  </div>
-
-  <div class="col-md-3">
-    <a href="<%= applicant_path(@current_applicant) %>" class="btn btn-info pull-right">
-      <span class="glyphicon glyphicon-chevron-left"></span> Back
-    </a>
+  <div class="col-md-12">
+    <%= f.button("#{submit_action ||= "Save"}", { class:"btn btn-default btn-primary btn-block update-button" }) %>
   </div>
 </div>
+
+<nav>
+  <ul class="pager">
+    <li class="previous">
+      <a href="<%= "#" %>"><span aria-hidden="true">&larr;</span> Previous</a>
+    </li>
+    <li class="next">
+      <a href="#">Continue <span aria-hidden="true">&rarr;</span></a>
+    </li>
+  </ul>
+</nav>
