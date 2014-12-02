@@ -23,7 +23,5 @@ DchousingApps::Application.routes.draw do
   get "/pdf_guide", to: "pdf_guide#index"
   get "/dictionary", to: "dictionary#index"
 
-  get 'onboarding', to: 'home#onboarding'
-
   root to: 'home#index'
 end

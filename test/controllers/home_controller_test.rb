@@ -11,9 +11,4 @@ class HomeControllerTest < ActionController::TestCase
     sign_in users(:one)
     get :index
   end
-
-  def test_onboarding
-    sign_in users(:one)
-    get :onboarding
-  end
 end
