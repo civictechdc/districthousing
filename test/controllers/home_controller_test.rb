@@ -7,6 +7,11 @@ class HomeControllerTest < ActionController::TestCase
     get :index
   end
 
+  def test_index_signed_in
+    sign_in users(:one)
+    get :index
+  end
+
   def test_onboarding
     sign_in users(:one)
     get :onboarding
