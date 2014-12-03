@@ -29,9 +29,9 @@ class HouseholdMembersController < ApplicationController
 
   def update
     if @household_member.update(household_member_params)
-      redirect_to apply_path, notice: 'Housing form was successfully updated.'
+      redirect_to next_page
     else
-      redirect_to apply_path, notice: 'Housing form could not be updated.'
+      redirect_to edit_household_member_path(@household_member), notice: 'Couldn\'t save.'
     end
   end
 
@@ -49,6 +49,7 @@ class HouseholdMembersController < ApplicationController
   def household_member_params
     params.require(:household_member).permit(
       person_attributes: [
+        :id,
         :dob,
         :first_name,
         :gender,
@@ -73,6 +74,7 @@ class HouseholdMembersController < ApplicationController
         :driver_license_number,
         :driver_license_state,
         mail_address_attributes: [
+          :id,
           :street,
           :city,
           :state,
@@ -94,6 +96,20 @@ class HouseholdMembersController < ApplicationController
       return person
     else
       return Person.find(params[:person_id])
+    end
+  end
+
+  def next_page
+    my_index = @current_applicant.household_members.find_index(@household_member)
+    if params[:submit_direction] == "next"
+      next_item = @current_applicant.household_members[my_index + 1]
+      return edit_household_member_path(next_item)
+    elsif params[:submit_direction] == "previous"
+      next_item = @current_applicant.household_members[my_index - 1]
+      return edit_household_member_path(next_item)
+    else
+      flash[:notice] = "Saved!"
+      return edit_household_member_path(@household_member)
     end
   end
 end
