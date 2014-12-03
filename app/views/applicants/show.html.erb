@@ -3,19 +3,15 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Applicant</h2>
-<div class="row">
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <%= @applicant.identity %>
-      </div>
-      <%= render partial: 'people/summary', locals: { person: @applicant.identity } %>
-      <ul class="list-group">
-        <li class="list-group-item">
-          <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
-        </li>
-      </ul>
-    </div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= @applicant.identity %>
+  </div>
+  <div class="row">
+  <%= render partial: 'people/summary_3_column', locals: { person: @applicant.identity } %>
+  </div>
+  <div class="panel-footer">
+    <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
   </div>
 </div>
 
@@ -28,12 +24,10 @@
           <%= h.person %>
         </div>
         <%= render partial: 'people/summary', locals: { person: h.person } %>
-        <ul class="list-group">
-          <li class="list-group-item">
-            <%= link_to "Edit", edit_household_member_path(h), class: "btn btn-info"%>
-            <%= link_to 'Delete', h, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-          </li>
-        </ul>
+        <div class="panel-footer">
+          <%= link_to "Edit", edit_household_member_path(h), class: "btn btn-info"%>
+          <%= link_to 'Delete', h, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
     </div>
   <% end %>
@@ -55,12 +49,10 @@
           <%= r %>
         </div>
         <%= render partial: 'residences/summary', locals: { residence: r } %>
-        <ul class="list-group">
-          <li class="list-group-item">
-            <%= link_to "Edit", edit_residence_path(r), class: "btn btn-info"%>
-            <%= link_to 'Delete', r, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-          </li>
-        </ul>
+        <div class="panel-footer">
+          <%= link_to "Edit", edit_residence_path(r), class: "btn btn-info"%>
+          <%= link_to 'Delete', r, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
     </div>
   <% end %>
@@ -118,12 +110,10 @@
     <div class='col-md-4'>
       <div class='panel panel-default'>
         <%= render partial: 'employments/summary', locals: { employment: e } %>
-        <ul class="list-group">
-          <li class="list-group-item">
-            <%= link_to 'Edit', edit_employment_path(e), class: "btn btn-info"%>
-            <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-          </li>
-        </ul>
+        <div class="panel-footer">
+          <%= link_to 'Edit', edit_employment_path(e), class: "btn btn-info"%>
+          <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
     </div>
   <% end %>
@@ -142,12 +132,10 @@
     <div class="col-md-4">
       <div class='panel panel-default'>
         <%= render partial: "criminal_histories/summary", locals: { criminal_history: e } %>
-        <ul class="list-group">
-          <li class="list-group-item">
-            <%= link_to "Edit", edit_criminal_history_path(e), class: "btn btn-info"%>
-            <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-          </li>
-        </ul>
+        <div class="panel-footer">
+          <%= link_to "Edit", edit_criminal_history_path(e), class: "btn btn-info"%>
+          <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
     </div>
   <% end %>
