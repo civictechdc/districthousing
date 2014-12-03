@@ -1,18 +1,18 @@
-<input type="hidden" name="submitType">
-
 <div class="row">
   <div class="col-md-12">
     <%= f.button("#{submit_action ||= "Save"}", { class:"btn btn-default btn-primary btn-block update-button" }) %>
   </div>
 </div>
 
+<input id="submit-direction" name="submit_direction" type="hidden">
+
 <nav>
   <ul class="pager">
-    <li class="previous">
-      <a href="<%= "#" %>"><span aria-hidden="true">&larr;</span> Previous</a>
+    <li class="previous submit-previous">
+      <a href="<%= "#" %>"><span aria-hidden="true">&larr;</span> Save and go back</a>
     </li>
-    <li class="next">
-      <a href="#">Continue <span aria-hidden="true">&rarr;</span></a>
+    <li class="next submit-next">
+      <a href="#">Save and continue <span aria-hidden="true">&rarr;</span></a>
     </li>
   </ul>
 </nav>
