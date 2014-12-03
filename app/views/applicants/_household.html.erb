@@ -1,0 +1,12 @@
+<div class="row">
+  <h2>Household members</h2>
+  <% @applicant.household_members_people.each do |h| %>
+    <div class="col-md-4">
+      <p>
+      <%= render partial: 'people/summary', locals: { person: h } %>
+      <%= link_to "Edit", edit_person_path(h), class: "btn btn-info"%>
+      <%= link_to 'Delete', h, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+      </p>
+    </div>
+  <% end %>
+</div>

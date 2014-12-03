@@ -11,73 +11,19 @@
   <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
 </div>
 
-<div class="row">
-  <h2>Household members</h2>
-  <% @applicant.household_members_people.each do |h| %>
-    <div class="col-md-4">
-      <p>
-      <%= render partial: 'people/summary', locals: { person: h } %>
-      <%= link_to "Edit", edit_person_path(h), class: "btn btn-info"%>
-      <%= link_to 'Delete', h, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-      </p>
-    </div>
-  <% end %>
-</div>
-<% render partial: 'structure', locals: { path: "new_household_member_path" } %>
+<%= render partial: 'household' %>
+<%= render partial: 'structure', locals: { path: "new_household_member_path" } %>
 
 
-<div class="row">
-  <h2>Residence history</h2>
-  <% @applicant.residences.each do |r| %>
-    <div class="col-md-4">
-      <p>
-      <%= render partial: 'residences/summary', locals: { residence: r } %>
-      <%= link_to "Edit", edit_residence_path(r), class: "btn btn-info"%>
-      <%= link_to 'Delete', r, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-      </p>
-    </div>
-  <% end %>
-</div>
-<% render partial: 'structure', locals: { path: "new_residence_path" } %>
+<%= render partial: 'residence' %>
+<%= render partial: 'structure', locals: { path: "new_residence_path" } %>
 
-<div class="row">
-  <h2>Income</h2>
-  <% @applicant.incomes.each do |i| %>
-    <p>
-      <%= render partial: "incomes/summary", locals: { income: i } %>
-      <%= link_to "Edit", edit_income_path(i), class: "btn btn-info"%>
-      <%= link_to 'Delete', i, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-    </p>
-  <% end %>
-</div>
-<% render partial: 'structure', locals: { path: "new_income_path" } %>
+<%= render partial: 'income' %>
+<%= render partial: 'structure', locals: { path: "new_income_path" } %>
 
 
-<div class="row">
-  <h2>Employment</h2>
-  <% @applicant.employments.each do |e| %>
-    <div class="col-md-4">
-    <p>
-    <%= render partial: "employments/summary", locals: { employment: e } %>
-    <%= link_to "Edit", edit_employment_path(e), class: "btn btn-info"%>
-    <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-    </p>
-  </div>
-  <% end %>
-</div>
-<% render partial: 'structure', locals: { path: "new_employment_path" } %>
+<%= render partial: 'employment' %>
+<%= render partial: 'structure', locals: { path: "new_employment_path" } %>
 
-<div class="row">
-  <h2>Criminal history</h2>
-  <% @applicant.criminal_histories.each do |e| %>
-    <div class="col-md-4">
-    <p>
-    <%= render partial: "criminal_histories/summary", locals: { criminal_history: e } %>
-    <%= link_to "Edit", edit_criminal_history_path(e), class: "btn btn-info"%>
-    <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-    </p>
-  </div>
-  <% end %>
-</div>
-<% render partial: 'structure', locals: { path: "new_criminal_history_path" } %>
-
+<%= render partial: 'criminal_history' %>
+<%= render partial: 'structure', locals: { path: "new_criminal_history_path" } %>

@@ -1,0 +1,12 @@
+<div class="row">
+  <h2>Residence history</h2>
+  <% @applicant.residences.each do |r| %>
+    <div class="col-md-4">
+      <p>
+      <%= render partial: 'residences/summary', locals: { residence: r } %>
+      <%= link_to "Edit", edit_residence_path(r), class: "btn btn-info"%>
+      <%= link_to 'Delete', r, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+      </p>
+    </div>
+  <% end %>
+</div>
