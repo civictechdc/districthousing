@@ -34,7 +34,7 @@ class EmploymentsController < ApplicationController
   # PATCH/PUT /employments/1
   def update
     if @employment.update(employment_params)
-      redirect_to current_applicant
+      redirect_to next_page
     else
       render :edit
     end
@@ -70,5 +70,17 @@ class EmploymentsController < ApplicationController
           :zip,
           :apt,
         ]})
+    end
+
+    def next_page
+      find_next_page @current_applicant.employments, @employment, :edit_employment_path
+    end
+
+    def front_of_next_section
+      edit_criminal_history_path(@current_applicant.criminal_histories.first)
+    end
+
+    def back_of_previous_section
+      edit_income_path(@current_applicant.incomes.last)
     end
 end
