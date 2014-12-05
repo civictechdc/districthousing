@@ -100,16 +100,14 @@ class HouseholdMembersController < ApplicationController
   end
 
   def next_page
-    my_index = @current_applicant.household_members.find_index(@household_member)
-    if params[:submit_direction] == "next"
-      next_item = @current_applicant.household_members[my_index + 1]
-      return edit_household_member_path(next_item)
-    elsif params[:submit_direction] == "previous"
-      next_item = @current_applicant.household_members[my_index - 1]
-      return edit_household_member_path(next_item)
-    else
-      flash[:notice] = "Saved!"
-      return edit_household_member_path(@household_member)
-    end
+    find_next_page @current_applicant.household_members, @household_member, :edit_household_member_path
+  end
+
+  def front_of_next_section
+    edit_residence_path(@current_applicant.residences.first)
+  end
+
+  def back_of_previous_section
+    edit_person_path(@current_applicant.identity)
   end
 end
