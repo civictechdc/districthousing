@@ -1,1 +1,31 @@
-<h2>Edit <%= @household_member.person.description %></h2>
+<%= render 'breadcrumb', object: @person %>
+
+<%= render 'section_tabs', active_section: :household_members %>
+
+<%= bootstrap_form_for(@household_member) do |f| %>
+
+  <%= f.fields_for :person do |p| %>
+    <div class="row">
+      <div class="col-md-4">
+        <h4>About</h4>
+        <%= render 'people/name', builder: p %>
+        <%= render "people/contact", builder: p %>
+        <%= p.text_field :ssn, label: "Social security number" %>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Mail Address</h4>
+        <%= p.fields_for :mail_address do |m| %>
+          <%= render "addresses/fields", builder: m %>
+        <% end %>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Demographic</h4>
+        <%= render "people/demographic", builder: p %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= render "buttons_update_back", f: f %>
+<% end %>
