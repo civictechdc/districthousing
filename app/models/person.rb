@@ -68,6 +68,10 @@ class Person < ActiveRecord::Base
     [cell_phone, home_phone, work_phone].reject{|p| p.blank?}.first
   end
 
+  def married?
+    marital_status == "Married"
+  end
+
   def value_for_field field_name
     case field_name
     when /^Mail(.*)/
@@ -146,6 +150,18 @@ class Person < ActiveRecord::Base
       driver_license_state
     when "Relationship"
       "Self"
+    when "MarriedYesNo"
+      if married?
+        "Yes"
+      else
+        "No"
+      end
+    when "MarriedYN"
+      if married?
+        "Y"
+      else
+        "N"
+      end
     else
       UnknownField.new
     end

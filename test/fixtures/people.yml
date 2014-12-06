@@ -18,6 +18,7 @@ one:
   citizenship: USA
   driver_license_number: X12345678
   driver_license_state: New York
+  marital_status: Married
 
 two:
   id: 2
