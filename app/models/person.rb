@@ -72,6 +72,14 @@ class Person < ActiveRecord::Base
     marital_status == "Married"
   end
 
+  def student?
+    student_status == "Full-time" or student_status == "Part-time"
+  end
+
+  def student_full_time?
+    student_status == "Full-time"
+  end
+
   def value_for_field field_name
     case field_name
     when /^Mail(.*)/
@@ -158,6 +166,30 @@ class Person < ActiveRecord::Base
       end
     when "MarriedYN"
       if married?
+        "Y"
+      else
+        "N"
+      end
+    when "StudentStatusYesNo"
+      if student?
+        "Yes"
+      else
+        "No"
+      end
+    when "StudentStatusYN"
+      if student?
+        "Y"
+      else
+        "N"
+      end
+    when "StudentStatusFullTimeYesNo"
+      if student_full_time?
+        "Yes"
+      else
+        "No"
+      end
+    when "StudentStatusFullTimeYN"
+      if student_full_time?
         "Y"
       else
         "N"

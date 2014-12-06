@@ -38,6 +38,11 @@ class ApplicantTest < ActiveSupport::TestCase
     assert_equal "Self", @one.field("Relationship")
     assert_equal "Yes", @one.field("MarriedYesNo")
     assert_equal "Y", @one.field("MarriedYN")
+    assert_equal "Yes", @one.field("MarriedYesNo")
+    assert_equal "N", @one.field("StudentStatusFullTimeYN")
+    assert_equal "No", @one.field("StudentStatusFullTimeYesNo")
+    assert_equal "Y", @one.field("StudentStatusYN")
+    assert_equal "Yes", @one.field("StudentStatusYesNo")
   end
 
   test "fills addresses" do
