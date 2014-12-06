@@ -43,7 +43,7 @@ class CriminalHistoriesControllerTest < ActionController::TestCase
 
   def test_update
     put :update, id: criminal_history, criminal_history: { crime_type_id: @criminal_history.crime_type_id, description: @criminal_history.description, person_id: @criminal_history.person_id, year: @criminal_history.year }
-    assert_redirected_to applicants(:one)
+    assert_redirected_to edit_criminal_history_path(@criminal_history)
   end
 
   def test_destroy

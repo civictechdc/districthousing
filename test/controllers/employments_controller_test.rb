@@ -52,7 +52,7 @@ class EmploymentsControllerTest < ActionController::TestCase
     }
     put :update, id: employment, employment: employment_update_hash
     assert_attributes_were_updated employments(:one), employment_update_hash.keys
-    assert_redirected_to applicant_path(applicants(:one))
+    assert_redirected_to edit_employment_path(@employment)
   end
 
   def test_destroy

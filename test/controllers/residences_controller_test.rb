@@ -34,7 +34,7 @@ class ResidencesControllerTest < ActionController::TestCase
     }
     put :update, id: residence, residence: residence_update_hash
     assert_attributes_were_updated residences(:one), residence_update_hash.keys
-    assert_redirected_to applicant_path(applicants(:one))
+    assert_redirected_to edit_residence_path(@residence)
   end
 
   def test_destroy
