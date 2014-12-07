@@ -31,14 +31,23 @@ class HousingForm < ActiveRecord::Base
   end
 
   def field_results applicant
-    @field_results ||= form_fields.map { |f| [f.name, applicant.value_for_field(f.name)] }.to_h
+    @field_results ||= Hash.new do |h, key|
+      h[key] = form_fields.map { |f| [f.name, key.value_for_field(f.name)] }.to_h
+    end
+    @field_results[applicant]
   end
 
   def unknown_fields applicant
-    @unknown_fields ||= field_results(applicant).select { |k,v| v.is_a? UnknownField }
+    @unknown_fields ||= Hash.new do |h, key|
+      h[key] = field_results(key).select { |k,v| v.is_a? UnknownField }
+    end
+    @unknown_fields[applicant]
   end
 
   def known_fields applicant
-    @known_fields ||= field_results(applicant).reject { |k,v| v.is_a? UnknownField }
+    @known_fields ||= Hash.new do |h, key|
+      h[key] = field_results(key).reject { |k,v| v.is_a? UnknownField }
+    end
+    @known_fields[applicant]
   end
 end
