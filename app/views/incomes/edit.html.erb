@@ -2,6 +2,8 @@
 
 <%= render 'section_tabs', active_section: :income %>
 
+<%= render 'progress', object: @income %>
+
 <% if flash[:errors] != nil && flash[:errors].any? %>
   <div class="validation">
     The following error(s) prohibited this income from being saved:

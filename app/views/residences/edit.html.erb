@@ -2,6 +2,8 @@
 
 <%= render 'section_tabs', active_section: :residence_history %>
 
+<%= render 'progress', object: @residence %>
+
 <%= bootstrap_form_for(@residence) do |f| %>
 
   <div class="row">

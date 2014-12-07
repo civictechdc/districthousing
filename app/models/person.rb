@@ -1,4 +1,6 @@
 class Person < ActiveRecord::Base
+  include Progress
+
   belongs_to :mail_address, class_name: "Address"
   accepts_nested_attributes_for :mail_address
 
@@ -197,23 +199,5 @@ class Person < ActiveRecord::Base
     else
       UnknownField.new
     end
-  end
-
-  def completeness
-    filled_field_count * 100 / field_count
-  end
-
-  def field_count
-    fillable_fields.count
-  end
-
-  def filled_field_count
-    fillable_fields.reject { |f| send(f).blank? }.count
-  end
-
-  def fillable_fields
-    attribute_names.reject { |a|
-      %w(created_at updated_at applicant_id id address_id).include? a
-    }
   end
 end

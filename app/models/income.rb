@@ -1,4 +1,6 @@
 class Income < ActiveRecord::Base
+  include Progress
+
   belongs_to :applicant
   belongs_to :person
   belongs_to :income_type

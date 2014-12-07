@@ -2,6 +2,8 @@
 
 <%= render 'section_tabs', active_section: :household_members %>
 
+<%= render 'progress', object: @person %>
+
 <%= bootstrap_form_for(@household_member) do |f| %>
 
   <%= f.fields_for :person do |p| %>
