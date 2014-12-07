@@ -50,4 +50,11 @@ class HousingForm < ActiveRecord::Base
     end
     @known_fields[applicant]
   end
+
+  def filled_fields applicant
+    @filled_fields ||= Hash.new do |h, key|
+      h[key] = known_fields(key).reject { |k,v| v.blank? }
+    end
+    @filled_fields[applicant]
+  end
 end

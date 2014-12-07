@@ -5,6 +5,9 @@
   <tr>
     <th>Name</th>
     <th>Location</th>
+    <th>Total fields</th>
+    <th>Fields fillable</th>
+    <th>Fields with content for <%= @applicant %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +18,9 @@
   <tr>
     <td><%= housing_form.name %></td>
     <td><%= housing_form.location %></td>
+    <td><%= housing_form.field_results(@applicant).count %></td>
+    <td><%= housing_form.known_fields(@applicant).count %></td>
+    <td><%= housing_form.filled_fields(@applicant).count %></td>
     <td><%= link_to 'Show', housing_form %></td>
     <td><%= link_to 'Download', download_housing_form_path(housing_form) %></td>
     <td><%= link_to 'Edit', edit_housing_form_path(housing_form) %></td>
