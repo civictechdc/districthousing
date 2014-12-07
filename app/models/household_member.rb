@@ -1,4 +1,8 @@
 class HouseholdMember < ActiveRecord::Base
+  include Progress
+
+  progress_includes :person
+
   belongs_to :applicant
   belongs_to :person
   has_many :incomes
