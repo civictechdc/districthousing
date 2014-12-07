@@ -1,0 +1,14 @@
+<% collection.each_with_index do |item, index| %>
+  <li role="presentation">
+    <a href="<%= edit_path(item) %>">
+      <span class="badge"><%= item.progress %>%</span>
+      <%= "#{index + 1} - #{item}" %>
+    </a>
+  </li>
+<% end %>
+
+<li role="presentation">
+  <a href="<%= new_path(collection) %>">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New
+  </a>
+</li>

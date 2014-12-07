@@ -24,17 +24,9 @@ class Applicant < ActiveRecord::Base
 
   belongs_to :user
 
-  def incomes
-    identity.incomes + household_members_people.map { |h| h.incomes }.flatten
-  end
-
-  def employments
-    identity.employments + household_members_people.map { |h| h.employments }.flatten
-  end
-
-  def criminal_histories
-    identity.criminal_histories + household_members_people.map { |h| h.criminal_histories }.flatten
-  end
+  has_many :incomes, through: :people
+  has_many :employments, through: :people
+  has_many :criminal_histories, through: :people
 
   def household_members_including_self
     [identity, household_members_people].flatten

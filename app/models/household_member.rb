@@ -27,4 +27,7 @@ class HouseholdMember < ActiveRecord::Base
     end
   end
 
+  def to_s
+    person.to_s
+  end
 end

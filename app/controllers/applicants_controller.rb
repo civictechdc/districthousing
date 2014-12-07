@@ -21,7 +21,7 @@ class ApplicantsController < ApplicationController
         @applicant.residences << add_new_residence(@applicant)
       end
       params[:income_count].to_i.times do
-        @applicant.incomes << add_new_income(@applicant)
+        add_new_income(@applicant)
       end
       params[:employment_count].to_i.times do
         @applicant.identity.employments << add_new_employment(@applicant)
