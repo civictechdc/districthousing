@@ -1,6 +1,8 @@
 class Person < ActiveRecord::Base
   include Progress
 
+  progress_includes :mail_address
+
   belongs_to :mail_address, class_name: "Address"
   accepts_nested_attributes_for :mail_address
 
@@ -201,7 +203,4 @@ class Person < ActiveRecord::Base
     end
   end
 
-  def progress_includes
-    [:mail_address]
-  end
 end
