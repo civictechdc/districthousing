@@ -2,6 +2,9 @@
 
 <%= render 'section_tabs', active_section: :identity %>
 
+<h3>Progress for identity</h3>
+<%= render 'progress', object: @person %>
+
 <%= bootstrap_form_for(@person) do |f| %>
   <div class="row">
     <div class="col-md-4">
