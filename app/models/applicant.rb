@@ -1,4 +1,12 @@
 class Applicant < ActiveRecord::Base
+  include Progress
+
+  progress_includes :identity
+  progress_includes_collection :household_members
+  progress_includes_collection :residences
+  progress_includes_collection :incomes
+  progress_includes_collection :employments
+  progress_includes_collection :criminal_histories
 
   has_many :people
   has_many :household_members, dependent: :destroy
