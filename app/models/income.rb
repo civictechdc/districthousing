@@ -6,6 +6,10 @@ class Income < ActiveRecord::Base
   belongs_to :income_type
 
   def to_s
-    "Income of $#{amount} yearly from #{income_type.label}"
+    unless income_type.nil?
+      "Income of $#{amount.to_i} yearly from #{income_type.label}"
+    else
+      "Income of $#{amount.to_i} yearly"
+    end
   end
 end
