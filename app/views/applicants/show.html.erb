@@ -70,10 +70,10 @@
   <table class="table">
     <tr>
       <th>
-        Amount
+        Earned by
       </th>
       <th>
-        Earned by
+        Amount
       </th>
       <th>
         Source
@@ -88,7 +88,7 @@
         <%= number_to_currency(income.amount) %> yearly
       </td>
       <td>
-        <%= income.income_type.label %>
+        <%= income.source %>
       </td>
       <td>
       <%= link_to "Edit", edit_income_path(income), class: "btn btn-info"%>
