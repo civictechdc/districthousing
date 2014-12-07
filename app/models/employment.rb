@@ -1,6 +1,8 @@
 class Employment < ActiveRecord::Base
   include Progress
 
+  progress_includes :address
+
   belongs_to :person
   belongs_to :address
   accepts_nested_attributes_for :address

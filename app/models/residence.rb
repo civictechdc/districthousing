@@ -1,6 +1,9 @@
 class Residence < ActiveRecord::Base
   include Progress
 
+  progress_includes :landlord
+  progress_includes :address
+
   belongs_to :applicant
   belongs_to :address
   belongs_to :landlord, class_name: "Person"
