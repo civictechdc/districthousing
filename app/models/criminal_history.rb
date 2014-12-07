@@ -5,6 +5,10 @@ class CriminalHistory < ActiveRecord::Base
   belongs_to :person
 
   def to_s
-    "#{crime_type.label} in #{year.year}"
+    unless year.nil?
+      "#{crime_type.label} in #{year.year}"
+    else
+      "#{crime_type.label}"
+    end
   end
 end
