@@ -200,4 +200,8 @@ class Person < ActiveRecord::Base
       UnknownField.new
     end
   end
+
+  def progress_includes
+    [:mail_address]
+  end
 end
