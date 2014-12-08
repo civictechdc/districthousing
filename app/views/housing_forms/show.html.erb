@@ -12,23 +12,13 @@
     <%= @housing_form.location %>
   </p>
 
-  <p>
-    <b>Latitude:</b>
-    <%= @housing_form.lat %>
-  </p>
-
-  <p>
-    <b>Longitude:</b>
-    <%= @housing_form.long %>
-  </p>
-
   <%= link_to 'Edit', edit_housing_form_path(@housing_form) %> |
   <%= link_to 'Back', housing_forms_path %>
 
-  <%= render "field_table", fields: @known_fields %>
+  <%= render "field_table", fields: @housing_form.known_fields(@applicant) %>
 
 </div>
 
 <div class="col-md-6">
-  <%= render "unknown_field_table", fields: @unknown_fields %>
+  <%= render "unknown_field_table", fields: @housing_form.unknown_fields(@applicant) %>
 </div>

@@ -1,6 +1,7 @@
 class HousingFormsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_housing_form, only: [:show, :edit, :update, :destroy, :download]
+  before_action :set_applicant, only: [:show, :index, :download]
 
   # GET /housing_forms
   def index
@@ -14,10 +15,6 @@ class HousingFormsController < ApplicationController
 
   # GET /housing_forms/1
   def show
-    @applicant = current_applicant || sample_applicant
-    field_results = @housing_form.field_results @applicant
-    @unknown_fields = field_results.select { |k,v| v.is_a? UnknownField }
-    @known_fields = field_results.reject { |k,v| v.is_a? UnknownField }
   end
 
   # GET /housing_forms/new
@@ -62,7 +59,7 @@ class HousingFormsController < ApplicationController
   end
 
   def download
-    filled_file = OutputPDF.new(@housing_form, current_applicant || sample_applicant).to_file
+    filled_file = OutputPDF.new(@housing_form, @applicant).to_file
     send_file(filled_file.path,
              type: 'application/pdf',
              filename: @housing_form.name)
@@ -82,5 +79,9 @@ class HousingFormsController < ApplicationController
         :lat,
         :long,
       )
+    end
+
+    def set_applicant
+      @applicant = current_applicant || sample_applicant
     end
 end

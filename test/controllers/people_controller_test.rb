@@ -23,7 +23,6 @@ class PeopleControllerTest < ActionController::TestCase
       dob: "2000-01-01",
       gender: "x",
       ssn: "x",
-      phone: "x",
       work_phone: "x",
       home_phone: "x",
       cell_phone: "x",
@@ -43,7 +42,7 @@ class PeopleControllerTest < ActionController::TestCase
 
     assert_attributes_were_updated people(:one), person_update_hash.keys
 
-    assert_redirected_to applicants(:one)
+    assert_redirected_to edit_person_path(people(:one))
   end
 
   def test_destroy

@@ -1,16 +1,156 @@
+<%= render 'breadcrumb' %>
+
 <p id="notice"><%= notice %></p>
 
-<ol class="breadcrumb">
-  <li><%= link_to current_user.email, root_path %></li>
-  <li><%= @applicant.description %></li>
-</ol>
+<%= render 'progress', object: @applicant %>
 
-<div class="row">
-  <h2>Applicant</h2>
-  <%= render partial: 'people/summary', locals: { person: @applicant.identity } %>
-  <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
+<h2>Applicant</h2>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= @applicant.identity %>
+  </div>
+  <div class="row">
+  <%= render partial: 'people/summary_3_column', locals: { person: @applicant.identity } %>
+  </div>
+  <div class="panel-footer">
+    <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
+  </div>
 </div>
 
+<<<<<<< HEAD
+<h2>Household members</h2>
+<div class="row">
+  <% @applicant.household_members.each do |h| %>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= h.person %>
+        </div>
+        <%= render partial: 'people/summary', locals: { person: h.person } %>
+        <div class="panel-footer">
+          <%= link_to "Edit", edit_household_member_path(h), class: "btn btn-info"%>
+          <%= link_to 'Delete', h, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <%= link_to "New", new_household_member_path, class: "btn btn-success"%>
+    </p>
+  </div>
+</div>
+
+<h2>Residence history</h2>
+<div class="row">
+  <% @applicant.residences.each do |r| %>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= r %>
+        </div>
+        <%= render partial: 'residences/summary', locals: { residence: r } %>
+        <div class="panel-footer">
+          <%= link_to "Edit", edit_residence_path(r), class: "btn btn-info"%>
+          <%= link_to 'Delete', r, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <%= link_to "New", new_residence_path, class: "btn btn-success"%>
+    </p>
+  </div>
+</div>
+
+<h2>Income</h2>
+<div class="panel panel-default">
+  <table class="table">
+    <tr>
+      <th>
+        Earned by
+      </th>
+      <th>
+        Amount
+      </th>
+      <th>
+        Source
+      </th>
+    </tr>
+  <% @applicant.incomes.each do |income| %>
+    <tr>
+      <td>
+        <%= income.person %>
+      </td>
+      <td>
+        <%= number_to_currency(income.amount) %> yearly
+      </td>
+      <td>
+        <%= income.source %>
+      </td>
+      <td>
+      <%= link_to "Edit", edit_income_path(income), class: "btn btn-info"%>
+      </td>
+      <td>
+      <%= link_to 'Delete', income, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+<p>
+<%= link_to "New", new_income_path, class: "btn btn-success"%>
+</p>
+
+<h2>Employment</h2>
+<div class="row">
+  <% @applicant.employments.each do |e| %>
+    <div class='col-md-4'>
+      <div class='panel panel-default'>
+        <%= render partial: 'employments/summary', locals: { employment: e } %>
+        <div class="panel-footer">
+          <%= link_to 'Edit', edit_employment_path(e), class: "btn btn-info"%>
+          <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+      <%= link_to "New", new_employment_path, class: "btn btn-success"%>
+    </p>
+  </div>
+</div>
+
+<h2>Criminal history</h2>
+<div class="row">
+  <% @applicant.criminal_histories.each do |e| %>
+    <div class="col-md-4">
+      <div class='panel panel-default'>
+        <%= render partial: "criminal_histories/summary", locals: { criminal_history: e } %>
+        <div class="panel-footer">
+          <%= link_to "Edit", edit_criminal_history_path(e), class: "btn btn-info"%>
+          <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <%= link_to "New", new_criminal_history_path, class: "btn btn-success"%>
+    </p>
+  </div>
+</div>
+=======
 <%= render partial: 'household' %>
 <%= render partial: 'structure', locals: { path: "new_household_member_path" } %>
 
@@ -27,3 +167,4 @@
 
 <%= render partial: 'criminal_history' %>
 <%= render partial: 'structure', locals: { path: "new_criminal_history_path" } %>
+>>>>>>> 869c5364068ef412eff72a4c242f542d0cd443bd

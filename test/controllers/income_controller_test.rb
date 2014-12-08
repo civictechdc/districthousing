@@ -47,7 +47,7 @@ class IncomesControllerTest < ActionController::TestCase
     assert income.person_id = 2
     assert income.income_type_id = 2
 
-    assert_redirected_to applicant_path(applicants(:one))
+    assert_redirected_to edit_income_path(income)
   end
 
   def test_destroy

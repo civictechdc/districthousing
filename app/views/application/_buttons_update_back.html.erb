@@ -1,14 +1,15 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= f.button("#{submit_action ||= "Update"}", { class:"btn btn-default btn-primary btn-block update-button" }) %>
-  </div>
+<input id="submit-direction" name="submit_direction" type="hidden">
 
-  <div class="col-md-6">
-  </div>
-
-  <div class="col-md-3">
-    <a href="<%= applicant_path(@current_applicant) %>" class="btn btn-info pull-right">
-      <span class="glyphicon glyphicon-chevron-left"></span> Back
-    </a>
-  </div>
-</div>
+<nav>
+  <ul class="pager">
+    <li class="previous submit-previous">
+      <a href="<%= "#" %>"><span aria-hidden="true">&larr;</span> Save and go back</a>
+    </li>
+    <li>
+      <%= f.button("Save", { class:"btn btn-default btn-default" }) %>
+    </li>
+    <li class="next submit-next">
+      <a href="#">Save and continue <span aria-hidden="true">&rarr;</span></a>
+    </li>
+  </ul>
+</nav>

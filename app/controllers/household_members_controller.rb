@@ -1,8 +1,13 @@
 class HouseholdMembersController < ApplicationController
   before_action :set_household_member, only: [:show, :edit, :update, :destroy]
 
+  def edit
+    @household_member = HouseholdMember.find(params[:id])
+    @person = @household_member.person
+  end
+
   def new
-    @possible_people = current_applicant.people
+    create
   end
 
   def create
@@ -11,7 +16,7 @@ class HouseholdMembersController < ApplicationController
     @h.applicant = current_applicant
 
     if @h.save
-      redirect_to edit_person_path(@h.person)
+      redirect_to edit_household_member_path(@h)
     else
       flash.alert = "Error: #{@h.errors.messages}"
       render :new
@@ -24,9 +29,9 @@ class HouseholdMembersController < ApplicationController
 
   def update
     if @household_member.update(household_member_params)
-      redirect_to apply_path, notice: 'Housing form was successfully updated.'
+      redirect_to next_page
     else
-      redirect_to apply_path, notice: 'Housing form could not be updated.'
+      redirect_to edit_household_member_path(@household_member), notice: 'Couldn\'t save.'
     end
   end
 
@@ -44,6 +49,8 @@ class HouseholdMembersController < ApplicationController
   def household_member_params
     params.require(:household_member).permit(
       person_attributes: [
+        :id,
+        :relationship,
         :dob,
         :first_name,
         :gender,
@@ -68,6 +75,7 @@ class HouseholdMembersController < ApplicationController
         :driver_license_number,
         :driver_license_state,
         mail_address_attributes: [
+          :id,
           :street,
           :city,
           :state,
@@ -90,5 +98,17 @@ class HouseholdMembersController < ApplicationController
     else
       return Person.find(params[:person_id])
     end
+  end
+
+  def next_page
+    find_next_page @current_applicant.household_members, @household_member, :edit_household_member_path
+  end
+
+  def front_of_next_section
+    edit_residence_path(@current_applicant.residences.first)
+  end
+
+  def back_of_previous_section
+    edit_person_path(@current_applicant.identity)
   end
 end

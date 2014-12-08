@@ -2,14 +2,15 @@ class IncomesController < ApplicationController
   before_action :set_income, only: [:show, :edit, :update, :destroy]
 
   def new
-    @income = Income.new
+    create
   end
 
   def create
-    income = Income.create(income_params)
+    income = Income.new
+    income.person = @current_applicant.identity
 
     if income.save
-      redirect_to current_applicant
+      redirect_to edit_income_path(income)
     else
       redirect_to :new
     end
@@ -17,7 +18,7 @@ class IncomesController < ApplicationController
 
   def update
     if @income.update(income_params)
-      redirect_to current_applicant, notice: 'Income was successfully updated.'
+      redirect_to next_page
     else
       flash[:errors] = @income.errors.full_messages
       redirect_to current_applicant, notice: 'Unable to update income.'
@@ -45,5 +46,17 @@ class IncomesController < ApplicationController
       :amount,
       :person_id,
     )
+  end
+
+  def next_page
+    find_next_page @current_applicant.incomes, @income, :edit_income_path
+  end
+
+  def front_of_next_section
+    edit_employment_path(@current_applicant.employments.first)
+  end
+
+  def back_of_previous_section
+    edit_residence_path(@current_applicant.residences.last)
   end
 end

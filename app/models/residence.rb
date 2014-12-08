@@ -1,4 +1,9 @@
 class Residence < ActiveRecord::Base
+  include Progress
+
+  progress_includes :landlord
+  progress_includes :address
+
   belongs_to :applicant
   belongs_to :address
   belongs_to :landlord, class_name: "Person"
@@ -16,7 +21,7 @@ class Residence < ActiveRecord::Base
     end
   end
 
-  def description
+  def to_s
     "Residence from #{start} - #{self.end}"
   end
 

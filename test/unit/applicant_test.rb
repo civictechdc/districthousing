@@ -25,7 +25,7 @@ class ApplicantTest < ActiveSupport::TestCase
     assert_equal "McOne", @one.field("LastName")
     assert_equal "(202) 208-4743", @one.field("CellPhone")
     assert_equal "(202) 272-0167", @one.field("HomePhone")
-    assert_equal "(202) 456-1111", @one.field("Phone")
+    assert_equal "(202) 208-4743", @one.field("Phone")
     assert_equal "111-11-1111", @one.field("SSN")
     assert_equal "Male", @one.field("Gender")
     assert_equal "M", @one.field("GenderInitial")
@@ -36,6 +36,13 @@ class ApplicantTest < ActiveSupport::TestCase
     assert_equal "X12345678", @one.field("DriverLicense")
     assert_equal "New York", @one.field("DriverLicenseState")
     assert_equal "Self", @one.field("Relationship")
+    assert_equal "Yes", @one.field("MarriedYesNo")
+    assert_equal "Y", @one.field("MarriedYN")
+    assert_equal "Yes", @one.field("MarriedYesNo")
+    assert_equal "N", @one.field("StudentStatusFullTimeYN")
+    assert_equal "No", @one.field("StudentStatusFullTimeYesNo")
+    assert_equal "Y", @one.field("StudentStatusYN")
+    assert_equal "Yes", @one.field("StudentStatusYesNo")
   end
 
   test "fills addresses" do

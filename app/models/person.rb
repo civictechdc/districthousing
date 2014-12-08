@@ -1,4 +1,8 @@
 class Person < ActiveRecord::Base
+  include Progress
+
+  progress_includes :mail_address
+
   belongs_to :mail_address, class_name: "Address"
   accepts_nested_attributes_for :mail_address
 
@@ -63,6 +67,23 @@ class Person < ActiveRecord::Base
     return /^(United States|US|USA|U.S.A.)$/i =~ citizenship
   end
 
+  def preferred_phone
+    # FIXME: Make preferred phone selectable
+    [cell_phone, home_phone, work_phone].reject{|p| p.blank?}.first
+  end
+
+  def married?
+    marital_status == "Married"
+  end
+
+  def student?
+    student_status == "Full-time" or student_status == "Part-time"
+  end
+
+  def student_full_time?
+    student_status == "Full-time"
+  end
+
   def value_for_field field_name
     case field_name
     when /^Mail(.*)/
@@ -100,7 +121,7 @@ class Person < ActiveRecord::Base
     when "HomePhone"
       home_phone
     when "Phone"
-      phone
+      preferred_phone
     when "Email"
       email
     when "GenderInitial"
@@ -141,6 +162,42 @@ class Person < ActiveRecord::Base
       driver_license_state
     when "Relationship"
       "Self"
+    when "MarriedYesNo"
+      if married?
+        "Yes"
+      else
+        "No"
+      end
+    when "MarriedYN"
+      if married?
+        "Y"
+      else
+        "N"
+      end
+    when "StudentStatusYesNo"
+      if student?
+        "Yes"
+      else
+        "No"
+      end
+    when "StudentStatusYN"
+      if student?
+        "Y"
+      else
+        "N"
+      end
+    when "StudentStatusFullTimeYesNo"
+      if student_full_time?
+        "Yes"
+      else
+        "No"
+      end
+    when "StudentStatusFullTimeYN"
+      if student_full_time?
+        "Y"
+      else
+        "N"
+      end
     else
       UnknownField.new
     end

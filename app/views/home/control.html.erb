@@ -4,7 +4,7 @@
   <p>Who is applying for housing?<p>
   <% @applicants.each do |applicant| %>
     <p>
-      <%= link_to applicant.description, applicant, class: "btn btn-lg btn-info"%>
+      <%= link_to applicant, applicant, class: "btn btn-lg btn-info"%>
       <%= link_to 'Delete', applicant, class: "btn btn-lg btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
     </p>
   <% end %>

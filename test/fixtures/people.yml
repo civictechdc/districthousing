@@ -6,7 +6,6 @@ one:
   ssn: 111-11-1111
   dob: 1981-02-03
   gender: Male
-  phone: (202) 456-1111
   work_phone: (202) 586-5000
   home_phone: (202) 272-0167
   cell_phone: (202) 208-4743
@@ -19,6 +18,8 @@ one:
   citizenship: USA
   driver_license_number: X12345678
   driver_license_state: New York
+  marital_status: Married
+  student_status: Part-time
 
 two:
   id: 2
@@ -33,7 +34,6 @@ two:
 
 hh1:
   id: 3
-  phone: (333) 333-3333
   applicant_id: 1
   first_name: HH1
   last_name: Schaefer
@@ -43,7 +43,6 @@ hh1:
   gender: Male
   created_at: 2014-11-15 00:04:18.434773000 Z
   updated_at: 2014-11-15 00:04:18.434773000 Z
-  phone: 1-202-858-8941 x40526
   work_phone: 788-243-3188 x97905
   home_phone: 1-437-053-5113 x41799
   cell_phone: 839.897.3785 x24946
@@ -63,21 +62,21 @@ hh1:
 
 hh2:
   id: 4
-  phone: (444) 444-4444
+  cell_phone: (444) 444-4444
   applicant_id: 1
   first_name: HH2
   mail_address_id: 2
 
 ll1:
   id: 5
-  phone: (555) 555-5555
+  cell_phone: (555) 555-5555
   applicant_id: 1
   first_name: LL1
   mail_address_id: 1
 
 ll2:
   id: 6
-  phone: (666) 666-6666
+  cell_phone: (666) 666-6666
   applicant_id: 1
   first_name: LL2
   mail_address_id: 2

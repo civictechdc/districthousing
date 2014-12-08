@@ -7,7 +7,7 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
 
     if @person.update(person_params)
-      redirect_to @person.applicant
+      redirect_to next_page
     else
       render :edit
     end
@@ -29,7 +29,6 @@ class PeopleController < ApplicationController
       :middle_name,
       :res_apt,
       :ssn,
-      :phone,
       :work_phone,
       :home_phone,
       :cell_phone,
@@ -53,5 +52,16 @@ class PeopleController < ApplicationController
         :apt,
       ]
     )
+  end
+
+  def next_page
+    if params[:submit_direction] == "next"
+      edit_household_member_path(@current_applicant.household_members.first)
+    elsif params[:submit_direction] == "previous"
+      @current_applicant
+    else
+      flash[:notice] = "Saved!"
+      edit_person_path(@current_applicant.identity)
+    end
   end
 end

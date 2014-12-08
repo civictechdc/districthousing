@@ -12,7 +12,7 @@ class CriminalHistoriesController < ApplicationController
 
   # GET /criminal_histories/new
   def new
-    @criminal_history = CriminalHistory.new
+    create
   end
 
   # GET /criminal_histories/1/edit
@@ -21,19 +21,21 @@ class CriminalHistoriesController < ApplicationController
 
   # POST /criminal_histories
   def create
-    @criminal_history = CriminalHistory.new(criminal_history_params)
+    @criminal_history = CriminalHistory.new
+    @criminal_history.person = @current_applicant.identity
+    @criminal_history.crime_type = CrimeType.where(name: "felony").first
 
     if @criminal_history.save
-      redirect_to current_applicant
+      redirect_to edit_criminal_history_path(@criminal_history)
     else
-      render :new
+      render current_applicant
     end
   end
 
   # PATCH/PUT /criminal_histories/1
   def update
     if @criminal_history.update(criminal_history_params)
-      redirect_to current_applicant
+      redirect_to next_page
     else
       render :edit
     end
@@ -54,5 +56,18 @@ class CriminalHistoriesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def criminal_history_params
       params.require(:criminal_history).permit(:person_id, :crime_type_id, :description, :year)
+    end
+
+    def next_page
+      find_next_page @current_applicant.criminal_histories, @criminal_history, :edit_criminal_history_path
+    end
+
+    def front_of_next_section
+      # Criminal history is the last section, so send the user back to the summary page
+      @current_applicant
+    end
+
+    def back_of_previous_section
+      edit_employment_path(@current_applicant.employments.last)
     end
 end
