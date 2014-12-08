@@ -11,7 +11,7 @@ class IncomesControllerTest < ActionController::TestCase
     sign_in users(:one)
     session[:current_applicant_id] = 1
     get :new
-    assert_response :success
+    assert_redirected_to edit_income_path(assigns[:income])
   end
 
   def test_create
@@ -26,7 +26,7 @@ class IncomesControllerTest < ActionController::TestCase
       }
     end
 
-    assert_redirected_to applicant_path(applicants(:one))
+    assert_redirected_to edit_income_path(assigns[:income])
   end
 
   def test_update

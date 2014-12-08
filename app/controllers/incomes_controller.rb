@@ -6,11 +6,11 @@ class IncomesController < ApplicationController
   end
 
   def create
-    income = Income.new
-    income.person = @current_applicant.identity
+    @income = Income.new
+    @income.person = @current_applicant.identity
 
-    if income.save
-      redirect_to edit_income_path(income)
+    if @income.save
+      redirect_to edit_income_path(@income)
     else
       redirect_to :new
     end

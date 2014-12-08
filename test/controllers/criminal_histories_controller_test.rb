@@ -20,7 +20,7 @@ class CriminalHistoriesControllerTest < ActionController::TestCase
 
   def test_new
     get :new
-    assert_response :success
+    assert_redirected_to edit_criminal_history_path(assigns(:criminal_history))
   end
 
   def test_create
@@ -28,7 +28,7 @@ class CriminalHistoriesControllerTest < ActionController::TestCase
       post :create, criminal_history: { crime_type_id: criminal_history.crime_type_id, description: criminal_history.description, person_id: criminal_history.person_id, year: criminal_history.year }
     end
 
-    assert_redirected_to applicants(:one)
+    assert_redirected_to edit_criminal_history_path(assigns(:criminal_history))
   end
 
   def test_show

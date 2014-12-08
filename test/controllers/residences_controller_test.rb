@@ -15,7 +15,7 @@ class ResidencesControllerTest < ActionController::TestCase
 
   def test_new
     get :new
-    assert_response :success
+    assert_redirected_to edit_residence_path(assigns(:residence))
   end
 
   def test_create

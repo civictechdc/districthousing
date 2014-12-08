@@ -20,7 +20,7 @@ class EmploymentsControllerTest < ActionController::TestCase
 
   def test_new
     get :new
-    assert_response :success
+    assert_redirected_to edit_employment_path(assigns(:employment))
   end
 
   def test_create
@@ -28,7 +28,7 @@ class EmploymentsControllerTest < ActionController::TestCase
       post :create, employment: { address_id: employment.address_id, employer_name: employment.employer_name, end_date: employment.end_date, person_id: employment.person_id, phone: employment.phone, position: employment.position, start_date: employment.start_date, supervisor_name: employment.supervisor_name }
     end
 
-    assert_redirected_to applicant_path(applicants(:one))
+    assert_redirected_to edit_employment_path(assigns(:employment))
   end
 
   def test_show
