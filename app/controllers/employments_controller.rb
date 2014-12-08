@@ -12,8 +12,7 @@ class EmploymentsController < ApplicationController
 
   # GET /employments/new
   def new
-    @employment = Employment.new
-    @employment.address = Address.new
+    create
   end
 
   # GET /employments/1/edit
@@ -22,12 +21,14 @@ class EmploymentsController < ApplicationController
 
   # POST /employments
   def create
-    @employment = Employment.new(employment_params)
+    @employment = Employment.new
+    @employment.address = Address.new
+    @employment.person = @current_applicant.identity
 
     if @employment.save
-      redirect_to current_applicant
+      redirect_to edit_employment_path(@employment)
     else
-      render :new
+      render current_applicant
     end
   end
 

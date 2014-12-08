@@ -2,14 +2,15 @@ class IncomesController < ApplicationController
   before_action :set_income, only: [:show, :edit, :update, :destroy]
 
   def new
-    @income = Income.new
+    create
   end
 
   def create
-    income = Income.create(income_params)
+    income = Income.new
+    income.person = @current_applicant.identity
 
     if income.save
-      redirect_to current_applicant
+      redirect_to edit_income_path(income)
     else
       redirect_to :new
     end

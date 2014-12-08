@@ -7,7 +7,7 @@ class HouseholdMembersController < ApplicationController
   end
 
   def new
-    @possible_people = current_applicant.people
+    create
   end
 
   def create
@@ -16,7 +16,7 @@ class HouseholdMembersController < ApplicationController
     @h.applicant = current_applicant
 
     if @h.save
-      redirect_to edit_person_path(@h.person)
+      redirect_to edit_household_member_path(@h)
     else
       flash.alert = "Error: #{@h.errors.messages}"
       render :new

@@ -3,12 +3,12 @@ class ResidencesController < ApplicationController
   before_action :set_residence, only: [:edit, :update, :destroy]
 
   def new
-    @residence = Residence.new
+    create
   end
 
   # POST /residences
   def create
-    @residence = Residence.new(residence_params)
+    @residence = Residence.new
 
     @residence.applicant = current_applicant
     @residence.address = Address.new

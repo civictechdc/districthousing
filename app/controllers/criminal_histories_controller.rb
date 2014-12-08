@@ -12,7 +12,7 @@ class CriminalHistoriesController < ApplicationController
 
   # GET /criminal_histories/new
   def new
-    @criminal_history = CriminalHistory.new
+    create
   end
 
   # GET /criminal_histories/1/edit
@@ -21,12 +21,14 @@ class CriminalHistoriesController < ApplicationController
 
   # POST /criminal_histories
   def create
-    @criminal_history = CriminalHistory.new(criminal_history_params)
+    @criminal_history = CriminalHistory.new
+    @criminal_history.person = @current_applicant.identity
+    @criminal_history.crime_type = CrimeType.where(name: "felony").first
 
     if @criminal_history.save
-      redirect_to current_applicant
+      redirect_to edit_criminal_history_path(@criminal_history)
     else
-      render :new
+      render current_applicant
     end
   end
 
