@@ -40,6 +40,7 @@ class ApplicantsController < ApplicationController
   def show
     @applicant = Applicant.find(params[:id])
     session[:current_applicant_id] = @applicant.id
+    assign_current_applicant
   end
 
   def update
