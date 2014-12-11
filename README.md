@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/codefordc/districthousing.svg?branch=master)](https://travis-ci.org/codefordc/districthousing)
+
 District Housing
 ================
 
