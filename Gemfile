@@ -28,3 +28,4 @@ gem 'markdown-rails'
 gem 'databasedotcom'
 gem 'databasedotcom-rails'
 gem 'quiet_assets', group: :development
+gem 'rake', group: :test

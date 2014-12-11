@@ -212,6 +212,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.1.1)
   rails_12factor
+  rake
   rubyzip
   sass-rails!
   sqlite3
