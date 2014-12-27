@@ -3,7 +3,7 @@ require "test_helper"
 class ResidenceTest < ActiveSupport::TestCase
 
   def residence
-    @residence ||= residences :one
+    @residence ||= Residence.new
   end
 
   def test_valid

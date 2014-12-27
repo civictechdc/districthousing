@@ -92,7 +92,6 @@ class HouseholdMembersController < ApplicationController
         last_name: params[:last_name],
       )
       person.applicant = current_applicant
-      person.mail_address = Address.new
       return person
     else
       return Person.find(params[:person_id])

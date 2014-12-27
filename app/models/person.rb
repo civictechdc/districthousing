@@ -13,12 +13,12 @@ class Person < ActiveRecord::Base
 
   belongs_to :applicant
 
-  validates :applicant, presence: true
+  before_validation :initialize_person
+  validates_associated :mail_address
+  validates :mail_address, presence: true
 
-  def self.make_a_person
-    create do |p|
-      p.mail_address = Address.create
-    end
+  def initialize_person
+    self.mail_address ||= Address.new
   end
 
   def description

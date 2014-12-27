@@ -9,16 +9,16 @@ class Residence < ActiveRecord::Base
   belongs_to :landlord, class_name: "Person"
 
   accepts_nested_attributes_for :landlord
-
   accepts_nested_attributes_for :address
 
   validates_associated :address, :landlord
+  validates :address, :landlord, presence: true
 
-  def self.make_a_residence
-    create do |r|
-      r.landlord = Person.make_a_person
-      r.address = Address.create
-    end
+  before_validation :initialize_residence
+
+  def initialize_residence
+    self.landlord ||= Person.new
+    self.address ||= Address.new
   end
 
   def to_s
