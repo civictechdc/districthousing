@@ -11,6 +11,7 @@ class ResidencesController < ApplicationController
     @residence = Residence.new
 
     @residence.applicant = current_applicant
+    @residence.landlord = Person.new
     @residence.landlord.applicant = current_applicant
 
     if @residence.save
