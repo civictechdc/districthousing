@@ -28,6 +28,14 @@ class Applicant < ActiveRecord::Base
   has_many :employments, through: :people
   has_many :criminal_histories, through: :people
 
+  before_validation :initialize_applicant
+  validates_associated :identity, :household_members, :residences, :employments, :incomes, :criminal_histories
+  validates :identity, presence: true
+
+  def initialize_applicant
+    self.identity ||= Person.create
+  end
+
   def household_members_including_self
     [identity, household_members_people].flatten
   end
