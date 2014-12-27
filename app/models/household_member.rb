@@ -14,7 +14,7 @@ class HouseholdMember < ActiveRecord::Base
   accepts_nested_attributes_for :person
 
   def initialize_household_member
-    self.person = Person.new
+    self.person ||= Person.new
   end
 
   def value_for_field field_name
