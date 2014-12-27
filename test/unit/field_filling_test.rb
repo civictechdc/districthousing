@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ApplicantTest < ActiveSupport::TestCase
+class FieldFillingTest < ActiveSupport::TestCase
 
   def setup
     @one = applicants(:one)

@@ -26,6 +26,10 @@ class ApplicantsControllerTest < ActionController::TestCase
           first_name: "test_first_name",
           last_name: "test_last_name" }).first
 
+    assert_not_nil created_applicant
+    assert_not_nil created_applicant.identity
+    assert_not_nil created_applicant.identity.mail_address
+
     assert_redirected_to edit_person_path(created_applicant.identity)
 
     assert_equal users(:one).id, created_applicant.user_id
