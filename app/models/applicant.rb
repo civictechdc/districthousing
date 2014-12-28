@@ -28,6 +28,8 @@ class Applicant < ActiveRecord::Base
   has_many :employments, through: :people
   has_many :criminal_histories, through: :people
 
+  has_one :salesforce_applicant
+
   before_validation :initialize_applicant
   validates_associated :identity, :household_members, :residences, :employments, :incomes, :criminal_histories
   validates :identity, presence: true

@@ -1,4 +1,7 @@
 DchousingApps::Application.routes.draw do
+  get "/salesforce_applicants/sync", to: "salesforce_applicants#sync"
+  resources :salesforce_applicants
+
   resources :criminal_histories
 
   resources :employments
@@ -14,7 +17,6 @@ DchousingApps::Application.routes.draw do
   resources :housing_forms
   get '/download/:id', to: 'housing_forms#download', as: 'download_housing_form'
 
-  resources :salesforce, :only => [:index]
   resources :people
 
   get "home/index"

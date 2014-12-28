@@ -27,3 +27,4 @@ pickle-email-*.html
 .rvmrc
 
 .vagrant
+/config/databasedotcom.yml
