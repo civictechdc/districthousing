@@ -31,6 +31,7 @@ class Applicant < ActiveRecord::Base
   before_validation :initialize_applicant
   validates_associated :identity, :household_members, :residences, :employments, :incomes, :criminal_histories
   validates :identity, presence: true
+  validates :user, presence: true
 
   def initialize_applicant
     self.identity ||= Person.create
