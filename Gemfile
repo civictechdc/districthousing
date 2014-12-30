@@ -11,7 +11,6 @@ gem 'figaro'
 gem 'jquery-rails'
 gem 'rubyzip', require: 'zip'
 gem 'thin'
-gem 'pry'
 gem 'faker'
 gem 'guard'
 gem 'guard-minitest'
@@ -29,3 +28,6 @@ gem 'databasedotcom'
 gem 'databasedotcom-rails'
 gem 'quiet_assets', group: :development
 gem 'rake', group: :test
+gem 'mocha', group: :test
+gem 'pry', groups: [:development, :test]
+gem 'pry-nav', groups: [:development, :test]
