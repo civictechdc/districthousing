@@ -20,7 +20,19 @@
   <div class="container">
 
     <% if flash[:alert] %>
-      <p class="bg-danger"><%= flash[:alert] %></p>
+      <p class="bg-danger"></p>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <p class="bg-danger"></p>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:notice] %>
+      </div>
     <% end %>
 
     <%= yield %>
