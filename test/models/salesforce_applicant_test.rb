@@ -16,12 +16,25 @@ class SalesforceApplicantTest < ActiveSupport::TestCase
     intake = FakeIntake.new(
       Name: "123456",
       FirstName__c: "First",
-      LastName__c: "Last"
+      Middle_Name__c: "Middle",
+      LastName__c: "Last",
+      Address1__c: "123 Fake St",
+      City__c: "Washington",
+      State__c: "DC",
+      ZipCode__c: "12345"
     )
 
     salesforce_applicant.merge intake
 
-    assert_equal salesforce_applicant.applicant.identity.first_name, "First"
-    assert_equal salesforce_applicant.applicant.identity.last_name, "Last"
+    identity = salesforce_applicant.applicant.identity
+
+    assert_equal identity.first_name, "First"
+    assert_equal identity.middle_name, "Middle"
+    assert_equal identity.last_name, "Last"
+
+    assert_equal identity.mail_address.street, "123 Fake St"
+    assert_equal identity.mail_address.city, "Washington"
+    assert_equal identity.mail_address.state, "DC"
+    assert_equal identity.mail_address.zip, "12345"
   end
 end

@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require 'mocha/mini_test'
+require 'fake_intake'
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
 # to the test group in the Gemfile and uncomment the following:
@@ -28,18 +29,6 @@ class ActiveSupport::TestCase
         "Failure for attribute #{k}")
       assert_not_equal(model_from_fixture.attributes[k.to_s], updated_model.attributes[k.to_s],
         "Failure for attribute #{k}")
-    end
-  end
-
-  class FakeIntake
-    attr_accessor :Name
-    attr_accessor :FirstName__c
-    attr_accessor :LastName__c
-
-    def initialize attrs
-      attrs.keys.each do |k|
-        send("#{k}=", attrs[k])
-      end
     end
   end
 
