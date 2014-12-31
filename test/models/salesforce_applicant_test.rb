@@ -12,4 +12,16 @@ class SalesforceApplicantTest < ActiveSupport::TestCase
     assert salesforce_applicant.valid?, salesforce_applicant.errors.messages
   end
 
+  def test_merge
+    intake = FakeIntake.new(
+      Name: "123456",
+      FirstName__c: "First",
+      LastName__c: "Last"
+    )
+
+    salesforce_applicant.merge intake
+
+    assert_equal salesforce_applicant.applicant.identity.first_name, "First"
+    assert_equal salesforce_applicant.applicant.identity.last_name, "Last"
+  end
 end

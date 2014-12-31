@@ -31,4 +31,16 @@ class ActiveSupport::TestCase
     end
   end
 
+  class FakeIntake
+    attr_accessor :Name
+    attr_accessor :FirstName__c
+    attr_accessor :LastName__c
+
+    def initialize attrs
+      attrs.keys.each do |k|
+        send("#{k}=", attrs[k])
+      end
+    end
+  end
+
 end

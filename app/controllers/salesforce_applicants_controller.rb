@@ -79,11 +79,8 @@ class SalesforceApplicantsController < ApplicationController
         if sfa.applicant.nil?
           sfa.applicant = current_user.applicants.build
         end
-        sfa.applicant.identity = Person.new
-        sfa.applicant.identity.first_name = intake.FirstName__c
-        sfa.applicant.identity.last_name = intake.LastName__c
+        sfa.merge intake
         sfa.save
       end
     end
-
 end

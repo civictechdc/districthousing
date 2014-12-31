@@ -54,18 +54,6 @@ class SalesforceApplicantsControllerTest < ActionController::TestCase
     assert_redirected_to salesforce_applicants_path
   end
 
-  class FakeIntake
-    attr_accessor :Name
-    attr_accessor :FirstName__c
-    attr_accessor :LastName__c
-
-    def initialize attrs
-      attrs.keys.each do |k|
-        send("#{k}=", attrs[k])
-      end
-    end
-  end
-
   def test_sync
     SalesforceApplicantsController.any_instance.stubs(:intakes).returns(
       [
