@@ -65,7 +65,7 @@ class SalesforceApplicantsController < ApplicationController
       unless defined? Intake__c
         c = Databasedotcom::Client.new("config/databasedotcom.yml")
         c.authenticate(
-          username: Rails.application.secrets.salesforce_login,
+          username: YAML.load_file("config/databasedotcom.yml")["username"],
           password: Rails.application.secrets.salesforce_password
         )
         c.materialize("Intake__c")
