@@ -2,12 +2,34 @@
 
 <% unless @applicants.empty? %>
   <p>Who is applying for housing?<p>
+  <table class="table">
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Address
+      </th>
+      <th> </th>
+      <th> </th>
+    </tr>
   <% @applicants.each do |applicant| %>
-    <p>
-      <%= link_to applicant, applicant, class: "btn btn-lg btn-info"%>
-      <%= link_to 'Delete', applicant, class: "btn btn-lg btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
-    </p>
+    <tr>
+      <td>
+        <%= applicant %>
+      </td>
+      <td>
+        <%= applicant.identity.mail_address %>
+      </td>
+      <td>
+        <%= link_to 'Edit', applicant, class: "btn btn-lg btn-info"%>
+      </td>
+      <td>
+        <%= link_to 'Delete', applicant, class: "btn btn-lg btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
   <% end %>
+  </table>
 <% else %>
   <p>Looks like you don't have any applicants yet.  You should create one!</p>
 <% end %>
