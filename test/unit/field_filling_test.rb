@@ -29,7 +29,7 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "111-11-1111", @one.field("SSN")
     assert_equal "Male", @one.field("Gender")
     assert_equal "M", @one.field("GenderInitial")
-    assert_equal "USA", @one.field("Nationality")
+    assert_equal "USA", @one.field("CountryOfBirth")
     assert_equal "Virginia", @one.field("BirthState")
     assert_equal "Springfield", @one.field("BirthCity")
     assert_equal "Yes", @one.field("USCitizenYesNo")

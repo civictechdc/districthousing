@@ -132,8 +132,8 @@ class Person < ActiveRecord::Base
       cell_phone
     when "WorkPhone"
       work_phone
-    when "Nationality"
-      nationality
+    when "CountryOfBirth"
+      country_of_birth
     when "MaritalStatus"
       marital_status
     when "StudentStatus"

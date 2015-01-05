@@ -10,7 +10,7 @@ one:
   home_phone: (202) 272-0167
   cell_phone: (202) 208-4743
   email: one@districthousing.org
-  nationality: USA
+  country_of_birth: USA
   applicant_id: 1
   mail_address_id: 1
   state_of_birth: Virginia
@@ -47,7 +47,7 @@ hh1:
   home_phone: 1-437-053-5113 x41799
   cell_phone: 839.897.3785 x24946
   citizenship: Mayotte
-  nationality: Bosnia and Herzegovina
+  country_of_birth: Bosnia and Herzegovina
   email: ryan@parker.info
   race: Pacific Islander
   student_status: Not a student

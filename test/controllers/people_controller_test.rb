@@ -27,7 +27,7 @@ class PeopleControllerTest < ActionController::TestCase
       home_phone: "x",
       cell_phone: "x",
       citizenship: "x",
-      nationality: "x",
+      country_of_birth: "x",
       email: "x",
       race: "x",
       student_status: "x",

@@ -63,7 +63,7 @@ class HouseholdMembersController < ApplicationController
         :cell_phone,
         :preferred_phone,
         :citizenship,
-        :nationality,
+        :country_of_birth,
         :email,
         :race,
         :student_status,

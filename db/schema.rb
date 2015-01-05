@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141224143435) do
+ActiveRecord::Schema.define(version: 20150105015419) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 20141224143435) do
     t.string   "home_phone"
     t.string   "cell_phone"
     t.string   "citizenship"
-    t.string   "nationality"
+    t.string   "country_of_birth"
     t.string   "email"
     t.string   "race"
     t.string   "student_status"
