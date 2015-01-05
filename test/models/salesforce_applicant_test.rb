@@ -14,7 +14,7 @@ class SalesforceApplicantTest < ActiveSupport::TestCase
 
   def test_merge
     intake = FakeIntake.new(
-      Name: "123456",
+      Name: "one",
       FirstName__c: "First",
       Middle_Name__c: "Middle",
       LastName__c: "Last",
@@ -28,13 +28,28 @@ class SalesforceApplicantTest < ActiveSupport::TestCase
 
     identity = salesforce_applicant.applicant.identity
 
-    assert_equal identity.first_name, "First"
-    assert_equal identity.middle_name, "Middle"
-    assert_equal identity.last_name, "Last"
+    assert_equal "First", identity.first_name
+    assert_equal "Middle", identity.middle_name
+    assert_equal "Last", identity.last_name
 
-    assert_equal identity.mail_address.street, "123 Fake St"
-    assert_equal identity.mail_address.city, "Washington"
-    assert_equal identity.mail_address.state, "DC"
-    assert_equal identity.mail_address.zip, "12345"
+    assert_equal "123 Fake St", identity.mail_address.street
+    assert_equal "Washington", identity.mail_address.city
+    assert_equal "DC", identity.mail_address.state
+    assert_equal "12345", identity.mail_address.zip
+
+    # Updates in Salesforce should overwrite existing fields, unless they are
+    # blank
+    changed_intake = FakeIntake.new(
+      Name: "one",
+      FirstName__c: "New first name",
+      LastName__c: "",
+    )
+
+    salesforce_applicant.merge changed_intake
+
+    identity = salesforce_applicant.applicant.identity
+
+    assert_equal "New first name", identity.first_name
+    assert_equal "Last", identity.last_name
   end
 end

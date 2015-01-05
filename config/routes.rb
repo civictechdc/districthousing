@@ -1,5 +1,6 @@
 DchousingApps::Application.routes.draw do
-  get "/salesforce_applicants/sync", to: "salesforce_applicants#sync"
+  get "/salesforce_applicants/sync", to: "salesforce_applicants#sync_all"
+  get "/salesforce_applicants/:id/sync", to: "salesforce_applicants#sync"
   resources :salesforce_applicants
 
   resources :criminal_histories

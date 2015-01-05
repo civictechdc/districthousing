@@ -1,5 +1,5 @@
 class SalesforceApplicantsController < ApplicationController
-  before_action :set_salesforce_applicant, only: [:show, :edit, :update, :destroy]
+  before_action :set_salesforce_applicant, only: [:show, :edit, :update, :destroy, :sync]
 
   # GET /salesforce_applicants
   def index
@@ -46,6 +46,12 @@ class SalesforceApplicantsController < ApplicationController
   end
 
   def sync
+    intake = fetch_intake(@salesforce_applicant.name)
+    update_from_intake(intake)
+    redirect_to home_index_url, notice: "Refreshed applicant #{@salesforce_applicant.applicant} from salesforce."
+  end
+
+  def sync_all
     pull_from_salesforce
     redirect_to home_index_url, notice: 'Refreshed from salesforce.'
   end
@@ -61,26 +67,41 @@ class SalesforceApplicantsController < ApplicationController
       params.require(:salesforce_applicant).permit(:name, :applicant_id)
     end
 
+    def materialize_intake!
+      c = Databasedotcom::Client.new("config/databasedotcom.yml")
+      c.authenticate(
+        username: YAML.load_file("config/databasedotcom.yml")["username"],
+        password: Rails.application.secrets.salesforce_password
+      )
+      c.materialize("Intake__c")
+    end
+
+    def fetch_intake name
+      unless defined? Intake__c
+        materialize_intake!
+      end
+      Intake__c.find_by_Name(name)
+    end
+
     def intakes
       unless defined? Intake__c
-        c = Databasedotcom::Client.new("config/databasedotcom.yml")
-        c.authenticate(
-          username: YAML.load_file("config/databasedotcom.yml")["username"],
-          password: Rails.application.secrets.salesforce_password
-        )
-        c.materialize("Intake__c")
+        materialize_intake!
       end
       Intake__c.all
     end
 
     def pull_from_salesforce
       intakes.each do |intake|
-        sfa = SalesforceApplicant.find_or_create_by(name: intake.Name)
-        if sfa.applicant.nil?
-          sfa.applicant = current_user.applicants.build
-        end
-        sfa.merge intake
-        sfa.save
+        update_from_intake intake
       end
+    end
+
+    def update_from_intake intake
+      sfa = SalesforceApplicant.find_or_create_by(name: intake.Name)
+      if sfa.applicant.nil?
+        sfa.applicant = current_user.applicants.build
+      end
+      sfa.merge intake
+      sfa.applicant.save
     end
 end

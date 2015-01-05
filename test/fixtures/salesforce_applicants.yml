@@ -1,7 +1,7 @@
 one:
-  name: MyString
+  name: one
   applicant_id: 1
 
 two:
-  name: MyString
+  name: two
   applicant_id: 2

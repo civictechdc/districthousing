@@ -54,23 +54,39 @@ class SalesforceApplicantsControllerTest < ActionController::TestCase
     assert_redirected_to salesforce_applicants_path
   end
 
-  def test_sync
+  def test_sync_all
     SalesforceApplicantsController.any_instance.stubs(:intakes).returns(
       [
         FakeIntake.new(
-          Name: "123456",
-          FirstName__c: "Joe",
-          LastName__c: "Test"
+          Name: "one",
+          FirstName__c: "Existing applicant",
+        ),
+        FakeIntake.new(
+          Name: "new",
+          FirstName__c: "New applicant",
         )
       ]
     )
     assert_difference('Applicant.count', 1) do
       assert_difference('SalesforceApplicant.count', 1) do
-        get :sync
+        get :sync_all
       end
     end
 
     assert_redirected_to home_index_path
+    assert_equal 'Existing applicant', SalesforceApplicant.find_by(name: 'one').applicant.identity.first_name
+    assert_equal 'New applicant', SalesforceApplicant.find_by(name: 'new').applicant.identity.first_name
   end
 
+  def test_sync
+    SalesforceApplicantsController.any_instance.stubs(:fetch_intake).returns(
+      FakeIntake.new(
+        Name: 'one',
+        FirstName__c: 'New first name',
+      )
+    )
+    get :sync, id: salesforce_applicants(:one)
+    assert_equal 'New first name', SalesforceApplicant.find_by(name: 'one').applicant.identity.first_name
+    assert_redirected_to home_index_path
+  end
 end
