@@ -66,6 +66,7 @@ class HouseholdMembersController < ApplicationController
         :country_of_birth,
         :email,
         :race,
+        :ethnicity,
         :student_status,
         :marital_status,
         :occupation,

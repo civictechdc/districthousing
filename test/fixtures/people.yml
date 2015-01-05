@@ -20,6 +20,8 @@ one:
   driver_license_state: New York
   marital_status: Married
   student_status: Part-time
+  race: MyRace
+  ethnicity: MyEthnicity
 
 two:
   id: 2
@@ -50,6 +52,7 @@ hh1:
   country_of_birth: Bosnia and Herzegovina
   email: ryan@parker.info
   race: Pacific Islander
+  ethnicity: Hispanic or Latino
   student_status: Not a student
   marital_status: Married
   applicant_id: 37

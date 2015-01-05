@@ -128,6 +128,10 @@ class Person < ActiveRecord::Base
       gender.to_s.first
     when "Gender"
       gender
+    when "Race"
+      race
+    when "Ethnicity"
+      ethnicity
     when "PreferredPhone"
       cell_phone
     when "WorkPhone"

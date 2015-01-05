@@ -31,6 +31,7 @@ module ApplicantFactory
         # Sample races from US Census
         # http://www.census.gov/topics/population/race/about.html
         race: ["White", "Black", "American Indian", "Asian", "Pacific Islander"].sample,
+        ethnicity: ["Hispanic or Latino", "Not Hispanic or Latino"].sample,
         student_status: ["Not a student", "Part-time", "Full-time"].sample,
         marital_status: ["Never married", "Married", "Widowed", "Divorced"].sample,
         occupation: ["Butcher", "Baker", "Candlestick Maker"].sample,

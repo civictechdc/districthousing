@@ -33,6 +33,8 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "Virginia", @one.field("BirthState")
     assert_equal "Springfield", @one.field("BirthCity")
     assert_equal "Yes", @one.field("USCitizenYesNo")
+    assert_equal "MyRace", @one.field("Race")
+    assert_equal "MyEthnicity", @one.field("Ethnicity")
     assert_equal "X12345678", @one.field("DriverLicense")
     assert_equal "New York", @one.field("DriverLicenseState")
     assert_equal "Self", @one.field("Relationship")

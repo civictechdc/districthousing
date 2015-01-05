@@ -30,6 +30,7 @@ class PeopleControllerTest < ActionController::TestCase
       country_of_birth: "x",
       email: "x",
       race: "x",
+      ethnicity: "x",
       student_status: "x",
       marital_status: "x",
       occupation: "x",
