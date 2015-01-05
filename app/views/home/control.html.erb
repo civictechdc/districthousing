@@ -10,25 +10,33 @@
       <th>
         Address
       </th>
-      <th> </th>
-      <th> </th>
+      <th/>
+      <th/>
+      <th/>
     </tr>
-  <% @applicants.each do |applicant| %>
-    <tr>
-      <td>
-        <%= applicant %>
-      </td>
-      <td>
-        <%= applicant.identity.mail_address %>
-      </td>
-      <td>
-        <%= link_to 'Edit', applicant, class: "btn btn-lg btn-info"%>
-      </td>
-      <td>
-        <%= link_to 'Delete', applicant, class: "btn btn-lg btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
-      </td>
-    </tr>
-  <% end %>
+    <% @applicants.each do |applicant| %>
+      <tr>
+        <td>
+          <%= applicant %>
+        </td>
+        <td>
+          <%= applicant.identity.mail_address %>
+        </td>
+        <td>
+          <% if applicant.salesforce_applicant.nil? %>
+            <p class="text-muted">Not from Salesforce</p>
+          <% else %>
+            <%= link_to 'Update from Salesforce', "/salesforce_applicants/#{applicant.salesforce_applicant.id}/sync", class: "btn btn-lg btn-info"%>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to 'Edit', applicant, class: "btn btn-lg btn-info"%>
+        </td>
+        <td>
+          <%= link_to 'Delete', applicant, class: "btn btn-lg btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
   </table>
 <% else %>
   <p>Looks like you don't have any applicants yet.  You should create one!</p>
