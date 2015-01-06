@@ -1,7 +1,7 @@
 one:
   name: one
-  applicant_id: 1
+  applicant: two
 
 two:
   name: two
-  applicant_id: 2
+  applicant: two

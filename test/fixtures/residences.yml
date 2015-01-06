@@ -1,18 +1,15 @@
-# Read about fixtures at
-# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
 one:
-  applicant_id: 1
-  address_id: 3
+  applicant: one
+  address: residence_one
   start: 2013-06-25
   end: 2014-06-25
   reason: Changed jobs
-  landlord_id: 5
+  landlord: ll1
 
 two:
-  applicant_id: 1
-  address_id: 4
+  applicant: one
+  address: residence_two
   start: 2012-06-25
   end: 2013-06-25
   reason: Neighbors annoying
-  landlord_id: 6
+  landlord: ll2

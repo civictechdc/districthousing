@@ -1,9 +1,9 @@
 three:
-  applicant_id: 1
-  person_id: 3
+  applicant: one
+  person: hh1
   relationship: Grandmother
 
 four:
-  applicant_id: 1
-  person_id: 4
+  applicant: one
+  person: hh2
   relationship: Son

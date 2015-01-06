@@ -1,5 +1,4 @@
 one:
-  id: 1
   first_name: One
   last_name: McOne
   middle_name: John
@@ -11,8 +10,8 @@ one:
   cell_phone: (202) 208-4743
   email: one@districthousing.org
   country_of_birth: USA
-  applicant_id: 1
-  mail_address_id: 1
+  applicant: one
+  mail_address: one
   state_of_birth: Virginia
   city_of_birth: Springfield
   citizenship: USA
@@ -24,7 +23,6 @@ one:
   ethnicity: MyEthnicity
 
 two:
-  id: 2
   first_name: Two
   last_name: McTwo
   middle_name: Jane
@@ -32,11 +30,10 @@ two:
   dob: 2013-06-23 22:26:43
   gender: Female
   email: two@districthousing.org
-  applicant_id: 2
+  applicant: two
 
 hh1:
-  id: 3
-  applicant_id: 1
+  applicant: one
   first_name: HH1
   last_name: Schaefer
   middle_name: Charley
@@ -55,36 +52,32 @@ hh1:
   ethnicity: Hispanic or Latino
   student_status: Not a student
   marital_status: Married
-  applicant_id: 37
+  applicant: one
   occupation: Candlestick Maker
-  mail_address_id: 1
+  mail_address: one
   state_of_birth: Georgia
   city_of_birth: Port Elvaside
   driver_license_number: '8308313763'
   driver_license_state: West Virginia
 
 hh2:
-  id: 4
   cell_phone: (444) 444-4444
-  applicant_id: 1
+  applicant: one
   first_name: HH2
-  mail_address_id: 2
+  mail_address: two
 
 ll1:
-  id: 5
   cell_phone: (555) 555-5555
-  applicant_id: 1
+  applicant: one
   first_name: LL1
-  mail_address_id: 1
+  mail_address: one
 
 ll2:
-  id: 6
   cell_phone: (666) 666-6666
-  applicant_id: 1
+  applicant: one
   first_name: LL2
-  mail_address_id: 2
+  mail_address: two
 
 sample:
-  id: 7
   first_name: Mister
   last_name: Sample
