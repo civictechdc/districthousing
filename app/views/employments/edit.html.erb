@@ -5,3 +5,5 @@
 <%= render 'progress', object: @employment %>
 
 <%= render 'form' %>
+
+<%= link_to 'Delete', @employment, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>

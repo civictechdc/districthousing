@@ -38,3 +38,5 @@
 
   <%= render "buttons_update_back", f: f %>
 <% end %>
+
+<%= link_to 'Delete', @residence, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
