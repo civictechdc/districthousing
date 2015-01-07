@@ -25,7 +25,7 @@ class SalesforceApplicantsControllerTest < ActionController::TestCase
 
   def test_create
     assert_difference('SalesforceApplicant.count') do
-      post :create, salesforce_applicant: { name: salesforce_applicant.name, applicant_id: 1 }
+      post :create, salesforce_applicant: { name: salesforce_applicant.name, applicant_id: applicants(:one).id }
     end
 
     assert_redirected_to salesforce_applicant_path(assigns(:salesforce_applicant))

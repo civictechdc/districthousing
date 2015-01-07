@@ -6,7 +6,7 @@ class ResidencesControllerTest < ActionController::TestCase
 
   def setup
     sign_in users(:one)
-    session[:current_applicant_id] = 1
+    session[:current_applicant_id] = applicants(:one).id
   end
 
   def residence

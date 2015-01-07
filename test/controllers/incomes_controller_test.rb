@@ -7,17 +7,17 @@ class IncomesControllerTest < ActionController::TestCase
     incomes :one
   end
 
-  def test_new
+  def setup
     sign_in users(:one)
-    session[:current_applicant_id] = 1
+    session[:current_applicant_id] = applicants(:one).id
+  end
+
+  def test_new
     get :new
     assert_redirected_to edit_income_path(assigns[:income])
   end
 
   def test_create
-    sign_in users(:one)
-    session[:current_applicant_id] = 1
-
     assert_difference('Income.count') do
       post :create, income: {
         amount: 123,
@@ -30,9 +30,6 @@ class IncomesControllerTest < ActionController::TestCase
   end
 
   def test_update
-    sign_in users(:one)
-    session[:current_applicant_id] = 1
-
     assert income.amount = 123
     assert income.person_id = 1
     assert income.income_type_id = 1
@@ -51,9 +48,6 @@ class IncomesControllerTest < ActionController::TestCase
   end
 
   def test_destroy
-    sign_in users(:one)
-    session[:current_applicant_id] = 1
-
     assert_difference('Income.count', -1) do
       delete :destroy, id: income
     end

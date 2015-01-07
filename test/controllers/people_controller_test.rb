@@ -8,14 +8,14 @@ class PeopleControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
 
     sign_in users(:one)
-    session[:current_applicant_id] = 1
+    session[:current_applicant_id] = applicants(:one).id
     get :edit, id: people(:one).id
     assert_response :success
   end
 
   def test_update
     sign_in users(:one)
-    session[:current_applicant_id] = 1
+    session[:current_applicant_id] = applicants(:one).id
     person_update_hash = {
       first_name: "x",
       last_name: "x",
@@ -48,7 +48,7 @@ class PeopleControllerTest < ActionController::TestCase
 
   def test_destroy
     sign_in users(:one)
-    session[:current_applicant_id] = 1
+    session[:current_applicant_id] = applicants(:one).id
     assert_difference('Person.count', -1) do
       delete :destroy, id: people(:one)
     end
