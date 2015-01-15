@@ -37,7 +37,7 @@ class Person < ActiveRecord::Base
   end
 
   def validate_dob_year
-    if dob < (Date.today - 43800)
+    if dob != nil && dob < (Date.today - 43800)
       errors.add(:dob, "Date of birth is too long ago")
     end
   end
