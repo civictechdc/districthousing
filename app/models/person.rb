@@ -15,7 +15,7 @@ class Person < ActiveRecord::Base
 
   before_validation :initialize_person
   validates_associated :mail_address
-  validates :mail_address, presence: true
+  validates :mail_address, :dob, presence: true
   validate :validate_dob_year
 
   def initialize_person
