@@ -16,6 +16,7 @@ class Person < ActiveRecord::Base
   before_validation :initialize_person
   validates_associated :mail_address
   validates :mail_address, presence: true
+  validate :validate_dob_year
 
   def initialize_person
     self.mail_address ||= Address.new
@@ -33,6 +34,10 @@ class Person < ActiveRecord::Base
     return "" if dob.nil?
 
     dob.strftime("%m/%d/%Y")
+  end
+
+  def validate_dob_year
+    errors.add(:dob, "Date of birth is too long ago.") if dob != nil && dob < (Date.today - 43800)
   end
 
   def dob_dd
