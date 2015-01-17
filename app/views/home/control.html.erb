@@ -52,6 +52,11 @@
 <%= javascript_tag do %>
   $('.table').DataTable({
     dom: "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
-    pagingType: "bootstrap"
+    pagingType: "simple_numbers",
+    "columnDefs": [ { 
+      "orderable": false, "targets": [2,3,4] 
+      } ],
+    "dom": '<"wrapper"ftpr>'
   });
+  $('div.dataTables_filter input').focus();
 <% end %>
