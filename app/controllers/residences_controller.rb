@@ -1,6 +1,7 @@
 class ResidencesController < ApplicationController
 
   before_action :set_residence, only: [:edit, :update, :destroy]
+  before_action :set_person_mail_address, only: [:new, :edit, :update]
 
   def new
     create
@@ -45,6 +46,14 @@ class ResidencesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_residence
       @residence = Residence.find(params[:id])
+    end
+
+    def set_person_mail_address
+      @person = Person.find(params[:id])
+      @mail_address = @person.mail_address
+      puts @person
+      puts @mail_address
+      puts "============================================================"
     end
 
     # Only allow a trusted parameter "white list" through.
