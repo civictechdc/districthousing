@@ -59,7 +59,9 @@ test_user = User.create(
   :password => "password"
 )
 
-ApplicantFactory.make_a_sample_applicant(test_user)
+30.times do
+  ApplicantFactory.make_a_sample_applicant(test_user)
+end
 
 sample_user = User.create(
   :email => "sampleuser@districthousing.org",
