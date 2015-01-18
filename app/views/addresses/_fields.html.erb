@@ -3,3 +3,5 @@
 <%= builder.text_field :city %>
 <%= builder.text_field :state %>
 <%= builder.text_field :zip, label: "Zip code" %>
+
+<%= link_to 'Use Mailing Address', edit_residence_path(:address_type => 'use_mail_address') %>
