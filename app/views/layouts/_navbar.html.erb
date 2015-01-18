@@ -22,7 +22,12 @@
           <li><%= link_to "Field Name Dictionary", dictionary_path %></li>
 
           <% if current_user %>
-            <li><%= link_to current_user.email, root_path %></li>
+            <li>
+              <a href="<%= root_path %>/">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <%= current_user.email %>
+              </a>
+            </li>
             <li><%= link_to "Sign Out", destroy_user_session_path, :method => "delete" %></li>
           <% else %>
             <li><%= link_to "Log In", new_user_session_path %></li>
