@@ -49,9 +49,7 @@ class ResidencesController < ApplicationController
     end
 
     def set_person_mail_address
-      @person = Person.find(params[:id])
-      @mail_address = @person.mail_address
-      puts @person
+      @mail_address = @residence.applicant.identity.mail_address
       puts @mail_address
       puts "============================================================"
     end
