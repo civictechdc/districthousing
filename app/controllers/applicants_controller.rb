@@ -31,7 +31,7 @@ class ApplicantsController < ApplicationController
 
     if success
       session[:current_applicant_id] = @applicant.id
-      redirect_to edit_person_path(@applicant.identity)
+      redirect_to edit_identity_path(@applicant)
     else
       render :new
     end

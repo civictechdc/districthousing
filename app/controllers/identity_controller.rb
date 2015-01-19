@@ -1,21 +1,15 @@
-class PeopleController < ApplicationController
+class IdentityController < ApplicationController
+  before_action :assign_applicant
+
   def edit
-    @person = Person.find(params[:id])
   end
 
   def update
-    @person = Person.find(params[:id])
-
-    if @person.update(person_params)
+    if @applicant.identity.update(person_params)
       redirect_to next_page
     else
       render :edit
     end
-  end
-
-  def destroy
-    Person.find(params[:id]).destroy
-    redirect_to current_applicant, notice: 'Person removed', status: :see_other
   end
 
   private
@@ -57,12 +51,16 @@ class PeopleController < ApplicationController
 
   def next_page
     if params[:submit_direction] == "next"
-      edit_household_member_path(@current_applicant.household_members.first)
+      edit_household_member_path(@applicant.household_members.first)
     elsif params[:submit_direction] == "previous"
-      @current_applicant
+      @applicant
     else
       flash[:notice] = "Saved!"
-      edit_person_path(@current_applicant.identity)
+      edit_identity_path(@applicant)
     end
+  end
+
+  def assign_applicant
+    @applicant = Applicant.find(params[:id])
   end
 end

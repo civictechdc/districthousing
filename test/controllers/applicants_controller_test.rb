@@ -29,7 +29,7 @@ class ApplicantsControllerTest < ActionController::TestCase
     assert_not_nil created_applicant.identity
     assert_not_nil created_applicant.identity.mail_address
 
-    assert_redirected_to edit_person_path(created_applicant.identity)
+    assert_redirected_to edit_identity_path(created_applicant)
 
     assert_equal users(:one).id, created_applicant.user_id
     assert_equal 4, created_applicant.household_members.count

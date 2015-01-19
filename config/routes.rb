@@ -11,7 +11,6 @@ DchousingApps::Application.routes.draw do
   resources :housing_forms
   resources :incomes
   resources :landlords
-  resources :people
   resources :residences
   resources :salesforce_applicants
 
@@ -20,6 +19,9 @@ DchousingApps::Application.routes.draw do
   get "/about", to: "home#about"
   get "/pdf_guide", to: "pdf_guide#index"
   get "/dictionary", to: "dictionary#index"
+
+  get "/applicants/:id/identity/edit", to: "identity#edit", as: 'edit_identity'
+  patch "/applicants/:id/identity", to: "identity#update", as: 'identity'
 
   root to: 'home#index'
 end

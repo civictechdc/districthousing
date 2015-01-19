@@ -12,10 +12,10 @@
     <%= @applicant.identity %>
   </div>
   <div class="row">
-  <%= render partial: 'people/summary_3_column', locals: { person: @applicant.identity } %>
+  <%= render partial: 'identity/summary', locals: { person: @applicant.identity } %>
   </div>
   <div class="panel-footer">
-    <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
+    <%= link_to "Edit", edit_identity_path(@applicant), class: "btn btn-info"%>
   </div>
 </div>
 
@@ -27,7 +27,7 @@
         <div class="panel-heading">
           <%= h.person %>
         </div>
-        <%= render partial: 'people/summary', locals: { person: h.person } %>
+        <%= render partial: 'household_members/summary', locals: { person: h.person } %>
         <div class="panel-footer">
           <%= link_to "Edit", edit_household_member_path(h), class: "btn btn-info"%>
           <%= link_to 'Delete', h, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>

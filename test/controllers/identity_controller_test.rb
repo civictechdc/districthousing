@@ -1,14 +1,14 @@
 require "test_helper"
 
-class PeopleControllerTest < ActionController::TestCase
+class IdentityControllerTest < ActionController::TestCase
 
   def test_edit
-    get :edit, id: people(:one).id
+    get :edit, id: applicants(:one).id
     assert_redirected_to new_user_session_path
 
     sign_in users(:one)
     session[:current_applicant_id] = applicants(:one).id
-    get :edit, id: people(:one).id
+    get :edit, id: applicants(:one).id
     assert_response :success
   end
 
@@ -42,17 +42,7 @@ class PeopleControllerTest < ActionController::TestCase
 
     assert_attributes_were_updated people(:one), person_update_hash.keys
 
-    assert_redirected_to edit_person_path(people(:one))
-  end
-
-  def test_destroy
-    sign_in users(:one)
-    session[:current_applicant_id] = applicants(:one).id
-    assert_difference('Person.count', -1) do
-      delete :destroy, id: people(:one)
-    end
-
-    assert_redirected_to applicant_path(applicants(:one))
+    assert_redirected_to edit_identity_path(people(:one))
   end
 
 end

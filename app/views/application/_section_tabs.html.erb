@@ -1,7 +1,7 @@
 <p>
 <ul class="nav nav-tabs nav-justified">
   <li role="presentation" class="<%= 'active' if :identity == active_section %>">
-    <a href="<%= edit_person_path(@current_applicant.identity) %>">
+    <a href="<%= edit_identity_path(@current_applicant) %>">
       Identity
       <span class="badge"><%= @current_applicant.identity.progress %>%</span>
     </a>
