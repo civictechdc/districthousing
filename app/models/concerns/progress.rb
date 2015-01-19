@@ -12,12 +12,10 @@ module Progress
   included do
     def self.submodels
       @submodels ||= []
-      @submodels
     end
 
     def self.submodel_collections
       @submodel_collections ||= []
-      @submodel_collections
     end
 
     def self.progress_includes sub_model_attribute
