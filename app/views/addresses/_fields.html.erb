@@ -1,16 +1,5 @@
-
- <% if params[:address_type] == 'use_mail_address' %>
-	<%= builder.text_field :street, label: "Street address", value: @mail_address.street %>
-	<%= builder.text_field :apt, label: "Apartment", value: @mail_address.apt %>
-	<%= builder.text_field :city, value: @mail_address.city %>
-	<%= builder.text_field :state, value: @mail_address.state %>
-	<%= builder.text_field :zip, label: "Zip code", value: @mail_address.zip %>
-<% else %>
-	<%= builder.text_field :street, label: "Street address" %>
-	<%= builder.text_field :apt, label: "Apartment" %>
-	<%= builder.text_field :city %>
-	<%= builder.text_field :state %>
-	<%= builder.text_field :zip, label: "Zip code" %>
-
-	<%= link_to 'Use Mailing Address', edit_residence_path(address_type: 'use_mail_address') %>
-<% end %>
+<%= builder.text_field :street, label: "Street address" %>
+<%= builder.text_field :apt, label: "Apartment" %>
+<%= builder.text_field :city %>
+<%= builder.text_field :state %>
+<%= builder.text_field :zip, label: "Zip code" %>
