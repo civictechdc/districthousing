@@ -37,6 +37,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
     bootstrap-sass (3.1.1.1)
@@ -112,6 +113,8 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     libv8 (3.16.14.3)
     listen (2.8.4)
       celluloid (>= 0.15.2)
@@ -241,6 +244,7 @@ DEPENDENCIES
   guard-rails
   jquery-datatables-rails (~> 3.1.1)
   jquery-rails
+  launchy
   markdown-rails
   minitest-rails
   mocha

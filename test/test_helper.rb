@@ -5,11 +5,16 @@ require 'mocha/mini_test'
 require 'fake_intake'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+
 Capybara.javascript_driver = :poltergeist
 
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
+
+  # Allow signins with warden
+  include Warden::Test::Helpers
+  Warden.test_mode!
 end
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
