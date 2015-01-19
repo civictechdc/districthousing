@@ -1,7 +1,7 @@
 class ResidencesController < ApplicationController
 
   before_action :set_residence, only: [:edit, :update, :destroy]
-  before_action :set_person_mail_address, only: [:new, :edit, :update]
+  before_action :set_person_mail_address, only: [:edit, :update]
 
   def new
     create
@@ -24,10 +24,6 @@ class ResidencesController < ApplicationController
   end
 
   def edit
-    case params[:address_type]
-      when 'use_mail_address'
-        :address == @mail_address
-    end
   end
 
   # PATCH/PUT /residences/1
@@ -54,7 +50,6 @@ class ResidencesController < ApplicationController
 
     def set_person_mail_address
       @mail_address = @residence.applicant.identity.mail_address
-      puts @mail_address.street
     end
 
     # Only allow a trusted parameter "white list" through.
