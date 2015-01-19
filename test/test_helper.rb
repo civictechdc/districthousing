@@ -19,6 +19,10 @@ end
 # Uncomment for awesome colorful output
 # require "minitest/pride"
 
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
+
 class ActiveSupport::TestCase
     ActiveRecord::Migration.check_pending!
 

@@ -1,7 +1,6 @@
 require "test_helper"
 
 class IncomesControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
 
   def income
     incomes :one

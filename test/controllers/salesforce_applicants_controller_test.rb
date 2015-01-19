@@ -2,8 +2,6 @@ require "test_helper"
 
 class SalesforceApplicantsControllerTest < ActionController::TestCase
 
-  include Devise::TestHelpers
-
   def setup
     sign_in users(:one)
   end

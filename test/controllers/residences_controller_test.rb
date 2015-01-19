@@ -2,8 +2,6 @@ require "test_helper"
 
 class ResidencesControllerTest < ActionController::TestCase
 
-  include Devise::TestHelpers
-
   def setup
     sign_in users(:one)
     session[:current_applicant_id] = applicants(:one).id

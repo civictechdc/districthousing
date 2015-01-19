@@ -1,7 +1,6 @@
 require "test_helper"
 
 class PeopleControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
 
   def test_edit
     get :edit, id: people(:one).id

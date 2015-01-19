@@ -1,7 +1,6 @@
 require "test_helper"
 
 class DictionaryControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
 
   def test_index
     sign_in users(:one)

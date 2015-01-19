@@ -1,7 +1,6 @@
 require "test_helper"
 
 class HousingFormsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
 
   def housing_form
     @housing_form ||= housing_forms :one

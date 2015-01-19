@@ -1,7 +1,6 @@
 require "test_helper"
 
 class ApplicantsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
 
   def test_new
     sign_in users(:one)

@@ -1,7 +1,6 @@
 require "test_helper"
 
 class CriminalHistoriesControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
 
   def setup
     sign_in users(:one)
