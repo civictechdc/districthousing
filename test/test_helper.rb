@@ -3,6 +3,14 @@ require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require 'mocha/mini_test'
 require 'fake_intake'
+require 'capybara/rails'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+
+class ActionDispatch::IntegrationTest
+  # Make the Capybara DSL available in all integration tests
+  include Capybara::DSL
+end
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
 # to the test group in the Gemfile and uncomment the following:
