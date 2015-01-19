@@ -19,7 +19,6 @@ class Applicant < ActiveRecord::Base
   has_many :residences, ->{ order(end: :desc) }, dependent: :destroy
   accepts_nested_attributes_for :residences, allow_destroy: true
   has_many :landlords, through: :residences, class_name: "Person", dependent: :destroy
-  has_many :addresses, through: :residences, class_name: "Address", dependent: :destroy
   accepts_nested_attributes_for :landlords, allow_destroy: true
 
   belongs_to :user
@@ -40,7 +39,20 @@ class Applicant < ActiveRecord::Base
   end
 
   def household_members_including_self
-    [identity, household_members_people].flatten
+    [identity, household_members_people].flatten.compact.uniq
+  end
+
+  # The many kinds of addresses an applicant has
+  has_many :residence_addresses, through: :residences, source: :address, dependent: :destroy
+  has_many :household_members_people_mail_addresses, through: :household_members_people, source: :mail_address, class_name: "Address", dependent: :destroy
+  has_many :employment_addresses, through: :employments, source: :address, dependent: :destroy
+  def addresses
+    [
+      identity.mail_address,
+      residence_addresses,
+      household_members_people_mail_addresses,
+      employment_addresses
+    ].flatten.compact.uniq
   end
 
   def preferred_attrs_for field_names
