@@ -1,7 +1,7 @@
 class ResidencesController < ApplicationController
 
   before_action :set_residence, only: [:edit, :update, :destroy]
-  before_action :set_person_mail_address, only: [:edit, :update]
+  before_action :set_applicant_mail_address, only: [:edit, :update]
 
   def new
     create
@@ -48,8 +48,9 @@ class ResidencesController < ApplicationController
       @residence = Residence.find(params[:id])
     end
 
-    def set_person_mail_address
-      @mail_address = @residence.applicant.identity.mail_address
+    #Gett applicant's mailing address for potential use as residence address.
+    def set_applicant_mail_address
+      @applicant_mail_address = @residence.applicant.identity.mail_address
     end
 
     # Only allow a trusted parameter "white list" through.

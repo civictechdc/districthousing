@@ -14,7 +14,12 @@
 
       <h2>Residence Address</h2>
       <%= f.fields_for :address do |a| %>
-        <%= render "addresses/applicant_fields", builder: a %>
+        <% if params[:address_type] == "use_mail_address" %>
+          <%= render "addresses/applicant_fields", builder: a %>
+        <% else %>
+          <%= render "addresses/fields", builder: a %>
+          <%= link_to "Use Applicant's Mailing Address", edit_residence_path(address_type: "use_mail_address") %>
+        <% end %>
       <% end %>
     </div>
 
