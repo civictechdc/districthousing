@@ -4,10 +4,14 @@ DchousingApps::Application.routes.draw do
 
   devise_for :users
 
-  resources :applicants
+  get '/applicants/:applicant_id/household_members/edit', to: 'household_members#front', as: 'edit_household_members'
+
+  resources :applicants do
+    resources :household_members
+  end
+
   resources :criminal_histories
   resources :employments
-  resources :household_members
   resources :housing_forms
   resources :incomes
   resources :landlords

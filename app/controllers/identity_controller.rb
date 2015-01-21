@@ -51,7 +51,7 @@ class IdentityController < ApplicationController
 
   def next_page
     if params[:submit_direction] == "next"
-      edit_household_member_path(@applicant.household_members.first)
+      edit_household_members_path(@applicant)
     elsif params[:submit_direction] == "previous"
       @applicant
     else

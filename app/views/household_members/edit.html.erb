@@ -1,10 +1,8 @@
 <%= render 'breadcrumb', object: @person %>
-
 <%= render 'section_tabs', active_section: :household_members %>
-
 <%= render 'progress', object: @household_member %>
 
-<%= bootstrap_form_for(@household_member) do |f| %>
+<%= bootstrap_form_for(@household_member, url: applicant_household_member_path(@applicant, @household_member)) do |f| %>
 
   <%= f.fields_for :person do |p| %>
     <div class="row">
@@ -32,4 +30,4 @@
   <%= render "buttons_update_back", f: f %>
 <% end %>
 
-<%= link_to 'Delete', @household_member, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Delete', applicant_household_member_path(@applicant, @household_member), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>

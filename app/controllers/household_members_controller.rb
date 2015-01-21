@@ -6,43 +6,46 @@ class HouseholdMembersController < ApplicationController
     @person = @household_member.person
   end
 
-  def new
-    create
-  end
-
-  def create
-    @h = HouseholdMember.new
-    @h.person = selected_or_created_person
-    @h.applicant = current_applicant
-
-    if @h.save
-      redirect_to edit_household_member_path(@h)
+  def front
+    @applicant = Applicant.find(params[:applicant_id])
+    @household_member = @applicant.household_members.first
+    if @household_member.nil?
+      render :empty
     else
-      flash.alert = "Error: #{@h.errors.messages}"
-      render :new
+      redirect_to edit_applicant_household_member_path(@applicant, @household_member)
     end
   end
 
-  def show
-    @household_member = HouseholdMember.find(params[:id])
+  def new
+    @h = HouseholdMember.create
+    @h.person = selected_or_created_person
+    @h.applicant = Applicant.find(params[:applicant_id])
+
+    if @h.save
+      redirect_to edit_applicant_household_member_path(@h.applicant, @h)
+    else
+      flash.alert = "Error: #{@h.errors.messages}"
+      redirect_to @applicant
+    end
   end
 
   def update
     if @household_member.update(household_member_params)
       redirect_to next_page
     else
-      redirect_to edit_household_member_path(@household_member), notice: 'Couldn\'t save.'
+      redirect_to edit_applicant_household_member_path(@applicant, @household_member), notice: 'Couldn\'t save.'
     end
   end
 
   def destroy
     @household_member.destroy
-    redirect_to current_applicant, notice: 'Household member removed', status: :see_other
+    redirect_to @applicant, notice: 'Household member removed', status: :see_other
   end
 
   private
 
   def set_household_member
+    @applicant = Applicant.find(params[:applicant_id])
     @household_member = HouseholdMember.find(params[:id])
   end
 
@@ -92,7 +95,7 @@ class HouseholdMembersController < ApplicationController
         first_name: params[:first_name],
         last_name: params[:last_name],
       )
-      person.applicant = current_applicant
+      person.applicant = @applicant
       return person
     else
       return Person.find(params[:person_id])
@@ -100,14 +103,18 @@ class HouseholdMembersController < ApplicationController
   end
 
   def next_page
-    find_next_page @current_applicant.household_members, @household_member, :edit_household_member_path
+    find_next_page @applicant.household_members, @household_member, :edit_me
+  end
+
+  def edit_me item
+    edit_applicant_household_member_path(@applicant, item)
   end
 
   def front_of_next_section
-    edit_residence_path(@current_applicant.residences.first)
+    edit_residences_path(@applicant)
   end
 
   def back_of_previous_section
-    edit_person_path(@current_applicant.identity)
+    edit_applicant_identity_path(@applicant)
   end
 end

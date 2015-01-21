@@ -29,8 +29,8 @@
         </div>
         <%= render partial: 'household_members/summary', locals: { person: h.person } %>
         <div class="panel-footer">
-          <%= link_to "Edit", edit_household_member_path(h), class: "btn btn-info"%>
-          <%= link_to 'Delete', h, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          <%= link_to "Edit", edit_applicant_household_member_path(@applicant, h), class: "btn btn-info"%>
+          <%= link_to 'Delete', applicant_household_member_path(@applicant, h), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
 <div class="row">
   <div class="col-md-4">
     <p>
-    <%= link_to "New", new_household_member_path, class: "btn btn-success"%>
+    <%= link_to "New", new_applicant_household_member_path(@applicant), class: "btn btn-success"%>
     </p>
   </div>
 </div>

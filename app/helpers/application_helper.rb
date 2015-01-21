@@ -8,7 +8,7 @@ module ApplicationHelper
   def edit_path model
     case model
     when HouseholdMember
-      edit_household_member_path(model)
+      edit_applicant_household_member_path(@current_applicant, model)
     when Residence
       edit_residence_path(model)
     when Income
@@ -25,7 +25,7 @@ module ApplicationHelper
   def new_path model
     case model.class.to_s.deconstantize.to_sym
     when :HouseholdMember
-      new_household_member_path
+      new_applicant_household_member_path(@current_applicant)
     when :Residence
       new_residence_path
     when :Income

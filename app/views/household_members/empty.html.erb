@@ -1,0 +1,15 @@
+<%= render 'breadcrumb', object: @person %>
+<%= render 'section_tabs', active_section: :household_members %>
+
+No household members.
+
+<nav>
+  <ul class="pager">
+    <li class="previous submit-previous">
+      <a href="<%= edit_identity_path(@applicant) %>"><span aria-hidden="true">&larr;</span> Go back</a>
+    </li>
+    <li class="next submit-next">
+      <a href="#">Continue <span aria-hidden="true">&rarr;</span></a>
+    </li>
+  </ul>
+</nav>
