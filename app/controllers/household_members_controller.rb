@@ -1,53 +1,24 @@
 class HouseholdMembersController < ApplicationController
   include ApplicantFormPage
 
-  before_action :set_household_member, only: [:edit, :update, :destroy]
-
-  def edit
-  end
-
-  def front
-    @household_member = @applicant.household_members.first
-    if @household_member.nil?
-      render :empty
-    else
-      redirect_to edit_applicant_household_member_path(@applicant, @household_member)
-    end
-  end
-
-  def new
-    @h = HouseholdMember.create
-    @h.person = selected_or_created_person
-    @h.applicant = Applicant.find(params[:applicant_id])
-
-    if @h.save
-      redirect_to edit_applicant_household_member_path(@h.applicant, @h)
-    else
-      flash.alert = "Error: #{@h.errors.messages}"
-      redirect_to @applicant
-    end
-  end
-
-  def update
-    if @household_member.update(household_member_params)
-      redirect_to next_page
-    else
-      redirect_to edit_applicant_household_member_path(@applicant, @household_member), notice: 'Couldn\'t save.'
-    end
-  end
-
-  def destroy
-    @household_member.destroy
-    redirect_to @applicant, notice: 'Household member removed', status: :see_other
-  end
-
   private
 
-  def set_household_member
-    @household_member = HouseholdMember.find(params[:id])
+  def first_item
+    @applicant.household_members.first
   end
 
-  def household_member_params
+  def make_new
+    h = HouseholdMember.create
+    h.person = selected_or_created_person
+    h.applicant = Applicant.find(params[:applicant_id])
+    h
+  end
+
+  def set_model
+    @model = HouseholdMember.find(params[:id])
+  end
+
+  def model_params
     params.require(:household_member).permit(
       person_attributes: [
         :id,
@@ -101,10 +72,10 @@ class HouseholdMembersController < ApplicationController
   end
 
   def next_page
-    find_next_page @applicant.household_members, @household_member, :edit_me
+    find_next_page @applicant.household_members, @model, :edit_model
   end
 
-  def edit_me item
+  def edit_model item
     edit_applicant_household_member_path(@applicant, item)
   end
 

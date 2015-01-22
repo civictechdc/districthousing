@@ -1,10 +1,10 @@
-<%= bootstrap_form_for(@employment) do |f| %>
-  <% if @employment.errors.any? %>
+<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
+  <% if @model.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@employment.errors.count, "error") %> prohibited this employment from being saved:</h2>
+      <h2><%= pluralize(@model.errors.count, "error") %> prohibited this employment from being saved:</h2>
 
       <ul>
-      <% @employment.errors.full_messages.each do |message| %>
+      <% @model.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -15,7 +15,7 @@
     <div class="col-md-6">
       <h3>About the employment</h3>
       <div class="field">
-        <%= f.collection_select :person_id, @current_applicant.household_members_including_self, :id, :description, label: "Person employed" %>
+        <%= f.collection_select :person_id, @applicant.household_members_including_self, :id, :description, label: "Person employed" %>
       </div>
       <div class="field">
         <%= f.date_field :start_date %>

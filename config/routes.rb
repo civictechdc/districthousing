@@ -16,12 +16,12 @@ DchousingApps::Application.routes.draw do
   resources :applicants do
     resources :household_members
     resources :residences
+    resources :employments
+    resources :incomes
+    resources :criminal_histories
   end
 
-  resources :criminal_histories
-  resources :employments
   resources :housing_forms
-  resources :incomes
   resources :landlords
   resources :salesforce_applicants
 

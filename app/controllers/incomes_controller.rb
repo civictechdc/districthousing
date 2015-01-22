@@ -1,46 +1,27 @@
 class IncomesController < ApplicationController
-  before_action :set_income, only: [:show, :edit, :update, :destroy]
-
-  def new
-    create
-  end
-
-  def create
-    @income = Income.new
-    @income.person = @current_applicant.identity
-
-    if @income.save
-      redirect_to edit_income_path(@income)
-    else
-      redirect_to :new
-    end
-  end
-
-  def update
-    if @income.update(income_params)
-      redirect_to next_page
-    else
-      flash[:errors] = @income.errors.full_messages
-      redirect_to current_applicant, notice: 'Unable to update income.'
-    end
-  end
-
-  def edit
-  end
-
-  def destroy
-    @income.destroy
-    redirect_to current_applicant, notice: 'Income was successfully destroyed.', status: :see_other
-  end
+  include ApplicantFormPage
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_income
-    @income = Income.find(params[:id])
+
+  def first_item
+    @applicant.incomes.first
   end
 
-  # Only allow a trusted parameter "white list" through.
-  def income_params
+  def make_new
+    i = Income.new
+    i.person = @applicant.identity
+    i
+  end
+
+  def set_model
+    @model = Income.find(params[:id])
+  end
+
+  def edit_model item
+    edit_applicant_income_path(@applicant, item)
+  end
+
+  def model_params
     params.require(:income).permit(
       :income_type_id,
       :amount,
@@ -49,14 +30,14 @@ class IncomesController < ApplicationController
   end
 
   def next_page
-    find_next_page @current_applicant.incomes, @income, :edit_income_path
+    find_next_page @applicant.incomes, @model, :edit_model
   end
 
   def front_of_next_section
-    edit_employment_path(@current_applicant.employments.first)
+    edit_employment_path(@applicant.employments.first)
   end
 
   def back_of_previous_section
-    edit_residence_path(@current_applicant.residences.last)
+    edit_residence_path(@applicant.residences.last)
   end
 end

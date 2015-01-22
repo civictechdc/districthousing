@@ -1,8 +1,8 @@
-<%= render 'breadcrumb', object: @residence %>
+<%= render 'breadcrumb', object: @model %>
 <%= render 'section_tabs', active_section: :residence_history %>
-<%= render 'progress', object: @residence %>
+<%= render 'progress', object: @model %>
 
-<%= bootstrap_form_for(@residence, url: applicant_residence_path(@applicant, @residence)) do |f| %>
+<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
 
   <div class="row">
 
@@ -37,4 +37,4 @@
   <%= render "buttons_update_back", f: f %>
 <% end %>
 
-<%= link_to 'Delete', applicant_residence_path(@applicant, @residence), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Delete', basic_path(@model), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>

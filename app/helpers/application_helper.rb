@@ -12,11 +12,11 @@ module ApplicationHelper
     when Residence
       edit_applicant_residence_path(@applicant, model)
     when Income
-      edit_income_path(model)
+      edit_applicant_income_path(@applicant, model)
     when Employment
-      edit_employment_path(model)
+      edit_applicant_employment_path(@applicant, model)
     when CriminalHistory
-      edit_criminal_history_path(model)
+      edit_applicant_criminal_history_path(@applicant, model)
     else
       "#"
     end
@@ -29,11 +29,28 @@ module ApplicationHelper
     when :Residence
       new_applicant_residence_path(@applicant)
     when :Income
-      new_income_path
+      new_applicant_income_path(@applicant)
     when :Employment
-      new_employment_path
+      new_applicant_employment_path(@applicant)
     when :CriminalHistory
-      new_criminal_history_path
+      new_applicant_criminal_history_path(@applicant)
+    else
+      "#"
+    end
+  end
+
+  def basic_path model
+    case model.class.to_s.deconstantize.to_sym
+    when :HouseholdMember
+      applicant_household_member_path(@applicant, model)
+    when :Residence
+      applicant_residence_path(@applicant, model)
+    when :Income
+      applicant_income_path(@applicant, model)
+    when :Employment
+      applicant_employment_path(@applicant, model)
+    when :CriminalHistory
+      applicant_criminal_history_path(@applicant, model)
     else
       "#"
     end

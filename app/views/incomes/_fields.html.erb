@@ -7,6 +7,6 @@
     <%= f.text_field :amount, label: "Yearly amount" %>
   </div>
   <div class="col-md-4">
-    <%= f.collection_select :person_id, @current_applicant.household_members_including_self, :id, :description, label: "Who earns it?" %>
+    <%= f.collection_select :person_id, @applicant.household_members_including_self, :id, :description, label: "Who earns it?" %>
   </div>
 </div>

@@ -10,7 +10,7 @@ class HouseholdMembersControllerTest < ActionController::TestCase
     assert_difference('HouseholdMember.count') do
       get :new, applicant_id: applicants(:one)
     end
-    assert_redirected_to edit_applicant_household_member_path(applicants(:one), assigns[:h])
+    assert_redirected_to edit_applicant_household_member_path(applicants(:one), assigns[:model])
   end
 
   def test_update

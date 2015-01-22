@@ -1,9 +1,5 @@
-<%= render 'breadcrumb', object: @criminal_history %>
-
+<%= render 'breadcrumb', object: @model %>
 <%= render 'section_tabs', active_section: :criminal_history %>
-
-<%= render 'progress', object: @criminal_history %>
-
+<%= render 'progress', object: @model %>
 <%= render 'form' %>
-
-<%= link_to 'Delete', @criminal_history, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Delete', basic_path(@model), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>

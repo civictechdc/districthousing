@@ -15,18 +15,7 @@ class ResidencesControllerTest < ActionController::TestCase
       get :new, applicant_id: applicants(:one)
     end
 
-    assert_redirected_to edit_applicant_residence_path(applicants(:one), assigns(:residence))
-  end
-
-  def test_update
-    residence_update_hash = {
-      start: "2000-01-01",
-      end: "2010-01-01",
-      reason: "x",
-    }
-    put :update, applicant_id: applicants(:one), id: residence, residence: residence_update_hash
-    assert_attributes_were_updated residences(:one), residence_update_hash.keys
-    assert_redirected_to edit_applicant_residence_path(applicants(:one), @residence)
+    assert_redirected_to edit_applicant_residence_path(applicants(:one), assigns(:model))
   end
 
   def test_edit
@@ -44,6 +33,18 @@ class ResidencesControllerTest < ActionController::TestCase
       delete :destroy, applicant_id: applicants(:one), id: residence
     end
 
-    assert_redirected_to applicant_path(applicants(:one))
+    assert_redirected_to applicants(:one)
   end
+
+  def test_update
+    residence_update_hash = {
+      start: "2000-01-01",
+      end: "2010-01-01",
+      reason: "x",
+    }
+    put :update, applicant_id: applicants(:one), id: residence, residence: residence_update_hash
+    assert_attributes_were_updated residences(:one), residence_update_hash.keys
+    assert_redirected_to edit_applicant_residence_path(applicants(:one), residence)
+  end
+
 end

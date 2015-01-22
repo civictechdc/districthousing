@@ -1,0 +1,15 @@
+<%= render 'breadcrumb', object: "" %>
+<%= render 'section_tabs', active_section: @active_section %>
+
+Looks like this section is empty!
+
+<nav>
+  <ul class="pager">
+    <li class="previous submit-previous">
+      <a href="<%= @previous_section_path %>"><span aria-hidden="true">&larr;</span> Go back</a>
+    </li>
+    <li class="next submit-next">
+      <a href="<%= @next_section_path %>">Continue <span aria-hidden="true">&rarr;</span></a>
+    </li>
+  </ul>
+</nav>
