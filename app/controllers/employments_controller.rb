@@ -1,4 +1,6 @@
 class EmploymentsController < ApplicationController
+  include ApplicantFormPage
+
   before_action :set_employment, only: [:show, :edit, :update, :destroy]
 
   # GET /employments

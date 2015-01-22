@@ -1,13 +1,12 @@
 class HouseholdMembersController < ApplicationController
+  include ApplicantFormPage
+
   before_action :set_household_member, only: [:edit, :update, :destroy]
 
   def edit
-    @household_member = HouseholdMember.find(params[:id])
-    @person = @household_member.person
   end
 
   def front
-    @applicant = Applicant.find(params[:applicant_id])
     @household_member = @applicant.household_members.first
     if @household_member.nil?
       render :empty
@@ -45,7 +44,6 @@ class HouseholdMembersController < ApplicationController
   private
 
   def set_household_member
-    @applicant = Applicant.find(params[:applicant_id])
     @household_member = HouseholdMember.find(params[:id])
   end
 

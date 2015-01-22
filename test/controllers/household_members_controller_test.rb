@@ -4,7 +4,6 @@ class HouseholdMembersControllerTest < ActionController::TestCase
 
   def setup
     sign_in users(:one)
-    session[:current_applicant_id] = applicants(:one).id
   end
 
   def test_new
@@ -16,7 +15,6 @@ class HouseholdMembersControllerTest < ActionController::TestCase
 
   def test_update
     sign_in users(:one)
-    session[:current_applicant_id] = applicants(:one).id
     person_update_hash = {
       first_name: "x",
       last_name: "x",

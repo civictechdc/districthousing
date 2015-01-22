@@ -1,9 +1,9 @@
 <p>
 <ul class="nav nav-tabs nav-justified">
   <li role="presentation" class="<%= 'active' if :identity == active_section %>">
-    <a href="<%= edit_identity_path(@current_applicant) %>">
+    <a href="<%= edit_identity_path(@applicant) %>">
       Identity
-      <span class="badge"><%= @current_applicant.identity.progress %>%</span>
+      <span class="badge"><%= @applicant.identity.progress %>%</span>
     </a>
   </li>
   <li role="presentation" class="dropdown <%= 'active' if :household_members == active_section %>">
@@ -11,7 +11,7 @@
       Household members <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @current_applicant.household_members %>
+      <%= render 'collection_tab_content', collection: @applicant.household_members %>
     </ul>
   </li>
   <li role="presentation" class="<%= 'active' if :residence_history == active_section %>">
@@ -19,7 +19,7 @@
       Residence history <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @current_applicant.residences %>
+      <%= render 'collection_tab_content', collection: @applicant.residences %>
     </ul>
   </li>
   <li role="presentation" class="<%= 'active' if :income == active_section %>">
@@ -27,7 +27,7 @@
       Income <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @current_applicant.incomes %>
+      <%= render 'collection_tab_content', collection: @applicant.incomes %>
     </ul>
   </li>
   <li role="presentation" class="<%= 'active' if :employment == active_section %>">
@@ -35,7 +35,7 @@
       Employment <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @current_applicant.employments %>
+      <%= render 'collection_tab_content', collection: @applicant.employments %>
     </ul>
   </li>
   <li role="presentation" class="<%= 'active' if :criminal_history == active_section %>">
@@ -43,7 +43,7 @@
       Criminal history <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @current_applicant.criminal_histories %>
+      <%= render 'collection_tab_content', collection: @applicant.criminal_histories %>
     </ul>
   </li>
 </ul>

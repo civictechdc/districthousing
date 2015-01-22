@@ -1,9 +1,9 @@
 class ResidencesController < ApplicationController
+  include ApplicantFormPage
 
   before_action :set_residence, only: [:edit, :update, :destroy]
 
   def front
-    @applicant = Applicant.find(params[:applicant_id])
     @residence = @applicant.residences.first
     if @residence.nil?
       render :empty
@@ -15,7 +15,6 @@ class ResidencesController < ApplicationController
   def new
     @residence = Residence.new
 
-    @applicant = Applicant.find(params[:applicant_id])
     @residence.applicant = @applicant
     @residence.landlord = Person.new
     @residence.landlord.applicant = @applicant
@@ -50,7 +49,6 @@ class ResidencesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_residence
-      @applicant = Applicant.find(params[:applicant_id])
       @residence = Residence.find(params[:id])
     end
 
@@ -69,7 +67,7 @@ class ResidencesController < ApplicationController
     end
 
     def next_page
-      find_next_page @current_applicant.residences, @residence, :edit_me
+      find_next_page @applicant.residences, @residence, :edit_me
     end
 
     def edit_me item
@@ -77,10 +75,10 @@ class ResidencesController < ApplicationController
     end
 
     def front_of_next_section
-      edit_income_path(@current_applicant.incomes.first)
+      edit_income_path(@applicant.incomes.first)
     end
 
     def back_of_previous_section
-      edit_household_member_path(@current_applicant.household_members.last)
+      edit_household_member_path(@applicant.household_members.last)
     end
 end

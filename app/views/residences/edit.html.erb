@@ -1,7 +1,5 @@
 <%= render 'breadcrumb', object: @residence %>
-
 <%= render 'section_tabs', active_section: :residence_history %>
-
 <%= render 'progress', object: @residence %>
 
 <%= bootstrap_form_for(@residence, url: applicant_residence_path(@applicant, @residence)) do |f| %>

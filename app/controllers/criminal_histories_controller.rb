@@ -1,4 +1,6 @@
 class CriminalHistoriesController < ApplicationController
+  include ApplicantFormPage
+
   before_action :set_criminal_history, only: [:show, :edit, :update, :destroy]
 
   # GET /criminal_histories
