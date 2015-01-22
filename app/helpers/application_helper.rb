@@ -10,7 +10,7 @@ module ApplicationHelper
     when HouseholdMember
       edit_applicant_household_member_path(@current_applicant, model)
     when Residence
-      edit_residence_path(model)
+      edit_applicant_residence_path(@current_applicant, model)
     when Income
       edit_income_path(model)
     when Employment
@@ -27,7 +27,7 @@ module ApplicationHelper
     when :HouseholdMember
       new_applicant_household_member_path(@current_applicant)
     when :Residence
-      new_residence_path
+      new_applicant_residence_path(@current_applicant)
     when :Income
       new_income_path
     when :Employment

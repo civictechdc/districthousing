@@ -1,5 +1,5 @@
 class HouseholdMembersController < ApplicationController
-  before_action :set_household_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_household_member, only: [:edit, :update, :destroy]
 
   def edit
     @household_member = HouseholdMember.find(params[:id])

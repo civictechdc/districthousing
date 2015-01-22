@@ -12,16 +12,11 @@ class ResidencesControllerTest < ActionController::TestCase
   end
 
   def test_new
-    get :new
-    assert_redirected_to edit_residence_path(assigns(:residence))
-  end
-
-  def test_create
     assert_difference('Residence.count') do
-      post :create, residence: residence.attributes
+      get :new, applicant_id: applicants(:one)
     end
 
-    assert_redirected_to edit_residence_path(assigns(:residence))
+    assert_redirected_to edit_applicant_residence_path(applicants(:one), assigns(:residence))
   end
 
   def test_update
@@ -30,14 +25,24 @@ class ResidencesControllerTest < ActionController::TestCase
       end: "2010-01-01",
       reason: "x",
     }
-    put :update, id: residence, residence: residence_update_hash
+    put :update, applicant_id: applicants(:one), id: residence, residence: residence_update_hash
     assert_attributes_were_updated residences(:one), residence_update_hash.keys
-    assert_redirected_to edit_residence_path(@residence)
+    assert_redirected_to edit_applicant_residence_path(applicants(:one), @residence)
+  end
+
+  def test_edit
+    get :edit, applicant_id: applicants(:one), id: residences(:one)
+    assert_response :success
+  end
+
+  def test_edit_empty
+    get :front, applicant_id: applicants(:empty)
+    assert_response :success
   end
 
   def test_destroy
     assert_difference('Residence.count', -1) do
-      delete :destroy, id: residence
+      delete :destroy, applicant_id: applicants(:one), id: residence
     end
 
     assert_redirected_to applicant_path(applicants(:one))

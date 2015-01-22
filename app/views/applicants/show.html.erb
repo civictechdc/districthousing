@@ -54,8 +54,8 @@
         </div>
         <%= render partial: 'residences/summary', locals: { residence: r } %>
         <div class="panel-footer">
-          <%= link_to "Edit", edit_residence_path(r), class: "btn btn-info"%>
-          <%= link_to 'Delete', r, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          <%= link_to "Edit", edit_applicant_residence_path(@applicant, r), class: "btn btn-info"%>
+          <%= link_to 'Delete', applicant_residence_path(@applicant, r), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@
 <div class="row">
   <div class="col-md-4">
     <p>
-    <%= link_to "New", new_residence_path, class: "btn btn-success"%>
+    <%= link_to "New", new_applicant_residence_path(@applicant), class: "btn btn-success"%>
     </p>
   </div>
 </div>

@@ -8,7 +8,9 @@ class HouseholdMembersControllerTest < ActionController::TestCase
   end
 
   def test_new
-    get :new, applicant_id: applicants(:one)
+    assert_difference('HouseholdMember.count') do
+      get :new, applicant_id: applicants(:one)
+    end
     assert_redirected_to edit_applicant_household_member_path(applicants(:one), assigns[:h])
   end
 
@@ -49,6 +51,11 @@ class HouseholdMembersControllerTest < ActionController::TestCase
 
   def test_edit
     get :edit, applicant_id: applicants(:one), id: household_members(:three)
+    assert_response :success
+  end
+
+  def test_edit_empty
+    get :front, applicant_id: applicants(:empty)
     assert_response :success
   end
 

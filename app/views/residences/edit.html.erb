@@ -4,7 +4,7 @@
 
 <%= render 'progress', object: @residence %>
 
-<%= bootstrap_form_for(@residence) do |f| %>
+<%= bootstrap_form_for(@residence, url: applicant_residence_path(@applicant, @residence)) do |f| %>
 
   <div class="row">
 
@@ -39,4 +39,4 @@
   <%= render "buttons_update_back", f: f %>
 <% end %>
 
-<%= link_to 'Delete', @residence, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Delete', applicant_residence_path(@applicant, @residence), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
