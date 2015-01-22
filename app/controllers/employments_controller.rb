@@ -42,7 +42,7 @@ class EmploymentsController < ApplicationController
   end
 
   def next_page
-    find_next_page @applicant.employments, @employment, :edit_model
+    find_next_page @applicant.employments, @model, :edit_model
   end
 
   def front_of_next_section

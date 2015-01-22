@@ -46,4 +46,26 @@ module ApplicantFormPage
     redirect_to @applicant, notice: 'Residence removed', status: :see_other
   end
 
+  def find_next_page collection, current_item, edit_method
+    my_index = collection.find_index(current_item)
+    if params[:submit_direction] == "next"
+      next_item = collection[my_index + 1]
+      if next_item.nil?
+        return front_of_next_section
+      else
+        return send(edit_method, next_item)
+      end
+    elsif params[:submit_direction] == "previous"
+      if my_index - 1 < 0
+        return back_of_previous_section
+      else
+        next_item = collection[my_index - 1]
+        return send(edit_method, next_item)
+      end
+    else
+      flash[:notice] = "Saved!"
+      return send(edit_method, current_item)
+    end
+  end
+
 end
