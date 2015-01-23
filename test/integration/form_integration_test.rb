@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class FormIntegrationTest < ActionDispatch::IntegrationTest
-  # This prevents database errors caused by Capybara's javascript drivers
+  # This prevents database errors caused by Capybara's javascript driver
   self.use_transactional_fixtures = false
 
   def setup
@@ -16,14 +16,25 @@ class FormIntegrationTest < ActionDispatch::IntegrationTest
     assert_equal(new_applicant_path, current_path)
     click_on('Get started')
     assert_equal(200, page.status_code)
+    assert_match(/identity/, page.current_url)
     click_on('Save and continue')
     assert_equal(200, page.status_code)
-    click_on('Save and continue')
+    assert_match(/household_members/, page.current_url)
+    click_on('Continue')
     assert_equal(200, page.status_code)
-    click_on('Save and continue')
+    assert_match(/residences/, page.current_url)
+    click_on('Continue')
     assert_equal(200, page.status_code)
-    click_on('Save and continue')
+    assert_match(/incomes/, page.current_url)
+    click_on('Continue')
     assert_equal(200, page.status_code)
+    assert_match(/employments/, page.current_url)
+    click_on('Continue')
+    assert_equal(200, page.status_code)
+    assert_match(/criminal_histories/, page.current_url)
+    click_on('Continue')
+    assert_equal(200, page.status_code)
+    assert_match(/applicants/, page.current_url)
   end
 
 end

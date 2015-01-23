@@ -1,5 +1,4 @@
 submitAndNext = ->
-  console.log("next")
   $('#submit-direction').val("next")
   $(this).closest('form').submit()
 
