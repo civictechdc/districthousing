@@ -87,7 +87,7 @@ module ApplicantFormPage
     if @model.update(model_params)
       redirect_to next_page
     else
-      redirect_to edit_model(@model), notice: 'Couldn\'t save.'
+      redirect_to edit_model(@model), alert: "Couldn't save: #{@model.errors.full_messages.join(" ")}"
     end
   end
 
