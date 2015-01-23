@@ -1,5 +1,5 @@
 <%= render 'breadcrumb', object: @model.person %>
-<%= render 'section_tabs', active_section: :household_members %>
+<%= render 'section_tabs', active_section: @active_section %>
 <%= render 'progress', object: @model %>
 
 <%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>

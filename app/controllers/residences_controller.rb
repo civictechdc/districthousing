@@ -3,8 +3,16 @@ class ResidencesController < ApplicationController
 
   private
 
+  def this_section
+    :residences
+  end
+
   def first_item
     @applicant.residences.first
+  end
+
+  def last_item
+    @applicant.residences.last
   end
 
   def make_new

@@ -1,20 +1,29 @@
 class IdentityController < ApplicationController
-  before_action :assign_applicant
-
-  def edit
-  end
-
-  def update
-    if @applicant.identity.update(person_params)
-      redirect_to next_page
-    else
-      render :edit
-    end
-  end
+  include ApplicantFormPage
 
   private
 
-  def person_params
+  def this_section
+    :identity
+  end
+
+  def first_item
+    @applicant.identity
+  end
+
+  def last_item
+    @applicant.identity
+  end
+
+  def set_model
+    @model = @applicant.identity
+  end
+
+  def edit_model model
+    edit_identity_path(@applicant)
+  end
+
+  def model_params
     params.require(:person).permit(
       :dob,
       :first_name,
@@ -51,7 +60,7 @@ class IdentityController < ApplicationController
 
   def next_page
     if params[:submit_direction] == "next"
-      edit_household_members_path(@applicant)
+      @next_section_path
     elsif params[:submit_direction] == "previous"
       @applicant
     else
@@ -60,7 +69,4 @@ class IdentityController < ApplicationController
     end
   end
 
-  def assign_applicant
-    @applicant = Applicant.find(params[:id])
-  end
 end

@@ -3,8 +3,16 @@ class HouseholdMembersController < ApplicationController
 
   private
 
+  def this_section
+    :household_members
+  end
+
   def first_item
     @applicant.household_members.first
+  end
+
+  def last_item
+    @applicant.household_members.last
   end
 
   def make_new

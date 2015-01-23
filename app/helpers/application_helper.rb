@@ -23,16 +23,16 @@ module ApplicationHelper
   end
 
   def new_path model
-    case model.class.to_s.deconstantize.to_sym
-    when :HouseholdMember
+    case model
+    when HouseholdMember
       new_applicant_household_member_path(@applicant)
-    when :Residence
+    when Residence
       new_applicant_residence_path(@applicant)
-    when :Income
+    when Income
       new_applicant_income_path(@applicant)
-    when :Employment
+    when Employment
       new_applicant_employment_path(@applicant)
-    when :CriminalHistory
+    when CriminalHistory
       new_applicant_criminal_history_path(@applicant)
     else
       "#"
@@ -40,16 +40,16 @@ module ApplicationHelper
   end
 
   def basic_path model
-    case model.class.to_s.deconstantize.to_sym
-    when :HouseholdMember
+    case model
+    when HouseholdMember
       applicant_household_member_path(@applicant, model)
-    when :Residence
+    when Residence
       applicant_residence_path(@applicant, model)
-    when :Income
+    when Income
       applicant_income_path(@applicant, model)
-    when :Employment
+    when Employment
       applicant_employment_path(@applicant, model)
-    when :CriminalHistory
+    when CriminalHistory
       applicant_criminal_history_path(@applicant, model)
     else
       "#"

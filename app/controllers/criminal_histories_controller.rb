@@ -3,8 +3,16 @@ class CriminalHistoriesController < ApplicationController
 
   private
 
+  def this_section
+    :criminal_histories
+  end
+
   def first_item
     @applicant.criminal_histories.first
+  end
+
+  def last_item
+    @applicant.criminal_histories.last
   end
 
   def make_new

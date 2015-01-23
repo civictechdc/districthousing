@@ -3,8 +3,16 @@ class EmploymentsController < ApplicationController
 
   private
 
+  def this_section
+    :employments
+  end
+
   def first_item
     @applicant.employments.first
+  end
+
+  def last_item
+    @applicant.employments.last
   end
 
   def make_new

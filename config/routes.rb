@@ -4,14 +4,22 @@ DchousingApps::Application.routes.draw do
 
   devise_for :users
 
-  get "/applicants/:id/identity/edit", to: "identity#edit", as: 'edit_identity'
-  patch "/applicants/:id/identity", to: "identity#update", as: 'identity'
+  get "/applicants/:applicant_id/identity/edit", to: "identity#edit", as: 'edit_identity'
+  patch "/applicants/:applicant_id/identity", to: "identity#update", as: 'identity'
 
-  get '/applicants/:applicant_id/household_members/edit', to: 'household_members#front', as: 'edit_household_members'
-  get '/applicants/:applicant_id/residences/edit', to: 'residences#front', as: 'edit_residences'
-  get '/applicants/:applicant_id/incomes/edit', to: 'incomes#front', as: 'edit_incomes'
-  get '/applicants/:applicant_id/employments/edit', to: 'employments#front', as: 'edit_employments'
-  get '/applicants/:applicant_id/criminal_histories/edit', to: 'criminal_histories#front', as: 'edit_criminal_histories'
+  get '/applicants/:applicant_id/identity/front', to: 'identity#front', as: 'identity_front'
+  get '/applicants/:applicant_id/household_members/front', to: 'household_members#front', as: 'household_members_front'
+  get '/applicants/:applicant_id/residences/front', to: 'residences#front', as: 'residences_front'
+  get '/applicants/:applicant_id/incomes/front', to: 'incomes#front', as: 'incomes_front'
+  get '/applicants/:applicant_id/employments/front', to: 'employments#front', as: 'employments_front'
+  get '/applicants/:applicant_id/criminal_histories/front', to: 'criminal_histories#front', as: 'criminal_histories_front'
+
+  get '/applicants/:applicant_id/identity/back', to: 'identity#back', as: 'identity_back'
+  get '/applicants/:applicant_id/household_members/back', to: 'household_members#back', as: 'household_members_back'
+  get '/applicants/:applicant_id/residences/back', to: 'residences#back', as: 'residences_back'
+  get '/applicants/:applicant_id/incomes/back', to: 'incomes#back', as: 'incomes_back'
+  get '/applicants/:applicant_id/employments/back', to: 'employments#back', as: 'employments_back'
+  get '/applicants/:applicant_id/criminal_histories/back', to: 'criminal_histories#back', as: 'criminal_histories_back'
 
   resources :applicants do
     resources :household_members

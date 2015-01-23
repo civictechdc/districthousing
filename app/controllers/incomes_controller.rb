@@ -3,8 +3,16 @@ class IncomesController < ApplicationController
 
   private
 
+  def this_section
+    :incomes
+  end
+
   def first_item
     @applicant.incomes.first
+  end
+
+  def last_item
+    @applicant.incomes.last
   end
 
   def make_new
