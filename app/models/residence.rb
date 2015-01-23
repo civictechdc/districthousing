@@ -22,7 +22,7 @@ class Residence < ActiveRecord::Base
   end
 
   def to_s
-    "Residence from #{start} - #{self.end}"
+    "Residence at #{address}"
   end
 
 end

@@ -21,7 +21,7 @@ module PeopleHelper
   def attribute_as_label attribute_name
     case attribute_name
     when 'mail_address_id'
-      "Address"
+      "Mailing Address"
     when 'dob'
       "Date of birth"
     else
