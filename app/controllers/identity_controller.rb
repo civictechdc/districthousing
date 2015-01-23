@@ -64,7 +64,6 @@ class IdentityController < ApplicationController
     elsif params[:submit_direction] == "previous"
       @applicant
     else
-      flash[:notice] = "Saved!"
       edit_identity_path(@applicant)
     end
   end
