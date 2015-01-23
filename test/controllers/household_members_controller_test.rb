@@ -39,10 +39,13 @@ class HouseholdMembersControllerTest < ActionController::TestCase
       driver_license_state: "x",
     }
     household_member_update_hash = {
-      person_attributes: person_update_hash
+      person_attributes: person_update_hash,
+      relationship: "x"
     }
 
     put :update, applicant_id: applicants(:one), id: household_members(:three), household_member: household_member_update_hash
+
+    assert_equal("x", HouseholdMember.find(household_members(:three).id).relationship)
 
     assert_redirected_to edit_applicant_household_member_path(applicants(:one), household_members(:three))
   end

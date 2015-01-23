@@ -9,6 +9,7 @@
         <%= render 'people/name', builder: p %>
         <%= render "people/contact", builder: p %>
         <%= p.text_field :ssn, label: "Social security number" %>
+        <%= f.text_field :relationship, label: "Relationship to you" %>
       </div>
 
       <div class="col-md-4">

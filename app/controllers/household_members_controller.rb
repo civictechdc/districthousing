@@ -28,6 +28,7 @@ class HouseholdMembersController < ApplicationController
 
   def model_params
     params.require(:household_member).permit(
+      :relationship,
       person_attributes: [
         :id,
         :dob,

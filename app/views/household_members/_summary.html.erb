@@ -1,14 +1,15 @@
 <ul class="list-group">
-  <% person.attribute_names.reject { |a|
+  <% household_member.person.attribute_names.reject { |a|
     %w(created_at updated_at applicant_id id).include? a
   }.each do |attribute_name| %>
     <% case attribute_name %>
     <% when 'mail_address_id' %>
-      <%= render partial: 'maybe', locals: { attribute: "Address", object: person.mail_address.full } %>
+      <%= render partial: 'maybe', locals: { attribute: "Address", object: household_member.person.mail_address.full } %>
     <% when 'dob' %>
-      <%= render partial: 'maybe', locals: { attribute: "Date of birth", object: person.dob_date } %>
+      <%= render partial: 'maybe', locals: { attribute: "Date of birth", object: household_member.person.dob_date } %>
     <% else %>
-      <%= render partial: 'maybe', locals: { attribute: attribute_name.humanize, object: person[attribute_name] } %>
+      <%= render partial: 'maybe', locals: { attribute: attribute_name.humanize, object: household_member.person[attribute_name] } %>
     <% end %>
   <% end %>
+  <%= render partial: 'maybe', locals: { attribute: 'Relationship', object: household_member.relationship } %>
 </ul>

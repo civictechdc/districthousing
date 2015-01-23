@@ -27,7 +27,7 @@
         <div class="panel-heading">
           <%= h.person %>
         </div>
-        <%= render partial: 'household_members/summary', locals: { person: h.person } %>
+        <%= render partial: 'household_members/summary', locals: { household_member: h } %>
         <div class="panel-footer">
           <%= link_to "Edit", edit_path(h), class: "btn btn-info"%>
           <%= link_to 'Delete', basic_path(h), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
