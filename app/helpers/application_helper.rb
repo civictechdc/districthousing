@@ -22,17 +22,19 @@ module ApplicationHelper
     end
   end
 
-  def new_path model
-    case model
-    when HouseholdMember
+  def new_path collection
+    # This gives us the class of the collection items, even if the collection
+    # is empty.
+    case collection.class.to_s.deconstantize.to_sym
+    when :HouseholdMember
       new_applicant_household_member_path(@applicant)
-    when Residence
+    when :Residence
       new_applicant_residence_path(@applicant)
-    when Income
+    when :Income
       new_applicant_income_path(@applicant)
-    when Employment
+    when :Employment
       new_applicant_employment_path(@applicant)
-    when CriminalHistory
+    when :CriminalHistory
       new_applicant_criminal_history_path(@applicant)
     else
       "#"
