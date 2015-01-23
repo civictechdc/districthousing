@@ -2,19 +2,16 @@ require "test_helper"
 
 class IdentityControllerTest < ActionController::TestCase
 
-  def test_edit
-    get :edit, id: applicants(:one).id
-    assert_redirected_to new_user_session_path
-
+  def setup
     sign_in users(:one)
-    session[:current_applicant_id] = applicants(:one).id
-    get :edit, id: applicants(:one).id
+  end
+
+  def test_edit
+    get :edit, applicant_id: applicants(:one)
     assert_response :success
   end
 
   def test_update
-    sign_in users(:one)
-    session[:current_applicant_id] = applicants(:one).id
     person_update_hash = {
       first_name: "x",
       last_name: "x",
@@ -38,10 +35,10 @@ class IdentityControllerTest < ActionController::TestCase
       driver_license_number: "x",
       driver_license_state: "x",
     }
-    put :update, id: people(:one).id, person: person_update_hash
 
-    assert_attributes_were_updated people(:one), person_update_hash.keys
-
+    original_person = people(:one)
+    put :update, applicant_id: applicants(:one), person: person_update_hash
+    assert_attributes_were_updated original_person, person_update_hash.keys
     assert_redirected_to edit_identity_path(people(:one))
   end
 
