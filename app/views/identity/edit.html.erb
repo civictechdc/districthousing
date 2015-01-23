@@ -1,6 +1,4 @@
-<%= render 'breadcrumb', object: @applicant.identity %>
-<%= render 'section_tabs', active_section: :identity %>
-<%= render 'progress', object: @applicant.identity %>
+<%= render 'form_page' %>
 
 <%= bootstrap_form_for(@applicant.identity, url: identity_path(@applicant)) do |f| %>
   <div class="row">
