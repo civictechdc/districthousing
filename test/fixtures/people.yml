@@ -81,3 +81,6 @@ ll2:
 sample:
   first_name: Mister
   last_name: Sample
+
+empty:
+  mail_address: empty

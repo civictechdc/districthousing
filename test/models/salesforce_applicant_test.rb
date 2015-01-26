@@ -4,7 +4,7 @@ class SalesforceApplicantTest < ActiveSupport::TestCase
 
   def salesforce_applicant
     @salesforce_applicant ||= SalesforceApplicant.new do |sfa|
-      sfa.applicant = applicants :one
+      sfa.applicant = applicants :empty
     end
   end
 
@@ -21,7 +21,14 @@ class SalesforceApplicantTest < ActiveSupport::TestCase
       Address1__c: "123 Fake St",
       City__c: "Washington",
       State__c: "DC",
-      ZipCode__c: "12345"
+      ZipCode__c: "12345",
+      DOB__c: "1959-02-17",
+      SSN__c: "123-45-6789",
+      PrimaryPhoneNo__c: "1234567",
+      AlternatePhoneNo__c: "7654321",
+      Primary_Email__c: "foo@bar.baz",
+      Gender__c: "Female",
+      Race__c: "Pacific Islander",
     )
 
     salesforce_applicant.merge intake
@@ -31,6 +38,12 @@ class SalesforceApplicantTest < ActiveSupport::TestCase
     assert_equal "First", identity.first_name
     assert_equal "Middle", identity.middle_name
     assert_equal "Last", identity.last_name
+    assert_equal Date.new(1959,02,17), identity.dob
+    assert_equal "123-45-6789", identity.ssn
+    assert_equal "1234567", identity.cell_phone
+    assert_equal "7654321", identity.home_phone
+    assert_equal "foo@bar.baz", identity.email
+    assert_equal "Pacific Islander", identity.race
 
     assert_equal "123 Fake St", identity.mail_address.street
     assert_equal "Washington", identity.mail_address.city

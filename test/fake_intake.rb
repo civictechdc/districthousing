@@ -274,6 +274,13 @@ class FakeIntake
   attr_accessor :City__c
   attr_accessor :State__c
   attr_accessor :ZipCode__c
+  attr_accessor :DOB__c
+  attr_accessor :SSN__c
+  attr_accessor :PrimaryPhoneNo__c
+  attr_accessor :AlternatePhoneNo__c
+  attr_accessor :Primary_Email__c
+  attr_accessor :Gender__c
+  attr_accessor :Race__c
 
   def initialize attrs
     attrs.keys.each do |k|
