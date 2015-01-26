@@ -1,19 +1,22 @@
 <%= render 'breadcrumb' %>
 
-<%= render 'progress', object: @applicant %>
-
-<%= link_to 'Select Buildings to Apply To', housing_forms_path, class: "btn btn-lg btn-primary" %>
-
 <h1>Applicant Overview: <%= @applicant.identity %></h1>
+<div class="row">
+    <div class="col-md-4">
 <div class="panel panel-default">
   <div class="panel-heading">
     <%= @applicant.identity %>
   </div>
-  <div class="row">
   <%= render partial: 'identity/summary', locals: { person: @applicant.identity } %>
-  </div>
   <div class="panel-footer">
     <%= link_to "Edit", edit_identity_path(@applicant), class: "btn btn-info"%>
+  </div>
+</div>
+  </div>
+  <div class="col-md-8">
+    <%= render 'progress', object: @applicant %>
+    Your information is <%= @applicant.progress%>% filled out.  When you've filled out as much as you can, you're ready to
+    <%= link_to 'Select Buildings to Apply To', housing_forms_path, class: "btn btn-lg btn-primary" %>
   </div>
 </div>
 
