@@ -75,7 +75,7 @@ exec { 'install_ruby':
   # The rvm executable is more suitable for automated installs.
   #
   # use a ruby patch level known to have a binary
-  command => "${as_vagrant} '${home}/.rvm/bin/rvm install ruby-${ruby_version} --binary --autolibs=enabled && rvm alias create default ${ruby_version}'",
+  command => "${as_vagrant} '${home}/.rvm/bin/rvm install ruby-${ruby_version} --binary --autolibs=enabled --max-time 30 && rvm alias create default ${ruby_version}'",
   creates => "${home}/.rvm/bin/ruby",
   require => Exec['install_rvm']
 }
@@ -105,12 +105,14 @@ class dc-housing-setup {
     ensure => latest
   }
 
-  exec { "run_bundle_install":
-    command => "${as_vagrant} ${rubyhome}/bundle install",
-    cwd => "/vagrant",
-    logoutput => true,
-    timeout => 900 # Bundle install takes a while
-  }
+  # Getting a weird "Zlib::BufError buffer error" when calling this automatically
+  # Run it manually by calling "bundle install" after ssh-ing in
+  #exec { "run_bundle_install":
+  #  command => "${as_vagrant} ${rubyhome}/bundle install",
+  #  cwd => "/vagrant",
+  #  logoutput => true,
+  #  timeout => 900 # Bundle install takes a while
+  #}
 
   # Can't quite get this to work, so you'll have to do it manually the first time you log in to the server
   #exec { "rake_setup_db":

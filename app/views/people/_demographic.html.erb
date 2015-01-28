@@ -4,9 +4,14 @@
 <% %i(
   gender
   race
+  ethnicity
   citizenship
-  nationality
   occupation
+  city_of_birth
+  state_of_birth
+  country_of_birth
+  driver_license_number
+  driver_license_state
 ).each do |person_attribute| %>
   <%= builder.text_field person_attribute %>
 <% end %>

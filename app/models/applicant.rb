@@ -1,4 +1,12 @@
 class Applicant < ActiveRecord::Base
+  include Progress
+
+  progress_includes :identity
+  progress_includes_collection :household_members
+  progress_includes_collection :residences
+  progress_includes_collection :incomes
+  progress_includes_collection :employments
+  progress_includes_collection :criminal_histories
 
   has_many :people
   has_many :household_members, dependent: :destroy
@@ -16,16 +24,19 @@ class Applicant < ActiveRecord::Base
 
   belongs_to :user
 
-  def incomes
-    identity.incomes + household_members_people.map { |h| h.incomes }.flatten
-  end
+  has_many :incomes, through: :people
+  has_many :employments, through: :people
+  has_many :criminal_histories, through: :people
 
-  def employments
-    identity.employments + household_members_people.map { |h| h.employments }.flatten
-  end
+  has_one :salesforce_applicant
 
-  def criminal_histories
-    identity.criminal_histories + household_members_people.map { |h| h.criminal_histories }.flatten
+  before_validation :initialize_applicant
+  validates_associated :identity, :household_members, :residences, :employments, :incomes, :criminal_histories
+  validates :identity, presence: true
+  validates :user, presence: true
+
+  def initialize_applicant
+    self.identity ||= Person.create
   end
 
   def household_members_including_self

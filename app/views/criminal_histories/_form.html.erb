@@ -1,10 +1,10 @@
-<%= bootstrap_form_for(@criminal_history) do |f| %>
-  <% if @criminal_history.errors.any? %>
+<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
+  <% if @model.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@criminal_history.errors.count, "error") %> prohibited this criminal_history from being saved:</h2>
+      <h2><%= pluralize(@model.errors.count, "error") %> prohibited this criminal_history from being saved:</h2>
 
       <ul>
-      <% @criminal_history.errors.full_messages.each do |message| %>
+      <% @model.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

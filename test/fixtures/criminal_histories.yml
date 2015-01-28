@@ -1,11 +1,11 @@
 one:
-  person_id: 1
-  crime_type_id: 1
+  person: one
+  crime_type: one
   description: MyString
   year: 2014-11-17
 
 two:
-  person_id: 1
-  crime_type_id: 1
+  person: one
+  crime_type: one
   description: MyString
   year: 2014-11-17

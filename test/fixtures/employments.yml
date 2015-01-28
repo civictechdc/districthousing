@@ -1,19 +1,19 @@
 one:
-  person_id: 1
+  person: one
   start_date: 2013-11-16
   end_date: 2014-11-16
   employer_name: Reliable Excavation Demolition
   supervisor_name: Redmond Mann
   position: Scout
-  address_id: 1
+  address: one
   phone: 123-456-7890
 
 two:
-  person_id: 1
+  person: one
   start_date: 2012-11-16
   end_date: 2013-11-16
   employer_name: Builders League United
   supervisor_name: Blutarch Mann
   position: Engineer
-  address_id: 1
+  address: one
   phone: 555 555 5555

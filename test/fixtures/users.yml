@@ -1,11 +1,11 @@
 one:
-  id: 1
   email: foo@bar.baz
 
 two:
-  id: 2
   email: fizzbuzz@bar.baz
 
 sample:
-  id: 3
   role: <%= User::USER_ROLES[:sample] %>
+
+integration_user:
+  email: integration@bar.baz

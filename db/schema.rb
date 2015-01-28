@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126052645) do
+ActiveRecord::Schema.define(version: 20150105023641) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 20141126052645) do
     t.string   "home_phone"
     t.string   "cell_phone"
     t.string   "citizenship"
-    t.string   "nationality"
+    t.string   "country_of_birth"
     t.string   "email"
     t.string   "race"
     t.string   "student_status"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20141126052645) do
     t.string   "city_of_birth"
     t.string   "driver_license_number"
     t.string   "driver_license_state"
+    t.string   "ethnicity"
   end
 
   create_table "previous_ssns", force: true do |t|
@@ -172,6 +173,11 @@ ActiveRecord::Schema.define(version: 20141126052645) do
   add_index "residences", ["address_id"], name: "index_residences_on_address_id"
   add_index "residences", ["applicant_id"], name: "index_residences_on_applicant_id"
   add_index "residences", ["landlord_id"], name: "index_residences_on_landlord_id"
+
+  create_table "salesforce_applicants", force: true do |t|
+    t.integer "applicant_id"
+    t.string  "name"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

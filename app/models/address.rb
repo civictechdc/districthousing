@@ -1,4 +1,5 @@
 class Address < ActiveRecord::Base
+  include Progress
 
   belongs_to :applicant
 

@@ -1,7 +1,9 @@
+[![Build Status](https://travis-ci.org/codefordc/districthousing.svg?branch=master)](https://travis-ci.org/codefordc/districthousing)
+
 District Housing
 ================
 
-The District Housing app aids DC residents and case workers apply for Section 8 housing by empowering them to automatically fill out multiple Section 8 housing applications using information collected via an online form.  Data collected once for a person can be used to populate PDF versions of housing applications.
+District Housing lets caseworkers help clients apply for Section 8 housing by automatically filling out multiple PDF applications using one online form.
 
 This application uses the [pdf-forms gem](https://github.com/jkraemer/pdf-forms) and [pdftk](http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/).
 

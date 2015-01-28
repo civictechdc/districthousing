@@ -1,4 +1,4 @@
 one:
   amount: 123
-  person_id: 1
-  income_type_id: 1
+  person: one
+  income_type: one

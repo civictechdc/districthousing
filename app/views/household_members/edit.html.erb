@@ -1,28 +1,32 @@
-<%= render 'breadcrumb', object: @person %>
+<%= render 'form_page' %>
 
-<%= render 'section_tabs', active_section: :household_members %>
+<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
 
-<%= bootstrap_form_for(@person) do |f| %>
-  <div class="row">
-    <div class="col-md-4">
-      <h4>About</h4>
-      <%= render 'people/name', builder: f %>
-      <%= render "people/contact", builder: f %>
-      <%= f.text_field :ssn, label: "Social security number" %>
+  <%= f.fields_for :person do |p| %>
+    <div class="row">
+      <div class="col-md-4">
+        <h4>About</h4>
+        <%= render 'people/name', builder: p %>
+        <%= render "people/contact", builder: p %>
+        <%= p.text_field :ssn, label: "Social security number" %>
+        <%= f.text_field :relationship, label: "Relationship to you" %>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Mail Address</h4>
+        <%= p.fields_for :mail_address do |m| %>
+          <%= render "addresses/fields", builder: m %>
+        <% end %>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Demographic</h4>
+        <%= render "people/demographic", builder: p %>
+      </div>
     </div>
-
-    <div class="col-md-4">
-      <h4>Mail Address</h4>
-      <%= f.fields_for :mail_address do |m| %>
-        <%= render "addresses/fields", builder: m %>
-      <% end %>
-    </div>
-
-    <div class="col-md-4">
-      <h4>Demographic</h4>
-      <%= render "people/demographic", builder: f %>
-    </div>
-  </div>
+  <% end %>
 
   <%= render "buttons_update_back", f: f %>
 <% end %>
+
+<%= link_to 'Delete', basic_path(@model), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>

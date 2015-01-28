@@ -1,12 +1,12 @@
 one:
-  id: 1
-  user_id: 1
-  identity_id: 1
-
-two:
-  id: 2
+  user: one
+  identity: one
 
 sample:
-  id: 3
-  user_id: 3
-  identity_id: 7
+  user: sample
+  identity: sample
+
+# This applicant has no residences, household members, or anything else.
+empty:
+  user: one
+  identity: empty

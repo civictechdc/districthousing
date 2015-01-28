@@ -1,4 +1,8 @@
 class Person < ActiveRecord::Base
+  include Progress
+
+  progress_includes :mail_address
+
   belongs_to :mail_address, class_name: "Address"
   accepts_nested_attributes_for :mail_address
 
@@ -9,12 +13,13 @@ class Person < ActiveRecord::Base
 
   belongs_to :applicant
 
-  validates :applicant, presence: true
+  before_validation :initialize_person
+  validates_associated :mail_address
+  validates :mail_address, presence: true
+  validate :validate_dob_year
 
-  def self.make_a_person
-    create do |p|
-      p.mail_address = Address.create
-    end
+  def initialize_person
+    self.mail_address ||= Address.new
   end
 
   def description
@@ -29,6 +34,10 @@ class Person < ActiveRecord::Base
     return "" if dob.nil?
 
     dob.strftime("%m/%d/%Y")
+  end
+
+  def validate_dob_year
+    errors.add(:dob, "Date of birth is too long ago.") if dob != nil && dob < (Date.today - 43800)
   end
 
   def dob_dd
@@ -66,6 +75,18 @@ class Person < ActiveRecord::Base
   def preferred_phone
     # FIXME: Make preferred phone selectable
     [cell_phone, home_phone, work_phone].reject{|p| p.blank?}.first
+  end
+
+  def married?
+    marital_status == "Married"
+  end
+
+  def student?
+    student_status == "Full-time" or student_status == "Part-time"
+  end
+
+  def student_full_time?
+    student_status == "Full-time"
   end
 
   def value_for_field field_name
@@ -112,12 +133,16 @@ class Person < ActiveRecord::Base
       gender.to_s.first
     when "Gender"
       gender
+    when "Race"
+      race
+    when "Ethnicity"
+      ethnicity
     when "PreferredPhone"
       cell_phone
     when "WorkPhone"
       work_phone
-    when "Nationality"
-      nationality
+    when "CountryOfBirth"
+      country_of_birth
     when "MaritalStatus"
       marital_status
     when "StudentStatus"
@@ -146,6 +171,42 @@ class Person < ActiveRecord::Base
       driver_license_state
     when "Relationship"
       "Self"
+    when "MarriedYesNo"
+      if married?
+        "Yes"
+      else
+        "No"
+      end
+    when "MarriedYN"
+      if married?
+        "Y"
+      else
+        "N"
+      end
+    when "StudentStatusYesNo"
+      if student?
+        "Yes"
+      else
+        "No"
+      end
+    when "StudentStatusYN"
+      if student?
+        "Y"
+      else
+        "N"
+      end
+    when "StudentStatusFullTimeYesNo"
+      if student_full_time?
+        "Yes"
+      else
+        "No"
+      end
+    when "StudentStatusFullTimeYN"
+      if student_full_time?
+        "Y"
+      else
+        "N"
+      end
     else
       UnknownField.new
     end

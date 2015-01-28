@@ -1,7 +1,6 @@
 require "test_helper"
 
 class HousingFormsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
 
   def housing_form
     @housing_form ||= housing_forms :one
@@ -51,7 +50,7 @@ class HousingFormsControllerTest < ActionController::TestCase
     get :show, id: housing_form
     assert_response :success
 
-    assert_equal 3, assigns(:applicant).id
+    assert_equal applicants(:sample), assigns(:applicant)
   end
 
   def test_edit
