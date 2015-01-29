@@ -267,20 +267,29 @@ class FakeIntake
 
   # Actually supported attributes so far:
   attr_accessor :Name
-  attr_accessor :FirstName__c
+  attr_accessor :First_Name__c
   attr_accessor :Middle_Name__c
-  attr_accessor :LastName__c
-  attr_accessor :Address1__c
-  attr_accessor :City__c
-  attr_accessor :State__c
-  attr_accessor :ZipCode__c
+  attr_accessor :Last_Name__c
+  attr_accessor :Primary_Address_1__c
+  attr_accessor :Primary_City__c
+  attr_accessor :Primary_State__c
+  attr_accessor :Primary_Zip_Code__c
   attr_accessor :DOB__c
   attr_accessor :SSN__c
-  attr_accessor :PrimaryPhoneNo__c
+  attr_accessor :Primary_Phone__c
   attr_accessor :AlternatePhoneNo__c
-  attr_accessor :Primary_Email__c
+  attr_accessor :Email_Address__c
   attr_accessor :Gender__c
   attr_accessor :Race__c
+  attr_accessor :Drivers_License_Number__c
+  attr_accessor :Drivers_License_State__c
+  attr_accessor :Immigrant__c
+  attr_accessor :Student_Status__c
+  attr_accessor :Marital_Status__c
+  attr_accessor :Occupation__c
+  attr_accessor :Hispanic__c
+  attr_accessor :State_of_Birth__c
+  attr_accessor :City_of_Birth__c
 
   def initialize attrs
     attrs.keys.each do |k|

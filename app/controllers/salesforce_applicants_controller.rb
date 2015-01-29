@@ -73,21 +73,21 @@ class SalesforceApplicantsController < ApplicationController
         username: YAML.load_file("config/databasedotcom.yml")["username"],
         password: Rails.application.secrets.salesforce_password
       )
-      c.materialize("Intake__c")
+      c.materialize("Client__c")
     end
 
     def fetch_intake name
-      unless defined? Intake__c
+      unless defined? Client__c
         materialize_intake!
       end
-      Intake__c.find_by_Name(name)
+      Client__c.find_by_Name(name)
     end
 
     def intakes
-      unless defined? Intake__c
+      unless defined? Client__c
         materialize_intake!
       end
-      Intake__c.all
+      Client__c.all
     end
 
     def pull_from_salesforce
