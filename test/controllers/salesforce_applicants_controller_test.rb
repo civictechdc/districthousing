@@ -57,11 +57,11 @@ class SalesforceApplicantsControllerTest < ActionController::TestCase
       [
         FakeIntake.new(
           Name: "one",
-          FirstName__c: "Existing applicant",
+          First_Name__c: "Existing applicant",
         ),
         FakeIntake.new(
           Name: "new",
-          FirstName__c: "New applicant",
+          First_Name__c: "New applicant",
         )
       ]
     )
@@ -80,7 +80,7 @@ class SalesforceApplicantsControllerTest < ActionController::TestCase
     SalesforceApplicantsController.any_instance.stubs(:fetch_intake).returns(
       FakeIntake.new(
         Name: 'one',
-        FirstName__c: 'New first name',
+        First_Name__c: 'New first name',
       )
     )
     get :sync, id: salesforce_applicants(:one)
