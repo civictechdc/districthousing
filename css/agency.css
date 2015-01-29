@@ -660,9 +660,9 @@ aside.clients img {
 }
 
 section#contact {
-    background-color: #222;
+    background-color: #f7f7f7;
     background-image: url(../img/map-image.png);
-    background-position: center;
+    background-position: center;g
     background-repeat: no-repeat;
 }
 
