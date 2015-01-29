@@ -3,23 +3,32 @@ class SalesforceApplicant < ActiveRecord::Base
   validates :applicant, presence: true
 
   @@identity_mappings = {
-    first_name: :FirstName__c,
+    first_name: :First_Name__c,
     middle_name: :Middle_Name__c,
-    last_name: :LastName__c,
+    last_name: :Last_Name__c,
     dob: :DOB__c,
+    state_of_birth: :State_of_Birth__c,
+    city_of_birth: :City_of_Birth__c,
     ssn: :SSN__c,
-    cell_phone: :PrimaryPhoneNo__c,
-    home_phone: :AlternatePhoneNo__c,
-    email: :Primary_Email__c,
+    cell_phone: :Primary_Phone__c, # FIXME: type of phone determined by Primary_Phone_Type__c
+    home_phone: :Primary_Phone__c,
+    email: :Email_Address__c,
+    driver_license_number: :Drivers_License_Number__c,
+    driver_license_state: :Drivers_License_State__c,
     gender: :Gender__c,
     race: :Race__c,
+    citizenship: :Immigrant__c,
+    student_status: :Student_Status__c,
+    marital_status: :Marital_Status__c,
+    occupation: :Occupation__c,
+    ethnicity: :Hispanic__c
   }
 
   @@identity_mail_address_mappings = {
-    street: :Address1__c,
-    city: :City__c,
-    state: :State__c,
-    zip: :ZipCode__c,
+    street: :Primary_Address_1__c,
+    city: :Primary_City__c,
+    state: :Primary_State__c,
+    zip: :Primary_Zip_Code__c,
   }
 
   def merge_model(mappings, identity, intake)
