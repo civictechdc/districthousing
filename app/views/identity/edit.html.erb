@@ -3,7 +3,7 @@
 <%= bootstrap_form_for(@applicant.identity, url: identity_path(@applicant)) do |f| %>
   <div class="row">
     <div class="col-md-4">
-      <h4>About</h4>
+      <h4>Head of Household</h4>
       <%= render 'people/name', builder: f %>
       <%= render "people/contact", builder: f %>
       <%= f.text_field :ssn, label: "Social security number" %>
