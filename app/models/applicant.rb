@@ -53,6 +53,10 @@ class Applicant < ActiveRecord::Base
     end.flatten.reject(&:nil?).to_set
   end
 
+  def current_residence
+    residences.where(current: true).first
+  end
+
   def to_s
     identity.to_s
   end
