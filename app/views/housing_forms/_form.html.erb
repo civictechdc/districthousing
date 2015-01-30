@@ -11,12 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.text_field :location %>
-  </div>
+  <%= f.text_field :name %>
+  <%= f.text_field :location %>
+  <%= f.file_field :new_form, label: "Replace PDF" %>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -29,22 +29,24 @@ class HousingFormsController < ApplicationController
   # POST /housing_forms
   def create
     uploaded_file = params[:housing_form][:new_form]
-    new_file_path = Rails.root.join("public", "forms", uploaded_file.original_filename)
+    new_file_path = Rails.root.join( "public", "forms", Dir::Tmpname.make_tmpname("", ".pdf"))
+    write_file(uploaded_file, new_file_path)
 
-    File.open(new_file_path, "wb") do |file|
-      file.write(uploaded_file.read)
-    end
-
-    @housing_form = HousingForm.create(uri: new_file_path.to_s)
-    if @housing_form
+    if @housing_form = HousingForm.create(
+      uri: new_file_path.to_s,
+      name: uploaded_file.original_filename
+    )
       redirect_to @housing_form, notice: 'Housing form was successfully created.'
     else
-      render :new
+      render :new, alert: "Error: #{@housing_form.errors.messages}"
     end
   end
 
   # PATCH/PUT /housing_forms/1
   def update
+    uploaded_file = params[:housing_form][:new_form]
+    write_file(uploaded_file, @housing_form.uri) if uploaded_file
+
     if @housing_form.update(housing_form_params)
       redirect_to @housing_form, notice: 'Housing form was successfully updated.'
     else
@@ -54,6 +56,7 @@ class HousingFormsController < ApplicationController
 
   # DELETE /housing_forms/1
   def destroy
+    File.delete(@housing_form.uri)
     @housing_form.destroy
     redirect_to housing_forms_url, notice: 'Housing form was successfully destroyed.'
   end
@@ -83,5 +86,11 @@ class HousingFormsController < ApplicationController
 
     def set_applicant
       @applicant = current_applicant || sample_applicant
+    end
+
+    def write_file uploaded_file, path
+      File.open(path, "wb") do |file|
+        file.write(uploaded_file.read)
+      end
     end
 end
