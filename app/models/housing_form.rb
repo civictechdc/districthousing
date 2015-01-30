@@ -2,6 +2,7 @@ class HousingForm < ActiveRecord::Base
   has_and_belongs_to_many :form_fields
 
   after_create { initialize_from_disk! }
+  after_update { read_fields! }
 
   def initialize_from_disk!
     update(name: name)
@@ -18,6 +19,7 @@ class HousingForm < ActiveRecord::Base
   end
 
   def read_fields!
+    form_fields.destroy_all
     PDF_FORMS.get_field_names(uri).each do |field_name|
       form_fields << FormField.find_or_create_by(name: field_name)
     end

@@ -1,14 +1,20 @@
-# Load information from all PDFs in public/forms
-HousingForm.delete_all
+# Load information from all PDFs in public/forms that don't already
+# exist in the database.  PDFs that are already in the database will be
+# untouched, but PDFs not in the database will be added and given a name based
+# on their filename.
 FormField.delete_all
 
 HousingForm.transaction do
   FormField.transaction do
     Dir.glob(Rails.root.join("public/forms/*.pdf")) do |pdf_path|
-      HousingForm.create(uri: pdf_path)
+      unless HousingForm.find_by(uri: pdf_path)
+        HousingForm.create(uri: pdf_path)
+      end
     end
   end
 end
+
+# Now, make a bunch of fake applicants.
 
 require 'faker'
 

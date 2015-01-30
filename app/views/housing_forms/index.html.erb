@@ -23,7 +23,7 @@
     <td><%= housing_form.filled_fields(@applicant).count %></td>
     <td><%= link_to 'Download', download_housing_form_path(housing_form), class: "btn btn-info" %></td>
     <td><%= link_to 'Show', housing_form %></td>
-    <td><%= link_to 'Edit', edit_housing_form_path(housing_form) %></td>
+    <td><%= link_to 'Edit/Replace', edit_housing_form_path(housing_form) %></td>
     <td><%= link_to 'Delete', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
