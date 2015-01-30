@@ -22,7 +22,7 @@
       <% end%>
     </div>
     <div class="col-md-4">
-      <h3>Landlord's address</h2>
+      <h2>Landlord's address</h2>
       <%= f.fields_for :landlord do |l| %>
         <%= l.fields_for :mail_address do |m| %>
           <%= render "addresses/fields", builder: m %>
