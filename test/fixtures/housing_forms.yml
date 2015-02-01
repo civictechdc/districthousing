@@ -1,6 +1,6 @@
 one:
   name: FakeForm
-  uri: FakeUri
+  uri: test/fixtures/form.pdf
   form_fields: first_name, last_name
 
 two:

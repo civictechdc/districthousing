@@ -22,7 +22,19 @@ class Residence < ActiveRecord::Base
   end
 
   def to_s
-    "Residence at #{address}"
+    if current
+      "Current residence at #{address}"
+    else
+      "Residence at #{address}"
+    end
+  end
+
+  def end_or_current
+    if current
+      "current"
+    else
+      send(:end)
+    end
   end
 
 end

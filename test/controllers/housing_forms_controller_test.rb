@@ -2,6 +2,13 @@ require "test_helper"
 
 class HousingFormsControllerTest < ActionController::TestCase
 
+  def setup
+    # Use Mocha to stub filesystem operations in this test.
+    HousingFormsController.any_instance.stubs(:write_file)
+    File.stubs(:delete)
+    PDF_FORMS.stubs(:get_field_names).returns([])
+  end
+
   def housing_form
     @housing_form ||= housing_forms :one
   end
@@ -20,15 +27,12 @@ class HousingFormsControllerTest < ActionController::TestCase
 
   def test_create
     sign_in users(:one)
-    destination = Rails.root.join("public", "forms", "form.pdf")
 
     assert_difference('HousingForm.count') do
       post :create, housing_form: {
         new_form: fixture_file_upload('form.pdf', 'application/pdf')
       }
     end
-
-    File.unlink destination if File.exists? destination
 
     assert_not_nil assigns(:housing_form)
 
@@ -60,6 +64,8 @@ class HousingFormsControllerTest < ActionController::TestCase
   end
 
   def test_update
+    HousingFormsController.any_instance.stubs(:write_file)
+
     sign_in users(:one)
     housing_form_update_hash = {
       name: "x",
