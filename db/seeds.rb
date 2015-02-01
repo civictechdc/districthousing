@@ -6,13 +6,23 @@ FormField.delete_all
 
 HousingForm.transaction do
   FormField.transaction do
-    Dir.glob(Rails.root.join("public/forms/*.pdf")) do |pdf_path|
-      unless HousingForm.find_by(uri: pdf_path)
-        HousingForm.create(uri: pdf_path)
+    CSV.foreach(File.join(Rails.root,"public","buildings.csv", :headers => true) do |row|
+      row = row.to_hash
+      unless HousingForm.find_by(uri: row['pdf_location'])
+        HousingForm.create(uri: row['pdf_location'])
       end
     end
   end
 end
+
+
+#    Dir.glob(Rails.root.join("public/forms/*.pdf")) do |pdf_path|
+#      unless HousingForm.find_by(uri: pdf_path)
+#        HousingForm.create(uri: pdf_path)
+#      end
+#    end
+#  end
+#end
 
 # Now, make a bunch of fake applicants.
 
