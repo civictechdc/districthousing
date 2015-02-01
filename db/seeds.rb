@@ -6,10 +6,14 @@ FormField.delete_all
 
 HousingForm.transaction do
   FormField.transaction do
-    CSV.foreach(File.join(Rails.root,"public","buildings.csv", :headers => true) do |row|
+    CSV.foreach(Rails.root.join("public","buildings.csv", :headers => true)) do |row|
       row = row.to_hash
-      unless HousingForm.find_by(uri: row['pdf_location'])
-        HousingForm.create(uri: row['pdf_location'])
+      unless HousingForm.find_by(uri: Rails.root.join( "public", "forms", row['pdf_location']))
+        HousingForm.create(uri: Rails.root.join( "public", "forms", row['pdf_location']))
+        HousingForm.create(name: row['building_name'])
+        HousingForm.create(location: row['location'])
+        HousingForm.create(lat: row['latitude'])
+        HousingForm.create(long: row['longitude'])
       end
     end
   end
