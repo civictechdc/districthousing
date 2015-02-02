@@ -6,7 +6,7 @@ class OutputPDF
 
   def to_file
     Tempfile.new(@form.name).tap do |temp_file|
-      PDF_FORMS.fill_form @form.uri, temp_file.path, form_field_hash
+      PDF_FORMS.fill_form @form.path, temp_file.path, form_field_hash
     end
   end
 
