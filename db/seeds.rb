@@ -1,32 +1,19 @@
+require 'csv'
+
 # Load information from all PDFs in public/forms that don't already
 # exist in the database.  PDFs that are already in the database will be
 # untouched, but PDFs not in the database will be added and given a name based
 # on their filename.
+HousingForm.delete_all
 FormField.delete_all
 
 HousingForm.transaction do
   FormField.transaction do
-    CSV.foreach(Rails.root.join("public","buildings.csv", :headers => true)) do |row|
-      row = row.to_hash
-      unless HousingForm.find_by(uri: Rails.root.join( "public", "forms", row['pdf_location']))
-        HousingForm.create(uri: Rails.root.join( "public", "forms", row['pdf_location']))
-        HousingForm.create(name: row['building_name'])
-        HousingForm.create(location: row['location'])
-        HousingForm.create(lat: row['latitude'])
-        HousingForm.create(long: row['longitude'])
-      end
+    CSV.foreach(Rails.root.join("public","buildings3.csv"), :headers => true) do |row|
+      HousingForm.create(name: row['Property Name'], location: row['Property Address'], lat: row['lat'], long: row['lng'])
     end
   end
 end
-
-
-#    Dir.glob(Rails.root.join("public/forms/*.pdf")) do |pdf_path|
-#      unless HousingForm.find_by(uri: pdf_path)
-#        HousingForm.create(uri: pdf_path)
-#      end
-#    end
-#  end
-#end
 
 # Now, make a bunch of fake applicants.
 

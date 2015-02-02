@@ -8,7 +8,7 @@
     "build": {
         "@builder": "auto",
         "@path": "/.c9/builders",
-        "@saveall": "true"
+        "@saveall": true
     },
     "find.nak": {
         "@searchLimit": 100

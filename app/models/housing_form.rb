@@ -20,15 +20,19 @@ class HousingForm < ActiveRecord::Base
 
   def read_fields!
     form_fields.destroy_all
-    PDF_FORMS.get_field_names(uri).each do |field_name|
-      form_fields << FormField.find_or_create_by(name: field_name)
+    unless uri.nil?
+      PDF_FORMS.get_field_names(uri).each do |field_name|
+        form_fields << FormField.find_or_create_by(name: field_name)
+      end
     end
   end
 
   def detect_location!
-    metadata_output = PDF_FORMS.call_pdftk(uri, "dump_data")
-    if /InfoKey: Location\nInfoValue: (.+)\n/.match(metadata_output)
-      update(location: $1)
+    unless uri.nil?
+      metadata_output = PDF_FORMS.call_pdftk(uri, "dump_data")
+      if /InfoKey: Location\nInfoValue: (.+)\n/.match(metadata_output)
+        update(location: $1)
+      end
     end
   end
 
