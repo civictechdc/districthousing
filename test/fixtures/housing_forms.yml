@@ -1,13 +1,13 @@
 one:
   name: FakeForm
-  uri: test/fixtures/form.pdf
+  path: test/fixtures/form.pdf
   form_fields: first_name, last_name
 
 two:
   name: FakeForm
-  uri: FakeUri
+  path: FakeUri
   form_fields: first_name
 
 unreferenced:
   name: MyString
-  uri: MyString
+  path: MyString
