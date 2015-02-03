@@ -3,6 +3,8 @@ tags
 /public/forms/*.pdf
 .env
 
+/.c9
+
 *.rbc
 capybara-*.html
 .rspec
