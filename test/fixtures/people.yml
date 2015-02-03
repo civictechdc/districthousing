@@ -19,8 +19,8 @@ one:
   driver_license_state: New York
   marital_status: Married
   student_status: Part-time
-  race: MyRace
-  ethnicity: MyEthnicity
+  race: Asian
+  ethnicity: Hispanic or Latino
 
 two:
   first_name: Two
@@ -48,7 +48,7 @@ hh1:
   citizenship: Mayotte
   country_of_birth: Bosnia and Herzegovina
   email: ryan@parker.info
-  race: Pacific Islander
+  race: Native Hawaiian or Other Pacific Islander
   ethnicity: Hispanic or Latino
   student_status: Not a student
   marital_status: Married
