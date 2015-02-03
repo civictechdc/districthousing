@@ -14,21 +14,25 @@ class HousingForm < ActiveRecord::Base
     unless read_attribute(:name).blank?
       read_attribute(:name).to_s
     else
-      File.basename read_attribute(:uri)
+      File.basename read_attribute(:path)
     end
   end
 
   def read_fields!
     form_fields.destroy_all
-    PDF_FORMS.get_field_names(uri).each do |field_name|
-      form_fields << FormField.find_or_create_by(name: field_name)
+    unless path.nil?
+      PDF_FORMS.get_field_names(path).each do |field_name|
+        form_fields << FormField.find_or_create_by(name: field_name)
+      end
     end
   end
 
   def detect_location!
-    metadata_output = PDF_FORMS.call_pdftk(uri, "dump_data")
-    if /InfoKey: Location\nInfoValue: (.+)\n/.match(metadata_output)
-      update(location: $1)
+    unless path.nil?
+      metadata_output = PDF_FORMS.call_pdftk(path, "dump_data")
+      if /InfoKey: Location\nInfoValue: (.+)\n/.match(metadata_output)
+        update(location: $1)
+      end
     end
   end
 

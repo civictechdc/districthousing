@@ -33,7 +33,7 @@ class HousingFormsController < ApplicationController
     write_file(uploaded_file, new_file_path)
 
     if @housing_form = HousingForm.create(
-      uri: new_file_path.to_s,
+      path: new_file_path.to_s,
       name: uploaded_file.original_filename
     )
       redirect_to @housing_form, notice: 'Housing form was successfully created.'
@@ -45,7 +45,7 @@ class HousingFormsController < ApplicationController
   # PATCH/PUT /housing_forms/1
   def update
     uploaded_file = params[:housing_form][:new_form]
-    write_file(uploaded_file, @housing_form.uri) if uploaded_file
+    write_file(uploaded_file, @housing_form.path) if uploaded_file
 
     if @housing_form.update(housing_form_params)
       redirect_to @housing_form, notice: 'Housing form was successfully updated.'
@@ -56,7 +56,7 @@ class HousingFormsController < ApplicationController
 
   # DELETE /housing_forms/1
   def destroy
-    File.delete(@housing_form.uri)
+    File.delete(@housing_form.path)
     @housing_form.destroy
     redirect_to housing_forms_url, notice: 'Housing form was successfully destroyed.'
   end
