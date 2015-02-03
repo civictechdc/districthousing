@@ -10,7 +10,13 @@ FormField.delete_all
 HousingForm.transaction do
   FormField.transaction do
     CSV.foreach(Rails.root.join("public","buildings3.csv"), :headers => true) do |row|
-      HousingForm.create(name: row['Property Name'], location: row['Property Address'], lat: row['lat'], long: row['lng'])
+      output_filename = nil
+      unless row['uri'].blank?
+        # Download the file to the public/forms/ directory, and generate a path
+        output_filename = "public/forms/#{row['lat']}_#{row['lng']}.pdf"
+        `wget #{row['uri']} --output-document=#{output_filename}`
+      end
+      HousingForm.create(name: row['Property Name'], location: row['Property Address'], lat: row['lat'], long: row['lng'], path: output_filename)
     end
   end
 end
