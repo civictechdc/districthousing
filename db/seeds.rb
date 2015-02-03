@@ -1,15 +1,22 @@
+require 'csv'
+
 # Load information from all PDFs in public/forms that don't already
 # exist in the database.  PDFs that are already in the database will be
 # untouched, but PDFs not in the database will be added and given a name based
 # on their filename.
+HousingForm.delete_all
 FormField.delete_all
 
 HousingForm.transaction do
   FormField.transaction do
-    Dir.glob(Rails.root.join("public/forms/*.pdf")) do |pdf_path|
-      unless HousingForm.find_by(uri: pdf_path)
-        HousingForm.create(uri: pdf_path)
+    CSV.foreach(Rails.root.join("public","buildings3.csv"), :headers => true) do |row|
+      output_filename = nil
+      unless row['uri'].blank?
+        # Download the file to the public/forms/ directory, and generate a path
+        output_filename = "public/forms/#{row['lat']}_#{row['lng']}.pdf"
+        `wget #{row['uri']} --output-document=#{output_filename}`
       end
+      HousingForm.create(name: row['Property Name'], location: row['Property Address'], lat: row['lat'], long: row['lng'], path: output_filename)
     end
   end
 end
