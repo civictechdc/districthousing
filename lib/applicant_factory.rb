@@ -30,7 +30,7 @@ module ApplicantFactory
         email: Faker::Internet.email,
         # Sample races from US Census
         # http://www.census.gov/topics/population/race/about.html
-        race: ["White", "Black", "American Indian", "Asian", "Pacific Islander"].sample,
+        race: ["American Indian or Alaska Native", "Asian", "Black or African American", "Native Hawaiian or Other Pacific Islander", "White", "Other"].sample,
         ethnicity: ["Hispanic or Latino", "Not Hispanic or Latino"].sample,
         student_status: ["Not a student", "Part-time", "Full-time"].sample,
         marital_status: ["Single", "Separated", "Married", "Widowed", "Divorced"].sample,
