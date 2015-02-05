@@ -6,7 +6,7 @@ module ApplicantFactory
       Address.new(
         street: Faker::Address.street_address,
         city: Faker::Address.city,
-        state: Faker::Address.state,
+        state: Faker::Address.state_abbr,
         zip: Faker::Address.zip,
         apt: ["", "#{rand 999}", "Apartment #{rand 999}", "Unit #{('A'..'Z').to_a.sample}"].sample
       )
@@ -25,7 +25,7 @@ module ApplicantFactory
         cell_phone: Faker::PhoneNumber.phone_number,
         citizenship: Faker::Address.country,
         country_of_birth: Faker::Address.country,
-        state_of_birth: Faker::Address.state,
+        state_of_birth: Faker::Address.state_abbr,
         city_of_birth: Faker::Address.city,
         email: Faker::Internet.email,
         # Sample races from US Census
@@ -36,7 +36,7 @@ module ApplicantFactory
         marital_status: ["Single", "Separated", "Married", "Widowed", "Divorced"].sample,
         occupation: ["Butcher", "Baker", "Candlestick Maker"].sample,
         driver_license_number: Faker::Number.number(10),
-        driver_license_state: Faker::Address.state,
+        driver_license_state: Faker::Address.state_abbr,
       ) do |p|
         p.mail_address = make_an_address
         p.applicant = applicant
