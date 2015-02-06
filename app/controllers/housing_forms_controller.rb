@@ -28,14 +28,12 @@ class HousingFormsController < ApplicationController
 
   # POST /housing_forms
   def create
-    uploaded_file = params[:housing_form][:new_form]
-    new_file_path = Rails.root.join( "public", "forms", Dir::Tmpname.make_tmpname("", ".pdf"))
-    write_file(uploaded_file, new_file_path)
-
-    if @housing_form = HousingForm.create(
-      path: new_file_path.to_s,
-      name: uploaded_file.original_filename
-    )
+    if @housing_form = HousingForm.create(housing_form_params) do |h|
+      if uploaded_file
+        h.path = write_file(uploaded_file).to_s
+        h.name = uploaded_file.original_filename
+      end
+    end
       redirect_to @housing_form, notice: 'Housing form was successfully created.'
     else
       render :new, alert: "Error: #{@housing_form.errors.messages}"
@@ -44,9 +42,9 @@ class HousingFormsController < ApplicationController
 
   # PATCH/PUT /housing_forms/1
   def update
-    uploaded_file = params[:housing_form][:new_form]
-    write_file(uploaded_file, @housing_form.path) if uploaded_file
+    path = write_file(uploaded_file, @housing_form.path) if uploaded_file
 
+    @housing_form.path = path.to_s
     if @housing_form.update(housing_form_params)
       redirect_to @housing_form, notice: 'Housing form was successfully updated.'
     else
@@ -88,9 +86,19 @@ class HousingFormsController < ApplicationController
       @applicant = current_applicant || sample_applicant
     end
 
-    def write_file uploaded_file, path
+    def write_file uploaded_file, path=nil
+      if path.blank?
+        path = Rails.root.join( "public", "forms", Dir::Tmpname.make_tmpname("", ".pdf"))
+      end
+
       File.open(path, "wb") do |file|
         file.write(uploaded_file.read)
       end
+
+      return path
+    end
+
+    def uploaded_file
+      params[:housing_form][:new_form]
     end
 end

@@ -11,3 +11,6 @@ two:
 unreferenced:
   name: MyString
   path: MyString
+
+no_pdf:
+  name: Form without a PDF
