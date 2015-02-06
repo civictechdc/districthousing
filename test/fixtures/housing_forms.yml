@@ -1,6 +1,6 @@
 one:
-  name: FakeForm
-  path: test/fixtures/form.pdf
+  name: Form with PDF
+  path: some/path/to/a.pdf
   form_fields: first_name, last_name
 
 two:
@@ -11,3 +11,6 @@ two:
 unreferenced:
   name: MyString
   path: MyString
+
+no_pdf:
+  name: Form without a PDF
