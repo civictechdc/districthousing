@@ -1,4 +1,5 @@
 require 'csv'
+require 'open-uri'
 
 # Load information from all PDFs in public/forms that don't already
 # exist in the database.  PDFs that are already in the database will be
@@ -7,16 +8,25 @@ require 'csv'
 HousingForm.delete_all
 FormField.delete_all
 
+def download_pdf uri, name
+  # Download the file to the public/forms/ directory, and generate a path
+  output_filename = "public/forms/#{name}.pdf"
+  system("wget #{uri} --output-document=#{output_filename}")
+  return output_filename
+end
+
+def pdf_filename_base csv_row
+  return "#{csv_row['lat']}_#{csv_row['lng']}"
+end
+
 HousingForm.transaction do
   FormField.transaction do
     CSV.foreach(Rails.root.join("public","buildings3.csv"), :headers => true) do |row|
-      output_filename = nil
+      path = nil
       unless row['uri'].blank?
-        # Download the file to the public/forms/ directory, and generate a path
-        output_filename = "public/forms/#{row['lat']}_#{row['lng']}.pdf"
-        `wget #{row['uri']} --output-document=#{output_filename}`
+        path = download_pdf(row['uri'], pdf_filename_base(row))
       end
-      HousingForm.create(name: row['Property Name'], location: row['Property Address'], lat: row['lat'], long: row['lng'], path: output_filename)
+      HousingForm.create(name: row['Property Name'], location: row['Property Address'], lat: row['lat'], long: row['lng'], path: path)
     end
   end
 end
