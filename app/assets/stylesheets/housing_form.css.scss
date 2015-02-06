@@ -128,3 +128,20 @@
 		}
 	}
 }
+
+div.dataTables_filter label {
+  font-weight: normal;
+  float: right;
+  font-size: 20px;
+}
+
+.dataTables_wrapper .dataTables_filter {
+  margin: 20px 0;
+  float: left;
+  text-align: right;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  margin-left: 0.5em;
+  font-size: 20px;
+}
