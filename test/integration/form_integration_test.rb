@@ -7,7 +7,7 @@ class FormIntegrationTest < ActionDispatch::IntegrationTest
   def setup
     Capybara.current_driver = Capybara.javascript_driver
   end
-
+ 
   # https://github.com/codefordc/districthousing/issues/172
   def test_go_through_blank_form
     login_as(users(:one), scope: :user)
