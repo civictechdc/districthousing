@@ -66,9 +66,11 @@ class HousingFormsController < ApplicationController
 
   def download
     filled_file = OutputPDF.new(@housing_form, @applicant).to_file
+    download_filename = "#{@applicant}-#{@housing_form.name}.pdf"
+    download_filename = slugify(download_filename)
     send_file(filled_file.path,
-             type: 'application/pdf',
-             filename: @housing_form.name)
+              type: 'application/pdf',
+              filename: download_filename)
   end
 
   private
@@ -118,5 +120,9 @@ class HousingFormsController < ApplicationController
     # This method exists so we don't have to stub out File.delete
     def delete_file path
       File.delete(path)
+    end
+
+    def slugify filename
+      filename.gsub(/[^0-9A-Za-z.\-]/, '_')
     end
 end
