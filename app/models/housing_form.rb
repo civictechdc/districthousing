@@ -10,6 +10,10 @@ class HousingForm < ActiveRecord::Base
     detect_location!
   end
 
+  def to_s
+    name.to_s
+  end
+
   def name
     unless read_attribute(:name).blank?
       read_attribute(:name).to_s
