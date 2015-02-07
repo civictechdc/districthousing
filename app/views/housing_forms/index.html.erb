@@ -6,8 +6,6 @@
     <tr>
       <th>Name</th>
       <th>Location</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
       <th>Total fields</th>
       <th>Fields fillable</th>
       <th>Fields with content for <%= @applicant %></th>
@@ -22,8 +20,6 @@
     <tr>
       <td><%= housing_form.name %></td>
       <td><%= housing_form.location %></td>
-      <td><%= housing_form.lat %></td>
-      <td><%= housing_form.long %></td>
       <td><%= housing_form.field_results(@applicant).count %></td>
       <td><%= housing_form.known_fields(@applicant).count %></td>
       <td><%= housing_form.filled_fields(@applicant).count %></td>
@@ -47,11 +43,11 @@
     "columnDefs": [ 
       { 
         "orderable": false, 
-        "targets": [2,3,7,8,9,10] 
+        "targets": [2,3,7,8,] 
       },
       {
         "searchable": false, 
-        "targets": [2,3,4,5,6,7,8,9,10] 
+        "targets": [2,3,4,5,6,7,8] 
       }
     ],
     "dom": '<"wrapper"ftpr>'
