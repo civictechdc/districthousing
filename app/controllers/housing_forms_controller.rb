@@ -6,6 +6,8 @@ class HousingFormsController < ApplicationController
   # GET /housing_forms
   def index
     @housing_forms = HousingForm.all
+    @housing_forms_available = HousingForm.where.not(path: nil)
+    @housing_forms_unavailable = HousingForm.where(path: nil)
 
     respond_to do |format|
       format.html
