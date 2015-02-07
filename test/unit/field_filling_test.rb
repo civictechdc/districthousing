@@ -39,6 +39,8 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "New York", @one.field("DriverLicenseState")
     assert_equal "Self", @one.field("Relationship")
     assert_equal "Yes", @one.field("MarriedYesNo")
+    assert_equal "Yes", @one.field("MarriedYes")
+    assert_equal "", @one.field("MarriedNo")
     assert_equal "Y", @one.field("MarriedYN")
     assert_equal "Yes", @one.field("MarriedYesNo")
     assert_equal "N", @one.field("StudentStatusFullTimeYN")
