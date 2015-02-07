@@ -20,6 +20,13 @@ end
 
 HousingForm.transaction do
   FormField.transaction do
+    # Remove existing HousingForms with PDF paths that don't exist on disk
+    HousingForm.all.each do |h|
+      unless h.path.blank? or File.exists? h.path
+        h.destroy
+      end
+    end
+
     # Add seed forms only if they don't already exist
     CSV.foreach(Rails.root.join("public","buildings3.csv"), :headers => true) do |row|
       unless HousingForm.find_by(name: row['Property Name'])
