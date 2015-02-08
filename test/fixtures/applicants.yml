@@ -9,4 +9,4 @@ sample:
 # This applicant has no residences, household members, or anything else.
 empty:
   user: one
-  identity: one
+  identity: empty

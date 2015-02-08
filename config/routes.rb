@@ -35,7 +35,6 @@ DchousingApps::Application.routes.draw do
 
   get '/download/:id', to: 'housing_forms#download', as: 'download_housing_form'
   get "home/index"
-  get "/about", to: "home#about"
   get "/pdf_guide", to: "pdf_guide#index"
   get "/dictionary", to: "dictionary#index"
 

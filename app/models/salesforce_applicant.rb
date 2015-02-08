@@ -2,20 +2,51 @@ class SalesforceApplicant < ActiveRecord::Base
   belongs_to :applicant
   validates :applicant, presence: true
 
+  @@identity_mappings = {
+    first_name: :First_Name__c,
+    middle_name: :Middle_Name__c,
+    last_name: :Last_Name__c,
+    dob: :DOB__c,
+    state_of_birth: :State_of_Birth__c,
+    city_of_birth: :City_of_Birth__c,
+    ssn: :SSN__c,
+    cell_phone: :Primary_Phone__c, # FIXME: type of phone determined by Primary_Phone_Type__c
+    home_phone: :Primary_Phone__c,
+    email: :Email_Address__c,
+    driver_license_number: :Drivers_License_Number__c,
+    driver_license_state: :Drivers_License_State__c,
+    gender: :Gender__c,
+    race: :Race__c,
+    citizenship: :Immigrant__c,
+    student_status: :Student_Status__c,
+    marital_status: :Marital_Status__c,
+    occupation: :Occupation__c,
+    ethnicity: :Hispanic__c
+  }
+
+  @@identity_mail_address_mappings = {
+    street: :Primary_Address_1__c,
+    city: :Primary_City__c,
+    state: :Primary_State__c,
+    zip: :Primary_Zip_Code__c,
+  }
+
+  def merge_model(mappings, identity, intake)
+    mappings.each do |k,v|
+      target = intake.send(v)
+      identity.send("#{k}=", target) unless target.blank?
+    end
+  end
+
   def merge intake
     if applicant.identity.nil?
       applicant.build_identity
     end
-    applicant.identity.first_name = intake.FirstName__c unless intake.FirstName__c.blank?
-    applicant.identity.middle_name = intake.Middle_Name__c unless intake.Middle_Name__c.blank?
-    applicant.identity.last_name = intake.LastName__c unless intake.LastName__c.blank?
+    merge_model(@@identity_mappings, applicant.identity, intake)
 
     if applicant.identity.mail_address.nil?
       applicant.identity.build_mail_address
     end
-    applicant.identity.mail_address.street = intake.Address1__c unless intake.Address1__c.blank?
-    applicant.identity.mail_address.city = intake.City__c unless intake.City__c.blank?
-    applicant.identity.mail_address.state = intake.State__c unless intake.State__c.blank?
-    applicant.identity.mail_address.zip = intake.ZipCode__c unless intake.ZipCode__c.blank?
+    merge_model(@@identity_mail_address_mappings, applicant.identity.mail_address, intake)
   end
 end

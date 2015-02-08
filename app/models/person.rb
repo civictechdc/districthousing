@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
   include Progress
+  include BooleanFields
 
   progress_includes :mail_address
 
@@ -153,63 +154,22 @@ class Person < ActiveRecord::Base
       state_of_birth
     when "BirthCity"
       city_of_birth
-    when "USCitizenYN"
-      if us_citizen?
-        "Y"
-      else
-        "N"
-      end
-    when "USCitizenYesNo"
-      if us_citizen?
-        "Yes"
-      else
-        "No"
-      end
+    when /USCitizen(#{boolean_regex})/
+      boolean_field $1 do us_citizen? end
     when "DriverLicense"
       driver_license_number
     when "DriverLicenseState"
       driver_license_state
     when "Relationship"
       "Self"
-    when "MarriedYesNo"
-      if married?
-        "Yes"
-      else
-        "No"
-      end
-    when "MarriedYN"
-      if married?
-        "Y"
-      else
-        "N"
-      end
-    when "StudentStatusYesNo"
-      if student?
-        "Yes"
-      else
-        "No"
-      end
-    when "StudentStatusYN"
-      if student?
-        "Y"
-      else
-        "N"
-      end
-    when "StudentStatusFullTimeYesNo"
-      if student_full_time?
-        "Yes"
-      else
-        "No"
-      end
-    when "StudentStatusFullTimeYN"
-      if student_full_time?
-        "Y"
-      else
-        "N"
-      end
+    when /Married(#{boolean_regex})/
+      boolean_field $1 do married? end
+    when /StudentStatus(#{boolean_regex})/
+      boolean_field $1 do student? end
+    when /StudentStatusFullTime(#{boolean_regex})/
+      boolean_field $1 do student_full_time? end
     else
       UnknownField.new
     end
   end
-
 end

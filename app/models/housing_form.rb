@@ -2,6 +2,7 @@ class HousingForm < ActiveRecord::Base
   has_and_belongs_to_many :form_fields
 
   after_create { initialize_from_disk! }
+  after_update { read_fields! }
 
   def initialize_from_disk!
     update(name: name)
@@ -9,24 +10,33 @@ class HousingForm < ActiveRecord::Base
     detect_location!
   end
 
+  def to_s
+    name.to_s
+  end
+
   def name
     unless read_attribute(:name).blank?
       read_attribute(:name).to_s
     else
-      File.basename read_attribute(:uri)
+      File.basename read_attribute(:path)
     end
   end
 
   def read_fields!
-    PDF_FORMS.get_field_names(uri).each do |field_name|
-      form_fields << FormField.find_or_create_by(name: field_name)
+    form_fields.destroy_all
+    unless path.nil?
+      PDF_FORMS.get_field_names(path).each do |field_name|
+        form_fields << FormField.find_or_create_by(name: field_name)
+      end
     end
   end
 
   def detect_location!
-    metadata_output = PDF_FORMS.call_pdftk(uri, "dump_data")
-    if /InfoKey: Location\nInfoValue: (.+)\n/.match(metadata_output)
-      update(location: $1)
+    unless path.nil?
+      metadata_output = PDF_FORMS.call_pdftk(path, "dump_data")
+      if /InfoKey: Location\nInfoValue: (.+)\n/.match(metadata_output)
+        update(location: $1)
+      end
     end
   end
 

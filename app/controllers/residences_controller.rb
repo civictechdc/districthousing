@@ -33,6 +33,7 @@ class ResidencesController < ApplicationController
       :address_id,
       :start,
       :end,
+      :current,
       :reason,
       :landlord_id,
       {address_attributes: [:street, :apt, :city, :state, :zip, :id]},

@@ -1,17 +1,18 @@
 <%= builder.date_field :dob, label: "Date of birth" %>
-<%= builder.collection_select :marital_status, ["", "Never married", "Married", "Widowed", "Divorced"], :to_s, :to_s %>
+<%= builder.collection_select :marital_status, ["", "Single", "Separated", "Married", "Widowed", "Divorced"], :to_s, :to_s %>
 <%= builder.collection_select :student_status, ["", "Full-time", "Part-time", "Not a student"], :to_s, :to_s %>
+<%= builder.collection_select :gender, ["", "Female", "Male"], :to_s, :to_s %>
+<%= builder.collection_select :ethnicity, ["", "Hispanic or Latino", "Not Hispanic or Latino"], :to_s, :to_s %>
+<%= builder.collection_select :race, ["", "American Indian or Alaska Native", "Asian", "Black or African American", "Native Hawaiian or Other Pacific Islander", "White", "Other"], :to_s, :to_s %>
+<%= builder.collection_select :driver_license_state, us_states, :last, :first %>
+<%= builder.collection_select :state_of_birth, us_states, :last, :first %>
+<%= builder.collection_select :country_of_birth, countries, :to_s, :to_s %>
+<%= builder.collection_select :citizenship, countries, :to_s, :to_s %>
+
 <% %i(
-  gender
-  race
-  ethnicity
-  citizenship
   occupation
   city_of_birth
-  state_of_birth
-  country_of_birth
   driver_license_number
-  driver_license_state
 ).each do |person_attribute| %>
   <%= builder.text_field person_attribute %>
 <% end %>

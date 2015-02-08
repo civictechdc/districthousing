@@ -40,6 +40,7 @@ class ResidencesControllerTest < ActionController::TestCase
     residence_update_hash = {
       start: "2000-01-01",
       end: "2010-01-01",
+      current: true,
       reason: "x",
     }
     put :update, applicant_id: applicants(:one), id: residence, residence: residence_update_hash

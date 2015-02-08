@@ -1,5 +1,6 @@
 <%= builder.text_field :street, label: "Street address" %>
 <%= builder.text_field :apt, label: "Apartment" %>
 <%= builder.text_field :city %>
-<%= builder.text_field :state %>
+<%= builder.collection_select :state, us_states, :last, :first %>
+
 <%= builder.text_field :zip, label: "Zip code" %>

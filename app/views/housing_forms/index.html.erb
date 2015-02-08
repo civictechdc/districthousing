@@ -1,34 +1,30 @@
 <h1>Housing Locations</h1>
 <h1><small>You can apply to live at these places</small></h1>
 
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Location</th>
-    <th>Total fields</th>
-    <th>Fields fillable</th>
-    <th>Fields with content for <%= @applicant %></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= render 'location_table', locations: @housing_forms_available %>
 
-<% @housing_forms.each do |housing_form| %>
-  <tr>
-    <td><%= housing_form.name %></td>
-    <td><%= housing_form.location %></td>
-    <td><%= housing_form.field_results(@applicant).count %></td>
-    <td><%= housing_form.known_fields(@applicant).count %></td>
-    <td><%= housing_form.filled_fields(@applicant).count %></td>
-    <td><%= link_to 'Show', housing_form %></td>
-    <td><%= link_to 'Download', download_housing_form_path(housing_form) %></td>
-    <td><%= link_to 'Edit', edit_housing_form_path(housing_form) %></td>
-    <td><%= link_to 'Delete', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<h2>Housing locations with no PDF yet</h2>
+<p>Have a PDF for one of these places?  Click "Edit/Replace" to upload it!</p>
+<%= render 'location_table', locations: @housing_forms_unavailable %>
 
-<br />
-
+<p>Don't see your location here?  You can upload it anyway.  Click the button below to add a new location.</p>
 <%= link_to 'Add a housing form', new_housing_form_path, class: "btn btn-lg btn-default" %>
+
+<%= javascript_tag do %>
+  $('.housing-location-table').DataTable({
+    dom: "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+    pagingType: "simple_numbers",
+    "columnDefs": [
+      {
+        "orderable": false,
+        "targets": [2,3,7,8,]
+      },
+      {
+        "searchable": false,
+        "targets": [2,3,4,5,6,7,8]
+      }
+    ],
+    "dom": '<"wrapper"ftpr>'
+  });
+  $('div.dataTables_filter input').focus();
+<% end %>

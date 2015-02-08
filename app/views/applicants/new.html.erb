@@ -23,40 +23,58 @@
   <li>Do not fill out the date at the top of the application and ensure that the applicant does not sign the application. The applicant should only sign when they submit the application in front of the building management, who will then write in the date the application was received.</li>
 </ul>
 
-<%= bootstrap_form_tag(url: '/applicants') do |f| %>
-
-  <p>
+<p>
   Let's start with a few questions to help plan your application.  Don't worry, you can change these answers later.
-  </p>
+</p>
 
-  <%= f.text_field :first_name %>
-  <%= f.text_field :last_name %>
+<div class="row">
+  <div class="col-md-8">
+    <%= bootstrap_form_tag(url: '/applicants') do |f| %>
 
-  <p>
-  How many additional people will be living with you?
-  </p>
+      <%= f.text_field :first_name %>
+      <%= f.text_field :last_name %>
 
-  <%= f.text_field :household_member_count %>
+      <p>
+      What is the total number of people in your household, including yourself?
+      </p>
 
-  <p>
-  How many residences have you had in the past two years, including your current residence?
-  </p>
+      <%= f.text_field :household_member_count %>
 
-  <%= f.text_field :residence_count %>
+      <p>
+      How many residences have you had in the past two years, including your current residence?
+      </p>
 
-  <p>
-  How many sources of income do you and your household members have, combined?
-  </p>
+      <%= f.text_field :residence_count %>
 
-  <%= f.text_field :income_count %>
+      <p>
+      How many sources of income do you and your household members have, combined?
+      </p>
 
-  <p>
-  How many jobs have you and your household members had in the past two years?
-  </p>
+      <%= f.text_field :income_count %>
 
-  <%= f.text_field :employment_count %>
+      <p>
+      How many jobs have you and your household members had in the past two years?
+      </p>
 
-  <%= f.submit 'Get started' %>
-<% end %>
+      <%= f.text_field :employment_count %>
+
+
+      <%= f.submit 'Get started' %>
+    <% end %>
+  </div>
+
+  <div class="col-md-4">
+    <em>What's an income source?</em>
+
+    <p>
+      An income source is any of the following:
+    </p>
+    <ul>
+      <% IncomeType.all.each do |i| %>
+        <li><%= i.label %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
 <%= link_to 'Back', home_index_path %>
