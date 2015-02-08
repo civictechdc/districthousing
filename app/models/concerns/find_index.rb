@@ -2,22 +2,14 @@ module FindIndex
     
     extend ActiveSupport::Concern
    
-    def index_class
-        self.class.index_class
-    end
-    
     included do
-        def self.index_class
-            @index_class ||=[]
-        end
-        
-        def self.index_class_includes index_class_attribute
-          index_class << index_class_attribute
+        def self.part_of applicant_collection_method
+          @@applicant_collection_method = applicant_collection_method
         end
     end
     
     def my_number
-        @applicant.index_class.my_number(self)+1
+        applicant.send(@@applicant_collection_method).find_index(self)+1
     end
     
 end

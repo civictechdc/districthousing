@@ -3,7 +3,7 @@ class HouseholdMember < ActiveRecord::Base
   include FindIndex
   
   progress_includes :person
-  index_class_includes :person
+  part_of :household_members
 
   belongs_to :applicant
   belongs_to :person
