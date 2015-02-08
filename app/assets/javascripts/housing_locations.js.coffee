@@ -6,7 +6,7 @@ $ ->
     "columnDefs": [
       {
         "orderable": false,
-        "targets": [2,3,7,8]
+        "targets": [5,6,7,8]
       },
       {
         "searchable": false,
@@ -22,14 +22,15 @@ $ ->
     "columnDefs": [
       {
         "orderable": false,
-        "targets": [2,3]
+        "targets": [5,6,7,8]
       },
       {
         "searchable": false,
-        "targets": [2,3,4,5,6]
+        "targets": [2,3,4,5,6,7,8]
       }
     ],
     "dom": '<"wrapper"ftpr>'
   })
+  
 
   $('div.dataTables_filter input').focus()
