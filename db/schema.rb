@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207221135) do
+ActiveRecord::Schema.define(version: 20150208025246) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20150207221135) do
     t.datetime "updated_at"
     t.integer  "person_id"
     t.integer  "income_type_id"
+    t.string   "interval"
   end
 
   add_index "incomes", ["income_type_id"], name: "index_incomes_on_income_type_id"

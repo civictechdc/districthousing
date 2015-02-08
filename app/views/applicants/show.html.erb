@@ -80,6 +80,9 @@
         Amount
       </th>
       <th>
+        Interval
+      </th>
+      <th>
         Source
       </th>
     </tr>
@@ -89,7 +92,10 @@
         <%= income.person %>
       </td>
       <td>
-        <%= number_to_currency(income.amount) %> yearly
+        <%= number_to_currency(income.amount) %>
+      </td>
+      <td>
+        <%= income.interval %>
       </td>
       <td>
         <%= income.source %>

@@ -7,9 +7,9 @@ class Income < ActiveRecord::Base
 
   def to_s
     unless source.blank?
-      "Income of $#{amount.to_i} yearly from #{source}"
+      "Income of $#{amount.to_i} #{interval} from #{source}"
     else
-      "Income of $#{amount.to_i} yearly"
+      "Income of $#{amount.to_i} #{interval}"
     end
   end
 

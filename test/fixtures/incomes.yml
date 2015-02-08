@@ -2,3 +2,4 @@ one:
   amount: 123
   person: one
   income_type: one
+  interval: yearly
