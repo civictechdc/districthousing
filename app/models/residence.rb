@@ -16,6 +16,10 @@ class Residence < ActiveRecord::Base
 
   before_validation :initialize_residence
 
+  def delegate_field_to item, field_name
+    item && item.value_for_field(field_name) || ""
+  end
+
   def initialize_residence
     self.landlord ||= Person.new
     self.address ||= Address.new
@@ -37,4 +41,18 @@ class Residence < ActiveRecord::Base
     end
   end
 
+  def value_for_field field_name
+    case field_name
+    when "Start"
+      start
+    when "End"
+      send(:end)
+    when "ReasonForMoving"
+      reason
+    when /^(\D*)$/
+      unless ['Start','End','ReasonForMoving'].include?($1)
+        delegate_field_to address, $1
+      end
+    end
+  end
 end
