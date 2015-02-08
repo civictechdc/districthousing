@@ -24,7 +24,11 @@ class Person < ActiveRecord::Base
   end
 
   def description
-    "#{first_name} #{last_name}"
+    if first_name.blank? and last_name.blank?
+      "(No name)"
+    else
+      "#{first_name} #{last_name}"
+    end
   end
 
   def to_s
