@@ -1,7 +1,9 @@
 class HouseholdMember < ActiveRecord::Base
   include Progress
-
+  include FindIndex
+  
   progress_includes :person
+  index_class_includes :person
 
   belongs_to :applicant
   belongs_to :person
