@@ -1,3 +1,5 @@
+<% no_edit ||= false %>
+
 <table class="table housing-location-table">
   <thead>
     <tr>
@@ -8,8 +10,10 @@
       <th>Fields with content for <%= @applicant %></th>
       <th></th>
       <th></th>
-      <th></th>
-      <th></th>
+      <% unless no_edit %>
+        <th></th>
+        <th></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -30,8 +34,10 @@
         <td><%= link_to 'PDF unavailable', "#", class: "btn btn-default disabled" %></td>
       <% end %>
       <td><%= link_to 'Show', housing_form %></td>
-      <td><%= link_to 'Edit/Replace', edit_housing_form_path(housing_form) %></td>
-      <td><%= link_to 'Delete', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% unless no_edit %>
+        <td><%= link_to 'Edit/Replace', edit_housing_form_path(housing_form) %></td>
+        <td><%= link_to 'Delete', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

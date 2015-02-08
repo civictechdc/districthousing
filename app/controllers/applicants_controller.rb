@@ -38,6 +38,7 @@ class ApplicantsController < ApplicationController
   end
 
   def show
+    @housing_forms = HousingForm.where.not(path: nil)
     @applicant = Applicant.find(params[:id])
     session[:current_applicant_id] = @applicant.id
     assign_current_applicant
