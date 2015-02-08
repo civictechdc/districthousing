@@ -86,6 +86,22 @@ class Person < ActiveRecord::Base
     marital_status == "Married"
   end
 
+  def single?
+    marital_status == "Single"
+  end
+  
+  def divorced?
+    marital_status == "Divorced"
+  end
+
+  def separated?
+    marital_status == "Separated"
+  end
+
+  def widowed?
+    marital_status == "Widowed"
+  end
+
   def student?
     student_status == "Full-time" or student_status == "Part-time"
   end
@@ -94,9 +110,19 @@ class Person < ActiveRecord::Base
     student_status == "Full-time"
   end
 
+  def male?
+    gender == "Male"
+  end
+  
+  def female?
+    gender == "Female"
+  end
+
   def value_for_field field_name
     case field_name
     when /^Mail(.*)/
+      mail_address && mail_address.value_for_field($1)
+    when /^Address(.*)/
       mail_address && mail_address.value_for_field($1)
     when "FirstName"
       first_name
@@ -168,12 +194,25 @@ class Person < ActiveRecord::Base
       "Self"
     when /Married(#{boolean_regex})/
       boolean_field $1 do married? end
+    when /Separated(#{boolean_regex})/
+      boolean_field $1 do separated? end
+    when /Single(#{boolean_regex})/
+      boolean_field $1 do single? end
+    when /Divorced(#{boolean_regex})/
+      boolean_field $1 do divorced? end
+    when /Widowed(#{boolean_regex})/
+      boolean_field $1 do widowed? end
     when /StudentStatus(#{boolean_regex})/
       boolean_field $1 do student? end
     when /StudentStatusFullTime(#{boolean_regex})/
       boolean_field $1 do student_full_time? end
+    when /GenderMale(#{boolean_regex})/
+      boolean_field $1 do male? end
+    when /GenderFemale(#{boolean_regex})/
+      boolean_field $1 do female? end
     else
       UnknownField.new
     end
   end
 end
+ 

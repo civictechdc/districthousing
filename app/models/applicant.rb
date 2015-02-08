@@ -77,11 +77,16 @@ class Applicant < ActiveRecord::Base
     when /^LL(\d+)(.*)$/
       index = $1.to_i - 1
       delegate_field_to landlords[index], $2
+    when /^Residence(\d+)(.*)$/
+      index = $1.to_i - 1
+      delegate_field_to residences[index], $2
+    when /^Residence(.*)$/
+      delegate_field_to residences[0], $1
     when /^Address(\d+)(.*)$/
       index = $1.to_i - 1
-      delegate_field_to addresses[index], $2
+      delegate_field_to residences[index], $2
     when /^Address(.*)$/
-      delegate_field_to addresses[0], $1
+      delegate_field_to residences[0], $1
     when "Today"
       Date.today
     when "Now"
