@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      Your information is <%= @applicant.progress%>% filled out.
+      Fill out as much as you can, then download some PDF application
+      from the table below.
+    </p>
+    <p>
+      Fields that are not yet filled out are highlighted in red.  Look
+      through the summary on this page for red fields, then edit the item
+      to fill in missing information.
+    </p>
+  </div>
+
+  <div class="col-md-6">
+    <div id="cont" data-pct="<%= @applicant.progress %>">
+      <svg id="svg" width="200" height="200">
+        <circle id="bar" r="90" cx="100" cy="100" fill="transparent"
+        stroke-dasharray="565.48"
+        stroke-dashoffset="<%= 565.48 * (1 - (@applicant.progress / 100.0))%>"></circle>
+      </svg>
+    </div>
+  </div>
+
+</div>
