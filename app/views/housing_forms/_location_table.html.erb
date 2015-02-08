@@ -1,6 +1,10 @@
 <% no_edit ||= false %>
+<%
+  table_class = "housing-location-table"
+  table_class = "#{table_class}-no-edit" if no_edit
+%>
 
-<table class="table housing-location-table">
+<table class="table <%= table_class %>">
   <thead>
     <tr>
       <th>Name</th>
