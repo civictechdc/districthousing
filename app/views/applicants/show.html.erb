@@ -1,19 +1,21 @@
 <%= render 'breadcrumb' %>
 
-<%= render 'progress', object: @applicant %>
-
-<%= link_to 'Select Buildings to Apply To', housing_forms_path, class: "btn btn-lg btn-primary" %>
-
-<h1>Applicant Overview: <%= @applicant.identity %></h1>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <%= @applicant.identity %>
+<h1><%= @applicant.identity %> <small>Applicant Overview</small></h1>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= @applicant.identity %>
+      </div>
+      <%= render partial: 'identity/summary', locals: { person: @applicant.identity } %>
+      <div class="panel-footer">
+        <%= link_to "Edit", edit_identity_path(@applicant), class: "btn btn-info"%>
+      </div>
+    </div>
   </div>
-  <div class="row">
-  <%= render partial: 'identity/summary', locals: { person: @applicant.identity } %>
-  </div>
-  <div class="panel-footer">
-    <%= link_to "Edit", edit_identity_path(@applicant), class: "btn btn-info"%>
+  <div class="col-md-8">
+    <%= render 'applicant_status' %>
+    <%= render 'form_preview' %>
   </div>
 </div>
 
