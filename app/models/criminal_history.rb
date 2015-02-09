@@ -1,6 +1,12 @@
 class CriminalHistory < ActiveRecord::Base
   include Progress
-
+  include FindIndex
+  
+  def applicant
+    person.applicant
+  end
+  
+  part_of :criminal_histories
   belongs_to :crime_type
   belongs_to :person
 

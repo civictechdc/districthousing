@@ -1,7 +1,13 @@
 class Income < ActiveRecord::Base
   include Progress
-
-  belongs_to :applicant
+  include FindIndex
+  
+  part_of :incomes
+  
+  def applicant
+    person.applicant
+  end
+  
   belongs_to :person
   belongs_to :income_type
 
