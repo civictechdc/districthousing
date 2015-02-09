@@ -4,7 +4,10 @@ class Income < ActiveRecord::Base
   
   part_of :incomes
   
-  belongs_to :applicant
+  def applicant
+    person.applicant
+  end
+  
   belongs_to :person
   belongs_to :income_type
 

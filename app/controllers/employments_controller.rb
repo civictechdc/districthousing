@@ -19,6 +19,7 @@ class EmploymentsController < ApplicationController
     e = Employment.new
     e.address = Address.new
     e.person = @applicant.identity
+    e.applicant = @applicant
     e
   end
 

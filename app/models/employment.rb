@@ -2,6 +2,10 @@ class Employment < ActiveRecord::Base
   include Progress
   include FindIndex
   
+  def applicant
+    person.applicant
+  end
+  
   part_of :employments
   progress_includes :address
 
