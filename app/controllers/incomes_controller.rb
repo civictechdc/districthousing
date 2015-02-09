@@ -18,7 +18,6 @@ class IncomesController < ApplicationController
   def make_new
     i = Income.new
     i.person = @applicant.identity
-    i.applicant = @applicant
     i
   end
 

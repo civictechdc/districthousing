@@ -19,7 +19,6 @@ class CriminalHistoriesController < ApplicationController
     c = CriminalHistory.new
     c.person = @applicant.identity
     c.crime_type = CrimeType.where(name: "felony").first
-    c.applicant = @applicant
     c
   end
 
