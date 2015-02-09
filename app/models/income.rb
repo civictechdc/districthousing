@@ -4,15 +4,18 @@ class Income < ActiveRecord::Base
   
   part_of :incomes
   
-  belongs_to :applicant
+  def applicant
+    person.applicant
+  end
+  
   belongs_to :person
   belongs_to :income_type
 
   def to_s
     unless source.blank?
-      "Income of $#{amount.to_i} yearly from #{source}"
+      "Income of $#{amount.to_i} #{interval} from #{source}"
     else
-      "Income of $#{amount.to_i} yearly"
+      "Income of $#{amount.to_i} #{interval}"
     end
   end
 

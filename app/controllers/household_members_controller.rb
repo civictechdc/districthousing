@@ -18,7 +18,7 @@ class HouseholdMembersController < ApplicationController
   def make_new
     h = HouseholdMember.create
     h.person = selected_or_created_person
-    h.applicant = Applicant.find(params[:applicant_id])
+    h.applicant = @applicant
     h
   end
 

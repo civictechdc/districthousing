@@ -34,6 +34,7 @@ class IncomesController < ApplicationController
       :income_type_id,
       :amount,
       :person_id,
+      :interval,
     )
   end
 

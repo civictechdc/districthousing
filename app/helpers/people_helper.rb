@@ -24,6 +24,8 @@ module PeopleHelper
       "Mailing Address"
     when 'dob'
       "Date of birth"
+    when 'ssn'
+      "SSN"
     else
       attribute_name.humanize
     end
