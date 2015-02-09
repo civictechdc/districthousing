@@ -1,5 +1,5 @@
 <%= render 'form_page' %>
-
+(<%=@model.my_number%>)
 <%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
   <%= render "fields", f: f %>
   <%= render "buttons_update_back", f: f %>

@@ -1,6 +1,8 @@
 class Employment < ActiveRecord::Base
   include Progress
-
+  include FindIndex
+  
+  part_of :employments
   progress_includes :address
 
   belongs_to :person

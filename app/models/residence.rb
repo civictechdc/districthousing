@@ -1,6 +1,9 @@
 class Residence < ActiveRecord::Base
   include Progress
-
+  include FindIndex
+  
+  part_of :residences
+  
   progress_includes :landlord
   progress_includes :address
 

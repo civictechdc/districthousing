@@ -1,4 +1,5 @@
 <%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
+(<%=@model.my_number%>)
   <% if @model.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@model.errors.count, "error") %> prohibited this criminal_history from being saved:</h2>
