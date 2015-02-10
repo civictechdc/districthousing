@@ -1,38 +1,8 @@
 <%= render 'form_page' %>
-
-<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
 (<%=@model.my_number%>)
-  <div class="row">
-
-    <div class="col-md-4">
-      <h2>Time period</h2>
-      <%= render "fields", f: f %>
-
-      <h2>Residence Address</h2>
-      <%= f.fields_for :address do |a| %>
-        <%= render "addresses/fields", builder: a %>
-      <% end %>
-    </div>
-
-    <div class="col-md-4">
-      <h2>Landlord</h2>
-      <%= f.fields_for :landlord do |l| %>
-        <%= render "people/name", builder: l %>
-        <%= render "people/contact", builder: l %>
-      <% end%>
-    </div>
-    <div class="col-md-4">
-      <h2>Landlord's address</h2>
-      <%= f.fields_for :landlord do |l| %>
-        <%= l.fields_for :mail_address do |m| %>
-          <%= render "addresses/fields", builder: m %>
-        <% end %>
-      <% end %>
-    </div>
-
-  </div>
-
-  <%= render "buttons_update_back", f: f %>
+<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
+<%= render "fields", f: f %>
+<%= render "buttons_update_back", f: f %>
 <% end %>
 
 <%= link_to 'Delete', basic_path(@model), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>

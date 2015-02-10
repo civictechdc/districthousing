@@ -1,3 +1,22 @@
 <%= render 'form_page' %>
-<%= render 'form' %>
+
+(<%=@model.my_number%>)
+
+<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
+<%= render "fields", f: f %>
+<%= render "buttons_update_back", f: f %>
+<% end %>
+
 <%= link_to 'Delete', basic_path(@model), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+
+<% if @model.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@model.errors.count, "error") %> prohibited this employment from being saved:</h2>
+
+    <ul>
+    <% @model.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
