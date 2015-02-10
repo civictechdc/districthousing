@@ -21,7 +21,7 @@ module BooleanFields
   extend ActiveSupport::Concern
 
   def boolean_regex
-    "(Yes|No|Y|N|T|F|TickYes|TickNo)+"
+    "(Yes|No|Y|N|T|F|TickYes|TickNo)+$"
   end
 
   def boolean_field boolean_field_component

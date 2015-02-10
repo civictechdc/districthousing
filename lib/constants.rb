@@ -1,6 +1,6 @@
 module Constants
 
-  # Sample races from US Census
+  # Races from US Census
   # http://www.census.gov/topics/population/race/about.html
   class Race
     def self.all
@@ -44,6 +44,36 @@ module Constants
         "White" => "White",
         "Decline" => "Decline to state",
       }[name_db]
+    end
+  end
+
+  # Ethnicities also from US Census
+  class Ethnicity
+    def self.all
+      [
+        Ethnicity.new("Hispanic"),
+        Ethnicity.new("NotHispanic"),
+        Ethnicity.new("Decline"),
+      ]
+    end
+
+    def initialize db
+      @name_db = db
+    end
+
+    attr_reader :name_db
+    attr_reader :name_form
+
+    def name_pdf
+      {
+        "Hispanic" => "Hispanic or Latino",
+        "NotHispanic" => "Not Hispanic or Latino",
+        "Decline" => "Decline to state",
+      }[name_db]
+    end
+
+    def name_form
+      name_pdf
     end
   end
 

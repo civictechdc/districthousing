@@ -181,7 +181,13 @@ class Person < ActiveRecord::Base
     when /RaceDecline(#{boolean_regex})/
       boolean_field $1 do race == "Decline" end
     when "Ethnicity"
-      ethnicity
+      Constants::Ethnicity.new(ethnicity).name_pdf
+    when /EthnicityHispanic(#{boolean_regex})/
+      boolean_field $1 do ethnicity == "Hispanic" end
+    when /EthnicityNotHispanic(#{boolean_regex})/
+      boolean_field $1 do ethnicity == "NotHispanic" end
+    when /EthnicityDecline(#{boolean_regex})/
+      boolean_field $1 do ethnicity == "Decline" end
     when "PreferredPhone"
       cell_phone
     when "WorkPhone"

@@ -42,13 +42,6 @@ module PeopleHelper
     end
   end
 
-  def ethnicities
-    [
-      "Hispanic or Latino",
-      "Not Hispanic or Latino"
-    ]
-  end
-
   def genders
     [
       "Female",
