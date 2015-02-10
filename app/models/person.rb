@@ -72,9 +72,7 @@ class Person < ActiveRecord::Base
   end
 
   def us_citizen?
-    # FIXME: Instead of using regexes for this, country of citizenship should
-    # be normalized
-    return /^(United States|US|USA|U.S.A.)$/i =~ citizenship
+    return "United States" == citizenship
   end
 
   def preferred_phone
