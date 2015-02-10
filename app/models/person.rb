@@ -178,6 +178,8 @@ class Person < ActiveRecord::Base
       boolean_field $1 do race == "PacificIslander" end
     when /RaceWhite(#{boolean_regex})/
       boolean_field $1 do race == "White" end
+    when /RaceDecline(#{boolean_regex})/
+      boolean_field $1 do race == "Decline" end
     when "Ethnicity"
       ethnicity
     when "PreferredPhone"

@@ -328,5 +328,15 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", app.field("RaceOtherY")
     assert_equal "", app.field("RacePacificIslanderY")
     assert_equal "Y", app.field("RaceWhiteY")
+
+    app.identity.race = "Decline"
+    assert_equal "Decline", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "Y", app.field("RaceWhiteY")
   end
 end

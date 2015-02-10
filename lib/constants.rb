@@ -10,7 +10,8 @@ module Constants
         Race.new("Black"),
         Race.new("PacificIslander"),
         Race.new("Other"),
-        Race.new("White")
+        Race.new("White"),
+        Race.new("Decline"),
       ]
     end
 
@@ -29,6 +30,7 @@ module Constants
         "PacificIslander" => "Pacific Islander",
         "Other" => "Other",
         "White" => "White",
+        "Decline" => "Decline to state",
       }[name_db]
     end
 
@@ -40,6 +42,7 @@ module Constants
         "PacificIslander" => "Native Hawaiian or Other Pacific Islander",
         "Other" => "Other",
         "White" => "White",
+        "Decline" => "Decline to state",
       }[name_db]
     end
   end
