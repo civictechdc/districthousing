@@ -166,6 +166,10 @@ class Person < ActiveRecord::Base
       gender
     when "Race"
       race
+    when /RaceBlack(#{boolean_regex})/
+      boolean_field $1 do race == 'Black' end
+    when /RaceWhite(#{boolean_regex})/
+      boolean_field $1 do race == 'White' end
     when "Ethnicity"
       ethnicity
     when "PreferredPhone"

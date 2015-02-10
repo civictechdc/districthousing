@@ -41,4 +41,47 @@ module PeopleHelper
       person[attribute_name]
     end
   end
+
+  def races
+    [
+      "American Indian or Alaska Native",
+      "Asian",
+      "Black or African American",
+      "Native Hawaiian or Other Pacific Islander",
+      "Other",
+      "White"
+    ]
+  end
+
+  def ethnicities
+    [
+      "Hispanic or Latino",
+      "Not Hispanic or Latino"
+    ]
+  end
+
+  def genders
+    [
+      "Female",
+      "Male"
+    ]
+  end
+
+  def student_statuses
+    [
+      "Full-time",
+      "Part-time",
+      "Not a student"
+    ]
+  end
+
+  def marital_statuses
+    [
+      "Single",
+      "Separated",
+      "Married",
+      "Widowed",
+      "Divorced"
+    ]
+  end
 end

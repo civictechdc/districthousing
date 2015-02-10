@@ -1,9 +1,9 @@
 <%= builder.date_field :dob, label: "Date of birth" %>
-<%= builder.collection_select :marital_status, ["", "Single", "Separated", "Married", "Widowed", "Divorced"], :to_s, :to_s %>
-<%= builder.collection_select :student_status, ["", "Full-time", "Part-time", "Not a student"], :to_s, :to_s %>
-<%= builder.collection_select :gender, ["", "Female", "Male"], :to_s, :to_s %>
-<%= builder.collection_select :ethnicity, ["", "Hispanic or Latino", "Not Hispanic or Latino"], :to_s, :to_s %>
-<%= builder.collection_select :race, ["", "American Indian or Alaska Native", "Asian", "Black or African American", "Native Hawaiian or Other Pacific Islander", "White", "Other"], :to_s, :to_s %>
+<%= builder.collection_select :marital_status, marital_statuses, :to_s, :to_s, include_blank: true %>
+<%= builder.collection_select :student_status, student_statuses, :to_s, :to_s, include_blank: true %>
+<%= builder.collection_select :gender, genders, :to_s, :to_s, include_blank: true %>
+<%= builder.collection_select :ethnicity, ethnicities, :to_s, :to_s, include_blank: true %>
+<%= builder.collection_select :race, races, :to_s, :to_s, include_blank: true %>
 <%= builder.collection_select :driver_license_state, us_states, :last, :first %>
 <%= builder.collection_select :state_of_birth, us_states, :last, :first %>
 <%= builder.collection_select :country_of_birth, countries, :to_s, :to_s %>
