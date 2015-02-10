@@ -1,4 +1,33 @@
-<%= f.date_field :start %>
-<%= f.date_field :end %>
-<%= f.check_box :current, label: "Currently living here", disable: true %>
-<%= f.text_field :reason, label: "Reason for leaving" %>
+<div class="row">
+
+<div class="col-md-4">
+  <h2>Time period</h2>
+    <%= f.date_field :start %>
+    <%= f.date_field :end %>
+    <%= f.check_box :current, label: "Currently living here", disable: true %>
+    <%= f.text_field :reason, label: "Reason for leaving" %>
+    
+  <h2>Residence Address</h2>
+  <%= f.fields_for :address do |a| %>
+    <%= render "addresses/fields", builder: a %>
+  <% end %>
+</div>
+
+<div class="col-md-4">
+  <h2>Landlord</h2>
+  <%= f.fields_for :landlord do |l| %>
+    <%= render "people/name", builder: l %>
+    <%= render "people/contact", builder: l %>
+  <% end%>
+</div>
+
+<div class="col-md-4">
+  <h2>Landlord's address</h2>
+  <%= f.fields_for :landlord do |l| %>
+    <%= l.fields_for :mail_address do |m| %>
+      <%= render "addresses/fields", builder: m %>
+    <% end %>
+  <% end %>
+</div>
+
+</div>
