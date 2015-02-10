@@ -28,10 +28,8 @@ module ApplicantFactory
         state_of_birth: Faker::Address.state_abbr,
         city_of_birth: Faker::Address.city,
         email: Faker::Internet.email,
-        # Sample races from US Census
-        # http://www.census.gov/topics/population/race/about.html
-        race: ["American Indian or Alaska Native", "Asian", "Black or African American", "Native Hawaiian or Other Pacific Islander", "White", "Other"].sample,
-        ethnicity: ["Hispanic or Latino", "Not Hispanic or Latino"].sample,
+        race: Constants::Race.all.sample.name_db,
+        ethnicity: Constants::Ethnicity.all.sample.name_db,
         student_status: ["Not a student", "Part-time", "Full-time"].sample,
         marital_status: ["Single", "Separated", "Married", "Widowed", "Divorced"].sample,
         occupation: ["Butcher", "Baker", "Candlestick Maker"].sample,

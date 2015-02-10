@@ -165,9 +165,29 @@ class Person < ActiveRecord::Base
     when "Gender"
       gender
     when "Race"
-      race
+      Constants::Race.new(race).name_pdf
+    when /RaceAsian(#{boolean_regex})/
+      boolean_field $1 do race == "Asian" end
+    when /RaceBlack(#{boolean_regex})/
+      boolean_field $1 do race == "Black" end
+    when /RaceNativeAmerican(#{boolean_regex})/
+      boolean_field $1 do race == "NativeAmerican" end
+    when /RaceOther(#{boolean_regex})/
+      boolean_field $1 do race == "Other" end
+    when /RacePacificIslander(#{boolean_regex})/
+      boolean_field $1 do race == "PacificIslander" end
+    when /RaceWhite(#{boolean_regex})/
+      boolean_field $1 do race == "White" end
+    when /RaceDecline(#{boolean_regex})/
+      boolean_field $1 do race == "Decline" end
     when "Ethnicity"
-      ethnicity
+      Constants::Ethnicity.new(ethnicity).name_pdf
+    when /EthnicityHispanic(#{boolean_regex})/
+      boolean_field $1 do ethnicity == "Hispanic" end
+    when /EthnicityNotHispanic(#{boolean_regex})/
+      boolean_field $1 do ethnicity == "NotHispanic" end
+    when /EthnicityDecline(#{boolean_regex})/
+      boolean_field $1 do ethnicity == "Decline" end
     when "PreferredPhone"
       cell_phone
     when "WorkPhone"

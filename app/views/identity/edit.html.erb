@@ -1,26 +1,17 @@
 <%= render 'form_page' %>
-
 <%= bootstrap_form_for(@applicant.identity, url: identity_path(@applicant)) do |f| %>
-  <div class="row">
-    <div class="col-md-4">
-      <h4>Head of Household</h4>
-      <%= render 'people/name', builder: f %>
-      <%= render "people/contact", builder: f %>
-      <%= f.text_field :ssn, label: "Social security number" %>
-    </div>
+<%= render "fields", f: f %>
+<%= render "buttons_update_back", f: f %>
+<% end %>
 
-    <div class="col-md-4">
-      <h4>Mail Address</h4>
-      <%= f.fields_for :mail_address do |m| %>
-        <%= render "addresses/fields", builder: m %>
-      <% end %>
-    </div>
+<% if @model.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@model.errors.count, "error") %> prohibited this person from being saved:</h2>
 
-    <div class="col-md-4">
-      <h4>Demographic</h4>
-      <%= render "people/demographic", builder: f %>
-    </div>
+    <ul>
+    <% @model.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
-
-  <%= render "buttons_update_back", f: f %>
 <% end %>

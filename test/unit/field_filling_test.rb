@@ -163,11 +163,6 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", @one.field("EmpIncN")
     assert_equal "", @one.field("EmpIncY")
     assert_equal "", @one.field("English")
-    assert_equal "", @one.field("EthnicityDeclineT")
-    assert_equal "", @one.field("EthnicityHispanic")
-    assert_equal "", @one.field("EthnicityHispanicT")
-    assert_equal "", @one.field("EthnicityNonHispanic")
-    assert_equal "", @one.field("EthnicityNonHispanicT")
     assert_equal "", @one.field("EvictDrugsN")
     assert_equal "", @one.field("EvictDrugsY")
     assert_equal "", @one.field("Farsi")
@@ -203,13 +198,6 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", @one.field("PensionY")
     assert_equal "", @one.field("Polish")
     assert_equal "", @one.field("Portuguese")
-    assert_equal "", @one.field("RaceAsianT")
-    assert_equal "", @one.field("RaceBlackT")
-    assert_equal "", @one.field("RaceDeclineT")
-    assert_equal "", @one.field("RaceNativeAmericanT")
-    assert_equal "", @one.field("RaceOtherT")
-    assert_equal "", @one.field("RacePacificIslanderT")
-    assert_equal "", @one.field("RaceWhiteT")
     assert_equal "", @one.field("Russian")
     assert_equal "", @one.field("SSABensN")
     assert_equal "", @one.field("SSABensY")
@@ -265,4 +253,111 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", @one.field("Viet")
     assert_equal "", @one.field("Yiddish")
   end
+
+  test 'fills races' do
+    app = applicants(:one)
+
+    app.identity.race = "NativeAmerican"
+    assert_equal "Native American", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "Y", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "Asian"
+    assert_equal "Asian", app.field("Race")
+
+    assert_equal "Y", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "Black"
+    assert_equal "Black", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "Y", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "PacificIslander"
+    assert_equal "Pacific Islander", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "Y", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "Other"
+    assert_equal "Other", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "Y", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "White"
+    assert_equal "White", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "Y", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "Decline"
+    assert_equal "Decline to state", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "Y", app.field("RaceDeclineY")
+  end
+
+  test 'fills ethnicities' do
+    app = applicants(:one)
+
+    app.identity.ethnicity = "Hispanic"
+    assert_equal "Hispanic or Latino", app.field("Ethnicity")
+
+    assert_equal "Y", app.field("EthnicityHispanicY")
+    assert_equal "", app.field("EthnicityNotHispanicY")
+    assert_equal "", app.field("EthnicityDeclineY")
+
+    app.identity.ethnicity = "NotHispanic"
+    assert_equal "Not Hispanic or Latino", app.field("Ethnicity")
+
+    assert_equal "", app.field("EthnicityHispanicY")
+    assert_equal "Y", app.field("EthnicityNotHispanicY")
+    assert_equal "", app.field("EthnicityDeclineY")
+
+    app.identity.ethnicity = "Decline"
+    assert_equal "Decline to state", app.field("Ethnicity")
+
+    assert_equal "", app.field("EthnicityHispanicY")
+    assert_equal "", app.field("EthnicityNotHispanicY")
+    assert_equal "Y", app.field("EthnicityDeclineY")
+  end
+
 end
