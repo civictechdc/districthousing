@@ -116,6 +116,37 @@ class Person < ActiveRecord::Base
     gender == "Female"
   end
 
+  def raceblack?
+    race == "Black or African American"
+  end
+  def racewhite?
+    race == "White"
+  end
+  def racenative?
+    race == "American Indian or Alaska Native"
+  end
+  def raceasian?
+    race == "Asian"
+  end
+  def racepacificislander?
+    race == "Native Hawaiian or Other Pacific Islander"
+  end
+  def raceother?
+    race == "Other"
+  end
+  def racedecline?
+    race == ""
+  end
+  def ethnicityh?
+    race == "Hispanic or Latino"
+  end
+  def ethnicitynonh?
+    race == "Not Hispanic or Latino"
+  end
+  def ethnicitydecline?
+    race == ""
+  end
+
   def value_for_field field_name
     case field_name
     when /^Mail(.*)/
@@ -208,9 +239,31 @@ class Person < ActiveRecord::Base
       boolean_field $1 do male? end
     when /GenderFemale(#{boolean_regex})/
       boolean_field $1 do female? end
+    when /GenderFemale(#{boolean_regex})/
+      boolean_field $1 do female? end
+    when /RaceBlack(#{boolean_regex})/
+    	boolean_field $1 do raceblack? end
+    when /RaceWhite(#{boolean_regex})/
+    	boolean_field $1 do racewhite? end
+    when /RaceNativeAmerican(#{boolean_regex})/
+    	boolean_field $1 do racenative? end
+    when /RaceAsian(#{boolean_regex})/
+    	boolean_field $1 do raceasian? end
+    when /RacePacificIslander(#{boolean_regex})/
+    	boolean_field $1 do racepacificislander? end
+    when /RaceOther(#{boolean_regex})/
+    	boolean_field $1 do raceother? end
+    when /RaceDecline(#{boolean_regex})/
+    	boolean_field $1 do racedecline? end
+    when /EthnicityHispanic(#{boolean_regex})/
+    	boolean_field $1 do ethnicityh? end
+    when /EthnicityNonHispanic(#{boolean_regex})/
+    	boolean_field $1 do ethnicitynonh? end
+    when /EthnicityDecline(#{boolean_regex})/
+    	boolean_field $1 do ethnicitydecline? end
     else
       UnknownField.new
     end
   end
 end
- 
+
