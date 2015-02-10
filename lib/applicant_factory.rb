@@ -29,7 +29,7 @@ module ApplicantFactory
         city_of_birth: Faker::Address.city,
         email: Faker::Internet.email,
         race: Constants::Race.all.sample.name_db,
-        ethnicity: ["Hispanic or Latino", "Not Hispanic or Latino"].sample,
+        ethnicity: Constants::Ethnicity.all.sample.name_db,
         student_status: ["Not a student", "Part-time", "Full-time"].sample,
         marital_status: ["Single", "Separated", "Married", "Widowed", "Divorced"].sample,
         occupation: ["Butcher", "Baker", "Candlestick Maker"].sample,
