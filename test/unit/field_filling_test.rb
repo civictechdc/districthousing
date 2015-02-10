@@ -265,4 +265,68 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", @one.field("Viet")
     assert_equal "", @one.field("Yiddish")
   end
+
+  test 'fills races' do
+    app = applicants(:one)
+
+    app.identity.race = "NativeAmerican"
+    assert_equal "Native American", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "Y", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+
+    app.identity.race = "Asian"
+    assert_equal "Asian", app.field("Race")
+
+    assert_equal "Y", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+
+    app.identity.race = "Black"
+    assert_equal "Black", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "Y", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+
+    app.identity.race = "PacificIslander"
+    assert_equal "Pacific Islander", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "Y", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+
+    app.identity.race = "Other"
+    assert_equal "Other", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "Y", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+
+    app.identity.race = "White"
+    assert_equal "White", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "Y", app.field("RaceWhiteY")
+  end
 end

@@ -165,11 +165,19 @@ class Person < ActiveRecord::Base
     when "Gender"
       gender
     when "Race"
-      race
+      Constants::Race.new(race).name_pdf
+    when /RaceAsian(#{boolean_regex})/
+      boolean_field $1 do race == "Asian" end
     when /RaceBlack(#{boolean_regex})/
-      boolean_field $1 do race == 'Black' end
+      boolean_field $1 do race == "Black" end
+    when /RaceNativeAmerican(#{boolean_regex})/
+      boolean_field $1 do race == "NativeAmerican" end
+    when /RaceOther(#{boolean_regex})/
+      boolean_field $1 do race == "Other" end
+    when /RacePacificIslander(#{boolean_regex})/
+      boolean_field $1 do race == "PacificIslander" end
     when /RaceWhite(#{boolean_regex})/
-      boolean_field $1 do race == 'White' end
+      boolean_field $1 do race == "White" end
     when "Ethnicity"
       ethnicity
     when "PreferredPhone"

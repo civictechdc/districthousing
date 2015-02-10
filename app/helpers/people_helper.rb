@@ -42,17 +42,6 @@ module PeopleHelper
     end
   end
 
-  def races
-    [
-      "American Indian or Alaska Native",
-      "Asian",
-      "Black or African American",
-      "Native Hawaiian or Other Pacific Islander",
-      "Other",
-      "White"
-    ]
-  end
-
   def ethnicities
     [
       "Hispanic or Latino",
