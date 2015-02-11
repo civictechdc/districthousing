@@ -19,3 +19,17 @@ $ ->
 
   enableDisableResidenceEnd()
   $('#residence_current').change(enableDisableResidenceEnd)
+
+# Current employment checkbox
+enableDisableEmploymentEnd = ->
+  if $('#employment_current').is(':checked')
+    $('#employment_end_date').prop('disabled', true)
+  else
+    $('#employment_end_date').prop('disabled', false)
+
+$ ->
+  $('.submit-next').click(submitAndNext)
+  $('.submit-previous').click(submitAndPrevious)
+
+  enableDisableEmploymentEnd()
+  $('#employment_current').change(enableDisableEmploymentEnd)

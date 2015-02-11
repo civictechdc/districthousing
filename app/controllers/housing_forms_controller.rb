@@ -33,7 +33,7 @@ class HousingFormsController < ApplicationController
     if @housing_form = HousingForm.create(housing_form_params) do |h|
       if uploaded_file
         h.path = write_file(uploaded_file).to_s
-        h.name = uploaded_file.original_filename
+        h.name = uploaded_file.original_filename if h.name.blank?
       end
     end
       redirect_to @housing_form, notice: 'Housing form was successfully created.'

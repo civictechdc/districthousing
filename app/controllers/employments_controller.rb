@@ -35,6 +35,7 @@ class EmploymentsController < ApplicationController
       :person_id,
       :start_date,
       :end_date,
+      :current,
       :employer_name,
       :supervisor_name,
       :position,
