@@ -270,4 +270,24 @@
   [ "IncomeAddlSch", "Scolarship" ]
 ] %>
 
+<h3>Race and Ethnicity</h3>
+<p>
+For the applicant's race and ethnicity, use the following:
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "Race", "The person's race" ],
+  [ "Ethnicity", "The person's ethnicity" ]
+] %>
+
+<p>
+Boolean race fields are supported as follows.  All Yes/No suffixes are supported.
+Remember, for race/ethnicity checkboxes, which come up frequently, use "TickYes" and "TickNo".
+</p>
+
+<% races = Constants::Race.all.map { |r| ["Race#{r.name_db}YesNo", "Yes if #{r.name_form}, No if not."] } %>
+<%= render "table", field_name_descriptions: races %>
+
+<% ethnicities = Constants::Ethnicity.all.map { |r| ["Ethnicity#{r.name_db}YesNo", "Yes if #{r.name_form}, No if not."] } %>
+<%= render "table", field_name_descriptions: ethnicities %>
 </div>
