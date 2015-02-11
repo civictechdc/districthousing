@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208025246) do
+ActiveRecord::Schema.define(version: 20150211032108) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -53,17 +53,23 @@ ActiveRecord::Schema.define(version: 20150208025246) do
   end
 
   create_table "employments", force: true do |t|
-    t.integer  "person_id"
     t.date     "start_date"
     t.date     "end_date"
     t.string   "employer_name"
     t.string   "supervisor_name"
     t.string   "position"
-    t.integer  "address_id"
     t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "current"
+    t.integer  "person_id"
+    t.integer  "address_id"
+    t.integer  "applicant_id"
   end
+
+  add_index "employments", ["address_id"], name: "index_employments_on_address_id"
+  add_index "employments", ["applicant_id"], name: "index_employments_on_applicant_id"
+  add_index "employments", ["person_id"], name: "index_employments_on_person_id"
 
   create_table "form_fields", force: true do |t|
     t.string   "name"
