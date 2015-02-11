@@ -48,7 +48,7 @@ class Employment < ActiveRecord::Base
       employer_name
     when "Phone"
       phone
-    when /^(\D*)$/
+    when /^(\D+)$/
       unless ['Status','Title','StartDate','EndDate','Employer','Phone'].include?($1)
         delegate_field_to address, $1
       end
