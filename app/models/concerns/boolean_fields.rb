@@ -28,18 +28,20 @@ module BooleanFields
     truth = yield
     if truth
       case boolean_field_component
-      when /Yes/
+      when /^(Tick)?Yes(No)?$|^T$/
         "Yes"
-      when /Y|T/
+      when /^Y$|^YN$/
         "Y"
       else
         ""
       end
     else
       case boolean_field_component
-      when /No/
+      when /^TickNo$/
+        "Yes"
+      when /^(Yes)?No$/
         "No"
-      when /N|F/
+      when /^N$|^YN$/
         "N"
       else
         ""

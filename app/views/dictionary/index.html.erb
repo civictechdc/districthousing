@@ -94,15 +94,29 @@
 </p>
 
 <p>
+  Fields suffixed with "Y", "N", "Yes", or "No" work like "YN" and "YesNo" fields, except
+  that they will leave the field blank if the "Yes" or "No" condition doesn't hold.
+</p>
+
+<p>
+  For checkboxes/tickboxes, use field names suffixed with "TickYes" or "TickNo".  These
+  will produce "Yes" if the condition holds, and a blank if not.  In PDF forms, a tickbox field
+  containing "Yes" is displayed as a ticked box.
+</p>
+
+<p>
   The following table should clarify.
 </p>
 
 <%= render "table", field_name_descriptions: [
-  [ "StudentStatus", "Description of student status" ],
-  [ "StudentStatusFullTimeYN", "Y if full-time, N if part-time or not a student" ],
-  [ "StudentStatusYN", "Y if full-time or part-time, N if not a student" ],
-  [ "MarriedYN", "Y if married, N if not" ],
   [ "MarriedYesNo", "Yes if married, No if not" ],
+  [ "MarriedYN", "Y if married, N if not" ],
+  [ "MarriedYes", "Yes if married, blank if not" ],
+  [ "MarriedNo", "Blank if married, No if not" ],
+  [ "MarriedY", "Y if married, blank if not" ],
+  [ "MarriedN", "Blank if married, N if not" ],
+  [ "MarriedTickYes", "Yes if married, blank if not" ],
+  [ "MarriedTickNo", "Blank if married, Yes if not" ],
 ] %>
 
 <h3>Race and Ethnicity </h3>
@@ -191,38 +205,34 @@
 
 <h3>Employment</h3>
 
+<p>
+  Jobs can be numbered to indicate previous employment. <code>Job1Title</code> is the same as <code>JobTitle</code>, <code>Job2Title</code> is the title of the first previous job, and so on. 
+  Component suffixes work for previous jobs the same way they do for the current job.
+</p>
+
 <%= render "table", field_name_descriptions: [
-  [ "EmploymentStatus", "" ],
-  [ "CurrJobTitle", "" ],
-  [ "CurrJobStartDate", "" ],
-  [ "CurJobEndDate", "" ],
-  [ "CurrEmployer", "" ],
-  [ "CurrJobAddLine1", "" ],
-  [ "CurrJobAddLine2", "" ],
-  [ "CurrJobAddCity", "" ],
-  [ "CurrJobAddState", "" ],
-  [ "CurrJobAddZip", "" ],
-  [ "CurrJobPhone", "" ],
-  [ "CurrJobTitle", "" ],
-  [ "CurrJobStartDate", "" ],
-  [ "CurJobEndDate", "" ],
-  [ "CurrEmployer", "" ],
-  [ "PrevJob1AddLine1", "" ],
-  [ "PrevJob1AddLine2", "" ],
-  [ "PrevJob1AddCity", "" ],
-  [ "PrevJob1AddState", "" ],
-  [ "PrevJob1AddZip", "" ],
-  [ "PrevJob1Phone", "" ],
-  [ "CurrJobTitle", "" ],
-  [ "PrevJob2StartDate", "" ],
-  [ "CurJobEndDate", "" ],
-  [ "CurrEmployer", "" ],
-  [ "PrevJob2AddLine1", "" ],
-  [ "PrevJob2AddLine2", "" ],
-  [ "PrevJob2AddCity", "" ],
-  [ "PrevJob2AddState", "" ],
-  [ "PrevJob2AddZip", "" ],
-  [ "PrevJob2Phone", "" ],
+  [ "JobStatus", "Current employment status" ],
+  [ "JobTitle", "Current or most recent job's title" ],
+  [ "Job1Title", "Current or most recent job's title" ],
+  [ "Job1StartDate", "Current or most recent job's start date" ],
+  [ "Job1EndDate", "Current or most recent job's end date" ],
+  [ "Job1Employer", "Current or most recent employer" ],
+  [ "Job1Street", "Current or most recent job's street address" ],
+  [ "Job1City", "Current or most recent job's city" ],
+  [ "Job1State", "Current or most recent job's state" ],
+  [ "Job1Zip", "Current or most recent job's zip code" ],
+  [ "Job1Phone", "Current or most recent job's phone number" ],
+  [ "Job2Title", "First previous job's title" ],
+  [ "Job2StartDate", "First previous job's start date" ],
+  [ "Job2EndDate", "First previous job's end date" ],
+  [ "Job2Employer", "First previous employer" ],
+  [ "Job2Street", "First previous job's street address" ],
+  [ "Job2City", "First previous job's city" ],
+  [ "Job2State", "First previous job's state" ],
+  [ "Job2Zip", "First previous job's zip code" ],
+  [ "Job2Phone", "First previous job's phone number" ],
+  [ "Job3Title", "Second previous job's title" ],
+  [ "Job4Title", "Third previous job's title" ]
 ] %>
 
 <h3>Income</h3>
@@ -256,4 +266,24 @@
   [ "IncomeAddlSch", "Scolarship" ]
 ] %>
 
+<h3>Race and Ethnicity</h3>
+<p>
+For the applicant's race and ethnicity, use the following:
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "Race", "The person's race" ],
+  [ "Ethnicity", "The person's ethnicity" ]
+] %>
+
+<p>
+Boolean race fields are supported as follows.  All Yes/No suffixes are supported.
+Remember, for race/ethnicity checkboxes, which come up frequently, use "TickYes" and "TickNo".
+</p>
+
+<% races = Constants::Race.all.map { |r| ["Race#{r.name_db}YesNo", "Yes if #{r.name_form}, No if not."] } %>
+<%= render "table", field_name_descriptions: races %>
+
+<% ethnicities = Constants::Ethnicity.all.map { |r| ["Ethnicity#{r.name_db}YesNo", "Yes if #{r.name_form}, No if not."] } %>
+<%= render "table", field_name_descriptions: ethnicities %>
 </div>

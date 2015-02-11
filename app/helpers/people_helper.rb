@@ -37,6 +37,10 @@ module PeopleHelper
       person.mail_address.full
     when 'dob'
       person.dob_date
+    when 'race'
+      Constants::Race.new(person.race).name_form
+    when 'ethnicity'
+      Constants::Ethnicity.new(person.ethnicity).name_form
     else
       person[attribute_name]
     end
