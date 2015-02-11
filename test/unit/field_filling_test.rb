@@ -43,6 +43,7 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", @one.field("MarriedNo")
     assert_equal "Y", @one.field("MarriedYN")
     assert_equal "Yes", @one.field("MarriedYesNo")
+    assert_equal "Part-time", @one.field("StudentStatus")
     assert_equal "N", @one.field("StudentStatusFullTimeYN")
     assert_equal "No", @one.field("StudentStatusFullTimeYesNo")
     assert_equal "Y", @one.field("StudentStatusYN")
@@ -360,4 +361,35 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "Y", app.field("EthnicityDeclineY")
   end
 
+  test 'fills boolean fields in a way that makes sense' do
+    app = applicants(:one)
+    app.identity.ethnicity = "Hispanic"
+
+    # Tick/T values are special.  They are only ever "Yes" or blank.
+    # A "Yes" in a PDF tickbox value will tick the box.
+
+    assert_equal "Y",   app.field("EthnicityHispanicY")
+    assert_equal "Yes", app.field("EthnicityHispanicYes")
+    assert_equal "",    app.field("EthnicityHispanicN")
+    assert_equal "",    app.field("EthnicityHispanicNo")
+    assert_equal "Y",   app.field("EthnicityHispanicYN")
+    assert_equal "Yes", app.field("EthnicityHispanicYesNo")
+
+    assert_equal "Yes", app.field("EthnicityHispanicTickYes")
+    assert_equal "Yes", app.field("EthnicityHispanicT")
+    assert_equal "",    app.field("EthnicityHispanicTickNo")
+
+    app.identity.ethnicity = "NotHispanic"
+
+    assert_equal "",    app.field("EthnicityHispanicY")
+    assert_equal "",    app.field("EthnicityHispanicYes")
+    assert_equal "N",   app.field("EthnicityHispanicN")
+    assert_equal "No",  app.field("EthnicityHispanicNo")
+    assert_equal "N",   app.field("EthnicityHispanicYN")
+    assert_equal "No",  app.field("EthnicityHispanicYesNo")
+
+    assert_equal "",    app.field("EthnicityHispanicTickYes")
+    assert_equal "",    app.field("EthnicityHispanicT")
+    assert_equal "Yes", app.field("EthnicityHispanicTickNo")
+  end
 end
