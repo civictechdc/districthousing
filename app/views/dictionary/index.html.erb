@@ -205,38 +205,34 @@
 
 <h3>Employment</h3>
 
+<p>
+  Jobs can be numbered to indicate previous employment. <code>Job1Title</code> is the same as <code>JobTitle</code>, <code>Job2Title</code> is the title of the first previous job, and so on. 
+  Component suffixes work for previous jobs the same way they do for the current job.
+</p>
+
 <%= render "table", field_name_descriptions: [
-  [ "EmploymentStatus", "" ],
-  [ "CurrJobTitle", "" ],
-  [ "CurrJobStartDate", "" ],
-  [ "CurJobEndDate", "" ],
-  [ "CurrEmployer", "" ],
-  [ "CurrJobAddLine1", "" ],
-  [ "CurrJobAddLine2", "" ],
-  [ "CurrJobAddCity", "" ],
-  [ "CurrJobAddState", "" ],
-  [ "CurrJobAddZip", "" ],
-  [ "CurrJobPhone", "" ],
-  [ "CurrJobTitle", "" ],
-  [ "CurrJobStartDate", "" ],
-  [ "CurJobEndDate", "" ],
-  [ "CurrEmployer", "" ],
-  [ "PrevJob1AddLine1", "" ],
-  [ "PrevJob1AddLine2", "" ],
-  [ "PrevJob1AddCity", "" ],
-  [ "PrevJob1AddState", "" ],
-  [ "PrevJob1AddZip", "" ],
-  [ "PrevJob1Phone", "" ],
-  [ "CurrJobTitle", "" ],
-  [ "PrevJob2StartDate", "" ],
-  [ "CurJobEndDate", "" ],
-  [ "CurrEmployer", "" ],
-  [ "PrevJob2AddLine1", "" ],
-  [ "PrevJob2AddLine2", "" ],
-  [ "PrevJob2AddCity", "" ],
-  [ "PrevJob2AddState", "" ],
-  [ "PrevJob2AddZip", "" ],
-  [ "PrevJob2Phone", "" ],
+  [ "JobStatus", "Current employment status" ],
+  [ "JobTitle", "Current or most recent job's title" ],
+  [ "Job1Title", "Current or most recent job's title" ],
+  [ "Job1StartDate", "Current or most recent job's start date" ],
+  [ "Job1EndDate", "Current or most recent job's end date" ],
+  [ "Job1Employer", "Current or most recent employer" ],
+  [ "Job1Street", "Current or most recent job's street address" ],
+  [ "Job1City", "Current or most recent job's city" ],
+  [ "Job1State", "Current or most recent job's state" ],
+  [ "Job1Zip", "Current or most recent job's zip code" ],
+  [ "Job1Phone", "Current or most recent job's phone number" ],
+  [ "Job2Title", "First previous job's title" ],
+  [ "Job2StartDate", "First previous job's start date" ],
+  [ "Job2EndDate", "First previous job's end date" ],
+  [ "Job2Employer", "First previous employer" ],
+  [ "Job2Street", "First previous job's street address" ],
+  [ "Job2City", "First previous job's city" ],
+  [ "Job2State", "First previous job's state" ],
+  [ "Job2Zip", "First previous job's zip code" ],
+  [ "Job2Phone", "First previous job's phone number" ],
+  [ "Job3Title", "Second previous job's title" ],
+  [ "Job4Title", "Third previous job's title" ]
 ] %>
 
 <h3>Income</h3>
