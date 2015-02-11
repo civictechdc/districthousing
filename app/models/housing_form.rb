@@ -14,14 +14,6 @@ class HousingForm < ActiveRecord::Base
     name.to_s
   end
 
-  def name
-    unless read_attribute(:name).blank?
-      read_attribute(:name).to_s
-    else
-      File.basename read_attribute(:path)
-    end
-  end
-
   def read_fields!
     form_fields.destroy_all
     unless path.nil?

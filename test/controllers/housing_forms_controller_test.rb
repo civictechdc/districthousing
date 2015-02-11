@@ -57,6 +57,22 @@ class HousingFormsControllerTest < ActionController::TestCase
     assert_equal nil,  assigns(:housing_form).path
   end
 
+  def test_create_name_and_pdf
+    sign_in users(:one)
+
+    assert_difference('HousingForm.count') do
+      post :create, housing_form: {
+        new_form: fixture_file_upload('form.pdf', 'application/pdf'),
+        name: 'My Form'
+      }
+    end
+    assert_not_nil assigns(:housing_form)
+    assert_redirected_to housing_form_path(assigns(:housing_form))
+
+    assert_equal "My Form", assigns(:housing_form).name
+    assert_equal "aTempName.pdf", assigns(:housing_form).path
+  end
+
   def test_show
     sign_in users(:one)
     get :show, id: housing_form
