@@ -37,6 +37,7 @@ DchousingApps::Application.routes.draw do
   get "home/index"
   get "/pdf_guide", to: "pdf_guide#index"
   get "/dictionary", to: "dictionary#index"
+  get "/dictionary/test.json", to: "dictionary#test"
 
   root to: 'home#index'
 end
