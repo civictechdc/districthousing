@@ -94,15 +94,29 @@
 </p>
 
 <p>
+  Fields suffixed with "Y", "N", "Yes", or "No" work like "YN" and "YesNo" fields, except
+  that they will leave the field blank if the "Yes" or "No" condition doesn't hold.
+</p>
+
+<p>
+  For checkboxes/tickboxes, use field names suffixed with "TickYes" or "TickNo".  These
+  will produce "Yes" if the condition holds, and a blank if not.  In PDF forms, a tickbox field
+  containing "Yes" is displayed as a ticked box.
+</p>
+
+<p>
   The following table should clarify.
 </p>
 
 <%= render "table", field_name_descriptions: [
-  [ "StudentStatus", "Description of student status" ],
-  [ "StudentStatusFullTimeYN", "Y if full-time, N if part-time or not a student" ],
-  [ "StudentStatusYN", "Y if full-time or part-time, N if not a student" ],
-  [ "MarriedYN", "Y if married, N if not" ],
   [ "MarriedYesNo", "Yes if married, No if not" ],
+  [ "MarriedYN", "Y if married, N if not" ],
+  [ "MarriedYes", "Yes if married, blank if not" ],
+  [ "MarriedNo", "Blank if married, No if not" ],
+  [ "MarriedY", "Y if married, blank if not" ],
+  [ "MarriedN", "Blank if married, N if not" ],
+  [ "MarriedTickYes", "Yes if married, blank if not" ],
+  [ "MarriedTickNo", "Blank if married, Yes if not" ],
 ] %>
 
 <h3>Race and Ethnicity </h3>
