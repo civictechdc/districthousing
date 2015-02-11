@@ -87,10 +87,10 @@ class Applicant < ActiveRecord::Base
       delegate_field_to residences[index], $2
     when /^Address(.*)$/
       delegate_field_to residences[0], $1
-    when /^Job(\d+)(.*)$/
+    when /^Job(\d+)(.+)$/
       index = $1.to_i - 1
       delegate_field_to employments[index], $2
-    when /^Job(.*)$/
+    when /^Job(.+)$/
       delegate_field_to employments[0], $1
     when "Today"
       Date.today
