@@ -154,7 +154,7 @@ class Person < ActiveRecord::Base
       cell_phone
     when "HomePhone"
       home_phone
-    when "Phone"
+    when /(Preferred)?Phone/
       preferred_phone
     when "Email"
       email
@@ -186,22 +186,18 @@ class Person < ActiveRecord::Base
       boolean_field $1 do ethnicity == "NotHispanic" end
     when /EthnicityDecline(#{boolean_regex})/
       boolean_field $1 do ethnicity == "Decline" end
-    when "PreferredPhone"
-      cell_phone
-    when "WorkPhone"
-      work_phone
     when "CountryOfBirth"
       country_of_birth
+    when "BirthState"
+      state_of_birth
+    when "BirthCity"
+      city_of_birth
     when "MaritalStatus"
       marital_status
     when "StudentStatus"
       student_status
     when "Occupation"
       occupation
-    when "BirthState"
-      state_of_birth
-    when "BirthCity"
-      city_of_birth
     when "Citizenship"
       citizenship
     when "Nationality"

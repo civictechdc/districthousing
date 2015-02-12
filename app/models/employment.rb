@@ -1,11 +1,11 @@
 class Employment < ActiveRecord::Base
   include Progress
   include FindIndex
-  
+
   def applicant
     person.applicant
   end
-  
+
   part_of :employments
   progress_includes :address
 
@@ -32,7 +32,7 @@ class Employment < ActiveRecord::Base
       "Employment at #{employer_name} from #{start_date} to #{end_date}"
     end
   end
-  
+
   ## NEED TO FIGURE OUT HOW STATUS IS DEFINED
 
   def value_for_field field_name
