@@ -37,22 +37,24 @@ class IncomesControllerTest < ActionController::TestCase
   end
 
   def test_update
-    assert income.amount = 123
-    assert income.person_id = 1
-    assert income.income_type = "salary"
-    assert income.interval = "yearly"
+    assert_equal 123, income.amount
+    assert_equal people(:one), income.person
+    assert_equal "salary", income.income_type
+    assert_equal "yearly", income.interval
 
     put :update, applicant_id: applicants(:one), id: income, income: {
       amount: 456,
-      person_id: 2,
+      person_id: people(:two),
       income_type: "tips",
       interval: "weekly"
     }
 
-    assert income.amount = 456
-    assert income.person_id = 2
-    assert income.income_type = "tips"
-    assert income.interval = "weekly"
+    updated_income = Income.find(income.id)
+
+    assert_equal 456, updated_income.amount
+    assert_equal people(:two).id, updated_income.person_id
+    assert_equal "tips", updated_income.income_type
+    assert_equal "weekly", updated_income.interval
 
     assert_redirected_to edit_applicant_income_path(applicants(:one), income)
   end
