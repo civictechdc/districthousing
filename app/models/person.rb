@@ -154,7 +154,7 @@ class Person < ActiveRecord::Base
       cell_phone
     when "HomePhone"
       home_phone
-    when /(Preferred)?Phone/
+    when /^(Preferred)?Phone$/
       preferred_phone
     when "Email"
       email
