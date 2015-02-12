@@ -36,7 +36,8 @@
   [ "Age", "Age"],
   [ "BirthState", "State of birth"],
   [ "BirthCity", "City of birth"],
-  [ "Nationality", "Nationality/citizenship"],
+  [ "Citizenship", "Citizenship"],
+  [ "Nationality", "Same as Citizenship"],
   [ "USCitizenYesNo", "Is the person a US Citizen?"],
   [ "Gender", "The person's gender"],
   [ "GenderInitial", "First letter of gender"],
@@ -126,21 +127,6 @@
   [ "MarriedN", "Blank if married, N if not" ],
   [ "MarriedTickYes", "Yes if married, blank if not" ],
   [ "MarriedTickNo", "Blank if married, Yes if not" ],
-] %>
-
-<h3>Race and Ethnicity </h3>
-
-<%= render "table", field_name_descriptions: [
-  [ "RaceBlackTickYes", "Applicant race identity:Black yes or no" ],
-  [ "RaceWhiteTickYes", "Applicant race identity:White yes or no" ],
-  [ "RaceNativeAmericanTickYes", "Applicant race identity:AmericanIndian yes or no" ],
-  [ "RaceAsianTickYes", "Applicant race identity:Asian yes or no" ],
-  [ "RacePacificIslanderTickYes", "Race is Hawaiian or other Pacific Islander" ],
-  [ "RaceOtherTickYes", "Race is \"Other\"" ],
-  [ "RaceDeclineTickYes", "Applicant race identity:Do not wish to Answer yes or no" ],
-  [ "EthnicityHispanicTickYes", "Applicant race identity:Hispanic yes or no" ],
-  [ "EthnicityNonHispanicTickYes", "Applicant race identity:NonHispanic yes or no" ],
-  [ "EthnicityDeclineTickYes", "Applicant race identity:No Answer yes or no" ],
 ] %>
 
 <h3>Addresses</h3>

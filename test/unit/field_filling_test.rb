@@ -392,4 +392,11 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "",    app.field("EthnicityHispanicT")
     assert_equal "Yes", app.field("EthnicityHispanicTickNo")
   end
+
+  test 'nationality and citizenship are the same' do
+    app = applicants(:one)
+
+    assert_equal "United States",    app.field("Citizenship")
+    assert_equal "United States",    app.field("Nationality")
+  end
 end
