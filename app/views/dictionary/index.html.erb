@@ -24,10 +24,13 @@
 
 <%= render "table", field_name_descriptions: [
   [ "Name", "Full name" ],
+  [ "FullName", "Full name" ],
   [ "FirstName", "First name"],
-  [ "MiddleInitial", "Middle initial"],
   [ "MiddleName", "Middle name"],
   [ "LastName", "Last name"],
+  [ "FirstInitial", "First initial"],
+  [ "MiddleInitial", "Middle initial"],
+  [ "LastInitial", "Last initial"],
   [ "SSN", "Social security number"],
   [ "DOB", "Date of birth in MM/DD/YYYY format"],
   [ "DOBMM", "Date of birth two-digit month"],
@@ -43,16 +46,21 @@
   [ "GenderInitial", "First letter of gender"],
   [ "Address", "Applicant's current residential address"],
   [ "Mail", "Applicant's mailing address"],
-  [ "Phone", "Applicant's phone number"],
+  [ "Phone", "Applicant's preferred phone number"],
+  [ "PreferredPhone", "Applicant's preferred phone number"],
   [ "HomePhone", "Applicant's home phone number"],
   [ "WorkPhone", "Applicant's work phone number"],
   [ "CellPhone", "Applicant's cell phone number"],
   [ "Email", "Applicant's e-mail address"],
   [ "MaritalStatus", "Applicant's marital status (Single, Separated, Married, Divorced, Widowed)"],
+  [ "StudentStatus", "Applicant's student status (Full-time, Part-time, Not a student)"],
   [ "Occupation", "Applicant's occupation"],
   [ "DriverLicense", "Driver's license number"],
   [ "DriverLicenseState", "Driver's license state"],
   [ "Relationship", "Relationship to the applicant"],
+  [ "CountryOfBirth", "Country of birth"],
+  [ "BirthState", "State of birth"],
+  [ "BirthCity", "City of birth"],
 ] %>
 
 <h4>Person prefixes</h4>
@@ -148,6 +156,7 @@
   [ "AddressApt", "Residence apartment" ],
   [ "AddressStart", "Start date of this address" ],
   [ "AddressEnd", "Start date of this address" ],
+  [ "AddressReasonForMoving", "Reason for leaving this address" ],
   [ "AddressLeaseExpDate", "Date that the lease expires at this address" ],
   [ "AddressRent", "Rent amount in USD at this address" ],
   [ "Mail", "Mailing full address" ],
@@ -230,38 +239,7 @@
   [ "Job4Title", "Third previous job's title" ]
 ] %>
 
-<h3>Income</h3>
-<%= render "table", field_name_descriptions: [
-  [ "IncomeMain", "" ],
-  [ "IncomeMainAmt", ""],
-  [ "IncomeAddlSS",  "Social Security Benefits" ],
-  [ "IncomeAddlDB",  "Disability Benefits" ],
-  [ "IncomeAddlRB",  "Retirement Benefits" ],
-  [ "IncomeAddlMI",  "Military Income" ],
-  [ "IncomeAddlPT",  "Part-time Employment Income" ],
-  [ "IncomeAddlOT",  "Overtime Income" ],
-  [ "IncomeAddlC", "Commissions" ],
-  [ "IncomeAddlCS",  "Child Support" ],
-  [ "IncomeAddlAssets", "Assets Income" ],
-  [ "IncomeAddlGA",  "Government Assistance" ],
-  [ "IncomeAddlSelfEmp", "Self Employment Income" ],
-  [ "IncomeAddlGift",  "Cash Gifts" ],
-  [ "IncomeAddlWC",  "Worker's Compensation" ],
-  [ "IncomeAddlUI",  "Unemployment Income" ],
-  [ "IncomeAddlSev",  "Severance" ],
-  [ "IncomeAddlIns", "Insurance Income" ],
-  [ "IncomeAddlAl",  "Alimony" ],
-  [ "IncomeAddlP", "Pension" ],
-  [ "IncomeAddlVB",  "Veterans Benefits" ],
-  [ "IncomeAddlLot", "Lottery" ],
-  [ "IncomeAddlLI",  "Life Insurance Income" ],
-  [ "IncomeAddlRI",  "Rental Income" ],
-  [ "IncomeAddlStock", "Stock Income" ],
-  [ "IncomeAddlTF",  "Trust Fund Income" ],
-  [ "IncomeAddlSch", "Scolarship" ]
-] %>
-
-<h3>Race and Ethnicity</h3>
+<h3>Race and ethnicity</h3>
 <p>
 For the applicant's race and ethnicity, use the following:
 </p>
@@ -272,7 +250,7 @@ For the applicant's race and ethnicity, use the following:
 ] %>
 
 <p>
-Boolean race fields are supported as follows.  All Yes/No suffixes are supported.
+Yes/No race fields are supported as follows.  All Yes/No suffixes are supported.
 Remember, for race/ethnicity checkboxes, which come up frequently, use "TickYes" and "TickNo".
 </p>
 
@@ -281,4 +259,30 @@ Remember, for race/ethnicity checkboxes, which come up frequently, use "TickYes"
 
 <% ethnicities = Constants::Ethnicity.all.map { |r| ["Ethnicity#{r.name_db}YesNo", "Yes if #{r.name_form}, No if not."] } %>
 <%= render "table", field_name_descriptions: ethnicities %>
+
+<h3>Marital status</h3>
+
+<p>
+Several marital statuses can be used in Yes/No fields.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "MarriedYesNo", "Yes if married, No if not." ],
+  [ "SingleYesNo", "Yes if single, No if not." ],
+  [ "DivorcedYesNo", "Yes if divorced, No if not." ],
+  [ "WidowedYesNo", "Yes if widowed, No if not." ],
+  [ "SeparatedYesNo", "Yes if separated, No if not." ],
+] %>
+
+<h3>Genders</h3>
+
+<p>
+Gender Yes/No fields work as follows.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "GenderMaleYesNo", "Yes if male, No if not" ],
+  [ "GenderFemaleYesNo", "Yes if female, No if not" ],
+] %>
+
 </div>
