@@ -6,11 +6,11 @@ $ ->
     "columnDefs": [
       {
         "orderable": false,
-        "targets": [2,3,7,8]
+        "targets": [6,7,8,9]
       },
       {
         "searchable": false,
-        "targets": [2,3,4,5,6,7,8]
+        "targets": [2,3,4,5,6,7,8,9]
       }
     ],
     "dom": '<"wrapper"ftpr>'
@@ -22,11 +22,11 @@ $ ->
     "columnDefs": [
       {
         "orderable": false,
-        "targets": [2,3]
+        "targets": [6,7,8]
       },
       {
         "searchable": false,
-        "targets": [2,3,4,5,6]
+        "targets": [2,3,4,5,6,7,8]
       }
     ],
     "dom": '<"wrapper"ftpr>'

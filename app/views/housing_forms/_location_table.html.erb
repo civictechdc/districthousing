@@ -9,6 +9,7 @@
     <tr>
       <th>Name</th>
       <th>Location</th>
+      <th>Last Updated</th>
       <th>Total fields</th>
       <th>Fields fillable</th>
       <th>Fields with content for <%= @applicant %></th>
@@ -25,6 +26,7 @@
     <tr>
       <td><%= housing_form.name %></td>
       <td><%= housing_form.location %></td>
+      <td><%= housing_form.updated_at.strftime("%y-%m-%d %H:%M") %></td>
       <td><%= housing_form.field_results(@applicant).count %></td>
       <td><%= housing_form.known_fields(@applicant).count %></td>
       <td><%= housing_form.filled_fields(@applicant).count %></td>
