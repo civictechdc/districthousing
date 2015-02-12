@@ -87,7 +87,7 @@ class Person < ActiveRecord::Base
   def single?
     marital_status == "Single"
   end
-  
+
   def divorced?
     marital_status == "Divorced"
   end
@@ -111,7 +111,7 @@ class Person < ActiveRecord::Base
   def male?
     gender == "Male"
   end
-  
+
   def female?
     gender == "Female"
   end
@@ -202,6 +202,10 @@ class Person < ActiveRecord::Base
       state_of_birth
     when "BirthCity"
       city_of_birth
+    when "Citizenship"
+      citizenship
+    when "Nationality"
+      citizenship # Synonymous with Citizenship
     when /USCitizen(#{boolean_regex})/
       boolean_field $1 do us_citizen? end
     when "DriverLicense"
@@ -233,4 +237,4 @@ class Person < ActiveRecord::Base
     end
   end
 end
- 
+
