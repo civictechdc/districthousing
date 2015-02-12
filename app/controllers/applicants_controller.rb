@@ -69,7 +69,7 @@ class ApplicantsController < ApplicationController
 
   def add_new_income applicant
     Income.create do |i|
-      i.income_type = IncomeType.find_by(name: "salary")
+      i.income_type = "salary"
       i.person = applicant.identity
     end
   end

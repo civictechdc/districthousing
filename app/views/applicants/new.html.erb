@@ -70,8 +70,8 @@
       An income source is any of the following:
     </p>
     <ul>
-      <% IncomeType.all.each do |i| %>
-        <li><%= i.label %></li>
+      <% Constants::IncomeType.all.each do |i| %>
+        <li><%= i.name_form %></li>
       <% end %>
     </ul>
   </div>

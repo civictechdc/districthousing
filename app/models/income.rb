@@ -1,15 +1,14 @@
 class Income < ActiveRecord::Base
   include Progress
   include FindIndex
-  
+
   part_of :incomes
-  
+
   def applicant
     person.applicant
   end
-  
+
   belongs_to :person
-  belongs_to :income_type
 
   def to_s
     unless source.blank?
@@ -21,6 +20,6 @@ class Income < ActiveRecord::Base
 
   def source
     return "" if income_type.nil?
-    income_type.label
+    Constants::IncomeType.new(income_type).name_form
   end
 end

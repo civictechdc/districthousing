@@ -20,7 +20,6 @@ module Constants
     end
 
     attr_reader :name_db
-    attr_reader :name_form
 
     def name_pdf
       {
@@ -62,13 +61,76 @@ module Constants
     end
 
     attr_reader :name_db
-    attr_reader :name_form
 
     def name_pdf
       {
         "Hispanic" => "Hispanic or Latino",
         "NotHispanic" => "Not Hispanic or Latino",
         "Decline" => "Decline to state",
+      }[name_db]
+    end
+
+    def name_form
+      name_pdf
+    end
+  end
+
+  class IncomeType
+    def self.all
+      [
+        IncomeType.new("salary"),
+        IncomeType.new("military"),
+        IncomeType.new("part-time"),
+        IncomeType.new("self"),
+        IncomeType.new("social_security"),
+        IncomeType.new("disability_benefits"),
+        IncomeType.new("military"),
+        IncomeType.new("veterans_benefits"),
+        IncomeType.new("commissions"),
+        IncomeType.new("child_support"),
+        IncomeType.new("rental"),
+        IncomeType.new("stock"),
+        IncomeType.new("insurance"),
+        IncomeType.new("trust_fund"),
+        IncomeType.new("government_assistance"),
+        IncomeType.new("cash_gifts"),
+        IncomeType.new("workers_compensation"),
+        IncomeType.new("severance"),
+        IncomeType.new("lottery"),
+        IncomeType.new("alimony"),
+        IncomeType.new("scholarship"),
+      ]
+    end
+
+    def initialize db
+      @name_db = db
+    end
+
+    attr_reader :name_db
+
+    def name_pdf
+      {
+        "salary" => "Salary / Full-Time Employment Income",
+        "military" => "Military Income",
+        "part-time" => "Part-Time Employment Income",
+        "self" => "Self-Employment Income",
+        "social_security" => "Social Security Income",
+        "disability_benefits" => "Disability Benefits",
+        "military" => "Military Income",
+        "veterans_benefits" => "Veterans Benefits",
+        "commissions" => "Commissions",
+        "child_support" => "Child Support",
+        "rental" => "Rental Income",
+        "stock" => "Stock Income",
+        "insurance" => "Insurance Income",
+        "trust_fund" => "Trust Fund Income",
+        "government_assistance" => "Government Assistance",
+        "cash_gifts" => "Cash Gifts",
+        "workers_compensation" => "Worker's Compensation",
+        "severance" => "Severance",
+        "lottery" => "Lottery",
+        "alimony" => "Alimony",
+        "scholarship" => "Scholarship",
       }[name_db]
     end
 

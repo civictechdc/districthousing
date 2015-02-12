@@ -62,7 +62,7 @@ module ApplicantFactory
 
     def make_an_income
       Income.new(
-        income_type_id: IncomeType.all.sample.id,
+        income_type: Constants::IncomeType.all.sample.name_db,
         amount: rand(1000),
         interval: ['weekly', 'monthly', 'yearly'].sample,
       )
