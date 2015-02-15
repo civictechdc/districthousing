@@ -27,7 +27,7 @@ class ApplicantsController < ApplicationController
         @applicant.identity.employments << add_new_employment(@applicant)
       end
       params[:contact_count].to_i.times do
-        @applicant.identity.contacts << add_new_contact(@applicant)
+        @applicant.contacts << add_new_contact(@applicant)
       end
       success = @applicant.save
     end

@@ -158,4 +158,26 @@
   </div>
 </div>
 
+<!--<h2>Contacts</h2>-->
+<!--<div class="row">-->
+<!--  <#% @applicant.contacts.each do |e| %>-->
+<!--    <div class="col-md-4">-->
+<!--      <div class='panel panel-default'>-->
+<!--        <#%= render partial: "contacts/summary", locals: { contact: e } %>-->
+<!--        <div class="panel-footer">-->
+<!--          <#%= link_to "Edit", edit_path(e), class: "btn btn-info"%>-->
+<!--          <#%= link_to 'Delete', basic_path(e), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  <#% end %>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--  <div class="col-md-4">-->
+<!--    <p>-->
+<!--    <#%= link_to "New", new_applicant_contact_path(@applicant), class: "btn btn-success"%>-->
+<!--    </p>-->
+<!--  </div>-->
+<!--</div>-->
+
 <%= link_to 'Select Buildings to Apply To', housing_forms_path, class: "btn btn-lg btn-primary" %>

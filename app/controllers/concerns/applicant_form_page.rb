@@ -14,8 +14,9 @@ module ApplicantFormPage
       :residences,
       :incomes,
       :employments,
-      :criminal_histories,
-      :contacts,
+      :criminal_histories
+      #,
+#      :contacts
     ]
   end
 
