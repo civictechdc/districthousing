@@ -1,0 +1,20 @@
+<div class="row">
+
+<div class="col-md-4">
+  <h2>Contact</h2>
+  <%= f.fields_for :contact do |c| %>
+    <%= render "people/name", builder: c %>
+    <%= render "people/contact", builder: c %>
+  <% end%>
+</div>
+
+<div class="col-md-4">
+  <h2>Contact's address</h2>
+  <%= f.fields_for :contact do |c| %>
+    <%= c.fields_for :mail_address do |m| %>
+      <%= render "addresses/fields", builder: m %>
+    <% end %>
+  <% end %>
+</div>
+
+</div>

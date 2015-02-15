@@ -1,0 +1,11 @@
+<div class="panel-heading">
+Contact
+</div>
+
+<ul class="list-group">
+  <%= render 'maybe', attribute: "Name", object: applicant.contact.full_name %>
+  <%= render 'maybe', attribute: "Address", object: applicant.contact.mail_address.full %>
+  <% %w(cell_phone home_phone work_phone email).each do |attribute_name| %>
+    <%= render 'maybe', attribute: attribute_name.humanize, object: applicant.contact[attribute_name] %>
+  <% end %>
+</ul>
