@@ -7,11 +7,17 @@ class Applicant < ActiveRecord::Base
   progress_includes_collection :incomes
   progress_includes_collection :employments
   progress_includes_collection :criminal_histories
+  progress_includes_collection :contacts
 
   has_many :people
   has_many :household_members, dependent: :destroy
   has_many :household_members_people, through: :household_members, source: :person, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :household_members, allow_destroy: true
+  
+  has_many :contacts, dependent: :destroy
+  has_many :contacts_people, through: :contacts, source: :person, class_name: "Contact", dependent: :destroy
+  accepts_nested_attributes_for :contacts, allow_destroy: true
+  
 
   belongs_to :identity, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :identity
@@ -31,7 +37,7 @@ class Applicant < ActiveRecord::Base
   has_one :salesforce_applicant
 
   before_validation :initialize_applicant
-  validates_associated :identity, :household_members, :residences, :employments, :incomes, :criminal_histories
+  validates_associated :identity, :household_members, :residences, :employments, :incomes, :criminal_histories, :contacts
   validates :identity, presence: true
   validates :user, presence: true
 
@@ -92,6 +98,11 @@ class Applicant < ActiveRecord::Base
       delegate_field_to employments[index], $2
     when /^Job(.+)$/
       delegate_field_to employments[0], $1
+    when /^Contact(\d+)(.+)$/
+      index = $1.to_i - 1
+      delegate_field_to contacts[index], $2
+    when /^Contact(.+)$/
+      delegate_field_to contacts[0], $1
     when "Today"
       Date.today
     when "Now"

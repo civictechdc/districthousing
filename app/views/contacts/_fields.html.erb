@@ -1,0 +1,18 @@
+<%= f.fields_for :person do |p| %>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Contact</h4>
+      <%= render 'people/name', builder: p %>
+      <%= render "people/contact", builder: p %>
+      <%= f.text_field :relationship, label: "Relationship to you" %>
+    </div>
+
+    <div class="col-md-4">
+      <h4>Contact Mailing Address</h4>
+      <%= p.fields_for :mail_address do |m| %>
+        <%= render "addresses/fields", builder: m %>
+      <% end %>
+    </div>
+
+  </div>
+<% end %>

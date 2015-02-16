@@ -47,6 +47,6 @@ class IncomesController < ApplicationController
   end
 
   def back_of_previous_section
-    edit_residence_path(@applicant.residences.last)
+    edit_applicant_criminal_history_path(@applicant.criminal_histories.last)
   end
 end

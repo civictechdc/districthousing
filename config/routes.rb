@@ -13,6 +13,7 @@ DchousingApps::Application.routes.draw do
   get '/applicants/:applicant_id/incomes/front', to: 'incomes#front', as: 'incomes_front'
   get '/applicants/:applicant_id/employments/front', to: 'employments#front', as: 'employments_front'
   get '/applicants/:applicant_id/criminal_histories/front', to: 'criminal_histories#front', as: 'criminal_histories_front'
+  get '/applicants/:applicant_id/contacts/front', to: 'contacts#front', as: 'contacts_front'
 
   get '/applicants/:applicant_id/identity/back', to: 'identity#back', as: 'identity_back'
   get '/applicants/:applicant_id/household_members/back', to: 'household_members#back', as: 'household_members_back'
@@ -20,6 +21,7 @@ DchousingApps::Application.routes.draw do
   get '/applicants/:applicant_id/incomes/back', to: 'incomes#back', as: 'incomes_back'
   get '/applicants/:applicant_id/employments/back', to: 'employments#back', as: 'employments_back'
   get '/applicants/:applicant_id/criminal_histories/back', to: 'criminal_histories#back', as: 'criminal_histories_back'
+  get '/applicants/:applicant_id/contacts/back', to: 'contacts#back', as: 'contacts_back'
 
   resources :applicants do
     resources :household_members
@@ -27,6 +29,7 @@ DchousingApps::Application.routes.draw do
     resources :employments
     resources :incomes
     resources :criminal_histories
+    resources :contacts
   end
 
   resources :housing_forms
