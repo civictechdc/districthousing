@@ -70,15 +70,12 @@ class FieldFillingTest < ActiveSupport::TestCase
   end
 
   test "fills contact information" do
-    assert_equal "", @one.field("Contact1Add")
-    assert_equal "", @one.field("Contact1Address")
-    assert_equal "", @one.field("Contact1CellPhone")
-    assert_equal "", @one.field("Contact1Name")
-    assert_equal "", @one.field("Contact1Phone")
-    assert_equal "", @one.field("Contact1Relationship")
-    assert_equal "", @one.field("Contact2Add")
-    assert_equal "", @one.field("Contact2Name")
-    assert_equal "", @one.field("Contact2Phone")
+    assert_equal "(202) 208-4743", @one.field("Contact1CellPhone")
+    assert_equal "One John McOne", @one.field("Contact1Name")
+    assert_equal "(202) 208-4743", @one.field("Contact1Phone")
+    assert_equal "Boss", @one.field("Contact1Relationship")
+    assert_equal "Two McTwo Jane", @one.field("Contact2Name")
+    assert_equal "two@districthousing.org", @one.field("Contact2Email")
   end
 
   test "fills household member information" do
