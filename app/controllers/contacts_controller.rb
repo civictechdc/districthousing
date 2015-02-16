@@ -20,7 +20,6 @@ class ContactsController < ApplicationController
     c.applicant = @applicant
     c
   end
-  binding.pry
 
   def set_model
     @model = Contact.find(params[:id])
