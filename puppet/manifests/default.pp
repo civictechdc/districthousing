@@ -63,6 +63,10 @@ package { 'nodejs':
 
 # --- Ruby ---------------------------------------------------------------------
 
+exec { 'install_gpg_keys':
+  command => "${as_vagrant} 'gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3'",
+}
+
 exec { 'install_rvm':
   command => "${as_vagrant} 'curl -L https://get.rvm.io | bash -s stable'",
   creates => "${home}/.rvm/bin/rvm",
@@ -81,7 +85,7 @@ exec { 'install_ruby':
 }
 
 # RVM installs a version of bundler, but for edge Rails we want the most recent one.
-exec { "install_bundler": 
+exec { "install_bundler":
   command => "${as_vagrant} 'gem install bundler --no-rdoc --no-ri'",
   creates => "${home}/.rvm/bin/bundle",
   require => Exec['install_ruby']
@@ -100,7 +104,7 @@ $rubyhome = "${home}/.rvm/gems/ruby-${ruby_version}/bin"
 
 stage { 'dc-housing': }
 
-class dc-housing-setup { 
+class dc-housing-setup {
   package { "pdftk":
     ensure => latest
   }
