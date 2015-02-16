@@ -1,5 +1,3 @@
-<!--Need to edit to make only display correct fields-->
-
 <ul class="list-group">
   <%= render 'maybe', attribute: "Name", object: contact.person.full_name %>
   <%= render partial: 'maybe', locals: { attribute: 'Relationship', object: contact.relationship } %>

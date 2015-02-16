@@ -52,19 +52,6 @@ class ContactsController < ApplicationController
     )
   end
 
-  # def selected_or_created_person
-  #   if params[:person_id].blank?
-  #     person = Person.new(
-  #       first_name: params[:first_name],
-  #       last_name: params[:last_name],
-  #     )
-  #     person.applicant = @applicant
-  #     return person
-  #   else
-  #     return Person.find(params[:person_id])
-  #   end
-  # end
-
   def next_page
     find_next_page @applicant.contacts, @model, :edit_model
   end
