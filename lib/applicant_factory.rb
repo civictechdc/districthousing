@@ -60,6 +60,14 @@ module ApplicantFactory
       end
     end
 
+    def make_a_contact(applicant)
+      Contact.create(
+        relationship: %w(Mother Father Brother Sister Daughter Son Grandfather Grandmother Friend).sample
+      ) do |h|
+        h.person = make_a_person(applicant)
+      end
+    end
+
     def make_an_income
       Income.new(
         income_type: Constants::IncomeType.all.sample.name_db,
@@ -116,6 +124,7 @@ module ApplicantFactory
         3.times { a.identity.employments << make_an_employment }
         a.identity.criminal_histories << make_a_sex_offense
         3.times { a.household_members << make_a_household_member(a) }
+        3.times { a.contacts << make_a_contact(a) }
 
         a.household_members_including_self.each do |p|
           p.incomes << make_an_income

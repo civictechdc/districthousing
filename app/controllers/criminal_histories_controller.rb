@@ -39,7 +39,7 @@ class CriminalHistoriesController < ApplicationController
   end
 
   def front_of_next_section
-#    edit_contact_path(@applicant.contacts.first)
+    edit_contact_path(@applicant.contacts.first)
   end
 
   def back_of_previous_section
