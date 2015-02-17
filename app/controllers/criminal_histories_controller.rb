@@ -39,8 +39,7 @@ class CriminalHistoriesController < ApplicationController
   end
 
   def front_of_next_section
-    # Criminal history is the last section, so send the user back to the summary page
-    @applicant
+    edit_contact_path(@applicant.contacts.first)
   end
 
   def back_of_previous_section
