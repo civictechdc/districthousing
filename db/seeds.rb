@@ -65,6 +65,7 @@ Income.destroy_all
 Employment.destroy_all
 CriminalHistory.destroy_all
 CrimeType.destroy_all
+Contact.destroy_all
 
 # Populate crime types
 CrimeType.create(name: "felony", label: "Felony")

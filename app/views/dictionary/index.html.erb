@@ -94,6 +94,7 @@
 </p>
 
 <%= render "prefix_table", prefix_descriptions: [
+  [ "Contact", "Contacts for the applicant" ],
   [ "LL", "Landlord, starting with current. Matches Address of the same number" ],
   [ "HH", "Household member other than the applicant" ],
 ] %>
@@ -190,9 +191,10 @@
 <%= render "table", field_name_descriptions: [
   [ "Mail", "Current mailing address of applicant" ],
   [ "HH1MailZip", "First household member's mailing address zip code" ],
-  [ "HH2MailStreet", "Second household member's street mailing address" ],
+  [ "HH2MailStreet", "Second household member's mailing address street" ],
   [ "LL1Mail", "Current landlord's mailing address" ],
   [ "LL2MailState", "Previous landlord's mailing address state" ],
+  [ "Contact3MailStreet", "Third contact's mailing address street" ],
 ] %>
 
 <h3>Tickboxes</h3>

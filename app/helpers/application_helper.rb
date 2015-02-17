@@ -17,6 +17,8 @@ module ApplicationHelper
       edit_applicant_employment_path(@applicant, model)
     when CriminalHistory
       edit_applicant_criminal_history_path(@applicant, model)
+    when Contact
+      edit_applicant_contact_path(@applicant, model)
     else
       "#"
     end
@@ -36,6 +38,8 @@ module ApplicationHelper
       new_applicant_employment_path(@applicant)
     when :CriminalHistory
       new_applicant_criminal_history_path(@applicant)
+    when :Contact
+      new_applicant_contact_path(@applicant)
     else
       "#"
     end
@@ -53,6 +57,8 @@ module ApplicationHelper
       applicant_employment_path(@applicant, model)
     when CriminalHistory
       applicant_criminal_history_path(@applicant, model)
+    when Contact
+      applicant_contact_path(@applicant, model)
     else
       "#"
     end

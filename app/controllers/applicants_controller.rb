@@ -26,6 +26,9 @@ class ApplicantsController < ApplicationController
       params[:employment_count].to_i.times do
         @applicant.identity.employments << add_new_employment(@applicant)
       end
+      params[:contact_count].to_i.times do
+        @applicant.identity.contacts << add_new_contact(@applicant)
+      end
       success = @applicant.save
     end
 
@@ -84,6 +87,12 @@ class ApplicantsController < ApplicationController
   def add_new_household_member applicant
     HouseholdMember.create do |h|
       h.person = add_a_new_person(applicant)
+    end
+  end
+
+  def add_new_contact applicant
+    Contact.create do |c|
+      c.contact = add_a_new_person(applicant)
     end
   end
 
