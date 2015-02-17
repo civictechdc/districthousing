@@ -94,7 +94,7 @@ module ApplicantFormPage
 
   def destroy
     @model.destroy
-    redirect_to @applicant, notice: 'Residence removed', status: :see_other
+    redirect_to @applicant, notice: 'Item removed', status: :see_other
   end
 
   def find_next_page collection, current_item, edit_method
