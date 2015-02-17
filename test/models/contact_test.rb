@@ -7,7 +7,8 @@ class ContactTest < ActiveSupport::TestCase
   end
 
   def test_valid
-    assert contact.valid?
+    contact.applicant = applicants(:one)
+    assert contact.valid?, contact.errors.messages
   end
 
 end
