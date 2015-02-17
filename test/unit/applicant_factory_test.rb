@@ -6,9 +6,10 @@ class ApplicantFactoryTest < ActiveSupport::TestCase
 
     assert_equal 3, a.residences.count
     assert_equal 3, a.household_members.count
+    assert_equal 3, a.contacts.count
     assert_equal 4, a.identity.incomes.count
     assert_equal 3, a.identity.employments.count
     assert_equal 4, a.identity.criminal_histories.count
-    assert_equal 7, a.people.count
+    assert_equal 10, a.people.count
   end
 end

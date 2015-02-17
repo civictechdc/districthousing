@@ -134,7 +134,7 @@ class Person < ActiveRecord::Base
       middle_name
     when "MiddleInitial"
       middle_name.to_s.first.upcase
-    when /^(Full)?Name\d*/
+    when /^(Full)?Name\d*$/
       full_name
     when "DOB"
       dob_date
