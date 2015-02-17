@@ -43,15 +43,15 @@ class ContactsControllerTest < ActionController::TestCase
       relationship: "x"
     }
 
-    put :update, applicant_id: applicants(:one), id: contacts(:one), contact: contact_update_hash
+    put :update, applicant_id: applicants(:one), id: contacts(:five), contact: contact_update_hash
 
-    assert_equal("x", Contact.find(contacts(:one).id).relationship)
+    assert_equal("x", Contact.find(contacts(:five).id).relationship)
 
-    assert_redirected_to edit_applicant_contact_path(applicants(:one), contacts(:one))
+    assert_redirected_to edit_applicant_contact_path(applicants(:one), contacts(:five))
   end
 
   def test_edit
-    get :edit, applicant_id: applicants(:one), id: contacts(:one)
+    get :edit, applicant_id: applicants(:one), id: contacts(:five)
     assert_response :success
   end
 
@@ -62,7 +62,7 @@ class ContactsControllerTest < ActionController::TestCase
 
   def test_destroy
     assert_difference('Contact.count', -1) do
-      get :destroy, applicant_id: applicants(:one), id: contacts(:one)
+      get :destroy, applicant_id: applicants(:one), id: contacts(:five)
     end
     assert_redirected_to applicants(:one)
   end

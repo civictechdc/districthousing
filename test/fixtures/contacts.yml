@@ -1,9 +1,9 @@
-one:
-  applicant: one
-  person: contact1
-  relationship: Boss
-
-two:
+five:
   applicant: one
   person: contact2
+  relationship: Boss
+
+six:
+  applicant: one
+  person: contact1
   relationship: Plumber
