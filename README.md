@@ -18,6 +18,10 @@ The seed data creates a test user account with information pre-populated.  The l
     Username: testuser@districthousing.org
     Password: password
 
+Code for DC has labeled additional PDFs to work with District Housing.  These are not stored directly in the Git repository, but db/buildings.csv contains seed information about these, including download URLs.  To download these PDFs and load them into District Housing, run:
+
+    rake seed_pdfs
+
 As a demo, the app can be found at http://districthousing.org/.  Don't enter real data here, or rely on your data sticking around.  It's likely to be reset and upgraded without warning.
 
 ## Dependencies
