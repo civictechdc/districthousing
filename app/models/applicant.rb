@@ -103,6 +103,11 @@ class Applicant < ActiveRecord::Base
       delegate_field_to contacts[index], $2
     when /^Contact(.+)$/
       delegate_field_to contacts[0], $1
+    when /^Income(\d+)(.+)$/
+      index = $1.to_i - 1
+      delegate_field_to incomes[index], $2
+    when /^Income(.+)$/
+      delegate_field_to incomes[0], $1
     when "Today"
       Date.today
     when "Now"

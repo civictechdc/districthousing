@@ -22,4 +22,20 @@ class Income < ActiveRecord::Base
     return "" if income_type.nil?
     Constants::IncomeType.new(income_type).name_form
   end
+  
+  def value_for_field field_name
+    case field_name
+    when "Source"
+      income_type
+    when "Amount"
+      amount.to_i
+    when "Interval"
+      interval
+    when /^Earner(\D+)$/
+      person.value_for_field $1
+    else
+      UnknownField.new
+    end
+  end
+  
 end
