@@ -1,5 +1,17 @@
 one:
-  amount: 123
+  amount: 111
   person: one
   income_type: salary
   interval: yearly
+
+two:
+  amount: 222
+  person: one
+  income_type: allowance
+  interval: weekly
+
+three:
+  amount: 333
+  person: one
+  income_type: pension
+  interval: monthly
