@@ -130,6 +130,14 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "(666) 666-6666", @one.field("LL2Phone")
   end
 
+  test "fills criminal history information" do
+    assert_equal "Felony", @one.field("Crime1Type")
+    assert_equal "MyString", @one.field("Crime1Description")
+    assert_equal "2014-11-17", @one.field("Crime2Date")
+    assert_equal "One", @one.field("Crime2FirstName")
+    assert_equal "Felony", @one.field("CrimeType")
+  end
+
   test "other fields" do
     assert_equal "", @one.field("Accommodations")
     assert_equal "", @one.field("Accommodations2")
