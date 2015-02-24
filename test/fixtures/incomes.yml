@@ -1,5 +1,5 @@
 one:
-  amount: 111
+  amount: 123
   person: one
   income_type: salary
   interval: yearly
