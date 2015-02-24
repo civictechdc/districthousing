@@ -78,6 +78,13 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "two@two.info", @one.field("Contact2Email")
   end
 
+  test "fills income information" do
+    assert_equal "pension", @one.field("Income1Source")
+    assert_equal "333", @one.field("Income1Amount")
+    assert_equal "One John McOne", @one.field("Income2EarnerName")
+    assert_equal "yearly", @one.field("Income3Interval")
+  end
+  
   test "fills household member information" do
     assert_equal "", @one.field("HH1CitizenYN")
     assert_equal "01/07/1918", @one.field("HH1DOB")
