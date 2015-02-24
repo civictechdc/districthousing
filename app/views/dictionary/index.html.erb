@@ -254,6 +254,22 @@
   [ "Income2Interval", "Earnings interval (e.g. yearly, monthly, weekly) of the second income listed in a form" ],
   [ "Income3EarnerName", "Name of the household member earning the third income listed in a form" ],
   [ "Income3EarnerFirstInitial", "First initial of the household member earning the second income listed in a form" ]
+
+<h3>Criminal History</h3>
+
+<p>
+Crimes can be numbered if there are more than one. 
+Crime suffixes are <code>Type</code>, <code>Date</code> (plus <code>DateYYYY</code>, <code>DateMM</code>, <code>DateDD</code> for year, month, and day), <code>Description</code>, and all the person attributes.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "CrimeType", "Type of the first crime listed in a form" ],
+  [ "Crime1Type", "Type of the first crime listed in a form" ],
+  [ "Crime2Date", "Full date (YYYY-MM-DD) of the second crime listed in a form" ],
+  [ "Crime2DateDD", "Day number of the second crime listed in a form" ],
+  [ "Crime3Description", "Description of the third crime listed in a form" ],
+  [ "Crime3Name", "Full name of the household member who committed the third crime listed in a form" ],
+  [ "Crime3LastName", "Last name of the household member who committed the third crime listed in a form" ]
 ] %>
 
 <h3>Race and ethnicity</h3>
