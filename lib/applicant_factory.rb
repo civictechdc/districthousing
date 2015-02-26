@@ -1,3 +1,5 @@
+require 'faker'
+
 module ApplicantFactory
 
   class << self
