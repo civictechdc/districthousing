@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212073626) do
+ActiveRecord::Schema.define(version: 20150226044921) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(version: 20150212073626) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "current"
+    t.string   "federal"
   end
 
   add_index "residences", ["address_id"], name: "index_residences_on_address_id"
