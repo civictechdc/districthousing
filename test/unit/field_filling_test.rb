@@ -78,6 +78,13 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "two@two.info", @one.field("Contact2Email")
   end
 
+  test "fills income information" do
+    assert_equal "pension", @one.field("Income1Source")
+    assert_equal "333", @one.field("Income1Amount")
+    assert_equal "One John McOne", @one.field("Income2EarnerName")
+    assert_equal "yearly", @one.field("Income3Interval")
+  end
+  
   test "fills household member information" do
     assert_equal "", @one.field("HH1CitizenYN")
     assert_equal "01/07/1918", @one.field("HH1DOB")
@@ -128,6 +135,14 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "222 Fake Street, Two Town, AK, 22222", @one.field("LL2Mail")
     assert_equal "LL2", @one.field("LL2Name")
     assert_equal "(666) 666-6666", @one.field("LL2Phone")
+  end
+
+  test "fills criminal history information" do
+    assert_equal "Felony", @one.field("Crime1Type")
+    assert_equal "MyString", @one.field("Crime1Description")
+    assert_equal "2014-11-17", @one.field("Crime2Date")
+    assert_equal "One", @one.field("Crime2FirstName")
+    assert_equal "Felony", @one.field("CrimeType")
   end
 
   test "other fields" do
