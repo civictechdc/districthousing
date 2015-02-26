@@ -26,6 +26,8 @@ class Income < ActiveRecord::Base
   def amount_yearly
     if interval=="weekly"
       amount.to_i*52
+    elsif interval=="biweekly"
+      amount.to_i*26
     elsif interval=="monthly"
       amount.to_i*12
     else 
@@ -36,6 +38,8 @@ class Income < ActiveRecord::Base
   def amount_monthly
     if interval=="weekly"
       amount.to_i*4
+    elsif interval=="biweekly"
+      amount.to_i*2
     elsif interval=="yearly"
       amount.to_i/12.0
     else 
@@ -43,8 +47,22 @@ class Income < ActiveRecord::Base
     end
   end
 
+  def amount_biweekly
+    if interval=="weekly"
+      amount.to_i*2
+    elsif interval=="monthly"
+      amount.to_i/2.0
+    elsif interval=="yearly"
+      amount.to_i/26.0
+    else 
+      amount.to_i
+    end
+  end
+
   def amount_weekly
-    if interval=="monthly"
+    if interval=="biweekly"
+      amount.to_i/2.0
+    elsif interval=="monthly"
       amount.to_i/4.0
     elsif interval=="yearly"
       amount.to_i/52.0
@@ -61,6 +79,8 @@ class Income < ActiveRecord::Base
       amount.to_i
     when "AmountWeekly"
       amount_weekly
+    when "AmountBiweekly"
+      amount_biweekly
     when "AmountMonthly"
       amount_monthly
     when "AmountYearly"

@@ -244,7 +244,7 @@
 <h3>Income</h3>
 
 <p>
-  Incomes can be numbered if there are more than one. Income suffixes are <code>Source</code>, <code>Amount</code>, <code>AmountWeekly</code>, <code>AmountMonthly</code>, <code>AmountYearly</code>, <code>Interval</code>, and <code>Earner</code>. <code>IncomeEarner</code> fields can be further appended with any person fields, as was the case for contacts and household members.
+  Incomes can be numbered if there are more than one. Income suffixes are <code>Source</code>, <code>Amount</code>, <code>AmountWeekly</code>, <code>AmountBiweekly</code>, <code>AmountMonthly</code>, <code>AmountYearly</code>, <code>Interval</code>, and <code>Earner</code>. <code>IncomeEarner</code> fields can be further appended with any person fields, as was the case for contacts and household members.
 </p>
 
 <%= render "table", field_name_descriptions: [
@@ -253,6 +253,7 @@
   [ "Income2Amount", "Monetary value of the second income listed in a form" ],
   [ "Income2Interval", "Earnings interval (e.g. yearly, monthly, weekly) of the second income listed in a form" ],
   [ "Income2AmountWeekly", "Weekly monetary value of the second income listed in a form" ],
+  [ "Income2AmountBiweekly", "Biweekly monetary value of the second income listed in a form" ],
   [ "Income2AmountMonthly", "Monthly monetary value of the second income listed in a form" ],
   [ "Income2AmountYearly", "Yearly monetary value of the second income listed in a form" ],
   [ "Income3EarnerName", "Name of the household member earning the third income listed in a form" ],
