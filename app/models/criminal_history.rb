@@ -12,7 +12,7 @@ class CriminalHistory < ActiveRecord::Base
 
   def to_s
     unless year.nil?
-      "#{crime_type.label} in #{year.year}"
+      "#{crime_type.label} in #{year}"
     else
       "#{crime_type.label}"
     end
@@ -21,7 +21,7 @@ class CriminalHistory < ActiveRecord::Base
   def value_for_field field_name
     case field_name
     when "Date"
-      year.year
+      year
     when "Type"
       crime_type.label
     when "Description"
