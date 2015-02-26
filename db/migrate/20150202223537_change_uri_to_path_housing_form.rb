@@ -1,9 +1,5 @@
 class ChangeUriToPathHousingForm < ActiveRecord::Migration
-  def up
-    change_column :criminal_histories, :year, :integer
-  end
-
-  def down
-    change_column :criminal_histories, :year, :date
+  def change
+    rename_column :housing_forms, :uri, :path
   end
 end

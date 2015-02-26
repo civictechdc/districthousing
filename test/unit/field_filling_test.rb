@@ -81,6 +81,10 @@ class FieldFillingTest < ActiveSupport::TestCase
   test "fills income information" do
     assert_equal "pension", @one.field("Income1Source")
     assert_equal "333", @one.field("Income1Amount")
+    assert_equal "83.25", @one.field("Income1AmountWeekly")
+    assert_equal "166.5", @one.field("Income1AmountBiweekly")
+    assert_equal "333", @one.field("Income1AmountMonthly")
+    assert_equal "3996", @one.field("Income1AmountYearly")
     assert_equal "One John McOne", @one.field("Income2EarnerName")
     assert_equal "yearly", @one.field("Income3Interval")
   end
