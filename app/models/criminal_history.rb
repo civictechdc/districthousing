@@ -21,13 +21,7 @@ class CriminalHistory < ActiveRecord::Base
   def value_for_field field_name
     case field_name
     when "Date"
-      year
-    when "DateYYYY"
       year.year
-    when "DateMM"
-      year.month
-    when "DateDD"
-      year.day
     when "Type"
       crime_type.label
     when "Description"
