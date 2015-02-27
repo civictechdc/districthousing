@@ -124,7 +124,7 @@ module Constants
         "stock" => "Stock Income",
         "insurance" => "Insurance Income",
         "trust_fund" => "Trust Fund Income",
-        "government_assistance" => "Government Assistance",
+        "government_assistance" => "TANF / Government Assistance",
         "cash_gifts" => "Cash Gifts",
         "workers_compensation" => "Worker's Compensation",
         "severance" => "Severance",

@@ -12,8 +12,8 @@ module ApplicantFormPage
       :identity,
       :household_members,
       :residences,
-      :incomes,
       :employments,
+      :incomes,
       :criminal_histories,
       :contacts
     ]

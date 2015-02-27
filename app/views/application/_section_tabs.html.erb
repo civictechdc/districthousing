@@ -22,20 +22,20 @@
       <%= render 'collection_tab_content', collection: @applicant.residences %>
     </ul>
   </li>
-  <li role="presentation" class="<%= 'active' if :incomes == active_section %>">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-      Income <span class="badge"><%= @applicant.incomes.count %></span> <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @applicant.incomes %>
-    </ul>
-  </li>
   <li role="presentation" class="<%= 'active' if :employments == active_section %>">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
       Employment <span class="badge"><%= @applicant.employments.count %></span> <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
       <%= render 'collection_tab_content', collection: @applicant.employments %>
+    </ul>
+  </li>
+  <li role="presentation" class="<%= 'active' if :incomes == active_section %>">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+      Income <span class="badge"><%= @applicant.incomes.count %></span> <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <%= render 'collection_tab_content', collection: @applicant.incomes %>
     </ul>
   </li>
   <li role="presentation" class="<%= 'active' if :criminal_histories == active_section %>">

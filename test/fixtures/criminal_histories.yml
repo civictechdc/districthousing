@@ -2,10 +2,10 @@ one:
   person: one
   crime_type: one
   description: MyString
-  year: 2014-11-17
+  year: 2014
 
 two:
   person: one
   crime_type: one
   description: MyString
-  year: 2014-11-17
+  year: 2014

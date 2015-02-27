@@ -81,6 +81,10 @@ class FieldFillingTest < ActiveSupport::TestCase
   test "fills income information" do
     assert_equal "pension", @one.field("Income1Source")
     assert_equal "333", @one.field("Income1Amount")
+    assert_equal "83.25", @one.field("Income1AmountWeekly")
+    assert_equal "166.5", @one.field("Income1AmountBiweekly")
+    assert_equal "333", @one.field("Income1AmountMonthly")
+    assert_equal "3996", @one.field("Income1AmountYearly")
     assert_equal "One John McOne", @one.field("Income2EarnerName")
     assert_equal "yearly", @one.field("Income3Interval")
   end
@@ -140,7 +144,7 @@ class FieldFillingTest < ActiveSupport::TestCase
   test "fills criminal history information" do
     assert_equal "Felony", @one.field("Crime1Type")
     assert_equal "MyString", @one.field("Crime1Description")
-    assert_equal "2014-11-17", @one.field("Crime2Date")
+    assert_equal "2014", @one.field("Crime2Date")
     assert_equal "One", @one.field("Crime2FirstName")
     assert_equal "Felony", @one.field("CrimeType")
   end

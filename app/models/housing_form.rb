@@ -59,4 +59,19 @@ class HousingForm < ActiveRecord::Base
     end
     @filled_fields[applicant]
   end
+
+  def download_path
+    unless path.blank?
+      path.sub("#{Rails.root}", "").sub!(/\/?public/, "")
+    else
+      nil
+    end
+  end
+
+  def as_json options = nil
+    h = self.attributes
+    h["url"] = download_path
+    h.delete("path")
+    h
+  end
 end
