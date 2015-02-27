@@ -2,7 +2,7 @@
   <%= f.collection_select :person_id, @current_applicant.household_members_including_self, :id, :description, label: "Person" %>
 </div>
 <div class="field">
-  <%= f.collection_select :crime_type_id, CrimeType.all, :id, :label %>
+  <%= f.collection_select :crime_type, Constants::CrimeType.all, :name_db, :name_form, include_blank: true %>
 </div>
 <div class="field">
   <%= f.text_field :description %>

@@ -15,6 +15,7 @@ module Constants
       ]
     end
 
+
     def initialize db
       @name_db = db
     end
@@ -72,6 +73,46 @@ module Constants
 
     def name_form
       name_pdf
+    end
+  end
+
+  class CrimeType
+    def self.all
+      [
+        CrimeType.new("felony"),
+        CrimeType.new("misdemeanor"),
+        CrimeType.new("sex_offense"),
+        CrimeType.new("simple_assault"),
+        CrimeType.new("other"),
+      ]
+    end
+
+
+    def initialize db
+      @name_db = db
+    end
+
+    attr_reader :name_db
+
+    def name_pdf
+      {
+        "felony" => "Felony",
+        "misdemeanor" => "Misdemeanor",
+        "sex_offense" => "Sex Offense",
+        "simple_assault" => "Simple Assault",
+        "other" => "Other",
+      }[name_db]
+    end
+
+    def name_form
+      {
+        "felony" => "Felony",
+        "misdemeanor" => "Misdemeanor",
+        "sex_offense" => "Sex Offense",
+        "simple_assault" => "Simple Assault",
+        "other" => "Other",
+
+      }[name_db]
     end
   end
 
