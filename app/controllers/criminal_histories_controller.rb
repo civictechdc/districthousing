@@ -18,7 +18,6 @@ class CriminalHistoriesController < ApplicationController
   def make_new
     c = CriminalHistory.new
     c.person = @applicant.identity
-    c.crime_type = CrimeType.where(name: "felony").first
     c
   end
 
@@ -31,7 +30,7 @@ class CriminalHistoriesController < ApplicationController
   end
 
   def model_params
-    params.require(:criminal_history).permit(:person_id, :crime_type_id, :description, :year)
+    params.require(:criminal_history).permit(:person_id, :crime_type, :description, :year)
   end
 
   def next_page

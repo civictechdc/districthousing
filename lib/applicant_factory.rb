@@ -88,14 +88,6 @@ module ApplicantFactory
       end
     end
 
-    def make_a_sex_offense
-      CriminalHistory.new(
-        year: rand(10*365).days.ago,
-      ) do |f|
-        f.crime_type = CrimeType.find_by(name: "sex_offense")
-      end
-    end
-
     def make_a_felony
       CriminalHistory.new(
         description: [
@@ -108,10 +100,9 @@ module ApplicantFactory
           "Having 11 items in the express checkout lane.",
           "Going 26 in a 25.",
         ].sample,
+        crime_type: Constants::CrimeType.all.sample.name_db,
         year: rand(10*365).days.ago,
-      ) do |f|
-        f.crime_type = CrimeType.find_by(name: "felony")
-      end
+      )
     end
 
     def make_a_sample_applicant user
@@ -122,7 +113,6 @@ module ApplicantFactory
         3.times { a.identity.criminal_histories << make_a_felony }
         3.times { a.identity.incomes << make_an_income }
         3.times { a.identity.employments << make_an_employment }
-        a.identity.criminal_histories << make_a_sex_offense
         3.times { a.household_members << make_a_household_member(a) }
         3.times { a.contacts << make_a_contact(a) }
 
