@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20150226044921) do
     t.integer  "person_id"
     t.integer  "crime_type_id"
     t.string   "description"
-    t.date     "year"
+    t.integer  "year"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -180,7 +180,6 @@ ActiveRecord::Schema.define(version: 20150226044921) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "current"
-    t.string   "federal"
   end
 
   add_index "residences", ["address_id"], name: "index_residences_on_address_id"
