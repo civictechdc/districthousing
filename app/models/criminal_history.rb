@@ -11,9 +11,9 @@ class CriminalHistory < ActiveRecord::Base
 
   def to_s
     unless year.nil?
-      "#{crime_type} in #{year}"
+      "#{crime_type.humanize} in #{year}"
     else
-      "#{crime_type}"
+      "#{crime_type.humanize}"
     end
   end
 
