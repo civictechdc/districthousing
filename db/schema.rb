@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227021155) do
+ActiveRecord::Schema.define(version: 20150301052544) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 20150227021155) do
 
   add_index "contacts", ["applicant_id"], name: "index_contacts_on_applicant_id"
   add_index "contacts", ["person_id"], name: "index_contacts_on_person_id"
+
+  create_table "crime_types", force: true do |t|
+    t.string   "name"
+    t.string   "label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "criminal_histories", force: true do |t|
     t.integer  "person_id"
@@ -98,18 +105,28 @@ ActiveRecord::Schema.define(version: 20150227021155) do
   create_table "housing_forms", force: true do |t|
     t.string   "name"
     t.string   "path"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "location"
     t.float    "lat"
     t.float    "long"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "remote_id"
+    t.boolean  "updated_locally"
   end
 
   create_table "identities", id: false, force: true do |t|
     t.integer "applicant_id", null: false
     t.integer "person_id",    null: false
+  end
+
+  create_table "income_types", force: true do |t|
+    t.string   "name"
+    t.string   "label"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "incomes", force: true do |t|
