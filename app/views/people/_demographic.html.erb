@@ -7,7 +7,7 @@
 <%= builder.collection_select :driver_license_state, us_states, :last, :first, label: 'Driver license or non-driver ID state' %>
 <%= builder.collection_select :state_of_birth, us_states, :last, :first %>
 <%= builder.collection_select :country_of_birth, countries, :to_s, :to_s %>
-<%= builder.collection_select :citizenship, countries, :to_s, :to_s %>
+<%= builder.collection_select :citizenship, citizenship, :to_s, :to_s %>
 <%= builder.text_field :driver_license_number, label: "Driver license or non-driver ID number" %>
 
 <% %i(

@@ -23,7 +23,7 @@ module ApplicantFactory
         work_phone: Faker::PhoneNumber.phone_number,
         home_phone: Faker::PhoneNumber.phone_number,
         cell_phone: Faker::PhoneNumber.phone_number,
-        citizenship: Faker::Address.country,
+        citizenship: ["US Citizen", "Non-Citizen with eligible immigration status", "Other"].sample,
         country_of_birth: Faker::Address.country,
         state_of_birth: Faker::Address.state_abbr,
         city_of_birth: Faker::Address.city,
