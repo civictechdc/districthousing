@@ -1,5 +1,5 @@
 module CitizenshipHelper
-  def citizenship
+  def citizenship_statuses
     [
         "US Citizen",
         "Non-Citizen with eligible immigration status",
