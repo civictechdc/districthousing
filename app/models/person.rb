@@ -72,7 +72,7 @@ class Person < ActiveRecord::Base
   end
 
   def us_citizen?
-    return "United States" == citizenship
+    return "US Citizen" == citizenship
   end
 
   def preferred_phone
