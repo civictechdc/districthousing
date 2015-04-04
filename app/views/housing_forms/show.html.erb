@@ -12,6 +12,8 @@
     <%= @housing_form.location %>
   </p>
 
+  <%= link_to 'Download filled', download_housing_form_path(@housing_form) %> |
+  <%= link_to 'Download blank', download_blank_housing_form_path(@housing_form) %> |
   <%= link_to 'Edit', edit_housing_form_path(@housing_form) %> |
   <%= link_to 'Back', housing_forms_path %>
 

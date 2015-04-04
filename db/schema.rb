@@ -47,13 +47,6 @@ ActiveRecord::Schema.define(version: 20150301052544) do
   add_index "contacts", ["applicant_id"], name: "index_contacts_on_applicant_id"
   add_index "contacts", ["person_id"], name: "index_contacts_on_person_id"
 
-  create_table "crime_types", force: true do |t|
-    t.string   "name"
-    t.string   "label"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "criminal_histories", force: true do |t|
     t.integer  "person_id"
     t.string   "description"
@@ -119,14 +112,6 @@ ActiveRecord::Schema.define(version: 20150301052544) do
   create_table "identities", id: false, force: true do |t|
     t.integer "applicant_id", null: false
     t.integer "person_id",    null: false
-  end
-
-  create_table "income_types", force: true do |t|
-    t.string   "name"
-    t.string   "label"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "incomes", force: true do |t|
