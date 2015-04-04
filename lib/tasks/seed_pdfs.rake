@@ -44,7 +44,8 @@ end
 # their local database.
 
 task pull_pdfs: :environment do
-  open('http://districthousing.org/housing_forms.json') do |housing_form_json|
+  open('https://districthousing.org/housing_forms.json',
+       {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}) do |housing_form_json|
     json = housing_form_json.read
     housing_forms = JSON.parse(json)
     housing_forms.each do |housing_form|
