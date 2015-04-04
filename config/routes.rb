@@ -37,6 +37,7 @@ DchousingApps::Application.routes.draw do
   resources :salesforce_applicants
 
   get '/download/:id', to: 'housing_forms#download', as: 'download_housing_form'
+  get '/download/blank/:id', to: 'housing_forms#download_blank', as: 'download_blank_housing_form'
   get "home/index"
   get "/pdf_guide", to: "pdf_guide#index"
   get "/dictionary", to: "dictionary#index"

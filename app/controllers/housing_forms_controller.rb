@@ -1,6 +1,6 @@
 class HousingFormsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_housing_form, only: [:show, :edit, :update, :destroy, :download]
+  before_action :set_housing_form, only: [:show, :edit, :update, :destroy, :download, :download_bank]
   before_action :set_applicant, only: [:show, :index, :download]
 
   # GET /housing_forms
@@ -75,6 +75,13 @@ class HousingFormsController < ApplicationController
     send_file(filled_file.path,
               type: 'application/pdf',
               filename: download_filename)
+  end
+
+  def download_blank
+    @housing_form = HousingForm.find(params[:id])
+    send_file(@housing_form.path,
+              type: 'application/pdf',
+              filename: "#{Slugify.slugify(@housing_form.name)}.pdf")
   end
 
   private
