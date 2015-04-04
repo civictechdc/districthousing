@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301052544) do
+ActiveRecord::Schema.define(version: 20150404155659) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(version: 20150301052544) do
   end
 
   add_index "applicants", ["user_id"], name: "index_applicants_on_user_id"
+
+  create_table "applicants_housing_forms", id: false, force: true do |t|
+    t.integer "applicant_id"
+    t.integer "housing_form_id"
+  end
 
   create_table "contacts", force: true do |t|
     t.integer  "applicant_id"

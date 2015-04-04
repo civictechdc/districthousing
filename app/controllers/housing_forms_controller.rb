@@ -67,6 +67,8 @@ class HousingFormsController < ApplicationController
   end
 
   def download
+    @applicant.housing_forms << @housing_form
+    @applicant.save
     filled_file = OutputPDF.new(@housing_form, @applicant).to_file
     download_filename = "#{@applicant}-#{@housing_form.name}.pdf"
     download_filename = Slugify.slugify(download_filename)
