@@ -1,6 +1,6 @@
 class HousingFormsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_housing_form, only: [:show, :edit, :update, :destroy, :download]
+  before_action :set_housing_form, only: [:show, :edit, :update, :destroy, :download, :download_bank]
   before_action :set_applicant, only: [:show, :index, :download]
 
   # GET /housing_forms
@@ -34,6 +34,7 @@ class HousingFormsController < ApplicationController
       if uploaded_file
         h.path = write_file(uploaded_file).to_s
         h.name = uploaded_file.original_filename if h.name.blank?
+        h.updated_locally = true
       end
     end
       redirect_to @housing_form, notice: 'Housing form was successfully created.'
@@ -46,6 +47,7 @@ class HousingFormsController < ApplicationController
   def update
     if uploaded_file
       @housing_form.path = write_file(uploaded_file, @housing_form.path).to_s
+      @housing_form.updated_locally = true
       @housing_form.save
     end
 
@@ -65,12 +67,21 @@ class HousingFormsController < ApplicationController
   end
 
   def download
+    @applicant.housing_forms << @housing_form
+    @applicant.save
     filled_file = OutputPDF.new(@housing_form, @applicant).to_file
     download_filename = "#{@applicant}-#{@housing_form.name}.pdf"
-    download_filename = slugify(download_filename)
+    download_filename = Slugify.slugify(download_filename)
     send_file(filled_file.path,
               type: 'application/pdf',
               filename: download_filename)
+  end
+
+  def download_blank
+    @housing_form = HousingForm.find(params[:id])
+    send_file(@housing_form.path,
+              type: 'application/pdf',
+              filename: "#{Slugify.slugify(@housing_form.name)}.pdf")
   end
 
   private
@@ -122,7 +133,4 @@ class HousingFormsController < ApplicationController
       File.delete(path)
     end
 
-    def slugify filename
-      filename.gsub(/[^0-9A-Za-z.\-]/, '_')
-    end
 end

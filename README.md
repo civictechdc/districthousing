@@ -22,6 +22,10 @@ Code for DC has labeled additional PDFs to work with District Housing.  These ar
 
     rake seed_pdfs
 
+For testing, you can make a bunch of fake applicants and a test user account with
+
+    rake seed_applicants
+
 As a demo, the app can be found at http://districthousing.org/.  Don't enter real data here, or rely on your data sticking around.  It's likely to be reset and upgraded without warning.
 
 ## Dependencies

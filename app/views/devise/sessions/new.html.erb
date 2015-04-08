@@ -2,22 +2,24 @@
   <h2>Sign in to District Housing</h2>
   <div class="spacer"></div>
 
-  <p>
-  Psst, hey you!  This app is under development.  You can log in with a
-  pre-filled account and poke around, or create a new account if you like. The
-  test account login is as follows:
-  </p>
-  <p>
-  Login: testuser@districthousing.org
-  </p>
-  <p>
-  Password: password
-  </p>
-  <p>
-  Add some issues or send some pull requests to 
-  <a href="https://github.com/codefordc/districthousing/issues">our Github!</a>
-  And check out <a href="http://codefordc.org/">Code for DC!</a>
-  </p>
+  <% unless User.where(email: "testuser@districthousing.org").empty? %>
+    <p>
+    Psst, hey you!  This app is under development.  You can log in with a
+    pre-filled account and poke around, or create a new account if you like. The
+    test account login is as follows:
+    </p>
+    <p>
+    Login: testuser@districthousing.org
+    </p>
+    <p>
+    Password: password
+    </p>
+    <p>
+    Add some issues or send some pull requests to 
+    <a href="https://github.com/codefordc/districthousing/issues">our Github!</a>
+    And check out <a href="http://codefordc.org/">Code for DC!</a>
+    </p>
+  <% end %>
 
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <div><%= f.label :email %><br />

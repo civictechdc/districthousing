@@ -1,4 +1,5 @@
 <% no_edit ||= false %>
+<% fill ||= false %>
 <%
   table_class = "housing-location-table"
   table_class = "#{table_class}-no-edit" if no_edit
@@ -23,6 +24,10 @@
   </thead>
   <tbody>
     <% locations.each do |housing_form| %>
+    <%
+        download_path = download_blank_housing_form_path(housing_form)
+        download_path = download_housing_form_path(housing_form) if fill
+    %>
     <tr>
       <td><%= housing_form.name %></td>
       <td><%= housing_form.location %></td>
@@ -32,7 +37,7 @@
       <td><%= housing_form.filled_fields(@applicant).count %></td>
       <% if housing_form.path %>
         <td>
-          <a href="<%= download_housing_form_path(housing_form) %>" class="btn btn-info">
+          <a href="<%= download_path %>" class="btn btn-info">
             <span class="glyphicon glyphicon-download-alt"></span> Download PDF
           </a>
         </td>

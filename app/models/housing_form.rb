@@ -1,5 +1,6 @@
 class HousingForm < ActiveRecord::Base
   has_and_belongs_to_many :form_fields
+  has_and_belongs_to_many :applicants
 
   after_create { initialize_from_disk! }
   after_update { read_fields! }

@@ -7,14 +7,13 @@ class CriminalHistory < ActiveRecord::Base
   end
 
   part_of :criminal_histories
-  belongs_to :crime_type
   belongs_to :person
 
   def to_s
     unless year.nil?
-      "#{crime_type.label} in #{year}"
+      "#{crime_type.humanize} in #{year}"
     else
-      "#{crime_type.label}"
+      "#{crime_type.humanize}"
     end
   end
 
@@ -23,7 +22,7 @@ class CriminalHistory < ActiveRecord::Base
     when "Date"
       year
     when "Type"
-      crime_type.label
+      Constants::CrimeType.new(crime_type).name_pdf
     when "Description"
       description
     when /^(\D+)$/
