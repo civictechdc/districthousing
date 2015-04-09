@@ -208,6 +208,8 @@ class Person < ActiveRecord::Base
       driver_license_number
     when "DriverLicenseState"
       driver_license_state
+    when "DriverLicenseExpiration"
+      driver_license_expiration
     when "Relationship"
       "Self"
     when /Married(#{boolean_regex})/
