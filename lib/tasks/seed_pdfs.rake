@@ -11,7 +11,7 @@ def download_pdf uri, name, where
   # Download the file to the public/forms/ directory, and generate a path
   puts "Download #{name} from #{uri}"
   output_filename = "#{where}#{Slugify.slugify(name)}.pdf"
-  system("wget #{uri} --output-document=#{output_filename}")
+  system("wget #{uri} --no-check-certificate --output-document=#{output_filename}")
   output_filename
 end
 
@@ -44,7 +44,8 @@ end
 # their local database.
 
 task pull_pdfs: :environment do
-  open('http://districthousing.org/housing_forms.json') do |housing_form_json|
+  open('https://districthousing.org/housing_forms.json',
+       {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}) do |housing_form_json|
     json = housing_form_json.read
     housing_forms = JSON.parse(json)
     housing_forms.each do |housing_form|
@@ -63,7 +64,7 @@ task pull_pdfs: :environment do
       housing_form.delete('id')
 
       unless housing_form['url'].blank?
-        download_uri = "http://districthousing.org#{housing_form['url']}"
+        download_uri = "https://districthousing.org#{housing_form['url']}"
         housing_form['path'] = download_pdf(
           download_uri,
           housing_form['name'],

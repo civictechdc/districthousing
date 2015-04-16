@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 20150404171342) do
 
   add_index "applicants", ["user_id"], name: "index_applicants_on_user_id"
 
+  create_table "applicants_housing_forms", id: false, force: true do |t|
+    t.integer "applicant_id"
+    t.integer "housing_form_id"
+  end
+
   create_table "contacts", force: true do |t|
     t.integer  "applicant_id"
     t.integer  "person_id"
