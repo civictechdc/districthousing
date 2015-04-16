@@ -1,11 +1,18 @@
 <%= render 'form_page' %>
-(<%=@model.my_number%>)
-<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
-<%= render "fields", f: f %>
-<%= render "buttons_update_back", f: f %>
-<% end %>
 
-<%= link_to 'Delete', basic_path(@model), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+<div class="row">
+	<div class="col-md-3">
+		<%= render 'section_tabs', active_section: @active_section %>
+	</div>
+	<div class="col-md-9">
+		<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
+		<%= render "fields", f: f %>
+
+		<%= render "buttons_save_delete", f: f %>
+	</div>
+</div>
+
+<% end %>
 
 <% if @model.errors.any? %>
   <div id="error_explanation">
