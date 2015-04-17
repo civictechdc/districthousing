@@ -34,6 +34,23 @@ task seed_pdfs: :environment do
   end
 end
 
+require 'find'
+
+task seed_pdfs_external: :environment do
+  HousingForm.transaction do
+    FormField.transaction do
+      HousingForm.destroy_all
+      Find.find(Rails.root.join('public/forms/external').to_s) do |path|
+        if FileTest.file?(path)
+          puts path
+          form_name = File.basename(path).sub(/.pdf$/, '')
+          HousingForm.create(name: form_name, path: path)
+        end
+      end
+    end
+  end
+end
+
 # Retrieve PDFs from districthousing.org.  Code for DC team members who work on
 # editing PDFs for District Housing are encouraged to put their most up-to-date
 # PDFs on districthousing.org, so the progress is visible, and other team
