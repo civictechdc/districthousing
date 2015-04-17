@@ -46,8 +46,13 @@
       <% end %>
       <td><%= link_to 'Show', housing_form %></td>
       <% unless no_edit %>
-        <td><%= link_to 'Edit/Replace', edit_housing_form_path(housing_form) %></td>
-        <td><%= link_to 'Delete', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if housing_form.is_external? %>
+          <td></td>
+          <td></td>
+        <% else %>
+          <td><%= link_to 'Edit/Replace', edit_housing_form_path(housing_form) %></td>
+          <td><%= link_to 'Delete', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       <% end %>
     </tr>
     <% end %>

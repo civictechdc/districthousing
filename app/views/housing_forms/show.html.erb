@@ -14,7 +14,9 @@
 
   <%= link_to 'Download filled', download_housing_form_path(@housing_form) %> |
   <%= link_to 'Download blank', download_blank_housing_form_path(@housing_form) %> |
-  <%= link_to 'Edit', edit_housing_form_path(@housing_form) %> |
+  <% unless @housing_form.is_external? %>
+    <%= link_to 'Edit', edit_housing_form_path(@housing_form) %> |
+  <% end %>
   <%= link_to 'Back', housing_forms_path %>
 
   <%= render "field_table", fields: @housing_form.known_fields(@applicant) %>

@@ -26,6 +26,9 @@ class HousingFormsController < ApplicationController
 
   # GET /housing_forms/1/edit
   def edit
+    if @housing_form.is_external?
+      redirect_to(housing_forms_path, notice: 'You may not modify an external form.') and return
+    end
   end
 
   # POST /housing_forms
