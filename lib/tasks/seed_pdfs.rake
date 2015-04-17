@@ -40,7 +40,7 @@ task seed_pdfs_external: :environment do
   HousingForm.transaction do
     FormField.transaction do
       HousingForm.destroy_all
-      Find.find(Rails.root.join('public/forms/external').to_s) do |path|
+      Dir.glob('public/forms/external/*.pdf').each do |path|
         if FileTest.file?(path)
           puts path
           form_name = File.basename(path).sub(/.pdf$/, '')
