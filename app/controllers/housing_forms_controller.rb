@@ -45,6 +45,10 @@ class HousingFormsController < ApplicationController
 
   # PATCH/PUT /housing_forms/1
   def update
+    if @housing_form.is_external?
+      redirect_to(@housing_form, notice: 'You may not modify an external form.') and return
+    end
+
     if uploaded_file
       @housing_form.path = write_file(uploaded_file, @housing_form.path).to_s
       @housing_form.updated_locally = true
