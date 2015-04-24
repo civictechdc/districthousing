@@ -11,7 +11,7 @@ def download_pdf uri, name, where
   # Download the file to the public/forms/ directory, and generate a path
   puts "Download #{name} from #{uri}"
   output_filename = "#{where}#{Slugify.slugify(name)}.pdf"
-  system("wget #{uri} --no-check-certificate --output-document=#{output_filename}")
+  system("wget '#{uri}' --no-check-certificate --output-document=#{output_filename}")
   output_filename
 end
 
