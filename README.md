@@ -20,7 +20,7 @@ The seed data creates a test user account with information pre-populated.  The l
 
 Code for DC has labeled additional PDFs to work with District Housing.  These are not stored directly in the Git repository, but db/buildings.csv contains seed information about these, including download URLs.  To download these PDFs and load them into District Housing, run:
 
-    rake pull_pdfs seed_pdfs
+    rake pull_pdfs
 
 For testing, you can make a bunch of fake applicants and a test user account with
 
