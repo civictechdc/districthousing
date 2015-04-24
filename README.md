@@ -20,7 +20,7 @@ The seed data creates a test user account with information pre-populated.  The l
 
 Code for DC has labeled additional PDFs to work with District Housing.  These are not stored directly in the Git repository, but db/buildings.csv contains seed information about these, including download URLs.  To download these PDFs and load them into District Housing, run:
 
-    rake seed_pdfs
+    rake pull_pdfs seed_pdfs
 
 For testing, you can make a bunch of fake applicants and a test user account with
 
@@ -36,7 +36,7 @@ Requires pdftk.  On OS X:
 
 On Debian/Ubuntu:
 
-    apt-get install pdftk
+    sudo apt-get install pdftk
 
 ## Installation with Cloud9
 
@@ -51,7 +51,7 @@ To continue using git, run the following in your workspace terminal:
 Install pdftk using apt-get and ensure that you are using ruby-2.1.2. You should now be able to get the application up by running:
 
     bundle install
-    rake db:setup
+    rake db:setup pull_pdfs seed_pdfs seed_applicants
     rails s -b $IP -p $PORT
 
 Navigate to http://districthousing-c9-[username].c9.io to see your app.
