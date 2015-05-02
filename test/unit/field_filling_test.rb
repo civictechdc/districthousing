@@ -70,8 +70,8 @@ class FieldFillingTest < ActiveSupport::TestCase
   end
 
   test "fills residences" do
-    assert_equal "100", @one.field("Residence1Rent")
-    assert_equal "200", @one.field("Residence2Rent")
+    assert_equal "$100.00", @one.field("Residence1Rent")
+    assert_equal "$200.00", @one.field("Residence2Rent")
     assert_equal "Changed jobs", @one.field("Residence1ReasonForMoving")
     assert_equal "Neighbors annoying", @one.field("Residence2ReasonForMoving")
   end
