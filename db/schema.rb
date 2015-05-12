@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301052544) do
+ActiveRecord::Schema.define(version: 20150404171342) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 20150301052544) do
 
   add_index "applicants", ["user_id"], name: "index_applicants_on_user_id"
 
+  create_table "applicants_housing_forms", id: false, force: true do |t|
+    t.integer "applicant_id"
+    t.integer "housing_form_id"
+  end
+
   create_table "contacts", force: true do |t|
     t.integer  "applicant_id"
     t.integer  "person_id"
@@ -46,13 +51,6 @@ ActiveRecord::Schema.define(version: 20150301052544) do
 
   add_index "contacts", ["applicant_id"], name: "index_contacts_on_applicant_id"
   add_index "contacts", ["person_id"], name: "index_contacts_on_person_id"
-
-  create_table "crime_types", force: true do |t|
-    t.string   "name"
-    t.string   "label"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "criminal_histories", force: true do |t|
     t.integer  "person_id"
@@ -121,14 +119,6 @@ ActiveRecord::Schema.define(version: 20150301052544) do
     t.integer "person_id",    null: false
   end
 
-  create_table "income_types", force: true do |t|
-    t.string   "name"
-    t.string   "label"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "incomes", force: true do |t|
     t.integer  "amount"
     t.datetime "created_at"
@@ -190,6 +180,7 @@ ActiveRecord::Schema.define(version: 20150301052544) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "current"
+    t.integer  "rent"
   end
 
   add_index "residences", ["address_id"], name: "index_residences_on_address_id"

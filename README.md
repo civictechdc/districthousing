@@ -7,24 +7,28 @@ District Housing lets caseworkers help clients apply for Section 8 housing by au
 
 This application uses the [pdf-forms gem](https://github.com/jkraemer/pdf-forms) and [pdftk](http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/).
 
-The application can generate random seed data for testing.  To get the application up and running with seed data, run these commands:
+## Setup
+
+The application can generate random seed data for testing.  To get the application up and running, run these commands:
 
     bundle install
     rake db:setup
     rails server
 
-The seed data creates a test user account with information pre-populated.  The login for the test user is:
+This will allow you to create an account, and start filling in applicants.
+
+For testing with sample user data, you can run the following command, which will create a test user account with 30 fake applicants:
+
+    rake seed_applicants
+
+The login for the test user is:
 
     Username: testuser@districthousing.org
     Password: password
 
-Code for DC has labeled additional PDFs to work with District Housing.  These are not stored directly in the Git repository, but db/buildings.csv contains seed information about these, including download URLs.  To download these PDFs and load them into District Housing, run:
+Code for DC has labeled additional PDFs to work with District Housing.  These are not stored directly in the Git repository, but you can obtain them with the following command:
 
-    rake seed_pdfs
-
-For testing, you can make a bunch of fake applicants and a test user account with
-
-    rake seed_applicants
+    rake pull_pdfs
 
 As a demo, the app can be found at http://districthousing.org/.  Don't enter real data here, or rely on your data sticking around.  It's likely to be reset and upgraded without warning.
 
@@ -36,7 +40,7 @@ Requires pdftk.  On OS X:
 
 On Debian/Ubuntu:
 
-    apt-get install pdftk
+    sudo apt-get install pdftk
 
 ## Installation with Cloud9
 
@@ -51,7 +55,7 @@ To continue using git, run the following in your workspace terminal:
 Install pdftk using apt-get and ensure that you are using ruby-2.1.2. You should now be able to get the application up by running:
 
     bundle install
-    rake db:setup
+    rake db:setup pull_pdfs seed_pdfs seed_applicants
     rails s -b $IP -p $PORT
 
 Navigate to http://districthousing-c9-[username].c9.io to see your app.

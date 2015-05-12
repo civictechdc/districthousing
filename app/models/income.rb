@@ -22,7 +22,7 @@ class Income < ActiveRecord::Base
     return "" if income_type.nil?
     Constants::IncomeType.new(income_type).name_form
   end
-  
+
   def amount_yearly
     if interval=="weekly"
       amount.to_i*52.0
@@ -30,11 +30,11 @@ class Income < ActiveRecord::Base
       amount.to_i*26.0
     elsif interval=="monthly"
       amount.to_i*12.0
-    else 
+    else
       amount.to_i
     end
   end
-  
+
   def amount_monthly
     if interval=="weekly"
       amount.to_i*4.0
@@ -42,7 +42,7 @@ class Income < ActiveRecord::Base
       amount.to_i*2.0
     elsif interval=="yearly"
       amount.to_i/12.0
-    else 
+    else
       amount.to_i
     end
   end
@@ -54,7 +54,7 @@ class Income < ActiveRecord::Base
       amount.to_i/2.0
     elsif interval=="yearly"
       amount.to_i/26.0
-    else 
+    else
       amount.to_i
     end
   end
@@ -66,15 +66,15 @@ class Income < ActiveRecord::Base
       amount.to_i/4.0
     elsif interval=="yearly"
       amount.to_i/52.0
-    else 
+    else
       amount.to_i
     end
   end
-  
+
   def dollarize amount
     sprintf('$%.2f', amount)
   end
-  
+
   def value_for_field field_name
     case field_name
     when "Source"
@@ -97,5 +97,5 @@ class Income < ActiveRecord::Base
       UnknownField.new
     end
   end
-  
+
 end

@@ -2,6 +2,10 @@ class Residence < ActiveRecord::Base
   include Progress
   include FindIndex
 
+  def helpers
+    ActionController::Base.helpers
+  end
+
   part_of :residences
 
   progress_includes :landlord
@@ -52,6 +56,8 @@ class Residence < ActiveRecord::Base
       send(:end)
     when "ReasonForMoving"
       reason
+    when "Rent"
+      helpers.number_to_currency(rent)
     when /^(\D*)$/
       unless ['Start','End','ReasonForMoving'].include?($1)
         delegate_field_to address, $1

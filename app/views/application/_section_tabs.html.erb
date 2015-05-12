@@ -1,58 +1,127 @@
-<p>
-<ul class="nav nav-tabs nav-justified">
-  <li role="presentation" class="<%= 'active' if :identity == active_section %>">
-    <a href="<%= edit_identity_path(@applicant) %>">
-      Client
-      <span class="badge"><%= @applicant.identity.progress %>%</span>
-    </a>
-  </li>
-  <li role="presentation" class="dropdown <%= 'active' if :household_members == active_section %>">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-      Household members <span class="badge"><%= @applicant.household_members.count %></span> <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @applicant.household_members %>
-    </ul>
-  </li>
-  <li role="presentation" class="<%= 'active' if :residences == active_section %>">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-      Residence history <span class="badge"><%= @applicant.residences.count %></span> <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @applicant.residences %>
-    </ul>
-  </li>
-  <li role="presentation" class="<%= 'active' if :employments == active_section %>">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-      Employment <span class="badge"><%= @applicant.employments.count %></span> <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @applicant.employments %>
-    </ul>
-  </li>
-  <li role="presentation" class="<%= 'active' if :incomes == active_section %>">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-      Income <span class="badge"><%= @applicant.incomes.count %></span> <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @applicant.incomes %>
-    </ul>
-  </li>
-  <li role="presentation" class="<%= 'active' if :criminal_histories == active_section %>">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-      Criminal history <span class="badge"><%= @applicant.criminal_histories.count %></span> <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @applicant.criminal_histories %>
-    </ul>
-  </li>
-  <li role="presentation" class="<%= 'active' if :contacts == active_section %>">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-      Contacts <span class="badge"><%= @applicant.contacts.count %></span> <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu">
-      <%= render 'collection_tab_content', collection: @applicant.contacts %>
-    </ul>
-  </li>
-</ul>
-</p>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+  <div class="panel panel-default <%= 'panel-primary' if :identity == active_section %>">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a aria-controls="collapseOne" href="<%= edit_identity_path(@applicant) %>">
+          Client
+        </a>
+      </h4>
+    </div>
+  </div>
+
+  <div class="panel panel-default <%= 'panel-primary' if :household_members == active_section %>">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Household Members
+          <div class="pull-right">
+            <span class="badge"><%= @applicant.household_members.count %></span>
+            <span class="caret"></span>
+          </div>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse <%= 'in' if :household_members == active_section %>" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <%= render 'collection_tab_content', collection: @applicant.household_members %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default <%= 'panel-primary' if :residences == active_section %>">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Residence History
+          <div class="pull-right">
+            <span class="badge"><%= @applicant.residences.count %></span>
+            <span class="caret"></span>
+          </div>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse <%= 'in' if :residences == active_section %>" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        <%= render 'collection_tab_content', collection: @applicant.residences %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default <%= 'panel-primary' if :employments == active_section %>">
+    <div class="panel-heading" role="tab" id="headingFour">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Employment
+          <div class="pull-right">
+            <span class="badge"><%= @applicant.employments.count %></span> 
+            <span class="caret"></span>
+          </div>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse <%= 'in' if :employments == active_section %>" role="tabpanel" aria-labelledby="headingFour">
+      <div class="panel-body">
+        <%= render 'collection_tab_content', collection: @applicant.employments %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default <%= 'panel-primary' if :incomes == active_section %>">
+    <div class="panel-heading" role="tab" id="headingFive">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Income 
+          <div class="pull-right">
+            <span class="badge"><%= @applicant.incomes.count %></span>
+            <span class="caret"></span>
+          </div>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFive" class="panel-collapse collapse <%= 'in' if :incomes == active_section %>" role="tabpanel" aria-labelledby="headingFive">
+      <div class="panel-body">
+        <%= render 'collection_tab_content', collection: @applicant.incomes %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default <%= 'panel-primary' if :criminal_histories == active_section %>">
+    <div class="panel-heading" role="tab" id="headingSix">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Criminal History
+          <div class="pull-right">
+            <span class="badge"><%= @applicant.criminal_histories.count %></span>
+            <span class="caret"></span>
+          </div>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSix" class="panel-collapse collapse <%= 'in' if :criminal_histories == active_section %>" role="tabpanel" aria-labelledby="headingSix">
+      <div class="panel-body">
+        <%= render 'collection_tab_content', collection: @applicant.criminal_histories %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default <%= 'panel-primary' if :contacts == active_section %>">
+    <div class="panel-heading" role="tab" id="headingSeven">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Contacts 
+          <div class="pull-right">
+            <span class="badge"><%= @applicant.contacts.count %></span>
+            <span class="caret"></span>
+          </div>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSeven" class="panel-collapse collapse <%= 'in' if :contacts == active_section %>" role="tabpanel" aria-labelledby="headingSeven">
+      <div class="panel-body">
+        <%= render 'collection_tab_content', collection: @applicant.contacts %>
+      </div>
+    </div>
+  </div>
+
+</div>

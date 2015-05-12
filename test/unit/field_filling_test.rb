@@ -69,6 +69,13 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "11111", @one.field("MailZip")
   end
 
+  test "fills residences" do
+    assert_equal "$100.00", @one.field("Residence1Rent")
+    assert_equal "$200.00", @one.field("Residence2Rent")
+    assert_equal "Changed jobs", @one.field("Residence1ReasonForMoving")
+    assert_equal "Neighbors annoying", @one.field("Residence2ReasonForMoving")
+  end
+
   test "fills contact information" do
     assert_equal "111.897.3785", @one.field("Contact1CellPhone")
     assert_equal "Oneville", @one.field("Contact1AddressCity")
@@ -88,7 +95,7 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "One John McOne", @one.field("Income2EarnerName")
     assert_equal "yearly", @one.field("Income3Interval")
   end
-  
+
   test "fills household member information" do
     assert_equal "", @one.field("HH1CitizenYN")
     assert_equal "01/07/1918", @one.field("HH1DOB")

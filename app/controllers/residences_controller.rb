@@ -35,6 +35,7 @@ class ResidencesController < ApplicationController
       :end,
       :current,
       :reason,
+      :rent,
       :landlord_id,
       {address_attributes: [:street, :apt, :city, :state, :zip, :id]},
       {landlord_attributes: [:first_name, :middle_name, :last_name, :cell_phone, :home_phone, :work_phone, :email, :id,

@@ -2,6 +2,7 @@
   <%= render 'maybe', attribute: "From", object: residence.start %>
   <%= render 'maybe', attribute: "To", object: residence.end_or_current %>
   <%= render 'maybe', attribute: "At", object: residence.address.full %>
+  <%= render 'maybe', attribute: "Rent", object: number_to_currency(residence.rent) %>
 </ul>
 
 <div class="panel-heading">

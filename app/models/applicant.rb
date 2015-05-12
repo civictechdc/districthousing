@@ -1,4 +1,4 @@
-class Applicant < ActiveRecord::Base
+  class Applicant < ActiveRecord::Base
   include Progress
 
   progress_includes :identity
@@ -35,6 +35,8 @@ class Applicant < ActiveRecord::Base
   has_many :criminal_histories, through: :people
 
   has_one :salesforce_applicant
+
+  has_and_belongs_to_many :housing_forms
 
   before_validation :initialize_applicant
   validates_associated :identity, :household_members, :residences, :employments, :incomes, :criminal_histories, :contacts

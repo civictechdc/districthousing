@@ -47,7 +47,8 @@ module ApplicantFactory
       Residence.create(
         start: rand(10*365).days.ago,
         end: rand(10*365).days.ago,
-        reason: ["Evicted", "Voluntary"].sample
+        reason: ["Evicted", "Voluntary"].sample,
+        rent: rand(900) + 100
       ) do |r|
         r.address = make_an_address
         r.landlord = make_a_person(applicant)
@@ -108,7 +109,7 @@ module ApplicantFactory
     end
 
     def make_a_sample_applicant user
-      test_applicant = Applicant.create do |a|
+      Applicant.create do |a|
         a.user = user
         a.identity = make_a_person(a)
         3.times { a.residences << make_a_residence(a) }
