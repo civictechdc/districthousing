@@ -5,6 +5,10 @@ District Housing
 
 District Housing lets caseworkers help clients apply for Section 8 housing by automatically filling out multiple PDF applications using one online form.
 
+This is a [Ruby on Rails](http://rubyonrails.org/) application: knowledge of [Ruby](https://www.ruby-lang.org/) &
+[Rails](http://rubyonrails.org/) is recommended to work on the server component, and
+[Codecademy's class](http://www.codecademy.com/learn/learn-rails) is a great way to start.
+
 This application uses the [pdf-forms gem](https://github.com/jkraemer/pdf-forms) and [pdftk](http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/).
 
 ## Setup
@@ -30,11 +34,11 @@ Code for DC has labeled additional PDFs to work with District Housing.  These ar
 
     rake pull_pdfs
 
-As a demo, the app can be found at http://districthousing.org/.  Don't enter real data here, or rely on your data sticking around.  It's likely to be reset and upgraded without warning.
+As a demo, the app can be found at [http://districthousing.org/](http://districthousing.org/).  Don't enter real data here, or rely on your data sticking around.  It's likely to be reset and upgraded without warning.
 
 ## Dependencies
 
-Requires pdftk.  On OS X:
+Requires [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/). On OS X, install [homebrew](http://brew.sh/) and then run:
 
     brew cask install pdftk
 
