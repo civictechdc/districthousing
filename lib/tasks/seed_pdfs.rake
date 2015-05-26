@@ -11,7 +11,7 @@ def download_pdf uri, name, where
   # Download the file to the public/forms/ directory, and generate a path
   puts "Download #{name} from #{uri}"
   output_filename = "#{where}#{Slugify.slugify(name)}.pdf"
-  system("wget #{uri} --no-check-certificate --output-document=#{output_filename}")
+  system("wget '#{uri}' --no-check-certificate --output-document=#{output_filename}")
   output_filename
 end
 
@@ -28,6 +28,23 @@ task seed_pdfs: :environment do
             path = download_pdf(row['uri'], row['name'], 'public/forms/stock/')
           end
           HousingForm.create(name: row['Property Name'], location: row['Property Address'], lat: row['lat'], long: row['lng'], path: path)
+        end
+      end
+    end
+  end
+end
+
+require 'find'
+
+task seed_pdfs_external: :environment do
+  HousingForm.transaction do
+    FormField.transaction do
+      HousingForm.destroy_all
+      Dir.glob('public/forms/external/*.pdf').each do |path|
+        if FileTest.file?(path)
+          puts path
+          form_name = File.basename(path).sub(/.pdf$/, '')
+          HousingForm.create(name: form_name, path: path)
         end
       end
     end

@@ -15,4 +15,8 @@ sample_user = User.create(
 sample_user.role = User::USER_ROLES[:sample]
 sample_user.save!
 
-ApplicantFactory.make_a_sample_applicant(sample_user)
+a = ApplicantFactory.make_a_sample_applicant(sample_user)
+a.identity.first_name = "Sample"
+a.identity.middle_name = "Testing"
+a.identity.last_name = "Person"
+a.save

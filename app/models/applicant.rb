@@ -115,11 +115,6 @@
       delegate_field_to criminal_histories[index], $2
     when /^Crime(.+)$/
       delegate_field_to criminal_histories[0], $1
-    when "Today"
-      Date.today
-    when "Now"
-      now = Time.now
-      "%d:%d" % [now.hour, now.sec]
     else
       identity && identity.value_for_field(field_name) || ""
     end

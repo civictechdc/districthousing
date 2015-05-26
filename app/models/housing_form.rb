@@ -75,4 +75,12 @@ class HousingForm < ActiveRecord::Base
     h.delete("path")
     h
   end
+
+  def is_external?
+    if path =~ /external/
+      true
+    else
+      false
+    end
+  end
 end
