@@ -34,6 +34,7 @@ class IdentityControllerTest < ActionController::TestCase
       city_of_birth: "x",
       driver_license_number: "x",
       driver_license_state: "x",
+      driver_license_exp_date: "x",
     }
 
     original_person = people(:one)

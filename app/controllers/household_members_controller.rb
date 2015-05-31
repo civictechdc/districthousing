@@ -55,6 +55,7 @@ class HouseholdMembersController < ApplicationController
         :city_of_birth,
         :driver_license_number,
         :driver_license_state,
+        :driver_license_exp_date,
         mail_address_attributes: [
           :id,
           :street,

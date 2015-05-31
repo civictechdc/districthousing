@@ -37,6 +37,7 @@ module ApplicantFactory
         occupation: ["Butcher", "Baker", "Candlestick Maker"].sample,
         driver_license_number: Faker::Number.number(10),
         driver_license_state: Faker::Address.state_abbr,
+        driver_license_exp_date: Faker::Date.forward(10*365),
       ) do |p|
         p.mail_address = make_an_address
         p.applicant = applicant

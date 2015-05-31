@@ -11,3 +11,4 @@
 <%= builder.collection_select :citizenship, citizenship_statuses, :to_s, :to_s %>
 <%= builder.collection_select :driver_license_state, us_states, :last, :first, label: "State issuing driver's license or non-driver ID" %>
 <%= builder.text_field :driver_license_number, label: "Driver's license or non-driver ID number" %>
+<%= builder.date_field :driver_license_exp_date, label: "License or ID expiration date" %>
