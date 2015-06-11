@@ -1,12 +1,23 @@
 .pdf-guide {
-  img, table {
-    margin: 2em;
-  }
-
   img {
+    margin: 2em;
     @include img-responsive();
     border-radius: $border-radius-large;
     background-color: #eeeeee;
     padding: 1em;
+  }
+
+  #pdf-guide-sidenav {
+    .nav a {
+      font-size: inherit;
+    }
+
+    .nav .sub-nav a {
+      font-size: small;
+    }
+
+    .nav .sub-nav li {
+      padding-left: 10px;
+    }
   }
 }
