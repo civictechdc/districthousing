@@ -1,4 +1,3 @@
-<a name="info-about-people"></a>
 <h3 id="info-about-people">Information about people</h3>
 
 <p>
@@ -46,7 +45,6 @@
   [ "BirthCity", "City of birth"],
 ] %>
 
-<a name="person-prefixes"></a>
 <h4 id="person-prefixes">Person prefixes</h4>
 
 <p>
@@ -83,7 +81,6 @@
   [ "HH", "Household member other than the applicant" ],
 ] %>
 
-<a name="yes-no-values"></a>
 <h3 id="yes-no-values">Yes/No values</h3>
 
 <p>
@@ -123,7 +120,6 @@
   [ "MarriedTickNo", "Blank if married, Yes if not" ],
 ] %>
 
-<a name="addresses"></a>
 <h3 id="addresses">Addresses</h3>
 
 <p>
@@ -183,7 +179,6 @@
   [ "Contact3MailStreet", "Third contact's mailing address street" ],
 ] %>
 
-<a name="tickboxes"></a>
 <h3 id="tickboxes">Tickboxes</h3>
 
 <p>
@@ -196,7 +191,6 @@
   [ "USCitizenTickYes", "Ticked if US Citizen, empty if not" ]
 ] %>
 
-<a name="employment"></a>
 <h3 id="employment">Employment</h3>
 
 <p>
@@ -229,7 +223,6 @@
   [ "Job4Title", "Third previous job's title" ]
 ] %>
 
-<a name="income"></a>
 <h3 id="income">Income</h3>
 
 <p>
@@ -249,7 +242,6 @@
   [ "Income3EarnerFirstInitial", "First initial of the household member earning the second income listed in a form" ]
 ] %>
 
-<a name="criminal-history"></a>
 <h3 id="criminal-history">Criminal History</h3>
 
 <p>
@@ -266,7 +258,6 @@ Crime suffixes are <code>Type</code>, <code>Date</code>, <code>Description</code
   [ "Crime3LastName", "Last name of the household member who committed the third crime listed in a form" ]
 ] %>
 
-<a name="race-and-ethnicity"></a>
 <h3 id="race-and-ethnicity">Race and ethnicity</h3>
 
 <p>
@@ -289,7 +280,6 @@ Remember, for race/ethnicity checkboxes, which come up frequently, use "TickYes"
 <% ethnicities = Constants::Ethnicity.all.map { |r| ["Ethnicity#{r.name_db}YesNo", "Yes if #{r.name_form}, No if not."] } %>
 <%= render "table", field_name_descriptions: ethnicities %>
 
-<a name="marital-status"></a>
 <h3 id="marital-status">Marital status</h3>
 
 <p>
@@ -304,7 +294,6 @@ Several marital statuses can be used in Yes/No fields.
   [ "SeparatedYesNo", "Yes if separated, No if not." ],
 ] %>
 
-<a name="genders"></a>
 <h3 id="genders">Genders</h3>
 
 <p>
