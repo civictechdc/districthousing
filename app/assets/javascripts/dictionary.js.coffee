@@ -21,17 +21,11 @@ $ ->
 
 
 # Sets up the sidenav on the dictionary.
-# Must be called on the page, or else the script misbehaves
-window.dictionarySetupSidenav = ->
+$ ->
   sidenav = $('#pdf-guide-sidenav')
-  sidenav.affix({
-    offset: {
-      top: -> (this.top = $('#pdf-guide-sidenav').offset().top),
-      bottom: -> (this.bottom = $('img.footer-logo').outerHeight(true))
-    }
-  })
-  # this is needed for when affix starts, it changes the width
+  # this is needed because when affix starts, the sidenav loses its width
   sidenav.width(sidenav.width())
+  # sets up positioning when affix starts and stops
   sidenav.on('affix.bs.affix', ->
     size = $(window).width()
     divWidth = $('body > div.container').width()
@@ -43,3 +37,10 @@ window.dictionarySetupSidenav = ->
       $("#pdf-guide-sidenav").css("right","0")
       $("#pdf-guide-sidenav").css("top","0")
   )
+  # starts bootstrap affix
+  sidenav.affix({
+    offset: {
+      top: -> (this.top = $('#pdf-guide-sidenav').offset().top),
+      bottom: -> (this.bottom = $('img.footer-logo').outerHeight(true))
+    }
+  })
