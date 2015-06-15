@@ -30,17 +30,22 @@ $ ->
     size = $(window).width()
     divWidth = $('body > div.container').width()
     margin = (size - divWidth) / 2
-    $("#pdf-guide-sidenav").css("right",margin)
-    $("#pdf-guide-sidenav").css("top", "10px")
+    $("#pdf-guide-sidenav").css("right", margin)
+    $("#pdf-guide-sidenav").css("position", "")
   )
   sidenav.on('affix-top.bs.affix', ->
-      $("#pdf-guide-sidenav").css("right","0")
-      $("#pdf-guide-sidenav").css("top","0")
+    $("#pdf-guide-sidenav").css("right", "0")
+  )
+  sidenav.on('affix-bottom.bs.affix', ->
+    $("#pdf-guide-sidenav").css("right", "0")
   )
   # starts bootstrap affix
   sidenav.affix({
     offset: {
-      top: -> (this.top = $('#pdf-guide-sidenav').offset().top),
-      bottom: -> (this.bottom = $('img.footer-logo').outerHeight(true))
+      top: $('#pdf-guide-sidenav').offset().top,
+      bottom: $('img.footer-logo').outerHeight(true)
     }
   })
+
+$ ->
+  $('body').scrollspy({ target: '#pdf-guide-sidenav' })
