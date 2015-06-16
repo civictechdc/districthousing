@@ -23,6 +23,7 @@ $ ->
 # Sets up the sidenav on the dictionary.
 $ ->
   sidenav = $('#pdf-guide-sidenav')
+  return unless sidenav.length
   # this is needed because when affix starts, the sidenav loses its width
   sidenav.width(sidenav.width())
   # sets up positioning when affix starts and stops
@@ -46,6 +47,5 @@ $ ->
       bottom: $('img.footer-logo').outerHeight(true)
     }
   })
-
-$ ->
+  # starts scrollspy
   $('body').scrollspy({ target: '#pdf-guide-sidenav' })
