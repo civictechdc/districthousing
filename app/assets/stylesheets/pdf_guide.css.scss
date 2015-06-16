@@ -8,6 +8,11 @@
   }
 
   #pdf-guide-sidenav {
+
+    &.affix {
+      top: 10px;
+    }
+
     .nav a {
       font-size: inherit;
     }
@@ -18,6 +23,11 @@
 
     .nav .sub-nav li {
       padding-left: 10px;
+    }
+
+    .nav li.active {
+      border-left: solid $brand-primary 2px;
+      font-weight: bold;
     }
   }
 }
