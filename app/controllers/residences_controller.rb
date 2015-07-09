@@ -1,9 +1,6 @@
 class ResidencesController < ApplicationController
   include ApplicantFormPage
 
-  before_action :set_residence, only: [:edit, :update, :destroy]
-  before_action :set_applicant_mail_address, only: [:edit, :update]
-
   def this_section
     :residences
   end
