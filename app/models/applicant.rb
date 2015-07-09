@@ -54,13 +54,13 @@
   has_many :residence_addresses, through: :residences, source: :address, dependent: :destroy
   has_many :household_members_people_mail_addresses, through: :household_members_people, source: :mail_address, class_name: "Address", dependent: :destroy
   has_many :employment_addresses, through: :employments, source: :address, dependent: :destroy
+
   def addresses
-    [
-      identity.mail_address,
-      residence_addresses,
-      household_members_people_mail_addresses,
-      employment_addresses
-    ].flatten.compact.uniq
+    [identity.mail_address,
+     residence_addresses,
+     household_members_people_mail_addresses,
+     employment_addresses
+    ].flatten.compact.uniq { |a| a.to_s }
   end
 
   def preferred_attrs_for field_names
