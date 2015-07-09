@@ -15,7 +15,6 @@
       <h2>Residence Address</h2>
       <%= f.fields_for :address do |a| %>
         <%= render "addresses/fields", builder: a %>
-        <%= f.collection_select :address_id, @current_applicant.addresses, :id, :to_s, include_blank: true, label: "Or, select to reuse an existing address" %>
       <% end %>
     </div>
 

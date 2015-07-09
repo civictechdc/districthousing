@@ -1,5 +1,12 @@
-<%= builder.text_field :street, label: "Street address" %>
-<%= builder.text_field :apt, label: "Apartment" %>
-<%= builder.text_field :city %>
-<%= builder.text_field :state %>
-<%= builder.text_field :zip, label: "Zip code" %>
+<div class="address-fields">
+  <%= builder.text_field :street, label: "Street address" %>
+  <%= builder.text_field :apt, label: "Apartment" %>
+  <%= builder.text_field :city %>
+  <%= builder.text_field :state %>
+  <%= builder.text_field :zip, label: "Zip code" %>
+  <div class="address-selector">
+    <%= builder.collection_select :id, @current_applicant.addresses, :id, :to_s, include_blank: true, label: "Or, select to reuse an existing address" %>
+  </div>
+  <%= content_tag "div", class: "applicant-addresses", data: {applicant_addresses: @current_applicant.addresses} do %>
+  <% end %>
+</div>
