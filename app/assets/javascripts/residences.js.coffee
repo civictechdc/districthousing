@@ -10,7 +10,7 @@ copyAddress = ->
       break
   unless match
     return
-  address_fields.find('input[id$=state]').val(match.state)
+  address_fields.find('select[id$=state]').val(match.state)
   address_fields.find('input[id$=street]').val(match.street)
   address_fields.find('input[id$=city]').val(match.city)
   address_fields.find('input[id$=apt]').val(match.apt)
