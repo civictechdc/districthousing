@@ -1,53 +1,34 @@
 class HouseholdMembersController < ApplicationController
-  before_action :set_household_member, only: [:show, :edit, :update, :destroy]
-
-  def edit
-    @household_member = HouseholdMember.find(params[:id])
-    @person = @household_member.person
-  end
-
-  def new
-    create
-  end
-
-  def create
-    @h = HouseholdMember.new
-    @h.person = selected_or_created_person
-    @h.applicant = current_applicant
-
-    if @h.save
-      redirect_to edit_household_member_path(@h)
-    else
-      flash.alert = "Error: #{@h.errors.messages}"
-      render :new
-    end
-  end
-
-  def show
-    @household_member = HouseholdMember.find(params[:id])
-  end
-
-  def update
-    if @household_member.update(household_member_params)
-      redirect_to next_page
-    else
-      redirect_to edit_household_member_path(@household_member), notice: 'Couldn\'t save.'
-    end
-  end
-
-  def destroy
-    @household_member.destroy
-    redirect_to current_applicant, notice: 'Household member removed', status: :see_other
-  end
+  include ApplicantFormPage
 
   private
 
-  def set_household_member
-    @household_member = HouseholdMember.find(params[:id])
+  def this_section
+    :household_members
   end
 
-  def household_member_params
+  def first_item
+    @applicant.household_members.first
+  end
+
+  def last_item
+    @applicant.household_members.last
+  end
+
+  def make_new
+    h = HouseholdMember.create
+    h.person = selected_or_created_person
+    h.applicant = @applicant
+    h
+  end
+
+  def set_model
+    @model = HouseholdMember.find(params[:id])
+  end
+
+  def model_params
     params.require(:household_member).permit(
+      :relationship,
       person_attributes: [
         :id,
         :dob,
@@ -92,7 +73,7 @@ class HouseholdMembersController < ApplicationController
         first_name: params[:first_name],
         last_name: params[:last_name],
       )
-      person.applicant = current_applicant
+      person.applicant = @applicant
       return person
     else
       return Person.find(params[:person_id])
@@ -100,14 +81,18 @@ class HouseholdMembersController < ApplicationController
   end
 
   def next_page
-    find_next_page @current_applicant.household_members, @household_member, :edit_household_member_path
+    find_next_page @applicant.household_members, @model, :edit_model
+  end
+
+  def edit_model item
+    edit_applicant_household_member_path(@applicant, item)
   end
 
   def front_of_next_section
-    edit_residence_path(@current_applicant.residences.first)
+    edit_residences_path(@applicant)
   end
 
   def back_of_previous_section
-    edit_person_path(@current_applicant.identity)
+    edit_applicant_identity_path(@applicant)
   end
 end

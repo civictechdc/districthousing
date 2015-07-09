@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-6">
+    <h3>About the employment</h3>
+    <div class="field">
+      <%= f.collection_select :person_id, @applicant.household_members_including_self, :id, :description, label: "Person employed" %>
+    </div>
+    <div class="field">
+      <%= f.date_field :start_date %>
+    </div>
+    <div class="field">
+      <%= f.date_field :end_date %>
+    </div>
+    <%= f.check_box :current, label: "Currently employed here", disable: true %>
+    <div class="field">
+      <%= f.text_field :employer_name %>
+    </div>
+    <div class="field">
+      <%= f.text_field :supervisor_name %>
+    </div>
+    <div class="field">
+      <%= f.text_field :position %>
+    </div>
+    <div class="field">
+      <%= f.text_field :phone %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h3>Employer Address</h3>
+    <%= f.fields_for :address do |a| %>
+      <%= render "addresses/fields", builder: a %>
+    <% end %>
+  </div>
+</div>

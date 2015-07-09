@@ -1,0 +1,16 @@
+<%= render 'form_page' %>
+
+<div class="row">
+	<div class="col-md-3">
+		<%= render 'section_tabs', active_section: @active_section %>
+	</div>
+	<div class="col-md-9">
+		<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
+		<%= render "fields", f: f %>
+
+		<%= render "buttons_save_delete", f: f %>
+	</div>
+</div>
+
+<% end %>
+

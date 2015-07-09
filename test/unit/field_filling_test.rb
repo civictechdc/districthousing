@@ -29,18 +29,21 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "111-11-1111", @one.field("SSN")
     assert_equal "Male", @one.field("Gender")
     assert_equal "M", @one.field("GenderInitial")
-    assert_equal "USA", @one.field("CountryOfBirth")
-    assert_equal "Virginia", @one.field("BirthState")
+    assert_equal "United States", @one.field("CountryOfBirth")
+    assert_equal "VA", @one.field("BirthState")
     assert_equal "Springfield", @one.field("BirthCity")
     assert_equal "Yes", @one.field("USCitizenYesNo")
-    assert_equal "MyRace", @one.field("Race")
-    assert_equal "MyEthnicity", @one.field("Ethnicity")
+    assert_equal "Asian", @one.field("Race")
+    assert_equal "Hispanic or Latino", @one.field("Ethnicity")
     assert_equal "X12345678", @one.field("DriverLicense")
-    assert_equal "New York", @one.field("DriverLicenseState")
+    assert_equal "NY", @one.field("DriverLicenseState")
     assert_equal "Self", @one.field("Relationship")
     assert_equal "Yes", @one.field("MarriedYesNo")
+    assert_equal "Yes", @one.field("MarriedYes")
+    assert_equal "", @one.field("MarriedNo")
     assert_equal "Y", @one.field("MarriedYN")
     assert_equal "Yes", @one.field("MarriedYesNo")
+    assert_equal "Part-time", @one.field("StudentStatus")
     assert_equal "N", @one.field("StudentStatusFullTimeYN")
     assert_equal "No", @one.field("StudentStatusFullTimeYesNo")
     assert_equal "Y", @one.field("StudentStatusYN")
@@ -66,16 +69,31 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "11111", @one.field("MailZip")
   end
 
+  test "fills residences" do
+    assert_equal "$100.00", @one.field("Residence1Rent")
+    assert_equal "$200.00", @one.field("Residence2Rent")
+    assert_equal "Changed jobs", @one.field("Residence1ReasonForMoving")
+    assert_equal "Neighbors annoying", @one.field("Residence2ReasonForMoving")
+  end
+
   test "fills contact information" do
-    assert_equal "", @one.field("Contact1Add")
-    assert_equal "", @one.field("Contact1Address")
-    assert_equal "", @one.field("Contact1CellPhone")
-    assert_equal "", @one.field("Contact1Name")
-    assert_equal "", @one.field("Contact1Phone")
-    assert_equal "", @one.field("Contact1Relationship")
-    assert_equal "", @one.field("Contact2Add")
-    assert_equal "", @one.field("Contact2Name")
-    assert_equal "", @one.field("Contact2Phone")
+    assert_equal "111.897.3785", @one.field("Contact1CellPhone")
+    assert_equal "Oneville", @one.field("Contact1AddressCity")
+    assert_equal "Contact1 Onerson Onesie", @one.field("Contact1Name")
+    assert_equal "Plumber", @one.field("Contact1Relationship")
+    assert_equal "Contact2 Twonerson Twosie", @one.field("Contact2Name")
+    assert_equal "two@two.info", @one.field("Contact2Email")
+  end
+
+  test "fills income information" do
+    assert_equal "pension", @one.field("Income1Source")
+    assert_equal "$333.00", @one.field("Income1Amount")
+    assert_equal "$83.25", @one.field("Income1AmountWeekly")
+    assert_equal "$166.50", @one.field("Income1AmountBiweekly")
+    assert_equal "$333.00", @one.field("Income1AmountMonthly")
+    assert_equal "$3996.00", @one.field("Income1AmountYearly")
+    assert_equal "One John McOne", @one.field("Income2EarnerName")
+    assert_equal "yearly", @one.field("Income3Interval")
   end
 
   test "fills household member information" do
@@ -130,6 +148,14 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "(666) 666-6666", @one.field("LL2Phone")
   end
 
+  test "fills criminal history information" do
+    assert_equal "Felony", @one.field("Crime1Type")
+    assert_equal "MyString", @one.field("Crime1Description")
+    assert_equal "2014", @one.field("Crime2Date")
+    assert_equal "One", @one.field("Crime2FirstName")
+    assert_equal "Felony", @one.field("CrimeType")
+  end
+
   test "other fields" do
     assert_equal "", @one.field("Accommodations")
     assert_equal "", @one.field("Accommodations2")
@@ -161,11 +187,6 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", @one.field("EmpIncN")
     assert_equal "", @one.field("EmpIncY")
     assert_equal "", @one.field("English")
-    assert_equal "", @one.field("EthnicityDeclineT")
-    assert_equal "", @one.field("EthnicityHispanic")
-    assert_equal "", @one.field("EthnicityHispanicT")
-    assert_equal "", @one.field("EthnicityNonHispanic")
-    assert_equal "", @one.field("EthnicityNonHispanicT")
     assert_equal "", @one.field("EvictDrugsN")
     assert_equal "", @one.field("EvictDrugsY")
     assert_equal "", @one.field("Farsi")
@@ -201,13 +222,6 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", @one.field("PensionY")
     assert_equal "", @one.field("Polish")
     assert_equal "", @one.field("Portuguese")
-    assert_equal "", @one.field("RaceAsianT")
-    assert_equal "", @one.field("RaceBlackT")
-    assert_equal "", @one.field("RaceDeclineT")
-    assert_equal "", @one.field("RaceNativeAmericanT")
-    assert_equal "", @one.field("RaceOtherT")
-    assert_equal "", @one.field("RacePacificIslanderT")
-    assert_equal "", @one.field("RaceWhiteT")
     assert_equal "", @one.field("Russian")
     assert_equal "", @one.field("SSABensN")
     assert_equal "", @one.field("SSABensY")
@@ -262,5 +276,150 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", @one.field("Urdu")
     assert_equal "", @one.field("Viet")
     assert_equal "", @one.field("Yiddish")
+  end
+
+  test 'fills races' do
+    app = applicants(:one)
+
+    app.identity.race = "NativeAmerican"
+    assert_equal "Native American", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "Y", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "Asian"
+    assert_equal "Asian", app.field("Race")
+
+    assert_equal "Y", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "Black"
+    assert_equal "Black", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "Y", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "PacificIslander"
+    assert_equal "Pacific Islander", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "Y", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "Other"
+    assert_equal "Other", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "Y", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "White"
+    assert_equal "White", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "Y", app.field("RaceWhiteY")
+    assert_equal "", app.field("RaceDeclineY")
+
+    app.identity.race = "Decline"
+    assert_equal "Decline to state", app.field("Race")
+
+    assert_equal "", app.field("RaceAsianY")
+    assert_equal "", app.field("RaceBlackY")
+    assert_equal "", app.field("RaceNativeAmericanY")
+    assert_equal "", app.field("RaceOtherY")
+    assert_equal "", app.field("RacePacificIslanderY")
+    assert_equal "", app.field("RaceWhiteY")
+    assert_equal "Y", app.field("RaceDeclineY")
+  end
+
+  test 'fills ethnicities' do
+    app = applicants(:one)
+
+    app.identity.ethnicity = "Hispanic"
+    assert_equal "Hispanic or Latino", app.field("Ethnicity")
+
+    assert_equal "Y", app.field("EthnicityHispanicY")
+    assert_equal "", app.field("EthnicityNotHispanicY")
+    assert_equal "", app.field("EthnicityDeclineY")
+
+    app.identity.ethnicity = "NotHispanic"
+    assert_equal "Not Hispanic or Latino", app.field("Ethnicity")
+
+    assert_equal "", app.field("EthnicityHispanicY")
+    assert_equal "Y", app.field("EthnicityNotHispanicY")
+    assert_equal "", app.field("EthnicityDeclineY")
+
+    app.identity.ethnicity = "Decline"
+    assert_equal "Decline to state", app.field("Ethnicity")
+
+    assert_equal "", app.field("EthnicityHispanicY")
+    assert_equal "", app.field("EthnicityNotHispanicY")
+    assert_equal "Y", app.field("EthnicityDeclineY")
+  end
+
+  test 'fills boolean fields in a way that makes sense' do
+    app = applicants(:one)
+    app.identity.ethnicity = "Hispanic"
+
+    # Tick/T values are special.  They are only ever "Yes" or blank.
+    # A "Yes" in a PDF tickbox value will tick the box.
+
+    assert_equal "Y",   app.field("EthnicityHispanicY")
+    assert_equal "Yes", app.field("EthnicityHispanicYes")
+    assert_equal "",    app.field("EthnicityHispanicN")
+    assert_equal "",    app.field("EthnicityHispanicNo")
+    assert_equal "Y",   app.field("EthnicityHispanicYN")
+    assert_equal "Yes", app.field("EthnicityHispanicYesNo")
+
+    assert_equal "Yes", app.field("EthnicityHispanicTickYes")
+    assert_equal "Yes", app.field("EthnicityHispanicT")
+    assert_equal "",    app.field("EthnicityHispanicTickNo")
+
+    app.identity.ethnicity = "NotHispanic"
+
+    assert_equal "",    app.field("EthnicityHispanicY")
+    assert_equal "",    app.field("EthnicityHispanicYes")
+    assert_equal "N",   app.field("EthnicityHispanicN")
+    assert_equal "No",  app.field("EthnicityHispanicNo")
+    assert_equal "N",   app.field("EthnicityHispanicYN")
+    assert_equal "No",  app.field("EthnicityHispanicYesNo")
+
+    assert_equal "",    app.field("EthnicityHispanicTickYes")
+    assert_equal "",    app.field("EthnicityHispanicT")
+    assert_equal "Yes", app.field("EthnicityHispanicTickNo")
+  end
+
+  test 'nationality and citizenship are the same' do
+    app = applicants(:one)
+
+    assert_equal "US Citizen",    app.field("Citizenship")
+    assert_equal "US Citizen",    app.field("Nationality")
   end
 end

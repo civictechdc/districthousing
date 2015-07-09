@@ -1,12 +1,17 @@
 <div class="row">
-  <div class="col-md-4">
-    <%= f.collection_select :income_type_id, IncomeType.all, :id, :label, include_blank: true %>
+  <div class="col-md-3">
+    <%= f.collection_select :income_type, Constants::IncomeType.all, :name_db, :name_form, include_blank: true %>
   </div>
 
-  <div class="col-md-4">
-    <%= f.text_field :amount, label: "Yearly amount" %>
+  <div class="col-md-3">
+    <%= f.text_field :amount, label: "Amount" %>
   </div>
-  <div class="col-md-4">
-    <%= f.collection_select :person_id, @current_applicant.household_members_including_self, :id, :description, label: "Who earns it?" %>
+
+  <div class="col-md-3">
+    <%= f.collection_select :interval, income_intervals, :to_s, :to_s, label: "Interval", include_blank: true %>
+  </div>
+
+  <div class="col-md-3">
+    <%= f.collection_select :person_id, @applicant.household_members_including_self, :id, :description, label: "Who earns it?" %>
   </div>
 </div>

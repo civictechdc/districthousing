@@ -1,13 +1,14 @@
 {
-  "status": "Alpha",
-  "thumbnailUrl":"",
+  "conformsTo":"http://codefordc.org/resources/specification.html",
+  "status": "Beta",
+  "thumbnailUrl":"https://codefordc.github.io/districthousing/img/district-housing-logo-small.png",
   "needs": [
     {"need":"Rails enthusiasts"},
     {"need":"Salesforce"},
     {"need":"Passionate People"}
   ],
   "bornAt": "Code for DC",
-  "type": "",
+  "type": "Web App",
   "categories": [
     {"category":"Housing"}
   ],

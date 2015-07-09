@@ -26,18 +26,22 @@ class ApplicantsController < ApplicationController
       params[:employment_count].to_i.times do
         @applicant.identity.employments << add_new_employment(@applicant)
       end
+      params[:contact_count].to_i.times do
+        @applicant.identity.contacts << add_new_contact(@applicant)
+      end
       success = @applicant.save
     end
 
     if success
       session[:current_applicant_id] = @applicant.id
-      redirect_to edit_person_path(@applicant.identity)
+      redirect_to edit_identity_path(@applicant)
     else
       render :new
     end
   end
 
   def show
+    @housing_forms = HousingForm.where.not(path: nil)
     @applicant = Applicant.find(params[:id])
     session[:current_applicant_id] = @applicant.id
     assign_current_applicant
@@ -68,7 +72,7 @@ class ApplicantsController < ApplicationController
 
   def add_new_income applicant
     Income.create do |i|
-      i.income_type = IncomeType.find_by(name: "salary")
+      i.income_type = "salary"
       i.person = applicant.identity
     end
   end
@@ -83,6 +87,12 @@ class ApplicantsController < ApplicationController
   def add_new_household_member applicant
     HouseholdMember.create do |h|
       h.person = add_a_new_person(applicant)
+    end
+  end
+
+  def add_new_contact applicant
+    Contact.create do |c|
+      c.contact = add_a_new_person(applicant)
     end
   end
 

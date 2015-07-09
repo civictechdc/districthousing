@@ -1,0 +1,15 @@
+<input id="submit-direction" name="submit_direction" type="hidden">
+
+<p align="center">
+  <%= link_to 'Delete', basic_path(@model), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+  <%= f.button("Save", { class:"btn btn-primary" }) %>
+</p>
+
+<ul class="pager">
+  <li class="previous submit-previous">
+    <a href="#"><span aria-hidden="true">&larr;</span> Save and go back</a>
+  </li>
+  <li class="next submit-next">
+    <a href="#">Save and continue <span aria-hidden="true">&rarr;</span></a>
+  </li>
+</ul>

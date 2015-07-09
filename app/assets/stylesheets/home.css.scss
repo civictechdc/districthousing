@@ -380,3 +380,38 @@ div.dataTables_filter label {
   margin-left: 0.5em;
   font-size: 20px;
 }
+
+/*** Accordion Menu Styling ***/
+.breadcrumb .active {
+  font-weight: bold;
+}
+
+.panel-primary .panel-heading a:hover {
+  color: #ffffff;
+}
+
+.accordion-list-menu {
+  font-size: 1.0em;
+  padding-left: 20px;
+}
+
+.accordion-list-menu .completion {
+  padding: 10px;
+}
+
+.accordion-list-item {
+  border-bottom:1px solid #eee; 
+  padding-top:10px; 
+  padding-bottom:10px;
+}
+
+.accordion-list-new {
+  padding-top:10px;
+}
+
+/*** Shrink Accordion Menu text on smaller devices ***/
+@media screen and (max-width: 1200px){
+    #accordion h4 {
+      font-size: 1.0em;
+    }
+}

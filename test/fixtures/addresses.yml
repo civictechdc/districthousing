@@ -21,3 +21,9 @@ residence_two:
   city: New Residenceville
   state: OK
   zip: 44444
+
+empty:
+  street:
+  city:
+  state:
+  zip:

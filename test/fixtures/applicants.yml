@@ -5,3 +5,8 @@ one:
 sample:
   user: sample
   identity: sample
+
+# This applicant has no residences, household members, or anything else.
+empty:
+  user: one
+  identity: empty

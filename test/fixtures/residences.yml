@@ -5,6 +5,7 @@ one:
   end: 2014-06-25
   reason: Changed jobs
   landlord: ll1
+  rent: 100
 
 two:
   applicant: one
@@ -13,3 +14,4 @@ two:
   end: 2013-06-25
   reason: Neighbors annoying
   landlord: ll2
+  rent: 200

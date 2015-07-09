@@ -1,0 +1,27 @@
+<%= render 'form_page' %>
+
+<div class="row">
+	<div class="col-md-3">
+		<%= render 'section_tabs', active_section: @active_section %>
+	</div>
+	<div class="col-md-9">
+		<%= bootstrap_form_for(@applicant.identity, url: identity_path(@applicant)) do |f| %>
+		<%= render "fields", f: f %>
+
+    <%= render "buttons_update_back", f: f %>
+	</div>
+</div>
+
+<% end %>
+
+<% if @model.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@model.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+    <ul>
+    <% @model.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
   include Progress
+  include BooleanFields
 
   progress_includes :mail_address
 
@@ -23,7 +24,11 @@ class Person < ActiveRecord::Base
   end
 
   def description
-    "#{first_name} #{last_name}"
+    if first_name.blank? and last_name.blank?
+      "(No name)"
+    else
+      "#{first_name} #{last_name}"
+    end
   end
 
   def to_s
@@ -67,9 +72,7 @@ class Person < ActiveRecord::Base
   end
 
   def us_citizen?
-    # FIXME: Instead of using regexes for this, country of citizenship should
-    # be normalized
-    return /^(United States|US|USA|U.S.A.)$/i =~ citizenship
+    return "US Citizen" == citizenship
   end
 
   def preferred_phone
@@ -81,6 +84,22 @@ class Person < ActiveRecord::Base
     marital_status == "Married"
   end
 
+  def single?
+    marital_status == "Single"
+  end
+
+  def divorced?
+    marital_status == "Divorced"
+  end
+
+  def separated?
+    marital_status == "Separated"
+  end
+
+  def widowed?
+    marital_status == "Widowed"
+  end
+
   def student?
     student_status == "Full-time" or student_status == "Part-time"
   end
@@ -89,9 +108,19 @@ class Person < ActiveRecord::Base
     student_status == "Full-time"
   end
 
+  def male?
+    gender == "Male"
+  end
+
+  def female?
+    gender == "Female"
+  end
+
   def value_for_field field_name
     case field_name
     when /^Mail(.*)/
+      mail_address && mail_address.value_for_field($1)
+    when /^Address(.*)/
       mail_address && mail_address.value_for_field($1)
     when "FirstName"
       first_name
@@ -105,7 +134,7 @@ class Person < ActiveRecord::Base
       middle_name
     when "MiddleInitial"
       middle_name.to_s.first.upcase
-    when /^(Full)?Name\d*/
+    when /^(Full)?Name\d*$/
       full_name
     when "DOB"
       dob_date
@@ -125,7 +154,7 @@ class Person < ActiveRecord::Base
       cell_phone
     when "HomePhone"
       home_phone
-    when "Phone"
+    when /^(Preferred)?Phone$/
       preferred_phone
     when "Email"
       email
@@ -134,82 +163,74 @@ class Person < ActiveRecord::Base
     when "Gender"
       gender
     when "Race"
-      race
+      Constants::Race.new(race).name_pdf
+    when /RaceAsian(#{boolean_regex})/
+      boolean_field $1 do race == "Asian" end
+    when /RaceBlack(#{boolean_regex})/
+      boolean_field $1 do race == "Black" end
+    when /RaceNativeAmerican(#{boolean_regex})/
+      boolean_field $1 do race == "NativeAmerican" end
+    when /RaceOther(#{boolean_regex})/
+      boolean_field $1 do race == "Other" end
+    when /RacePacificIslander(#{boolean_regex})/
+      boolean_field $1 do race == "PacificIslander" end
+    when /RaceWhite(#{boolean_regex})/
+      boolean_field $1 do race == "White" end
+    when /RaceDecline(#{boolean_regex})/
+      boolean_field $1 do race == "Decline" end
     when "Ethnicity"
-      ethnicity
-    when "PreferredPhone"
-      cell_phone
-    when "WorkPhone"
-      work_phone
+      Constants::Ethnicity.new(ethnicity).name_pdf
+    when /EthnicityHispanic(#{boolean_regex})/
+      boolean_field $1 do ethnicity == "Hispanic" end
+    when /EthnicityNotHispanic(#{boolean_regex})/
+      boolean_field $1 do ethnicity == "NotHispanic" end
+    when /EthnicityDecline(#{boolean_regex})/
+      boolean_field $1 do ethnicity == "Decline" end
     when "CountryOfBirth"
       country_of_birth
+    when "BirthState"
+      state_of_birth
+    when "BirthCity"
+      city_of_birth
     when "MaritalStatus"
       marital_status
     when "StudentStatus"
       student_status
     when "Occupation"
       occupation
-    when "BirthState"
-      state_of_birth
-    when "BirthCity"
-      city_of_birth
-    when "USCitizenYN"
-      if us_citizen?
-        "Y"
-      else
-        "N"
-      end
-    when "USCitizenYesNo"
-      if us_citizen?
-        "Yes"
-      else
-        "No"
-      end
+    when "Citizenship"
+      citizenship
+    when "Nationality"
+      citizenship # Synonymous with Citizenship
+    when /USCitizen(#{boolean_regex})/
+      boolean_field $1 do us_citizen? end
     when "DriverLicense"
       driver_license_number
     when "DriverLicenseState"
       driver_license_state
     when "Relationship"
       "Self"
-    when "MarriedYesNo"
-      if married?
-        "Yes"
-      else
-        "No"
-      end
-    when "MarriedYN"
-      if married?
-        "Y"
-      else
-        "N"
-      end
-    when "StudentStatusYesNo"
-      if student?
-        "Yes"
-      else
-        "No"
-      end
-    when "StudentStatusYN"
-      if student?
-        "Y"
-      else
-        "N"
-      end
-    when "StudentStatusFullTimeYesNo"
-      if student_full_time?
-        "Yes"
-      else
-        "No"
-      end
-    when "StudentStatusFullTimeYN"
-      if student_full_time?
-        "Y"
-      else
-        "N"
-      end
+    when /Married(#{boolean_regex})/
+      boolean_field $1 do married? end
+    when /Separated(#{boolean_regex})/
+      boolean_field $1 do separated? end
+    when /Single(#{boolean_regex})/
+      boolean_field $1 do single? end
+    when /Divorced(#{boolean_regex})/
+      boolean_field $1 do divorced? end
+    when /Widowed(#{boolean_regex})/
+      boolean_field $1 do widowed? end
+    when /StudentStatus(#{boolean_regex})/
+      boolean_field $1 do student? end
+    when /StudentStatusFullTime(#{boolean_regex})/
+      boolean_field $1 do student_full_time? end
+    when /GenderMale(#{boolean_regex})/
+      boolean_field $1 do male? end
+    when /GenderFemale(#{boolean_regex})/
+      boolean_field $1 do female? end
     else
       UnknownField.new
     end
   end
-
 end
+

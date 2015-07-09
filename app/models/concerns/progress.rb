@@ -12,12 +12,10 @@ module Progress
   included do
     def self.submodels
       @submodels ||= []
-      @submodels
     end
 
     def self.submodel_collections
       @submodel_collections ||= []
-      @submodel_collections
     end
 
     def self.progress_includes sub_model_attribute
@@ -61,7 +59,7 @@ module Progress
   def submodel_collections_reduce counter_method
     submodel_collections.reduce(0) do |sum, collection_name|
       sum + send(collection_name).reduce(0) do |collection_sum, item|
-        sum + item.send(counter_method)
+        collection_sum + item.send(counter_method)
       end
     end
   end

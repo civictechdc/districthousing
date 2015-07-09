@@ -1,0 +1,9 @@
+<ul class="list-group">
+<% [column_1_attributes, column_2_attributes, column_3_attributes].each do |attr_list| %>
+  <% attr_list.each do |attribute_name| %>
+  <%= render partial: 'maybe', locals: {
+    attribute: attribute_as_label(attribute_name),
+    object: display_value_for_attribute(person, attribute_name) } %>
+  <% end %>
+<% end %>
+</ul>

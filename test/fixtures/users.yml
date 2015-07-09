@@ -6,3 +6,6 @@ two:
 
 sample:
   role: <%= User::USER_ROLES[:sample] %>
+
+integration_user:
+  email: integration@bar.baz

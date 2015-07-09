@@ -2,7 +2,7 @@
   <%= builder.text_field :street, label: "Street address" %>
   <%= builder.text_field :apt, label: "Apartment" %>
   <%= builder.text_field :city %>
-  <%= builder.text_field :state %>
+  <%= builder.collection_select :state, us_states, :last, :first %>
   <%= builder.text_field :zip, label: "Zip code" %>
   <div class="address-selector">
     <%= builder.collection_select :id, @current_applicant.addresses, :id, :to_s, include_blank: true, label: "Or, select to reuse an existing address" %>

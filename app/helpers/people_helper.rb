@@ -21,9 +21,11 @@ module PeopleHelper
   def attribute_as_label attribute_name
     case attribute_name
     when 'mail_address_id'
-      "Address"
+      "Mailing Address"
     when 'dob'
       "Date of birth"
+    when 'ssn'
+      "SSN"
     else
       attribute_name.humanize
     end
@@ -35,8 +37,37 @@ module PeopleHelper
       person.mail_address.full
     when 'dob'
       person.dob_date
+    when 'race'
+      Constants::Race.new(person.race).name_form
+    when 'ethnicity'
+      Constants::Ethnicity.new(person.ethnicity).name_form
     else
       person[attribute_name]
     end
+  end
+
+  def genders
+    [
+      "Female",
+      "Male"
+    ]
+  end
+
+  def student_statuses
+    [
+      "Full-time",
+      "Part-time",
+      "Not a student"
+    ]
+  end
+
+  def marital_statuses
+    [
+      "Single",
+      "Separated",
+      "Married",
+      "Widowed",
+      "Divorced"
+    ]
   end
 end

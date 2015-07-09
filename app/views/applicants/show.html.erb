@@ -1,21 +1,21 @@
 <%= render 'breadcrumb' %>
 
-<p id="notice"><%= notice %></p>
-
-<%= render 'progress', object: @applicant %>
-
-<%= link_to 'Select Buildings to Apply To', housing_forms_path, class: "btn btn-lg btn-primary" %>
-
-<h1>Applicant Overview: <%= @applicant.identity %></h1>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <%= @applicant.identity %>
+<h1><%= @applicant.identity %> <small>Applicant Overview</small></h1>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= @applicant.identity %>
+      </div>
+      <%= render partial: 'identity/summary', locals: { person: @applicant.identity } %>
+      <div class="panel-footer">
+        <%= link_to "Edit", edit_identity_path(@applicant), class: "btn btn-info"%>
+      </div>
+    </div>
   </div>
-  <div class="row">
-  <%= render partial: 'people/summary_3_column', locals: { person: @applicant.identity } %>
-  </div>
-  <div class="panel-footer">
-    <%= link_to "Edit", edit_person_path(@applicant.identity), class: "btn btn-info"%>
+  <div class="col-md-8">
+    <%= render 'applicant_status' %>
+    <%= render 'form_preview' %>
   </div>
 </div>
 
@@ -27,10 +27,10 @@
         <div class="panel-heading">
           <%= h.person %>
         </div>
-        <%= render partial: 'people/summary', locals: { person: h.person } %>
+        <%= render partial: 'household_members/summary', locals: { household_member: h } %>
         <div class="panel-footer">
-          <%= link_to "Edit", edit_household_member_path(h), class: "btn btn-info"%>
-          <%= link_to 'Delete', h, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          <%= link_to "Edit", edit_path(h), class: "btn btn-info"%>
+          <%= link_to 'Delete', basic_path(h), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
 <div class="row">
   <div class="col-md-4">
     <p>
-    <%= link_to "New", new_household_member_path, class: "btn btn-success"%>
+    <%= link_to "New", new_applicant_household_member_path(@applicant), class: "btn btn-success"%>
     </p>
   </div>
 </div>
@@ -54,8 +54,8 @@
         </div>
         <%= render partial: 'residences/summary', locals: { residence: r } %>
         <div class="panel-footer">
-          <%= link_to "Edit", edit_residence_path(r), class: "btn btn-info"%>
-          <%= link_to 'Delete', r, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          <%= link_to "Edit", edit_path(r), class: "btn btn-info"%>
+          <%= link_to 'Delete', basic_path(r), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     </div>
@@ -64,7 +64,29 @@
 <div class="row">
   <div class="col-md-4">
     <p>
-    <%= link_to "New", new_residence_path, class: "btn btn-success"%>
+    <%= link_to "New", new_applicant_residence_path(@applicant), class: "btn btn-success"%>
+    </p>
+  </div>
+</div>
+
+<h2>Employment</h2>
+<div class="row">
+  <% @applicant.employments.each do |e| %>
+    <div class='col-md-4'>
+      <div class='panel panel-default'>
+        <%= render partial: 'employments/summary', locals: { employment: e } %>
+        <div class="panel-footer">
+          <%= link_to 'Edit', edit_path(e), class: "btn btn-info"%>
+          <%= link_to 'Delete', basic_path(e), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+      <%= link_to "New", new_applicant_employment_path(@applicant), class: "btn btn-success"%>
     </p>
   </div>
 </div>
@@ -80,6 +102,9 @@
         Amount
       </th>
       <th>
+        Interval
+      </th>
+      <th>
         Source
       </th>
     </tr>
@@ -89,46 +114,27 @@
         <%= income.person %>
       </td>
       <td>
-        <%= number_to_currency(income.amount) %> yearly
+        <%= number_to_currency(income.amount) %>
+      </td>
+      <td>
+        <%= income.interval %>
       </td>
       <td>
         <%= income.source %>
       </td>
       <td>
-      <%= link_to "Edit", edit_income_path(income), class: "btn btn-info"%>
+      <%= link_to "Edit", edit_path(income), class: "btn btn-info"%>
       </td>
       <td>
-      <%= link_to 'Delete', income, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Delete', basic_path(income), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
   <% end %>
   </table>
 </div>
 <p>
-<%= link_to "New", new_income_path, class: "btn btn-success"%>
+<%= link_to "New", new_applicant_income_path(@applicant), class: "btn btn-success"%>
 </p>
-
-<h2>Employment</h2>
-<div class="row">
-  <% @applicant.employments.each do |e| %>
-    <div class='col-md-4'>
-      <div class='panel panel-default'>
-        <%= render partial: 'employments/summary', locals: { employment: e } %>
-        <div class="panel-footer">
-          <%= link_to 'Edit', edit_employment_path(e), class: "btn btn-info"%>
-          <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-<div class="row">
-  <div class="col-md-4">
-    <p>
-      <%= link_to "New", new_employment_path, class: "btn btn-success"%>
-    </p>
-  </div>
-</div>
 
 <h2>Criminal history</h2>
 <div class="row">
@@ -137,8 +143,8 @@
       <div class='panel panel-default'>
         <%= render partial: "criminal_histories/summary", locals: { criminal_history: e } %>
         <div class="panel-footer">
-          <%= link_to "Edit", edit_criminal_history_path(e), class: "btn btn-info"%>
-          <%= link_to 'Delete', e, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          <%= link_to "Edit", edit_path(e), class: "btn btn-info"%>
+          <%= link_to 'Delete', basic_path(e), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     </div>
@@ -147,7 +153,29 @@
 <div class="row">
   <div class="col-md-4">
     <p>
-    <%= link_to "New", new_criminal_history_path, class: "btn btn-success"%>
+    <%= link_to "New", new_applicant_criminal_history_path(@applicant), class: "btn btn-success"%>
+    </p>
+  </div>
+</div>
+
+<h2>Contacts</h2>
+<div class="row">
+  <% @applicant.contacts.each do |e| %>
+    <div class="col-md-4">
+      <div class='panel panel-default'>
+        <%= render partial: "contacts/summary", locals: { contact: e } %>
+        <div class="panel-footer">
+          <%= link_to "Edit", edit_path(e), class: "btn btn-info"%>
+          <%= link_to 'Delete', basic_path(e), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <%= link_to "New", new_applicant_contact_path(@applicant), class: "btn btn-success"%>
     </p>
   </div>
 </div>

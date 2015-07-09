@@ -2,7 +2,17 @@
   <li><%= link_to current_user.email, root_path %></li>
   <% if defined? object %>
     <li><%= link_to @current_applicant, @current_applicant %></li>
-    <li><%= object %></li>
+    <li>
+      <span class="active">
+      <% if defined? @model.my_number %>
+        <%=@model.my_number%> -
+      <% end %>      
+    	<%= object %>
+      </span>
+      <% if defined? object.progress %>      
+        <span class="badge"><%= object.progress %>%</span>
+      <% end %>
+    </li>
   <% else %>
     <li><%= @current_applicant %></li>
   <% end %>

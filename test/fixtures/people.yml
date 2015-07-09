@@ -9,18 +9,18 @@ one:
   home_phone: (202) 272-0167
   cell_phone: (202) 208-4743
   email: one@districthousing.org
-  country_of_birth: USA
+  country_of_birth: United States
   applicant: one
   mail_address: one
-  state_of_birth: Virginia
+  state_of_birth: VA
   city_of_birth: Springfield
-  citizenship: USA
+  citizenship: US Citizen
   driver_license_number: X12345678
-  driver_license_state: New York
+  driver_license_state: NY
   marital_status: Married
   student_status: Part-time
-  race: MyRace
-  ethnicity: MyEthnicity
+  race: Asian
+  ethnicity: Hispanic
 
 two:
   first_name: Two
@@ -45,20 +45,20 @@ hh1:
   work_phone: 788-243-3188 x97905
   home_phone: 1-437-053-5113 x41799
   cell_phone: 839.897.3785 x24946
-  citizenship: Mayotte
+  citizenship: Other
   country_of_birth: Bosnia and Herzegovina
   email: ryan@parker.info
-  race: Pacific Islander
+  race: Native Hawaiian or Other Pacific Islander
   ethnicity: Hispanic or Latino
   student_status: Not a student
   marital_status: Married
   applicant: one
   occupation: Candlestick Maker
   mail_address: one
-  state_of_birth: Georgia
+  state_of_birth: GA
   city_of_birth: Port Elvaside
   driver_license_number: '8308313763'
-  driver_license_state: West Virginia
+  driver_license_state: WV
 
 hh2:
   cell_phone: (444) 444-4444
@@ -78,6 +78,31 @@ ll2:
   first_name: LL2
   mail_address: two
 
+contact1:
+  applicant: one
+  first_name: Contact1
+  last_name: Onesie
+  middle_name: Onerson
+  work_phone: 111-243-3188
+  home_phone: 111-053-5113
+  cell_phone: 111.897.3785
+  email: one@one.info
+  mail_address: one
+
+contact2:
+  applicant: one
+  first_name: Contact2
+  last_name: Twosie
+  middle_name: Twonerson
+  work_phone: 222-243-3188
+  home_phone: 222-053-5113
+  cell_phone: 222.444.3785
+  email: two@two.info
+  mail_address: two
+
 sample:
   first_name: Mister
   last_name: Sample
+
+empty:
+  mail_address: empty

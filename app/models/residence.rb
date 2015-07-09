@@ -1,5 +1,12 @@
 class Residence < ActiveRecord::Base
   include Progress
+  include FindIndex
+
+  def helpers
+    ActionController::Base.helpers
+  end
+
+  part_of :residences
 
   progress_includes :landlord
   progress_includes :address
@@ -16,13 +23,45 @@ class Residence < ActiveRecord::Base
 
   before_validation :initialize_residence
 
+  def delegate_field_to item, field_name
+    item && item.value_for_field(field_name) || ""
+  end
+
   def initialize_residence
     self.landlord ||= Person.new
     self.address ||= Address.new
   end
 
   def to_s
-    "Residence from #{start} - #{self.end}"
+    if current
+      "Current residence at #{address}"
+    else
+      "Residence at #{address}"
+    end
   end
 
+  def end_or_current
+    if current
+      "current"
+    else
+      send(:end)
+    end
+  end
+
+  def value_for_field field_name
+    case field_name
+    when "Start"
+      start
+    when "End"
+      send(:end)
+    when "ReasonForMoving"
+      reason
+    when "Rent"
+      helpers.number_to_currency(rent)
+    when /^(\D*)$/
+      unless ['Start','End','ReasonForMoving'].include?($1)
+        delegate_field_to address, $1
+      end
+    end
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105023641) do
+ActiveRecord::Schema.define(version: 20150404171342) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -36,34 +36,49 @@ ActiveRecord::Schema.define(version: 20150105023641) do
 
   add_index "applicants", ["user_id"], name: "index_applicants_on_user_id"
 
-  create_table "crime_types", force: true do |t|
-    t.string   "name"
-    t.string   "label"
+  create_table "applicants_housing_forms", id: false, force: true do |t|
+    t.integer "applicant_id"
+    t.integer "housing_form_id"
+  end
+
+  create_table "contacts", force: true do |t|
+    t.integer  "applicant_id"
+    t.integer  "person_id"
+    t.string   "relationship"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "contacts", ["applicant_id"], name: "index_contacts_on_applicant_id"
+  add_index "contacts", ["person_id"], name: "index_contacts_on_person_id"
 
   create_table "criminal_histories", force: true do |t|
     t.integer  "person_id"
-    t.integer  "crime_type_id"
     t.string   "description"
-    t.date     "year"
+    t.integer  "year"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "crime_type"
   end
 
   create_table "employments", force: true do |t|
-    t.integer  "person_id"
     t.date     "start_date"
     t.date     "end_date"
     t.string   "employer_name"
     t.string   "supervisor_name"
     t.string   "position"
-    t.integer  "address_id"
     t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "current"
+    t.integer  "person_id"
+    t.integer  "address_id"
+    t.integer  "applicant_id"
   end
+
+  add_index "employments", ["address_id"], name: "index_employments_on_address_id"
+  add_index "employments", ["applicant_id"], name: "index_employments_on_applicant_id"
+  add_index "employments", ["person_id"], name: "index_employments_on_person_id"
 
   create_table "form_fields", force: true do |t|
     t.string   "name"
@@ -87,12 +102,16 @@ ActiveRecord::Schema.define(version: 20150105023641) do
 
   create_table "housing_forms", force: true do |t|
     t.string   "name"
-    t.string   "uri"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "path"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "location"
     t.float    "lat"
     t.float    "long"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "remote_id"
+    t.boolean  "updated_locally"
   end
 
   create_table "identities", id: false, force: true do |t|
@@ -100,23 +119,15 @@ ActiveRecord::Schema.define(version: 20150105023641) do
     t.integer "person_id",    null: false
   end
 
-  create_table "income_types", force: true do |t|
-    t.string   "name"
-    t.string   "label"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "incomes", force: true do |t|
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "person_id"
-    t.integer  "income_type_id"
+    t.string   "interval"
+    t.string   "income_type"
   end
 
-  add_index "incomes", ["income_type_id"], name: "index_incomes_on_income_type_id"
   add_index "incomes", ["person_id"], name: "index_incomes_on_person_id"
 
   create_table "mail", id: false, force: true do |t|
@@ -168,6 +179,8 @@ ActiveRecord::Schema.define(version: 20150105023641) do
     t.integer  "landlord_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "current"
+    t.integer  "rent"
   end
 
   add_index "residences", ["address_id"], name: "index_residences_on_address_id"

@@ -1,7 +1,9 @@
 class HousingForm < ActiveRecord::Base
   has_and_belongs_to_many :form_fields
+  has_and_belongs_to_many :applicants
 
   after_create { initialize_from_disk! }
+  after_update { read_fields! }
 
   def initialize_from_disk!
     update(name: name)
@@ -9,24 +11,25 @@ class HousingForm < ActiveRecord::Base
     detect_location!
   end
 
-  def name
-    unless read_attribute(:name).blank?
-      read_attribute(:name).to_s
-    else
-      File.basename read_attribute(:uri)
-    end
+  def to_s
+    name.to_s
   end
 
   def read_fields!
-    PDF_FORMS.get_field_names(uri).each do |field_name|
-      form_fields << FormField.find_or_create_by(name: field_name)
+    form_fields.destroy_all
+    unless path.nil?
+      PDF_FORMS.get_field_names(path).each do |field_name|
+        form_fields << FormField.find_or_create_by(name: field_name)
+      end
     end
   end
 
   def detect_location!
-    metadata_output = PDF_FORMS.call_pdftk(uri, "dump_data")
-    if /InfoKey: Location\nInfoValue: (.+)\n/.match(metadata_output)
-      update(location: $1)
+    unless path.nil?
+      metadata_output = PDF_FORMS.call_pdftk(path, "dump_data")
+      if /InfoKey: Location\nInfoValue: (.+)\n/.match(metadata_output)
+        update(location: $1)
+      end
     end
   end
 
@@ -56,5 +59,28 @@ class HousingForm < ActiveRecord::Base
       h[key] = known_fields(key).reject { |k,v| v.blank? }
     end
     @filled_fields[applicant]
+  end
+
+  def download_path
+    unless path.blank?
+      path.sub("#{Rails.root}", "").sub!(/\/?public/, "")
+    else
+      nil
+    end
+  end
+
+  def as_json options = nil
+    h = self.attributes
+    h["url"] = download_path
+    h.delete("path")
+    h
+  end
+
+  def is_external?
+    if path =~ /external/
+      true
+    else
+      false
+    end
   end
 end

@@ -1,0 +1,60 @@
+<% no_edit ||= false %>
+<% fill ||= false %>
+<%
+  table_class = "housing-location-table"
+  table_class = "#{table_class}-no-edit" if no_edit
+%>
+
+<table class="table <%= table_class %>">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Last Updated</th>
+      <th>Total fields</th>
+      <th>Fields fillable</th>
+      <th>Fields with content for <%= @applicant %></th>
+      <th></th>
+      <th></th>
+      <% unless no_edit %>
+        <th></th>
+        <th></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% locations.each do |housing_form| %>
+    <%
+        download_path = download_blank_housing_form_path(housing_form)
+        download_path = download_housing_form_path(housing_form) if fill
+    %>
+    <tr>
+      <td><%= housing_form.name %></td>
+      <td><%= housing_form.location %></td>
+      <td><%= housing_form.updated_at.strftime("%y-%m-%d %H:%M") %></td>
+      <td><%= housing_form.field_results(@applicant).count %></td>
+      <td><%= housing_form.known_fields(@applicant).count %></td>
+      <td><%= housing_form.filled_fields(@applicant).count %></td>
+      <% if housing_form.path %>
+        <td>
+          <a href="<%= download_path %>" class="btn btn-info">
+            <span class="glyphicon glyphicon-download-alt"></span> Download PDF
+          </a>
+        </td>
+      <% else %>
+        <td><%= link_to 'PDF unavailable', "#", class: "btn btn-default disabled" %></td>
+      <% end %>
+      <td><%= link_to 'Show', housing_form %></td>
+      <% unless no_edit %>
+        <% if housing_form.is_external? %>
+          <td></td>
+          <td></td>
+        <% else %>
+          <td><%= link_to 'Edit/Replace', edit_housing_form_path(housing_form) %></td>
+          <td><%= link_to 'Delete', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

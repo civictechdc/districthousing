@@ -1,9 +1,27 @@
-<%= render 'breadcrumb', object: @employment %>
+<%= render 'form_page' %>
 
-<%= render 'section_tabs', active_section: :employment %>
+<div class="row">
+	<div class="col-md-3">
+		<%= render 'section_tabs', active_section: @active_section %>
+	</div>
+	<div class="col-md-9">
+		<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
+		<%= render "fields", f: f %>
 
-<%= render 'progress', object: @employment %>
+		<%= render "buttons_save_delete", f: f %>
+	</div>
+</div>
 
-<%= render 'form' %>
+<% end %>
 
-<%= link_to 'Delete', @employment, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+<% if @model.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@model.errors.count, "error") %> prohibited this employment from being saved:</h2>
+
+    <ul>
+    <% @model.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

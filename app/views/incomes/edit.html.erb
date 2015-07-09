@@ -1,25 +1,15 @@
-<%= render 'breadcrumb', object: @income %>
+<%= render 'form_page' %>
 
-<%= render 'section_tabs', active_section: :income %>
+<div class="row">
+	<div class="col-md-3">
+		<%= render 'section_tabs', active_section: @active_section %>
+	</div>
+	<div class="col-md-9">
+		<%= bootstrap_form_for(@model, url: basic_path(@model)) do |f| %>
+		<%= render "fields", f: f %>
 
-<%= render 'progress', object: @income %>
+		<%= render "buttons_save_delete", f: f %>
+	</div>
+</div>
 
-<% if flash[:errors] != nil && flash[:errors].any? %>
-  <div class="validation">
-    The following error(s) prohibited this income from being saved:
-    <ul>
-      <% flash[:errors].each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
 <% end %>
-
-<%= bootstrap_form_for(@income) do |f| %>
-
-  <%= render "fields", f: f %>
-
-  <%= render "buttons_update_back", f: f %>
-<% end %>
-
-<%= link_to 'Delete', @income, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
