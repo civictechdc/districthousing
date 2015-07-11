@@ -33,8 +33,12 @@ class Residence < ActiveRecord::Base
   end
 
   def to_s
-    if current
+    if current && /^homeless/i.match(address.to_s)
+     "Currently homeless"
+    elsif current
       "Current residence at #{address}"
+    elsif /homeless/i.match(address.to_s)
+      "Homeless"
     else
       "Residence at #{address}"
     end

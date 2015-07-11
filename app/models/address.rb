@@ -15,7 +15,9 @@ class Address < ActiveRecord::Base
   end
 
   def full
-    if street.to_s.empty? or city.to_s.empty?
+    if /^homeless/i.match street.to_s
+      "Homeless"
+    elsif street.to_s.empty? or city.to_s.empty?
       ""
     else
     "#{street}, #{apartment}, #{city}, #{state}, #{zip}".gsub(/( ,)+/, "").strip.sub(/,$/, "")
