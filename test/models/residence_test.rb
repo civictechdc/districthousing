@@ -19,7 +19,7 @@ class ResidenceTest < ActiveSupport::TestCase
     assert_match /homeless/i, residence.to_s
 
     # tests 'homeless'
-    residence.current = true
+    residence.current = false
     assert_match /homeless/i, residence.to_s
 
     # tests 'Current residence at'
