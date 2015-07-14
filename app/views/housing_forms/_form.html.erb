@@ -13,6 +13,8 @@
 
   <%= f.text_field :name %>
   <%= f.text_field :location %>
+  <%= f.number_field :lat, step: 0.0000001 %>
+  <%= f.number_field :long, step: 0.0000001 %>
   <%= f.file_field :new_form, label: "Replace PDF" %>
   <div class="actions">
     <%= f.submit %>
