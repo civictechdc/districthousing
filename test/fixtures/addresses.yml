@@ -27,3 +27,7 @@ empty:
   city:
   state:
   zip:
+
+homeless:
+  street: homeless
+  
