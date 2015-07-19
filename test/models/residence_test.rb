@@ -16,19 +16,19 @@ class ResidenceTest < ActiveSupport::TestCase
 
     # tests 'currently homeless'
     residence = Residence.new address_id: addr.id, current: true
-    assert_match /currently homeless/i, residence.to_s
+    assert_equal "Currently homeless", residence.to_s
 
     # tests 'homeless'
     residence.current = false
-    assert_match /homeless/i, residence.to_s
+    assert_equal "Homeless", residence.to_s
 
     # tests 'Current residence at'
     addr_1 = addresses :one
     residence_1 = Residence.new address_id: addr_1.id, current: true
-    assert_match /Current residence at 111 Fake Street/, residence_1.to_s
+    assert_equal "Current residence at 111 Fake Street, Oneville, DC, 11111", residence_1.to_s
 
     # tests noncurrent residence at
     residence_1.current = false
-    assert_match /111 Fake Street/, residence_1.to_s
+    assert_equal "Residence at 111 Fake Street, Oneville, DC, 11111", residence_1.to_s
   end
 end
