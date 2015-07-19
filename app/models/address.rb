@@ -50,5 +50,4 @@ class Address < ActiveRecord::Base
   def homeless?
     /homeless/i.match street.to_s 
   end
-
 end

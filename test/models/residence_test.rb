@@ -31,5 +31,4 @@ class ResidenceTest < ActiveSupport::TestCase
     residence_1.current = false
     assert_match /111 Fake Street/, residence_1.to_s
   end
-
 end

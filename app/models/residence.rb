@@ -68,6 +68,4 @@ class Residence < ActiveRecord::Base
       end
     end
   end
-
-
 end
