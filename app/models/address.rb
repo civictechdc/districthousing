@@ -15,7 +15,7 @@ class Address < ActiveRecord::Base
   end
 
   def full
-    if /^homeless/i.match street.to_s
+    if homeless?
       "Homeless"
     elsif street.to_s.empty? or city.to_s.empty?
       ""
@@ -45,6 +45,10 @@ class Address < ActiveRecord::Base
     else
       UnknownField.new
     end
+  end
+
+  def homeless?
+    /homeless/i.match street.to_s 
   end
 
 end
