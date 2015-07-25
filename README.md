@@ -59,7 +59,7 @@ To continue using git, run the following in your workspace terminal:
 Install pdftk using apt-get and ensure that you are using ruby-2.1.2. You should now be able to get the application up by running:
 
     bundle install
-    rake db:setup pull_pdfs seed_pdfs seed_applicants
+    rake db:setup pull_pdfs seed_applicants
     rails s -b $IP -p $PORT
 
 Navigate to http://districthousing-c9-[username].c9.io to see your app.

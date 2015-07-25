@@ -1,8 +1,6 @@
 class ResidencesController < ApplicationController
   include ApplicantFormPage
 
-  private
-
   def this_section
     :residences
   end

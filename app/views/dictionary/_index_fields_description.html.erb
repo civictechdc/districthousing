@@ -1,0 +1,306 @@
+<h3 id="info-about-people">Information about people</h3>
+
+<p>
+  Here, we will list some basic field names for information about the applicant.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "Name", "Full name" ],
+  [ "FullName", "Full name" ],
+  [ "FirstName", "First name"],
+  [ "MiddleName", "Middle name"],
+  [ "LastName", "Last name"],
+  [ "FirstInitial", "First initial"],
+  [ "MiddleInitial", "Middle initial"],
+  [ "LastInitial", "Last initial"],
+  [ "SSN", "Social security number"],
+  [ "DOB", "Date of birth in MM/DD/YYYY format"],
+  [ "DOBMM", "Date of birth two-digit month"],
+  [ "DOBDD", "Date of birth two-digit day"],
+  [ "DOBYYYY", "Date of birth four-digit year"],
+  [ "Age", "Age"],
+  [ "BirthState", "State of birth"],
+  [ "BirthCity", "City of birth"],
+  [ "Citizenship", "Citizenship"],
+  [ "Nationality", "Same as Citizenship"],
+  [ "USCitizenYesNo", "Is the person a US Citizen?"],
+  [ "Gender", "The person's gender"],
+  [ "GenderInitial", "First letter of gender"],
+  [ "Address", "Applicant's current residential address"],
+  [ "Mail", "Applicant's mailing address"],
+  [ "Phone", "Applicant's preferred phone number"],
+  [ "PreferredPhone", "Applicant's preferred phone number"],
+  [ "HomePhone", "Applicant's home phone number"],
+  [ "WorkPhone", "Applicant's work phone number"],
+  [ "CellPhone", "Applicant's cell phone number"],
+  [ "Email", "Applicant's e-mail address"],
+  [ "MaritalStatus", "Applicant's marital status (Single, Separated, Married, Divorced, Widowed)"],
+  [ "StudentStatus", "Applicant's student status (Full-time, Part-time, Not a student)"],
+  [ "Occupation", "Applicant's occupation"],
+  [ "DriverLicense", "Driver's license number"],
+  [ "DriverLicenseState", "Driver's license state"],
+  [ "Relationship", "Relationship to the applicant"],
+  [ "CountryOfBirth", "Country of birth"],
+  [ "BirthState", "State of birth"],
+  [ "BirthCity", "City of birth"],
+] %>
+
+<h4 id="person-prefixes">Person prefixes</h4>
+
+<p>
+  Personal field names can be prefixed with certain patterns to change which person it refers to.
+  For example, you can get personal information for the first household member with the
+  <code>HH1</code> prefix, as this table shows:
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "HH1Name", "First household member's full name" ],
+  [ "HH1Gender", "First household member's gender"],
+  [ "HH1Mail", "First household member's mailing address"],
+  [ "HH1Phone", "First household member's phone number"],
+  [ "HH1Email", "First household member's e-mail address"],
+  [ "HH1Occupation", "First household member's occupation"],
+  [ "HH1Relationship", "First household member's relationship to the applicant"],
+] %>
+
+<p>Increment the prefix number to select the next person of that type:</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "HH1Name", "First household member's full name" ],
+  [ "HH2Name", "Second household member's full name" ],
+  [ "HH3Name", "Third household member's full name" ],
+] %>
+
+<p>
+  The available person prefixes are:
+</p>
+
+<%= render "prefix_table", prefix_descriptions: [
+  [ "Contact", "Contacts for the applicant" ],
+  [ "LL", "Landlord, starting with current. Matches Address of the same number" ],
+  [ "HH", "Household member other than the applicant" ],
+] %>
+
+<h3 id="yes-no-values">Yes/No values</h3>
+
+<p>
+  Some forms ask for personal information in a yes/no question.  In general, personal
+  fields can be suffixed with YN to produce either "Y" or "N" as the field value.  A
+  field suffixed with "YesNo" will produce either "Yes" or "No".
+</p>
+
+<p>
+  When there are more than two states, you can suffix a field name with the
+  state you're interested in, followed by "YN" or "YesNo".
+</p>
+
+<p>
+  Fields suffixed with "Y", "N", "Yes", or "No" work like "YN" and "YesNo" fields, except
+  that they will leave the field blank if the "Yes" or "No" condition doesn't hold.
+</p>
+
+<p>
+  For checkboxes/tickboxes, use field names suffixed with "TickYes" or "TickNo".  These
+  will produce "Yes" if the condition holds, and a blank if not.  In PDF forms, a tickbox field
+  containing "Yes" is displayed as a ticked box.
+</p>
+
+<p>
+  The following table should clarify.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "MarriedYesNo", "Yes if married, No if not" ],
+  [ "MarriedYN", "Y if married, N if not" ],
+  [ "MarriedYes", "Yes if married, blank if not" ],
+  [ "MarriedNo", "Blank if married, No if not" ],
+  [ "MarriedY", "Y if married, blank if not" ],
+  [ "MarriedN", "Blank if married, N if not" ],
+  [ "MarriedTickYes", "Yes if married, blank if not" ],
+  [ "MarriedTickNo", "Blank if married, Yes if not" ],
+] %>
+
+<h3 id="addresses">Addresses</h3>
+
+<p>
+<code>Address</code> should be used when talking about a residence address.  <code>Mail</code> should be used when talking about a mailing address.
+</p>
+
+<p>
+  Addresses can be suffixed with address components to get just that part of the address.  For example:
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "Address", "Full residence address" ],
+  [ "AddressStreet", "Residence street address" ],
+  [ "AddressCity", "Residence city" ],
+  [ "AddressState", "Residence state" ],
+  [ "AddressZip", "Residence zip code" ],
+  [ "AddressApt", "Residence apartment" ],
+  [ "AddressStart", "Start date of this address" ],
+  [ "AddressEnd", "Start date of this address" ],
+  [ "AddressReasonForMoving", "Reason for leaving this address" ],
+  [ "AddressLeaseExpDate", "Date that the lease expires at this address" ],
+  [ "AddressRent", "Rent amount in USD at this address" ],
+  [ "Mail", "Mailing full address" ],
+  [ "MailStreet", "Mailing street address" ],
+  [ "MailCity", "Mailing city" ],
+  [ "MailState", "Mailing state" ],
+  [ "MailZip", "Mailing zip code" ],
+  [ "MailApt", "Mailing apartment" ],
+] %>
+
+<p>
+  Addresses can be numbered to indicate previous residence addresses.  <code>Address1</code> is the same
+  as <code>Address</code>, <code>Address2</code> is the first previous residence address, and so on.
+  Component suffixes work for previous addresses the same way they do for the current address.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "Address", "Current residence address" ],
+  [ "Address1", "Current residence address" ],
+  [ "Address1City", "Current residence address city" ],
+  [ "Address2", "First previous residence address" ],
+  [ "Address2State", "First previous residence address state" ],
+  [ "Address3", "Second previous residence address" ],
+  [ "Address4", "Third previous residence address" ],
+] %>
+
+<p>
+  You can use person prefixes with addresses.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "Mail", "Current mailing address of applicant" ],
+  [ "HH1MailZip", "First household member's mailing address zip code" ],
+  [ "HH2MailStreet", "Second household member's mailing address street" ],
+  [ "LL1Mail", "Current landlord's mailing address" ],
+  [ "LL2MailState", "Previous landlord's mailing address state" ],
+  [ "Contact3MailStreet", "Third contact's mailing address street" ],
+] %>
+
+<h3 id="tickboxes">Tickboxes</h3>
+
+<p>
+  Tickboxes should be suffixed with "TickYes" or "TickNo".
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "MarriedTickYes", "Ticked if married, empty if not" ],
+  [ "MarriedTickNo", "Empty if married, ticked if not" ],
+  [ "USCitizenTickYes", "Ticked if US Citizen, empty if not" ]
+] %>
+
+<h3 id="employment">Employment</h3>
+
+<p>
+  Jobs can be numbered to indicate previous employment. <code>Job1Title</code> is the same as <code>JobTitle</code>, <code>Job2Title</code> is the title of the first previous job, and so on.
+  Component suffixes work for previous jobs the same way they do for the current job.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "JobStatus", "Current employment status" ],
+  [ "JobTitle", "Current or most recent job's title" ],
+  [ "Job1Title", "Current or most recent job's title" ],
+  [ "Job1StartDate", "Current or most recent job's start date" ],
+  [ "Job1EndDate", "Current or most recent job's end date" ],
+  [ "Job1Employer", "Current or most recent employer" ],
+  [ "Job1Street", "Current or most recent job's street address" ],
+  [ "Job1City", "Current or most recent job's city" ],
+  [ "Job1State", "Current or most recent job's state" ],
+  [ "Job1Zip", "Current or most recent job's zip code" ],
+  [ "Job1Phone", "Current or most recent job's phone number" ],
+  [ "Job2Title", "First previous job's title" ],
+  [ "Job2StartDate", "First previous job's start date" ],
+  [ "Job2EndDate", "First previous job's end date" ],
+  [ "Job2Employer", "First previous employer" ],
+  [ "Job2Street", "First previous job's street address" ],
+  [ "Job2City", "First previous job's city" ],
+  [ "Job2State", "First previous job's state" ],
+  [ "Job2Zip", "First previous job's zip code" ],
+  [ "Job2Phone", "First previous job's phone number" ],
+  [ "Job3Title", "Second previous job's title" ],
+  [ "Job4Title", "Third previous job's title" ]
+] %>
+
+<h3 id="income">Income</h3>
+
+<p>
+  Incomes can be numbered if there are more than one. Income suffixes are <code>Source</code>, <code>Amount</code>, <code>AmountWeekly</code>, <code>AmountBiweekly</code>, <code>AmountMonthly</code>, <code>AmountYearly</code>, <code>Interval</code>, and <code>Earner</code>. <code>IncomeEarner</code> fields can be further appended with any person fields, as was the case for contacts and household members.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "Income1Source", "Source/type of the first income listed in a form" ],
+  [ "IncomeSource", "Source/type of the first income listed in a form" ],
+  [ "Income2Amount", "Monetary value of the second income listed in a form" ],
+  [ "Income2Interval", "Earnings interval (e.g. yearly, monthly, weekly) of the second income listed in a form" ],
+  [ "Income2AmountWeekly", "Weekly monetary value of the second income listed in a form" ],
+  [ "Income2AmountBiweekly", "Biweekly monetary value of the second income listed in a form" ],
+  [ "Income2AmountMonthly", "Monthly monetary value of the second income listed in a form" ],
+  [ "Income2AmountYearly", "Yearly monetary value of the second income listed in a form" ],
+  [ "Income3EarnerName", "Name of the household member earning the third income listed in a form" ],
+  [ "Income3EarnerFirstInitial", "First initial of the household member earning the second income listed in a form" ]
+] %>
+
+<h3 id="criminal-history">Criminal History</h3>
+
+<p>
+Crimes can be numbered if there are more than one.
+Crime suffixes are <code>Type</code>, <code>Date</code>, <code>Description</code>, and all the person attributes.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "CrimeType", "Type of the first crime listed in a form" ],
+  [ "Crime1Type", "Type of the first crime listed in a form" ],
+  [ "Crime2Date", "Year of the second crime listed in a form" ],
+  [ "Crime3Description", "Description of the third crime listed in a form" ],
+  [ "Crime3Name", "Full name of the household member who committed the third crime listed in a form" ],
+  [ "Crime3LastName", "Last name of the household member who committed the third crime listed in a form" ]
+] %>
+
+<h3 id="race-and-ethnicity">Race and ethnicity</h3>
+
+<p>
+For the applicant's race and ethnicity, use the following:
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "Race", "The person's race" ],
+  [ "Ethnicity", "The person's ethnicity" ]
+] %>
+
+<p>
+Yes/No race fields are supported as follows.  All Yes/No suffixes are supported.
+Remember, for race/ethnicity checkboxes, which come up frequently, use "TickYes" and "TickNo".
+</p>
+
+<% races = Constants::Race.all.map { |r| ["Race#{r.name_db}YesNo", "Yes if #{r.name_form}, No if not."] } %>
+<%= render "table", field_name_descriptions: races %>
+
+<% ethnicities = Constants::Ethnicity.all.map { |r| ["Ethnicity#{r.name_db}YesNo", "Yes if #{r.name_form}, No if not."] } %>
+<%= render "table", field_name_descriptions: ethnicities %>
+
+<h3 id="marital-status">Marital status</h3>
+
+<p>
+Several marital statuses can be used in Yes/No fields.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "MarriedYesNo", "Yes if married, No if not." ],
+  [ "SingleYesNo", "Yes if single, No if not." ],
+  [ "DivorcedYesNo", "Yes if divorced, No if not." ],
+  [ "WidowedYesNo", "Yes if widowed, No if not." ],
+  [ "SeparatedYesNo", "Yes if separated, No if not." ],
+] %>
+
+<h3 id="genders">Genders</h3>
+
+<p>
+Gender Yes/No fields work as follows.
+</p>
+
+<%= render "table", field_name_descriptions: [
+  [ "GenderMaleYesNo", "Yes if male, No if not" ],
+  [ "GenderFemaleYesNo", "Yes if female, No if not" ],
+] %>

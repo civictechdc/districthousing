@@ -29,4 +29,11 @@ class AddressTest < ActiveSupport::TestCase
     assert_equal "123 Fake Street, Unit 2, Toon Town, Lemuria, 24601", @test.full
   end
 
+  test "says homeless when street has the word homeless in it" do
+    @homeless = Address.new street: "Homeless"
+    assert_equal "Homeless", @homeless.full 
+
+    @homeless_2 = Address.new street: "Was homeless"
+    assert_equal "Homeless", @homeless_2.full 
+  end
 end
