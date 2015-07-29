@@ -27,7 +27,7 @@ class Contact < ActiveRecord::Base
     }
   ]
   
-  validates :contact_type, inclusion: {in: CONTACT_TYPES.map {|ct| ct[:value]}}
+  validates :contact_type, inclusion: {in: CONTACT_TYPES.map {|ct| ct[:value]}}, allow_nil: true
 
   accepts_nested_attributes_for :person
 
