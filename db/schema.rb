@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404171342) do
+ActiveRecord::Schema.define(version: 20150728235511) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150404171342) do
     t.string   "relationship"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "contact_type"
   end
 
   add_index "contacts", ["applicant_id"], name: "index_contacts_on_applicant_id"
