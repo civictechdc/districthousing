@@ -40,7 +40,8 @@ class ContactsControllerTest < ActionController::TestCase
     }
     contact_update_hash = {
       person_attributes: person_update_hash,
-      relationship: "x"
+      relationship: "x",
+      contact_type: "general_contact"
     }
 
     put :update, applicant_id: applicants(:one), id: contacts(:five), contact: contact_update_hash
