@@ -26,7 +26,6 @@ class Contact < ActiveRecord::Base
       value: "general_contact"
     }
   ]
-  #enum contact_type: CONTACT_TYPES.map {|ct| ct[:value]}
   
   validates :contact_type, inclusion: {in: CONTACT_TYPES.map {|ct| ct[:value]}}
 
