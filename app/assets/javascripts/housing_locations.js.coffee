@@ -9,7 +9,7 @@ addMarker = (coordinates,name,map) ->
 
 
 popUp = (name,location) ->
-  popup = L.popup(minWidth: 100).setContent(name+"<br>"+location)
+  popup = L.popup(minWidth: 100).setContent("<b>"+name+"</b><hr style='margin:5px 0px;border-top: 1px solid black;' />"+location)
   marker.bindPopup(popup).openPopup()
 
 # Google's Geocoder
@@ -95,7 +95,9 @@ $ ->
 
   #setting up the buttons to show the map
   buttons.click((event) ->
-    map.removeLayer marker
+    if marker
+      map.removeLayer marker
+
     button = $(event.target)
     # on firefox the event is triggered on the button, but on chrome, it may be
     # triggered on the icon's span
