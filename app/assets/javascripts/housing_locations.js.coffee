@@ -13,10 +13,6 @@ popUp = (name,location) ->
   marker.bindPopup(popup).openPopup()
 
 # Google's Geocoder
-# https://developers.google.com/maps/documentation/geocoding/intro
-# limitations
-# 2500 requests per 24 hour period.
-# 5 requests per second.
 
 displayHousingLocationMap = (address,name,map) ->
   geocoder = new (google.maps.Geocoder)
