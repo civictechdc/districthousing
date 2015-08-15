@@ -3,12 +3,14 @@
 
 marker = ''
 
-addMarker = (coordinates,map) ->
-
-  marker = L.marker([coordinates[0], coordinates[1]])
-  marker.addTo(map);
+addMarker = (coordinates,name,map) ->
+  marker = L.marker([coordinates[0], coordinates[1]]).addTo(map)
   map.setView([coordinates[0], coordinates[1]], 15)
-  $('#housing-location-modal').modal()
+
+
+popUp = (name,location) ->
+  popup = L.popup(minWidth: 100).setContent(name+"<br>"+location)
+  marker.bindPopup(popup).openPopup()
 
 # Google's Geocoder
 # https://developers.google.com/maps/documentation/geocoding/intro
@@ -16,7 +18,7 @@ addMarker = (coordinates,map) ->
 # 2500 requests per 24 hour period.
 # 5 requests per second.
 
-displayHousingLocationMap = (address,map) ->
+displayHousingLocationMap = (address,name,map) ->
   geocoder = new (google.maps.Geocoder)
   coordinates = []
   geocoder.geocode {
@@ -26,7 +28,9 @@ displayHousingLocationMap = (address,map) ->
     if status == google.maps.GeocoderStatus.OK
       coordinates[0] = results[0].geometry.location.lat()
       coordinates[1] = results[0].geometry.location.lng()
-      addMarker coordinates,map
+      addMarker coordinates,name,map
+      $('#housing-location-modal').modal()
+      popUp name,address
     else
       result = 'Unable to find address: ' + status
       alert('Address not found.')
@@ -103,7 +107,7 @@ $ ->
       button = button.parent();
     housing_data = JSON.parse(button.attr('housing-data'))
     $('#housing-location-modal .modal-title').text(housing_data.name)
-
+    name = housing_data.name
     location = housing_data.location
-    displayHousingLocationMap location,map
+    displayHousingLocationMap location,name,map
   )
