@@ -3,6 +3,10 @@
 <head>
   <title><%= content_for?(:title) ? content_for(:title) : "District Housing" %></title>
   <meta name="viewport" content="initial-scale=1">
+
+  <!-- font awesome for UI icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,27 +15,35 @@
 
 <body>
 
-  <%= render "layouts/navbar" %>
+  <% if current_user %>
+    <%= render "layouts/navbar" %>
+  <% end %>
 
-  <div class="container">
-
-    <% if flash[:alert] %>
-      <p class="bg-danger"></p>
-      <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <%= flash[:alert] %>
-      </div>
+  <!-- on user sign-in, main wrapper adds padding for sidebar -->
+  <div class="main-wrapper <%= 'main-wrapper-pad' if current_user %>">
+    <% if current_user %>
+      <%= render "layouts/sidebar" %>
     <% end %>
 
-    <% if flash[:notice] %>
-      <p class="bg-danger"></p>
-      <div class="alert alert-info alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
+    <div id="page-dashboard">
+      <% if flash[:alert] %>
+        <p class="bg-danger"></p>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
 
-    <%= yield %>
+      <% if flash[:notice] %>
+        <p class="bg-danger"></p>
+        <div class="alert alert-info alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
 
   </div>
 
