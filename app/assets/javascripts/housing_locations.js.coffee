@@ -1,3 +1,39 @@
+# Markers are global
+# One marker per map, can be changed into array
+
+marker = ''
+
+addMarker = (coordinates,name,map) ->
+  marker = L.marker([coordinates[0], coordinates[1]]).addTo(map)
+  map.setView([coordinates[0], coordinates[1]], 15)
+
+
+popUp = (name,location) ->
+  popup = L.popup(minWidth: 100).setContent("<b>"+name+"</b><hr style='margin:5px 0px;border-top: 1px solid black;' />"+location)
+  marker.bindPopup(popup).openPopup()
+
+# Google's Geocoder
+
+displayHousingLocationMap = (address,name,map) ->
+  geocoder = new (google.maps.Geocoder)
+  coordinates = []
+  geocoder.geocode {
+    'address': address
+    'region': 'us'
+  }, (results, status) ->
+    if status == google.maps.GeocoderStatus.OK
+      coordinates[0] = results[0].geometry.location.lat()
+      coordinates[1] = results[0].geometry.location.lng()
+      addMarker coordinates,name,map
+      $('#housing-location-modal').modal()
+      popUp name,address
+    else
+      result = 'Unable to find address: ' + status
+      alert('Address not found.')
+    return
+
+
+
 $ ->
 
   $('.housing-location-table').DataTable({
@@ -41,7 +77,9 @@ $ ->
   buttons = $('button.housing-location-show-map')
   return if buttons.length == 0
 
+
   #initializing map
+
   L.Icon.Default.imagePath = '/assets'
   map = L.map('housing-location-map').setView([38.9, -77.0], 10)
   marker = L.marker([38.9, -77.0]).addTo(map)
@@ -54,8 +92,12 @@ $ ->
   $('#housing-location-modal').on('shown.bs.modal', () ->
     map.invalidateSize()
   )
+
   #setting up the buttons to show the map
   buttons.click((event) ->
+    if marker
+      map.removeLayer marker
+
     button = $(event.target)
     # on firefox the event is triggered on the button, but on chrome, it may be
     # triggered on the icon's span
@@ -63,10 +105,7 @@ $ ->
       button = button.parent();
     housing_data = JSON.parse(button.attr('housing-data'))
     $('#housing-location-modal .modal-title').text(housing_data.name)
-    lat = housing_data.lat
-    long = housing_data.long
-    map.removeLayer(marker)
-    marker = L.marker([lat, long]).addTo(map);
-    map.setView([lat, long], 13)
-    $('#housing-location-modal').modal()
+    name = housing_data.name
+    location = housing_data.location
+    displayHousingLocationMap location,name,map
   )
