@@ -13,25 +13,36 @@
 
   <%= render "layouts/navbar" %>
 
-  <div class="container">
+  <div class="main-wrapper">
 
-    <% if flash[:alert] %>
-      <p class="bg-danger"></p>
-      <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+          <!-- <li class="sidebar-brand"><a href="#">Home</a></li> -->
+          <li><a href="#">Dashboard Home</a></li>
+          <li><%= link_to "Clients", root_path %></li>
+          <li><%= link_to "Housing Locations", housing_forms_path %></li>
+      </ul>
+    </div>
 
-    <% if flash[:notice] %>
-      <p class="bg-danger"></p>
-      <div class="alert alert-info alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
+    <div id="page-dashboard">
+      <% if flash[:alert] %>
+        <p class="bg-danger"></p>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
 
-    <%= yield %>
+      <% if flash[:notice] %>
+        <p class="bg-danger"></p>
+        <div class="alert alert-info alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
 
   </div>
 
