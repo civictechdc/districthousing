@@ -19,12 +19,10 @@
     padding-left: 20px;
     color: grey;
 
-    transition: color .5s ease-in-out;
     -webkit-transition: color .5s ease-in-out;
     -moz-transition: color .5s ease-in-out;
     -o-transition: color .5s ease-in-out;
     -transition: color .5s ease-in-out;
-    transition: background .5s ease-in-out;
     -webkit-transition: background .25s ease-in-out;
     -moz-transition: background .25s ease-in-out;
     -o-transition: background .25s ease-in-out;
@@ -43,7 +41,6 @@
 }
 
 .main-wrapper {
-  // padding-left: 220px;
   transition: all 0.4s ease 0s;
 }
 
