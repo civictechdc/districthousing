@@ -22,22 +22,7 @@
   <!-- on user sign-in, main wrapper adds padding for sidebar -->
   <div class="main-wrapper <%= 'main-wrapper-pad' if current_user %>">
     <% if current_user %>
-    <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-          <%= link_to root_path do %>
-            <li>Dashboard Home</li>
-          <% end %>
-          <%= link_to root_path do %>
-            <li>Clients</li>
-          <% end %>
-          <%= link_to housing_forms_path do %>
-            <li>Housing Locations</li>
-          <% end %>
-          <%= link_to dictionary_path do %>
-            <li>Field Name Guide</li>
-          <% end %>
-      </ul>
-    </div>
+      <%= render "layouts/sidebar" %>
     <% end %>
 
     <div id="page-dashboard">
