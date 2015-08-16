@@ -27,9 +27,19 @@
   }
 }
 
-.navbar-fixed-top {}
+//included for navbar spans to stay in-line
+.nav-span {
+  line-height: 50px;
+  border-left: 1px solid black;
+  padding-left: 15px;
+}
+.nav-badge {
+  line-height: 20px;
+  margin: 12px 5px;
+}
 .navbar-brand {
-  width: 220px;
+  // margin-left: 0px !important;
+  padding:5px 85px;
 }
 
 
