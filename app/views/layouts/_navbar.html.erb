@@ -16,31 +16,23 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-<!--
-          <li><%= link_to "Make a PDF", pdf_guide_path %></li>
-          <li><%= link_to "Field Name Dictionary", dictionary_path %></li>
- -->
 
           <% if current_user %>
-            <li>
-              <%= link_to "Current Client: #{@current_applicant}", @current_applicant %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">My Profile</a></li>
+                <li><a href="#">Tasks</a></li>
+                <li><a href="#">Calendar</a></li>
+                <li><%= link_to "Sign Out", destroy_user_session_path, :method => "delete" %> </li>
+              </ul>
             </li>
+            <li><%= link_to ('<i class="fa fa-file-pdf-o fa-lg"></i>').html_safe, new_housing_form_path  %></li>
             <li>
-
-              <% if defined? @model.my_number %>
-                <span class="active nav-span">
-                <%=@model.my_number%> - <%=@model%>
-                </span>
-              <% end %>
-            </li>
-            <li>
-              <% if defined? @model.progress %>
-                <span class="badge nav-badge"><%= @model.progress %>%</span>
-              <% end %>
+            <li><%= link_to ('<i class="fa fa-user-plus fa-lg"></i>').html_safe, new_applicant_path  %>
             </li>
 
 
-            <li><%= link_to "Sign Out", destroy_user_session_path, :method => "delete" %></li>
           <% else %>
             <li><%= link_to "Log In", new_user_session_path %></li>
             <li><%= link_to "Create an Account", new_user_registration_path %></li>
@@ -51,6 +43,7 @@
           <% end %>
 
         </ul>
+
       </div>
     </div>
   </nav>

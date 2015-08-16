@@ -3,6 +3,10 @@
 <head>
   <title><%= content_for?(:title) ? content_for(:title) : "District Housing" %></title>
   <meta name="viewport" content="initial-scale=1">
+
+  <!-- font awesome for UI icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,18 +15,30 @@
 
 <body>
 
-  <%= render "layouts/navbar" %>
+  <% if current_user %>
+    <%= render "layouts/navbar" %>
+  <% end %>
 
-  <div class="main-wrapper">
-
+  <!-- on user sign-in, main wrapper adds padding for sidebar -->
+  <div class="main-wrapper <%= 'main-wrapper-pad' if current_user %>">
+    <% if current_user %>
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
-          <!-- <li class="sidebar-brand"><a href="#">Home</a></li> -->
-          <li><a href="#">Dashboard Home</a></li>
-          <li><%= link_to "Clients", root_path %></li>
-          <li><%= link_to "Housing Locations", housing_forms_path %></li>
+          <%= link_to root_path do %>
+            <li>Dashboard Home</li>
+          <% end %>
+          <%= link_to root_path do %>
+            <li>Clients</li>
+          <% end %>
+          <%= link_to housing_forms_path do %>
+            <li>Housing Locations</li>
+          <% end %>
+          <%= link_to dictionary_path do %>
+            <li>Field Name Guide</li>
+          <% end %>
       </ul>
     </div>
+    <% end %>
 
     <div id="page-dashboard">
       <% if flash[:alert] %>
