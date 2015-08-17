@@ -11,6 +11,23 @@ class Contact < ActiveRecord::Base
   before_validation :initialize_contact
   validates :applicant, :person, presence: true
   validates_associated :person
+  
+  CONTACT_TYPES = [
+    {
+      name: "Emergency Contact",
+      value: "emergency_contact"
+    },
+    {
+      name: "Reference",
+      value: "reference"
+    },
+    {
+      name: "General Contact",
+      value: "general_contact"
+    }
+  ]
+  
+  validates :contact_type, inclusion: {in: CONTACT_TYPES.map {|ct| ct[:value]}}, allow_nil: true
 
   accepts_nested_attributes_for :person
 

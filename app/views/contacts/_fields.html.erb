@@ -5,6 +5,9 @@
       <%= render 'people/name', builder: p %>
       <%= render "people/contact", builder: p %>
       <%= f.text_field :relationship, label: "Relationship to you" %>
+      <%= 
+        f.select :contact_type, Contact::CONTACT_TYPES.map {|ct| [ct[:name], ct[:value]]}, {include_blank: true, label: "Type of contact (emergency, reference, etc.)"}
+      %>
     </div>
 
     <div class="col-md-4">

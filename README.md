@@ -38,6 +38,8 @@ As a demo, the app can be found at [http://districthousing.org/](http://district
 
 ## Dependencies
 
+### PDFtk
+
 Requires [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/). On OS X, install [homebrew](http://brew.sh/) and then run:
 
     brew cask install pdftk
@@ -45,6 +47,16 @@ Requires [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/). On OS X,
 On Debian/Ubuntu:
 
     sudo apt-get install pdftk
+
+### Wget
+
+On OS X, use homebrew:
+
+    brew install wget
+
+On Debian/Ubuntu:
+
+    sudo apt-get install wget
 
 ## Installation with Cloud9
 

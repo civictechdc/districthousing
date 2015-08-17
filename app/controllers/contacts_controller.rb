@@ -28,6 +28,7 @@ class ContactsController < ApplicationController
   def model_params
     params.require(:contact).permit(
       :relationship,
+      :contact_type,
       person_attributes: [
         :id,
         :dob,
