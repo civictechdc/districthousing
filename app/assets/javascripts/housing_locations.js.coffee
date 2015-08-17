@@ -9,8 +9,7 @@ updateCoordinates = (coordinates,id,housing_data) ->
   housing_data.lat = coordinates[0]
   housing_data.long = coordinates[1]
 
-  # update redirects on success, but keeps repeating.
-  # TODO refresh list of housing locations
+  # TODO AJAX refresh list of housing locations
   $.ajax
     type: 'PATCH'
     url: '/housing_forms/' + id
@@ -34,7 +33,6 @@ popUp = (name,location) ->
   marker.bindPopup(popup).openPopup()
 
 # Google's Geocoder
-
 
 displayHousingLocationMap = (address,name,map,id,housing_data) ->
   geocoder = new (google.maps.Geocoder)
@@ -119,22 +117,6 @@ $ ->
   )
 
   #setting up the buttons to show the map
-  # buttons.click((event) ->
-  #   if marker
-  #     map.removeLayer marker
-
-  #   button = $(event.target)
-  #   # on firefox the event is triggered on the button, but on chrome, it may be
-  #   # triggered on the icon's span
-  #   while (!button.is('button'))
-  #     button = button.parent();
-  #   housing_data = JSON.parse(button.attr('housing-data'))
-  #   $('#housing-location-modal .modal-title').text(housing_data.name)
-  #   name = housing_data.name
-  #   location = housing_data.location
-  #   displayHousingLocationMap location,name,map
-  # )
-
   buttons.click((event) ->
     if marker
       map.removeLayer marker
@@ -154,6 +136,7 @@ $ ->
     $('#housing-location-modal .modal-title').text(name)
 
     # if housing data has long and lat
+
     if (housing_data.long != null && housing_data.lat != null)
       console.log('calling from database')
 
@@ -167,6 +150,7 @@ $ ->
       popUp name,location
 
     # proceed with geocoding
+
     else
       console.log('calling google geocode')
 
