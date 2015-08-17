@@ -68,8 +68,6 @@ $ ->
     "dom": '<"wrapper"ftpr>'
   })
 
-  $('div.dataTables_filter input').focus()
-
 # Map related events and initialization
 $ ->
   # checking if the map area and buttons exists
