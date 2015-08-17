@@ -154,6 +154,7 @@ GEM
       shellany (~> 0.0)
     orm_adapter (0.5.0)
     pdf-forms (0.6.0)
+    phantomjs (1.9.8.0)
     poltergeist (1.6.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -260,6 +261,7 @@ DEPENDENCIES
   minitest-rails
   mocha
   pdf-forms
+  phantomjs
   poltergeist
   pry
   pry-nav
