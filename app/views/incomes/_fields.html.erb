@@ -2,7 +2,7 @@
   <div class="col-md-3">
     <%= f.collection_select :income_type, Constants::IncomeType.all, :name_db, :name_form, include_blank: true %>
   </div>
-Hospital.order("hospital_name")
+
   <div class="col-md-3">
     <%= f.text_field :amount, label: "Amount" %>
   </div>

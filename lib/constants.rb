@@ -151,9 +151,8 @@ module Constants
 
     def name_pdf
       {
-        "salary" => "Salary / Full-Time Employment Income",
-        "military" => "Military Income",
-        "part-time" => "Part-Time Employment Income",
+        "salary" => "Employment Income (Salary/Full-Time)",
+        "part-time" => "Employment Income (Part-Time)",
         "self" => "Self-Employment Income",
         "social_security" => "Social Security Income",
         "disability_benefits" => "Disability Benefits",
@@ -165,7 +164,7 @@ module Constants
         "stock" => "Stock Income",
         "insurance" => "Insurance Income",
         "trust_fund" => "Trust Fund Income",
-        "government_assistance" => "TANF / Government Assistance",
+        "government_assistance" => "TANF/Government Assistance",
         "cash_gifts" => "Cash Gifts",
         "workers_compensation" => "Worker's Compensation",
         "severance" => "Severance",
