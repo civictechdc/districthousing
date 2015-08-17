@@ -30,7 +30,7 @@ module Constants
         "PacificIslander" => "Pacific Islander",
         "Other" => "Other",
         "White" => "White",
-        "Decline" => "Decline to state",
+        "Decline" => "Decline to State",
       }[name_db]
     end
 
@@ -40,9 +40,9 @@ module Constants
         "Asian" => "Asian",
         "Black" => "Black or African American",
         "PacificIslander" => "Native Hawaiian or Other Pacific Islander",
-        "Other" => "Other",
         "White" => "White",
-        "Decline" => "Decline to state",
+        "Decline" => "Decline to State",
+        "Other" => "Other",
       }[name_db]
     end
   end
@@ -67,7 +67,7 @@ module Constants
       {
         "Hispanic" => "Hispanic or Latino",
         "NotHispanic" => "Not Hispanic or Latino",
-        "Decline" => "Decline to state",
+        "Decline" => "Decline to State",
       }[name_db]
     end
 
@@ -105,14 +105,7 @@ module Constants
     end
 
     def name_form
-      {
-        "felony" => "Felony",
-        "misdemeanor" => "Misdemeanor",
-        "sex_offense" => "Sex Offense",
-        "simple_assault" => "Simple Assault",
-        "other" => "Other",
-
-      }[name_db]
+      name_pdf
     end
   end
 
@@ -151,9 +144,8 @@ module Constants
 
     def name_pdf
       {
-        "salary" => "Salary / Full-Time Employment Income",
-        "military" => "Military Income",
-        "part-time" => "Part-Time Employment Income",
+        "salary" => "Employment Income (Salary/Full-Time)",
+        "part-time" => "Employment Income (Part-Time)",
         "self" => "Self-Employment Income",
         "social_security" => "Social Security Income",
         "disability_benefits" => "Disability Benefits",
@@ -165,7 +157,7 @@ module Constants
         "stock" => "Stock Income",
         "insurance" => "Insurance Income",
         "trust_fund" => "Trust Fund Income",
-        "government_assistance" => "TANF / Government Assistance",
+        "government_assistance" => "TANF/Government Assistance",
         "cash_gifts" => "Cash Gifts",
         "workers_compensation" => "Worker's Compensation",
         "severance" => "Severance",
