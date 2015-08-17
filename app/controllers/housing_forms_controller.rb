@@ -58,8 +58,7 @@ class HousingFormsController < ApplicationController
       @housing_form.save
     end
 
-    if @housing_form.update(housing_form_params) do |h|
-    end
+    if @housing_form.update(housing_form_params)
       redirect_to @housing_form, notice: 'Housing form was successfully updated.'
     else
       render :edit

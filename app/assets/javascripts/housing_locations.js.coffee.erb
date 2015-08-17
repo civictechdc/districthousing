@@ -3,6 +3,27 @@
 
 marker = ''
 
+updateCoordinates = (coordinates,id,housing_data) ->
+  # id is unpermitted parameter in housing_data json
+  delete housing_data.id
+  housing_data.lat = coordinates[0]
+  housing_data.long = coordinates[1]
+
+  # update redirects on success, but keeps repeating.
+  # TODO refresh list of housing locations
+  $.ajax
+    type: 'PATCH'
+    url: '/housing_forms/' + id
+    dataType: "json"
+    data: {
+    'name': housing_data.name,
+    'housing_form': housing_data
+    }
+    success: (data) ->
+      console.log('successfully updated coordinates')
+    error: (data) ->
+      console.log('failed updating coordinates')
+
 addMarker = (coordinates,name,map) ->
   marker = L.marker([coordinates[0], coordinates[1]]).addTo(map)
   map.setView([coordinates[0], coordinates[1]], 15)
@@ -14,7 +35,8 @@ popUp = (name,location) ->
 
 # Google's Geocoder
 
-displayHousingLocationMap = (address,name,map) ->
+
+displayHousingLocationMap = (address,name,map,id,housing_data) ->
   geocoder = new (google.maps.Geocoder)
   coordinates = []
   geocoder.geocode {
@@ -24,6 +46,9 @@ displayHousingLocationMap = (address,name,map) ->
     if status == google.maps.GeocoderStatus.OK
       coordinates[0] = results[0].geometry.location.lat()
       coordinates[1] = results[0].geometry.location.lng()
+      # update housing form coordinates
+      updateCoordinates coordinates,id,housing_data
+
       addMarker coordinates,name,map
       $('#housing-location-modal').modal()
       popUp name,address
@@ -94,6 +119,22 @@ $ ->
   )
 
   #setting up the buttons to show the map
+  # buttons.click((event) ->
+  #   if marker
+  #     map.removeLayer marker
+
+  #   button = $(event.target)
+  #   # on firefox the event is triggered on the button, but on chrome, it may be
+  #   # triggered on the icon's span
+  #   while (!button.is('button'))
+  #     button = button.parent();
+  #   housing_data = JSON.parse(button.attr('housing-data'))
+  #   $('#housing-location-modal .modal-title').text(housing_data.name)
+  #   name = housing_data.name
+  #   location = housing_data.location
+  #   displayHousingLocationMap location,name,map
+  # )
+
   buttons.click((event) ->
     if marker
       map.removeLayer marker
@@ -103,9 +144,31 @@ $ ->
     # triggered on the icon's span
     while (!button.is('button'))
       button = button.parent();
+
+    # parse housing data for json
+
     housing_data = JSON.parse(button.attr('housing-data'))
-    $('#housing-location-modal .modal-title').text(housing_data.name)
+    id = housing_data.id
     name = housing_data.name
     location = housing_data.location
-    displayHousingLocationMap location,name,map
+    $('#housing-location-modal .modal-title').text(name)
+
+    # if housing data has long and lat
+    if (housing_data.long != null && housing_data.lat != null)
+      console.log('calling from database')
+
+      coordinates = []
+      coordinates[0] = housing_data.lat
+      coordinates[1] = housing_data.long
+
+      # display map using coordinates
+      addMarker coordinates,name,map
+      $('#housing-location-modal').modal()
+      popUp name,location
+
+    # proceed with geocoding
+    else
+      console.log('calling google geocode')
+
+      displayHousingLocationMap location,name,map,id,housing_data
   )
