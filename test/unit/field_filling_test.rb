@@ -352,7 +352,7 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", app.field("RaceDeclineY")
 
     app.identity.race = "Decline"
-    assert_equal "Decline to state", app.field("Race")
+    assert_equal "Decline to State", app.field("Race")
 
     assert_equal "", app.field("RaceAsianY")
     assert_equal "", app.field("RaceBlackY")
@@ -381,7 +381,7 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", app.field("EthnicityDeclineY")
 
     app.identity.ethnicity = "Decline"
-    assert_equal "Decline to state", app.field("Ethnicity")
+    assert_equal "Decline to State", app.field("Ethnicity")
 
     assert_equal "", app.field("EthnicityHispanicY")
     assert_equal "", app.field("EthnicityNotHispanicY")
