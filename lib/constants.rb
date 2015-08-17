@@ -30,7 +30,7 @@ module Constants
         "PacificIslander" => "Pacific Islander",
         "Other" => "Other",
         "White" => "White",
-        "Decline" => "Decline to state",
+        "Decline" => "Decline to State",
       }[name_db]
     end
 
@@ -40,9 +40,9 @@ module Constants
         "Asian" => "Asian",
         "Black" => "Black or African American",
         "PacificIslander" => "Native Hawaiian or Other Pacific Islander",
-        "Other" => "Other",
         "White" => "White",
-        "Decline" => "Decline to state",
+        "Decline" => "Decline to State",
+        "Other" => "Other",
       }[name_db]
     end
   end
@@ -67,7 +67,7 @@ module Constants
       {
         "Hispanic" => "Hispanic or Latino",
         "NotHispanic" => "Not Hispanic or Latino",
-        "Decline" => "Decline to state",
+        "Decline" => "Decline to State",
       }[name_db]
     end
 
@@ -105,14 +105,7 @@ module Constants
     end
 
     def name_form
-      {
-        "felony" => "Felony",
-        "misdemeanor" => "Misdemeanor",
-        "sex_offense" => "Sex Offense",
-        "simple_assault" => "Simple Assault",
-        "other" => "Other",
-
-      }[name_db]
+      name_pdf
     end
   end
 
