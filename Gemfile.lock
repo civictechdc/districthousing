@@ -147,6 +147,7 @@ GEM
     pdf-forms (0.6.1)
       cliver (~> 0.3.2)
       safe_shell (~> 1.0)
+    phantomjs (1.9.8.0)
     poltergeist (1.5.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -254,6 +255,7 @@ DEPENDENCIES
   minitest-rails
   mocha
   pdf-forms
+  phantomjs
   poltergeist
   pry
   pry-nav
