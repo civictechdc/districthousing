@@ -42,11 +42,11 @@ $ ->
     "columnDefs": [
       {
         "orderable": false,
-        "targets": [6, 7, 8, 9]
+        "targets": [2, 6, 7, 8]
       },
       {
         "searchable": false,
-        "targets": [2, 3, 4, 5, 6, 7, 8, 9]
+        "targets": [2, 3, 4, 5, 6, 7, 8]
       }
     ],
     "dom": '<"wrapper"ftpr>'
