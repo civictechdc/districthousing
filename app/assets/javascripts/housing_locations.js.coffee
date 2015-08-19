@@ -124,7 +124,7 @@ $ ->
     # Case where longitude and latitude exist.
     # Remove code when all pdfs have valid lats/longs on initialize
     if (housing_data.lat != null && housing_data.long != null)
-      alert('using database')
+      console.log('retrieving coordinates using database')
       coordinates = [housing_data.lat, housing_data.long]
       addMarker coordinates,name,map
       $('#housing-location-modal').modal()
@@ -132,6 +132,6 @@ $ ->
     # call geocode on empty lat/long
     # currently does not update locations, unless desired.
     else
-      alert('call geocode')
+      console.log('geocoding called, will NOT save')
       displayHousingLocationMap address,name,map
   )

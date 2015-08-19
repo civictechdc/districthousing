@@ -7,7 +7,7 @@ var coordinates=[];
 var controlLoop = 0;
 
 if ("<%= @housing_form.location %>" != "") {
-  alert('geocoding');
+  console.log('geocoding');
   geocode("<%= @housing_form.location %>");
 }
 else {
