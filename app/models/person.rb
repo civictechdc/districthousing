@@ -60,6 +60,27 @@ class Person < ActiveRecord::Base
     dob.strftime("%Y")
   end
 
+  def driver_license_exp_date_full
+    return "" if driver_license_exp_date.nil?
+    driver_license_exp_date.strftime("%m/%d/%Y")
+  end
+
+
+  def driver_license_exp_date_dd
+    return "" if driver_license_exp_date.nil?
+    driver_license_exp_date.strftime("%d")
+  end
+
+  def driver_license_exp_date_mm
+    return "" if driver_license_exp_date.nil?
+    driver_license_exp_date.strftime("%m")
+  end
+
+  def driver_license_exp_date_yyyy
+    return "" if driver_license_exp_date.nil?
+    driver_license_exp_date.strftime("%Y")
+  end
+
   def age
     return "" if dob.nil?
 
@@ -208,6 +229,14 @@ class Person < ActiveRecord::Base
       driver_license_number
     when "DriverLicenseState"
       driver_license_state
+    when "DriverLicenseExpire"
+      driver_license_exp_date_full
+    when "DriverLicenseExpireDD"
+      driver_license_exp_date_dd
+    when "DriverLicenseExpireMM"
+      driver_license_exp_date_mm
+    when "DriverLicenseExpireYYYY"
+      driver_license_exp_date_yyyy
     when "Relationship"
       "Self"
     when /Married(#{boolean_regex})/
