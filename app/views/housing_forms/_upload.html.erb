@@ -1,19 +1,27 @@
+<<<<<<< HEAD
 <%= bootstrap_form_for @housing_form, remote: true do |f| %>
+=======
+<%= bootstrap_form_for(@housing_form) do |f| %>
+
+>>>>>>> a10fc52226ec97f7052425acd34334b50a28308b
   <% if @housing_form.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@housing_form.errors.count, "error") %> prohibited this housing_form from being saved:</h2>
+      
+      <h2><%= pluralize(@housing_form.errors.count, "error") %> prohibited this housing form from being saved:</h2>
 
       <ul>
       <% @housing_form.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
+      
     </div>
   <% end %>
 
   <%= f.text_field :name %>
   <%= f.text_field :location %>
   <%= f.file_field :new_form %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

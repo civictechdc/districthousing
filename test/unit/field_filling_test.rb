@@ -37,6 +37,10 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "Hispanic or Latino", @one.field("Ethnicity")
     assert_equal "X12345678", @one.field("DriverLicense")
     assert_equal "NY", @one.field("DriverLicenseState")
+    assert_equal "01/01/2020", @one.field("DriverLicenseExpire")
+    assert_equal "01", @one.field("DriverLicenseExpireDD")
+    assert_equal "01", @one.field("DriverLicenseExpireMM")
+    assert_equal "2020", @one.field("DriverLicenseExpireYYYY")
     assert_equal "Self", @one.field("Relationship")
     assert_equal "Yes", @one.field("MarriedYesNo")
     assert_equal "Yes", @one.field("MarriedYes")
@@ -348,7 +352,7 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", app.field("RaceDeclineY")
 
     app.identity.race = "Decline"
-    assert_equal "Decline to state", app.field("Race")
+    assert_equal "Decline to State", app.field("Race")
 
     assert_equal "", app.field("RaceAsianY")
     assert_equal "", app.field("RaceBlackY")
@@ -377,7 +381,7 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "", app.field("EthnicityDeclineY")
 
     app.identity.ethnicity = "Decline"
-    assert_equal "Decline to state", app.field("Ethnicity")
+    assert_equal "Decline to State", app.field("Ethnicity")
 
     assert_equal "", app.field("EthnicityHispanicY")
     assert_equal "", app.field("EthnicityNotHispanicY")

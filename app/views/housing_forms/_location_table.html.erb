@@ -11,9 +11,9 @@
       <th>Name</th>
       <th>Location</th>
       <th>Last Updated</th>
-      <th>Total fields</th>
-      <th>Fields fillable</th>
-      <th>Fields with content for <%= @applicant %></th>
+      <th>Total Fields</th>
+      <th>Fillable Fields</th>
+      <th>Completed Fields</th>
       <th></th>
       <th></th>
       <% unless no_edit %>
@@ -66,7 +66,7 @@
           <td></td>
           <td></td>
         <% else %>
-          <td><%= link_to 'Edit/Replace', edit_housing_form_path(housing_form) %></td>
+          <td><%= link_to 'Edit', edit_housing_form_path(housing_form) %></td>
           <td><%= link_to 'Delete', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       <% end %>
