@@ -11,7 +11,6 @@ replaceResultField = (data) ->
       .html("Unrecognized field name")
       .attr('class', 'text-muted')
 
-
 doTestField = ->
   entered_text = $('#field_name_test').val()
   $.get('/dictionary/test.json', {'field_name': entered_text}, replaceResultField)
