@@ -44,7 +44,7 @@
       <% if housing_form.path %>
           <td><%= link_to 'Download Form', download_path , class: "btn btn-success" %></td>
       <% else %>
-        <td><%= link_to 'No Form', "#", class: "btn btn-success disabled" %></td>
+        <td><%= link_to 'Download Form', "#", class: "btn btn-default disabled" %></td>
       <% end %>
       <% unless no_edit %>
         <% if housing_form.is_external? %>
