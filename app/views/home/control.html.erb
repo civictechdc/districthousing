@@ -31,7 +31,7 @@
           </td>
           <td>
             <% if applicant.salesforce_applicant.nil? %>
-              <p class="text-muted">Not from Salesforce</p>
+              Not from Salesforce
             <% else %>
               <%= link_to 'Update from Salesforce', "/salesforce_applicants/#{applicant.salesforce_applicant.id}/sync", class: "btn btn-info"%>
             <% end %>
