@@ -1,6 +1,25 @@
 <h1>Editing Housing Form</h1>
 
-<%= render 'form' %>
+<%= bootstrap_form_for(@housing_form) do |f| %>
+  <% if @housing_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@housing_form.errors.count, "error") %> prohibited this housing_form from being saved:</h2>
 
-<%= link_to 'Show', @housing_form %> |
-<%= link_to 'Back', housing_forms_path %>
+      <ul>
+      <% @housing_form.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :name, label: "Property Name" %>
+  <%= f.text_field :location, label: "Street Address" %>
+  <%= f.number_field :lat, label: "Latitude", step: 0.0000001 %>
+  <%= f.number_field :long, label: "Longitude", step: 0.0000001 %>
+  <%= f.file_field :new_form, label: "Replace PDF" %>
+  
+  <%= f.submit "Submit", :class => 'btn btn-success'  %>
+  <a class="btn btn-danger" href="/housing_forms">Cancel</a>
+
+<% end %>
