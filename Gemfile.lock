@@ -40,10 +40,18 @@ GEM
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     bootstrap_form (2.1.1)
     builder (3.2.2)
+    byebug (5.0.0)
+      columnize (= 0.9.0)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -62,6 +70,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     colorize (0.7.5)
+    columnize (0.9.0)
     daemons (1.1.9)
     databasedotcom (1.3.2)
       activesupport
@@ -69,6 +78,7 @@ GEM
       multipart-post (~> 1.1)
     databasedotcom-rails (1.1.0)
       databasedotcom
+    debug_inspector (0.0.2)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -157,6 +167,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.2.0)
+      byebug (~> 5.0)
+      pry (~> 0.10)
     pry-nav (0.2.4)
       pry (>= 0.9.10, < 0.11.0)
     quiet_assets (1.0.3)
@@ -233,6 +246,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors (~> 2.1.1)
+  binding_of_caller (~> 0.7.2)
   bootstrap-sass
   bootstrap_form
   capybara
@@ -256,6 +271,7 @@ DEPENDENCIES
   pdf-forms
   poltergeist
   pry
+  pry-byebug (~> 3.2.0)
   pry-nav
   quiet_assets
   rails (= 4.1.1)

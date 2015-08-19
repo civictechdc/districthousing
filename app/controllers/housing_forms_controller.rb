@@ -33,16 +33,35 @@ class HousingFormsController < ApplicationController
 
   # POST /housing_forms
   def create
+
+
     if @housing_form = HousingForm.create(housing_form_params) do |h|
       if uploaded_file
         h.path = write_file(uploaded_file).to_s
         h.name = uploaded_file.original_filename if h.name.blank?
         h.updated_locally = true
       end
+
     end
-      redirect_to @housing_form, notice: 'Housing form was successfully created.'
+      # IF long/lat update coordinates.
+      respond_to do |format|
+        if @housing_form.save
+            format.js {render 'update_location.js'}
+            format.html {redirect_to @housing_form, notice: "Housing Form created"}
+            format.json { }
+        else
+          format.html {render :new, alert: "Error: #{@housing_form.errors.messages}"}
+          format.json {render json: @housing_form.errors }
+        end
+      end
     else
       render :new, alert: "Error: #{@housing_form.errors.messages}"
+    end
+  end
+
+  def update_coordinates
+    if @housing_form.location_changed?
+
     end
   end
 
@@ -58,8 +77,21 @@ class HousingFormsController < ApplicationController
       @housing_form.save
     end
 
+    # TODO UPDATE ON @housing_form.location_changed?
+    # at first it updates the name, renders ajax update AGAIN
+    # then comes to update coordinates
+    # 2 patches.
+
+    # from 15005
+    # to 54b
+
     if @housing_form.update(housing_form_params)
-      redirect_to @housing_form, notice: 'Housing form was successfully updated.'
+      puts "update call"
+      puts "here is @housing form: #{@housing_form}"
+        respond_to do |format|
+          format.js {render 'update_location.js'}
+          format.html {redirect_to @housing_form, notice: "Housing Form updated"}
+        end
     else
       render :edit
     end
@@ -119,6 +151,7 @@ class HousingFormsController < ApplicationController
     end
 
     def uploaded_file
+      # in case of no new form
       params[:housing_form][:new_form]
     end
 

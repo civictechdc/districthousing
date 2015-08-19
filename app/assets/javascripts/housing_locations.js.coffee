@@ -3,26 +3,6 @@
 
 marker = ''
 
-updateCoordinates = (coordinates,id,housing_data) ->
-  # id is unpermitted parameter in housing_data json
-  delete housing_data.id
-  housing_data.lat = coordinates[0]
-  housing_data.long = coordinates[1]
-
-  # TODO AJAX refresh list of housing locations
-  $.ajax
-    type: 'PATCH'
-    url: '/housing_forms/' + id
-    dataType: "json"
-    data: {
-    'name': housing_data.name,
-    'housing_form': housing_data
-    }
-    success: (data) ->
-      console.log('successfully updated coordinates')
-    error: (data) ->
-      console.log('failed updating coordinates')
-
 addMarker = (coordinates,name,map) ->
   marker = L.marker([coordinates[0], coordinates[1]]).addTo(map)
   map.setView([coordinates[0], coordinates[1]], 15)
@@ -34,7 +14,7 @@ popUp = (name,location) ->
 
 # Google's Geocoder
 
-displayHousingLocationMap = (address,name,map,id,housing_data) ->
+displayHousingLocationMap = (address,name,map) ->
   geocoder = new (google.maps.Geocoder)
   coordinates = []
   geocoder.geocode {
@@ -44,9 +24,6 @@ displayHousingLocationMap = (address,name,map,id,housing_data) ->
     if status == google.maps.GeocoderStatus.OK
       coordinates[0] = results[0].geometry.location.lat()
       coordinates[1] = results[0].geometry.location.lng()
-      # update housing form coordinates
-      updateCoordinates coordinates,id,housing_data
-
       addMarker coordinates,name,map
       $('#housing-location-modal').modal()
       popUp name,address
@@ -65,11 +42,11 @@ $ ->
     "columnDefs": [
       {
         "orderable": false,
-        "targets": [6,7,8,9]
+        "targets": [6, 7, 8, 9]
       },
       {
         "searchable": false,
-        "targets": [2,3,4,5,6,7,8,9]
+        "targets": [2, 3, 4, 5, 6, 7, 8, 9]
       }
     ],
     "dom": '<"wrapper"ftpr>'
@@ -85,13 +62,27 @@ $ ->
       },
       {
         "searchable": false,
-        "targets": [2,3,4,5,6,7]
+        "targets": [2, 3, 4, 5, 6, 7]
       }
     ],
     "dom": '<"wrapper"ftpr>'
   })
 
-  $('div.dataTables_filter input').focus()
+  $('.application').DataTable({
+    dom: "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+    pagingType: "simple_numbers",
+    "columnDefs": [
+      {
+        "orderable": false,
+        "targets": [5, 6]
+      },
+      {
+        "searchable": false,
+        "targets": [2, 3, 4, 5, 6]
+      }
+    ],
+    "dom": '<"wrapper"ftpr>'
+  })
 
 # Map related events and initialization
 $ ->
@@ -126,33 +117,21 @@ $ ->
     # triggered on the icon's span
     while (!button.is('button'))
       button = button.parent();
-
-    # parse housing data for json
-
     housing_data = JSON.parse(button.attr('housing-data'))
-    id = housing_data.id
+    $('#housing-location-modal .modal-title').text(housing_data.name)
     name = housing_data.name
-    location = housing_data.location
-    $('#housing-location-modal .modal-title').text(name)
-
-    # if housing data has long and lat
-
-    if (housing_data.long != null && housing_data.lat != null)
-      console.log('calling from database')
-
-      coordinates = []
-      coordinates[0] = housing_data.lat
-      coordinates[1] = housing_data.long
-
-      # display map using coordinates
+    address = housing_data.location
+    # Case where longitude and latitude exist.
+    # Remove code when all pdfs have valid lats/longs on initialize
+    if (housing_data.lat != null && housing_data.long != null)
+      alert('using database')
+      coordinates = [housing_data.lat, housing_data.long]
       addMarker coordinates,name,map
       $('#housing-location-modal').modal()
-      popUp name,location
-
-    # proceed with geocoding
-
+      popUp name,address
+    # call geocode on empty lat/long
+    # currently does not update locations, unless desired.
     else
-      console.log('calling google geocode')
-
-      displayHousingLocationMap location,name,map,id,housing_data
+      alert('call geocode')
+      displayHousingLocationMap address,name,map
   )
