@@ -137,7 +137,9 @@ class HousingFormsController < ApplicationController
 
     # This method exists so we don't have to stub out File.delete
     def delete_file path
-      File.delete(path)
+      if not path.blank?
+        File.delete(path)
+      end
     end
 
 end

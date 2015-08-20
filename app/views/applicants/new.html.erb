@@ -1,68 +1,58 @@
-<h1>Before you begin</h1>
+<h1>Add a client</h1>
 
-<p>The application process is lengthy.  You may want to gather as much of the following documentation as you can.</p>
+<!--This should be moved to a Help page or something-->
 
-<ul>
-  <li>Demographic information about the applicant, including social security numbers and driver license/ID numbers</li>
-  <li>Up to date contact information where the applicant can be reached</li>
-  <li>Size of the household and expected apartment unit size</li>
-  <li>Demographic information all the applicant’s household members, including social security numbers and driver license/ID numbers</li>
-  <li>Complete housing history, including contact information of current and past landlords, as well as move-in and move-out dates</li>
-  <li>Sources and amounts of income for the applicant and all the other household members</li>
-  <li>Applicant’s employment status and employment history, including current and past employers’ contact information</li>
-  <li>Main financial assets and household expenses</li>
-  <li>Criminal history of the applicant and all the other household members</li>
-  <li>Disability information</li>
-  <li>Emergency contacts and personal references</li>
-</ul>
+<!--<p>Before beginning, you and your client should gather as much of the following documentation as possible:</p>-->
 
-<p>Before submission:</p>
+<!--<ul>-->
+<!--  <li>Basic demographic information for each household member;</li>-->
+<!--  <li>Up to date contact information where the client can be reached;</li>-->
+<!--  <li>Household size and expected apartment unit size;</li>-->
+<!--  <li>A complete housing history, with their dates and landlord contact information;</li>-->
+<!--  <li>Income sources and amounts for all household members</li>-->
+<!--  <li>Applicant’s employment status and employment history, including current and past employers’ contact information</li>-->
+<!--  <li>Main financial assets and household expenses;</li>-->
+<!--  <li>Criminal history for all household members;</li>-->
+<!--  <li>Disability information;</li>-->
+<!--  <li>Emergency contacts and personal references.</li>-->
+<!--</ul>-->
 
-<ul>
-  <li>Always proofread the generated PDF applications to check if anything is missing. Do not leave any fields blank: Answer “N/A” or “None” when applicable.</li>
-  <li>Do not fill out the date at the top of the application and ensure that the applicant does not sign the application. The applicant should only sign when they submit the application in front of the building management, who will then write in the date the application was received.</li>
-</ul>
+<!--<p>Before submission:</p>-->
+
+<!--<ul>-->
+<!--  <li>Proofread the generated PDF applications to make sure no fields are left blank. Answer “N/A” or “None” when applicable.</li>-->
+<!--  <li>Avoid dating or signing the application until its submission.</li>-->
+<!--</ul>-->
 
 <p>
-  Let's start with a few questions to help plan your application.  Don't worry, you can change these answers later.
+  Let's start with a few basics to help plan this application. Don't worry, these answers can be changed later on.
 </p>
 
 <div class="row">
   <div class="col-md-8">
     <%= bootstrap_form_tag(url: '/applicants') do |f| %>
 
-      <%= f.text_field :first_name %>
-      <%= f.text_field :last_name %>
+      <%= f.text_field :first_name, label: "My client's first name is:" %>
 
-      <p>
-      What is the total number of people in your household, excluding yourself?
-      </p>
+      <%= f.text_field :last_name,  label: "My client's last name is:"  %>
 
-      <%= f.text_field :household_member_count %>
+      <%= f.text_field :household_member_count, label: "This many other people are part of my client's household:" %>
 
-      <p>
-      How many residences have you had in the past two years, including your current residence?
-      </p>
+      <%= f.text_field :residence_count, label: "In the past two years, my client has lived in this many residences:" %>
 
-      <%= f.text_field :residence_count %>
+      <%= f.text_field :income_count, label: "My client's household has this many different income sources:" %>
 
-      <p>
-      How many sources of income do you and your household members have, combined?
-      </p>
+      <%= f.text_field :employment_count, label: "In the past two years, my client's household has held this many jobs:" %>
 
-      <%= f.text_field :income_count %>
+      <%= f.submit "Submit", :class => 'btn btn-success'  %>
 
-      <p>
-      How many jobs have you and your household members had in the past two years?
-      </p>
+      <a class="btn btn-danger" href="/">Cancel</a>
 
-      <%= f.text_field :employment_count %>
-
-
-      <%= f.submit 'Get started' %>
     <% end %>
   </div>
 
+<!--I've commented this out. Should also go in Help page-->
+<% if false %>
   <div class="col-md-4">
     <em>What's an income source?</em>
 
@@ -75,6 +65,8 @@
       <% end %>
     </ul>
   </div>
+  <% end %>
+  
 </div>
 
-<%= link_to 'Back', home_index_path %>
+
