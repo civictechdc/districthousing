@@ -1,5 +1,27 @@
-<h1>New housing form</h1>
+<h1>Add a housing form</h1>
 
-<%= render 'upload' %>
+<%= bootstrap_form_for @housing_form, remote: true do |f| %>
 
-<%= link_to 'Back', housing_forms_path %>
+  <% if @housing_form.errors.any? %>
+    <div id="error_explanation">
+
+      <h2><%= pluralize(@housing_form.errors.count, "error") %> prohibited this housing form from being saved:</h2>
+
+      <ul>
+      <% @housing_form.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+
+  <%= f.text_field :name, label: "Property Name" %>
+  <%= f.text_field :location, label: "Street Address" %>
+  <%= f.file_field :new_form, label: "Form PDF" %>
+
+  <%= f.submit "Submit", :class => 'btn btn-success'  %>
+
+  <a class="btn btn-danger" href="/">Cancel</a>
+
+<% end %>

@@ -32,21 +32,22 @@ displayHousingLocationMap = (address,name,map) ->
       alert('Address not found.')
     return
 
-
-
 $ ->
-
   $('.housing-location-table').DataTable({
     dom: "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
     pagingType: "simple_numbers",
+    language: {
+      search: "", 
+      searchPlaceholder: "Search"
+    },
     "columnDefs": [
       {
         "orderable": false,
-        "targets": [6, 7, 8, 9]
+        "targets": [2, 6, 7, 8]
       },
       {
         "searchable": false,
-        "targets": [2, 3, 4, 5, 6, 7, 8, 9]
+        "targets": [2, 3, 4, 5, 6, 7, 8]
       }
     ],
     "dom": '<"wrapper"ftpr>'
@@ -71,14 +72,18 @@ $ ->
   $('.application').DataTable({
     dom: "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
     pagingType: "simple_numbers",
+    language: {
+      search: "", 
+      searchPlaceholder: "Search"
+    },
     "columnDefs": [
       {
         "orderable": false,
-        "targets": [5, 6]
+        "targets": [2, 3, 4]
       },
       {
         "searchable": false,
-        "targets": [2, 3, 4, 5, 6]
+        "targets": [2, 3, 4]
       }
     ],
     "dom": '<"wrapper"ftpr>'
@@ -91,9 +96,7 @@ $ ->
   buttons = $('button.housing-location-show-map')
   return if buttons.length == 0
 
-
   #initializing map
-
   L.Icon.Default.imagePath = '/assets'
   map = L.map('housing-location-map').setView([38.9, -77.0], 10)
   marker = L.marker([38.9, -77.0]).addTo(map)

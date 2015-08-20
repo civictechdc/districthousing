@@ -12,9 +12,9 @@ class FormIntegrationTest < ActionDispatch::IntegrationTest
   def test_go_through_blank_form
     login_as(users(:one), scope: :user)
     visit('/')
-    click_on('Create a new applicant')
+    click_on('Create New Applicant')
     assert_equal(new_applicant_path, current_path)
-    click_on('Get started')
+    click_on('Submit')
     assert_equal(200, page.status_code)
     assert_match(/identity/, page.current_url)
     click_on('Save and continue')
