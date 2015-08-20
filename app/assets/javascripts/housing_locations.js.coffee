@@ -12,32 +12,12 @@ popUp = (name,location) ->
   popup = L.popup(minWidth: 100).setContent("<b>"+name+"</b><hr style='margin:5px 0px;border-top: 1px solid black;' />"+location)
   marker.bindPopup(popup).openPopup()
 
-# Google's Geocoder
-
-displayHousingLocationMap = (address,name,map) ->
-  geocoder = new (google.maps.Geocoder)
-  coordinates = []
-  geocoder.geocode {
-    'address': address
-    'region': 'us'
-  }, (results, status) ->
-    if status == google.maps.GeocoderStatus.OK
-      coordinates[0] = results[0].geometry.location.lat()
-      coordinates[1] = results[0].geometry.location.lng()
-      addMarker coordinates,name,map
-      $('#housing-location-modal').modal()
-      popUp name,address
-    else
-      result = 'Unable to find address: ' + status
-      alert('Address not found.')
-    return
-
 $ ->
   $('.housing-location-table').DataTable({
     dom: "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
     pagingType: "simple_numbers",
     language: {
-      search: "", 
+      search: "",
       searchPlaceholder: "Search"
     },
     "columnDefs": [
@@ -73,7 +53,7 @@ $ ->
     dom: "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
     pagingType: "simple_numbers",
     language: {
-      search: "", 
+      search: "",
       searchPlaceholder: "Search"
     },
     "columnDefs": [
@@ -124,17 +104,9 @@ $ ->
     $('#housing-location-modal .modal-title').text(housing_data.name)
     name = housing_data.name
     address = housing_data.location
-    # Case where longitude and latitude exist.
-    # Remove code when all pdfs have valid lats/longs on initialize
-    if (housing_data.lat != null && housing_data.long != null)
-      console.log('retrieving coordinates using database')
-      coordinates = [housing_data.lat, housing_data.long]
-      addMarker coordinates,name,map
-      $('#housing-location-modal').modal()
-      popUp name,address
-    # call geocode on empty lat/long
-    # currently does NOT SAVE coordinates on location display.
-    else
-      console.log('calling geocode')
-      displayHousingLocationMap address,name,map
+    coordinates = [housing_data.lat, housing_data.long]
+
+    addMarker coordinates,name,map
+    $('#housing-location-modal').modal()
+    popUp name,address
   )
