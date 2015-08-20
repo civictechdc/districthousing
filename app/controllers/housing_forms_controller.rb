@@ -33,15 +33,12 @@ class HousingFormsController < ApplicationController
 
   # POST /housing_forms
   def create
-
-
     if @housing_form = HousingForm.create(housing_form_params) do |h|
       if uploaded_file
         h.path = write_file(uploaded_file).to_s
         h.name = uploaded_file.original_filename if h.name.blank?
         h.updated_locally = true
       end
-
     end
       # IF long/lat update coordinates.
       respond_to do |format|
@@ -59,12 +56,6 @@ class HousingFormsController < ApplicationController
     end
   end
 
-  def update_coordinates
-    if @housing_form.location_changed?
-
-    end
-  end
-
   # PATCH/PUT /housing_forms/1
   def update
     if @housing_form.is_external?
@@ -76,14 +67,6 @@ class HousingFormsController < ApplicationController
       @housing_form.updated_locally = true
       @housing_form.save
     end
-
-    # TODO UPDATE ON @housing_form.location_changed?
-    # at first it updates the name, renders ajax update AGAIN
-    # then comes to update coordinates
-    # 2 patches.
-
-    # from 15005
-    # to 54b
 
     if @housing_form.update(housing_form_params)
       puts "update call"
@@ -151,7 +134,6 @@ class HousingFormsController < ApplicationController
     end
 
     def uploaded_file
-      # in case of no new form
       params[:housing_form][:new_form]
     end
 
