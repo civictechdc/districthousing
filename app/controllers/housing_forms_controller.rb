@@ -31,6 +31,7 @@ class HousingFormsController < ApplicationController
     end
   end
 
+
   # POST /housing_forms
   def create
     if @housing_form = HousingForm.create(housing_form_params) do |h|
@@ -58,6 +59,7 @@ class HousingFormsController < ApplicationController
 
   # PATCH/PUT /housing_forms/1
   def update
+    check_location
     if @housing_form.is_external?
       redirect_to(@housing_form, notice: 'You may not modify an external form.') and return
     end
@@ -69,8 +71,6 @@ class HousingFormsController < ApplicationController
     end
 
     if @housing_form.update(housing_form_params)
-      puts "update call"
-      puts "here is @housing form: #{@housing_form}"
         respond_to do |format|
           format.js {render 'update_location.js'}
           format.html {redirect_to @housing_form, notice: "Housing Form updated"}
@@ -103,6 +103,16 @@ class HousingFormsController < ApplicationController
     send_file(@housing_form.path,
               type: 'application/pdf',
               filename: "#{Slugify.slugify(@housing_form.name)}.pdf")
+  end
+
+  protected
+
+  def check_location
+    puts "changed attributes #{@housing_form.changed_attributes}"
+    unless @housing_form.location_changed?
+      puts "location did NOT change"
+    end
+    return false
   end
 
   private

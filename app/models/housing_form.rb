@@ -1,10 +1,10 @@
 class HousingForm < ActiveRecord::Base
+
   has_and_belongs_to_many :form_fields
   has_and_belongs_to_many :applicants
 
   after_create { initialize_from_disk! }
   after_update { read_fields! }
-
 
   def initialize_from_disk!
     update(name: name)
@@ -15,7 +15,6 @@ class HousingForm < ActiveRecord::Base
   def to_s
     name.to_s
   end
-
 
   def read_fields!
     form_fields.destroy_all
