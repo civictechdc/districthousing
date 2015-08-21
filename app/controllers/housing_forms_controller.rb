@@ -40,7 +40,17 @@ class HousingFormsController < ApplicationController
         h.updated_locally = true
       end
     end
-      redirect_to @housing_form, notice: 'Housing form was successfully created.'
+      # IF long/lat update coordinates.
+      respond_to do |format|
+        if @housing_form.save
+            format.js {render 'update_location.js'}
+            format.html {redirect_to @housing_form, notice: "Housing Form created"}
+            format.json { }
+        else
+          format.html {render :new, alert: "Error: #{@housing_form.errors.messages}"}
+          format.json {render json: @housing_form.errors }
+        end
+      end
     else
       render :new, alert: "Error: #{@housing_form.errors.messages}"
     end
@@ -58,9 +68,13 @@ class HousingFormsController < ApplicationController
       @housing_form.save
     end
 
-    if @housing_form.update(housing_form_params) do |h|
-    end
-      redirect_to @housing_form, notice: 'Housing form was successfully updated.'
+    if @housing_form.update(housing_form_params)
+      puts "update call"
+      puts "here is @housing form: #{@housing_form}"
+        respond_to do |format|
+          format.js {render 'update_location.js'}
+          format.html {redirect_to @housing_form, notice: "Housing Form updated"}
+        end
     else
       render :edit
     end

@@ -1,10 +1,10 @@
 <h1>Add a housing form</h1>
 
-<%= bootstrap_form_for(@housing_form) do |f| %>
+<%= bootstrap_form_for @housing_form, remote: true do |f| %>
 
   <% if @housing_form.errors.any? %>
     <div id="error_explanation">
-      
+
       <h2><%= pluralize(@housing_form.errors.count, "error") %> prohibited this housing form from being saved:</h2>
 
       <ul>
@@ -12,14 +12,14 @@
         <li><%= msg %></li>
       <% end %>
       </ul>
-      
+
     </div>
   <% end %>
 
   <%= f.text_field :name, label: "Property Name" %>
   <%= f.text_field :location, label: "Street Address" %>
   <%= f.file_field :new_form, label: "Form PDF" %>
-  
+
   <%= f.submit "Submit", :class => 'btn btn-success'  %>
 
   <a class="btn btn-danger" href="/">Cancel</a>

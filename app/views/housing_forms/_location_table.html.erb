@@ -33,7 +33,15 @@
       <td>
         <% if (housing_form.location) %>
           <button class="btn btn-default btn-xs housing-location-show-map"
-            housing-data="<%= {name: housing_form.name, location: housing_form.location }.to_json %>">
+            housing-data="
+              <%= {
+                id: housing_form.id,
+                name: housing_form.name,
+                location: housing_form.location,
+                lat: housing_form.lat,
+                long: housing_form.long
+                }.to_json
+              %>">
             <span class="glyphicon glyphicon-map-marker" title="View on map"></span>
           </button>
         <% end %>

@@ -31,6 +31,9 @@ gem 'rake', group: :test
 gem 'mocha', group: :test
 gem 'pry', groups: [:development, :test]
 gem 'pry-nav', groups: [:development, :test]
+gem 'pry-byebug', '~> 3.2.0', groups: [:development, :test]
+gem 'better_errors', '~> 2.1.1', groups: [:development, :test]
+gem 'binding_of_caller', '~> 0.7.2', groups: [:development, :test]
 gem 'jquery-datatables-rails', '~> 3.1.1'
 gem 'capybara', group: :test
 gem 'launchy', group: :test
