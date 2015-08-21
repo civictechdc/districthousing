@@ -9,12 +9,11 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Location</th>
+      <th>Address</th>
+      <th></th>
       <th>Last Updated</th>
       <th>Total Fields</th>
       <th>Fillable Fields</th>
-      <th>Completed Fields</th>
-      <th></th>
       <th></th>
       <% unless no_edit %>
         <th></th>
@@ -30,36 +29,38 @@
     %>
     <tr>
       <td><%= housing_form.name %></td>
+      <td><%= housing_form.location %></td>
       <td>
         <% if (housing_form.location) %>
           <button class="btn btn-default btn-xs housing-location-show-map"
-            housing-data="<%= {name: housing_form.name, location: housing_form.location }.to_json %>">
+            housing-data="
+              <%= {
+                id: housing_form.id,
+                name: housing_form.name,
+                location: housing_form.location,
+                lat: housing_form.lat,
+                long: housing_form.long
+                }.to_json
+              %>">
             <span class="glyphicon glyphicon-map-marker" title="View on map"></span>
           </button>
         <% end %>
-        <%= housing_form.location %>
       </td>
       <td><%= housing_form.updated_at.strftime("%y-%m-%d %H:%M") %></td>
       <td><%= housing_form.field_results(@applicant).count %></td>
       <td><%= housing_form.known_fields(@applicant).count %></td>
-      <td><%= housing_form.filled_fields(@applicant).count %></td>
       <% if housing_form.path %>
-        <td>
-          <a href="<%= download_path %>" class="btn btn-info">
-            <span class="glyphicon glyphicon-download-alt"></span> Download PDF
-          </a>
-        </td>
+          <td><%= link_to 'Download Form', download_path , class: "btn btn-success" %></td>
       <% else %>
-        <td><%= link_to 'PDF unavailable', "#", class: "btn btn-default disabled" %></td>
+        <td><%= link_to 'Download Form', "#", class: "btn btn-default disabled" %></td>
       <% end %>
-      <td><%= link_to 'Show', housing_form %></td>
       <% unless no_edit %>
         <% if housing_form.is_external? %>
           <td></td>
           <td></td>
         <% else %>
-          <td><%= link_to 'Edit', edit_housing_form_path(housing_form) %></td>
-          <td><%= link_to 'Delete', housing_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_housing_form_path(housing_form) , class: "btn btn-info" %></td>
+          <td><%= link_to 'Delete', housing_form, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       <% end %>
     </tr>

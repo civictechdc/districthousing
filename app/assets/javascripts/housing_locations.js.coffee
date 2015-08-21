@@ -12,41 +12,22 @@ popUp = (name,location) ->
   popup = L.popup(minWidth: 100).setContent("<b>"+name+"</b><hr style='margin:5px 0px;border-top: 1px solid black;' />"+location)
   marker.bindPopup(popup).openPopup()
 
-# Google's Geocoder
-
-displayHousingLocationMap = (address,name,map) ->
-  geocoder = new (google.maps.Geocoder)
-  coordinates = []
-  geocoder.geocode {
-    'address': address
-    'region': 'us'
-  }, (results, status) ->
-    if status == google.maps.GeocoderStatus.OK
-      coordinates[0] = results[0].geometry.location.lat()
-      coordinates[1] = results[0].geometry.location.lng()
-      addMarker coordinates,name,map
-      $('#housing-location-modal').modal()
-      popUp name,address
-    else
-      result = 'Unable to find address: ' + status
-      alert('Address not found.')
-    return
-
-
-
 $ ->
-
   $('.housing-location-table').DataTable({
     dom: "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
     pagingType: "simple_numbers",
+    language: {
+      search: "",
+      searchPlaceholder: "Search"
+    },
     "columnDefs": [
       {
         "orderable": false,
-        "targets": [6, 7, 8, 9]
+        "targets": [2, 6, 7, 8]
       },
       {
         "searchable": false,
-        "targets": [2, 3, 4, 5, 6, 7, 8, 9]
+        "targets": [2, 3, 4, 5, 6, 7, 8]
       }
     ],
     "dom": '<"wrapper"ftpr>'
@@ -71,14 +52,18 @@ $ ->
   $('.application').DataTable({
     dom: "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
     pagingType: "simple_numbers",
+    language: {
+      search: "",
+      searchPlaceholder: "Search"
+    },
     "columnDefs": [
       {
         "orderable": false,
-        "targets": [5, 6]
+        "targets": [2, 3, 4]
       },
       {
         "searchable": false,
-        "targets": [2, 3, 4, 5, 6]
+        "targets": [2, 3, 4]
       }
     ],
     "dom": '<"wrapper"ftpr>'
@@ -91,9 +76,7 @@ $ ->
   buttons = $('button.housing-location-show-map')
   return if buttons.length == 0
 
-
   #initializing map
-
   L.Icon.Default.imagePath = '/assets'
   map = L.map('housing-location-map').setView([38.9, -77.0], 10)
   marker = L.marker([38.9, -77.0]).addTo(map)
@@ -120,6 +103,10 @@ $ ->
     housing_data = JSON.parse(button.attr('housing-data'))
     $('#housing-location-modal .modal-title').text(housing_data.name)
     name = housing_data.name
-    location = housing_data.location
-    displayHousingLocationMap location,name,map
+    address = housing_data.location
+    coordinates = [housing_data.lat, housing_data.long]
+
+    addMarker coordinates,name,map
+    $('#housing-location-modal').modal()
+    popUp name,address
   )
