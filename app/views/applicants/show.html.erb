@@ -14,12 +14,12 @@
     </div>
   </div>
   <div class="col-md-8">
-    <%= render 'applicant_status' %>
+  <!--  <%= render 'applicant_status' %>-->
     <%= render 'form_preview' %>
   </div>
 </div>
 
-<h2>Household members</h2>
+<h2>Household members <%= link_to "Add", new_applicant_household_member_path(@applicant), class: "btn btn-success"%> </h2>
 <div class="row">
   <% @applicant.household_members.each do |h| %>
     <div class="col-md-4">
@@ -36,15 +36,8 @@
     </div>
   <% end %>
 </div>
-<div class="row">
-  <div class="col-md-4">
-    <p>
-    <%= link_to "New", new_applicant_household_member_path(@applicant), class: "btn btn-success"%>
-    </p>
-  </div>
-</div>
 
-<h2>Residence history</h2>
+<h2>Residence history <%= link_to "Add", new_applicant_residence_path(@applicant), class: "btn btn-success"%></h2>
 <div class="row">
   <% @applicant.residences.each do |r| %>
     <div class="col-md-4">
@@ -61,15 +54,8 @@
     </div>
   <% end %>
 </div>
-<div class="row">
-  <div class="col-md-4">
-    <p>
-    <%= link_to "New", new_applicant_residence_path(@applicant), class: "btn btn-success"%>
-    </p>
-  </div>
-</div>
 
-<h2>Employment</h2>
+<h2>Employment <%= link_to "Add", new_applicant_employment_path(@applicant), class: "btn btn-success"%></h2>
 <div class="row">
   <% @applicant.employments.each do |e| %>
     <div class='col-md-4'>
@@ -83,15 +69,8 @@
     </div>
   <% end %>
 </div>
-<div class="row">
-  <div class="col-md-4">
-    <p>
-      <%= link_to "New", new_applicant_employment_path(@applicant), class: "btn btn-success"%>
-    </p>
-  </div>
-</div>
 
-<h2>Income</h2>
+<h2>Income <%= link_to "Add", new_applicant_income_path(@applicant), class: "btn btn-success"%></h2>
 <div class="panel panel-default">
   <table class="table">
     <tr>
@@ -132,11 +111,8 @@
   <% end %>
   </table>
 </div>
-<p>
-<%= link_to "New", new_applicant_income_path(@applicant), class: "btn btn-success"%>
-</p>
 
-<h2>Criminal history</h2>
+<h2>Criminal history <%= link_to "Add", new_applicant_criminal_history_path(@applicant), class: "btn btn-success"%></h2>
 <div class="row">
   <% @applicant.criminal_histories.each do |e| %>
     <div class="col-md-4">
@@ -150,15 +126,8 @@
     </div>
   <% end %>
 </div>
-<div class="row">
-  <div class="col-md-4">
-    <p>
-    <%= link_to "New", new_applicant_criminal_history_path(@applicant), class: "btn btn-success"%>
-    </p>
-  </div>
-</div>
 
-<h2>Contacts</h2>
+<h2>Contacts <%= link_to "Add", new_applicant_contact_path(@applicant), class: "btn btn-success"%></h2>
 <div class="row">
   <% @applicant.contacts.each do |e| %>
     <div class="col-md-4">
@@ -172,12 +141,5 @@
     </div>
   <% end %>
 </div>
-<div class="row">
-  <div class="col-md-4">
-    <p>
-    <%= link_to "New", new_applicant_contact_path(@applicant), class: "btn btn-success"%>
-    </p>
-  </div>
-</div>
 
-<%= link_to 'Select Buildings to Apply To', housing_forms_path, class: "btn btn-lg btn-primary" %>
+<!--<%= link_to 'Select Buildings to Apply To', housing_forms_path, class: "btn btn-lg btn-primary" %>-->

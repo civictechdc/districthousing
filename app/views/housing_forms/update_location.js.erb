@@ -1,7 +1,4 @@
 
-//current situation, I need to have the ajax PATCH to render AFTER the geocode completes
-//once geocode completes, pass coordinates.
-//UPDATE, code is in an infinite redirect.
 var geocoder = new google.maps.Geocoder;
 var coordinates=[];
 var controlLoop = 0;
@@ -34,8 +31,7 @@ function geocode(address){
 }
 
 function update_coordinates(coordinates) {
-//coordinates retrieved is to be false
-//control loop prevents redirect loop.
+  // control loop prevents redirections
   if(controlLoop == 0){
     $.ajax({
       type: 'PATCH',

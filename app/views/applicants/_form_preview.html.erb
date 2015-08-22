@@ -1,1 +1,43 @@
-<%= render "housing_forms/location_table", locations: @housing_forms, no_edit: true, fill: true %>
+<% no_edit ||= true %>
+<% fill ||= true %>
+
+<table class="table application">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @housing_forms.each do |housing_form| %>
+    <%
+        download_path = download_blank_housing_form_path(housing_form)
+        download_path = download_housing_form_path(housing_form) if fill
+    %>
+    <tr>
+      <td><%= housing_form.name %></td>
+      <td>
+        <%= housing_form.location %>
+      </td>
+      <td>        
+        <% if (housing_form.location) %>
+          <button class="btn btn-default btn-xs housing-location-show-map"
+            housing-data="<%= {name: housing_form.name, location: housing_form.location }.to_json %>">
+            <span class="glyphicon glyphicon-map-marker" title="View on map"></span>
+          </button>
+        <% end %>
+      </td>
+      <% if housing_form.path %>
+        <td><%= link_to 'Download Form', download_path, class: "btn btn-success" %></td>
+        <td><%= link_to 'Preview', housing_form, class: "btn btn-info" %></td>
+      <% else %>
+        <td><%= link_to 'Download Form', "#", class: "btn btn-default disabled" %></td>
+        <td><%= link_to 'Preview', housing_form, class: "btn btn-default disabled" %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

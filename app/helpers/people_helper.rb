@@ -37,6 +37,8 @@ module PeopleHelper
       person.mail_address.full
     when 'dob'
       person.dob_date
+    when 'driver_license_exp_date'
+      person.driver_license_exp_date_full
     when 'race'
       Constants::Race.new(person.race).name_form
     when 'ethnicity'

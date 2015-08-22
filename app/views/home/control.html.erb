@@ -1,8 +1,12 @@
 <!-- FIXME: This view is quickly turning into what should be applicants/index.html.erb -->
 
 <% unless @applicants.empty? %>
-  <h1>Who is applying for housing?</h1>
-  <table class="table">
+  <h1>Clients</h1>
+  <p>
+    <%= link_to "Create New Applicant", new_applicant_path, class: "btn btn-lg btn-success"%>
+    <%= link_to "Pull Applicants from Salesforce", '/salesforce_applicants/sync', class: "btn btn-lg btn-success"%>
+  </p>
+  <table class="table applicants">
     <thead>
       <tr>
         <th>
@@ -26,13 +30,13 @@
             <%= applicant.identity.mail_address %>
           </td>
           <td>
-            <%= link_to 'Select Client', applicant, class: "btn btn-info"%>
+            <%= link_to 'Select', applicant, class: "btn btn-success"%>
           </td>
           <td>
             <% if applicant.salesforce_applicant.nil? %>
-              <p class="text-muted">Not from Salesforce</p>
+              <%= link_to 'View in Salesforce', "#", class: "btn btn-default disabled" %>
             <% else %>
-              <%= link_to 'Update from Salesforce', "/salesforce_applicants/#{applicant.salesforce_applicant.id}/sync", class: "btn btn-info"%>
+              <%= link_to 'View in Salesforce', "/salesforce_applicants/#{applicant.salesforce_applicant.id}/sync", class: "btn btn-info"%>
             <% end %>
           </td>
           <td>
@@ -44,26 +48,4 @@
   </table>
 <% else %>
   <p>Looks like you don't have any applicants yet.  You should create one!</p>
-<% end %>
-
-<p><%= link_to "Create a new applicant", new_applicant_path, class: "btn btn-lg btn-success"%></p>
-<p><%= link_to "Pull applicants from Salesforce", '/salesforce_applicants/sync', class: "btn btn-lg btn-success"%></p>
-
-<%= javascript_tag do %>
-  $('.table').DataTable({
-    dom: "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
-    pagingType: "simple_numbers",
-    "columnDefs": [
-      {
-        "orderable": false,
-        "targets": [2,3,4]
-      },
-      {
-        "searchable": false,
-        "targets": [2,3,4]
-      }
-    ],
-    "dom": '<"wrapper"ftpr>'
-  });
-  $('div.dataTables_filter input').focus();
 <% end %>

@@ -17,6 +17,7 @@ one:
   citizenship: US Citizen
   driver_license_number: X12345678
   driver_license_state: NY
+  driver_license_exp_date: 2020-01-01
   marital_status: Married
   student_status: Part-time
   race: Asian
@@ -59,6 +60,7 @@ hh1:
   city_of_birth: Port Elvaside
   driver_license_number: '8308313763'
   driver_license_state: WV
+  driver_license_exp_date: 2018-02-01
 
 hh2:
   cell_phone: (444) 444-4444

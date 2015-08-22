@@ -39,3 +39,4 @@ gem 'capybara', group: :test
 gem 'launchy', group: :test
 gem 'poltergeist', group: :test
 gem 'colorize'
+gem 'phantomjs', :require => 'phantomjs/poltergeist'

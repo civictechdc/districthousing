@@ -1,13 +1,12 @@
 <h1>Housing Locations</h1>
-<h1><small>You can apply to live at these places</small></h1>
 
-<%= render 'location_table', locations: @housing_forms_available %>
+<%= render 'location_table', locations: @housing_forms %>
 
-<h2>Housing locations with no PDF yet</h2>
-<p>Have a PDF for one of these places?  Click "Edit/Replace" to upload it!</p>
-<%= render 'location_table', locations: @housing_forms_unavailable %>
+<!--<h2>Housing locations with no PDF yet</h2>-->
+<!--<p>Have a PDF for one of these places?  Click "Edit/Replace" to upload it!</p>-->
+<!--<#%= render 'location_table', locations: @housing_forms_unavailable %>-->
 
-<p>Don't see your location here?  You can upload it anyway.  Click the button below to add a new location.</p>
-<%= link_to 'Add a housing form', new_housing_form_path, class: "btn btn-lg btn-default" %>
+<!--<p>Don't see your location here?  You can upload it anyway.  Click the button below to add a new location.</p>-->
+<!--<#%= link_to 'Add a housing form', new_housing_form_path, class: "btn btn-lg btn-default" %>-->
 
 <%= render 'location_modal' %>
