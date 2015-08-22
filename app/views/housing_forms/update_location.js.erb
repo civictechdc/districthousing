@@ -1,22 +1,20 @@
-
 var geocoder = new google.maps.Geocoder;
-var coordinates=[];
+var coordinates = [];
 var controlLoop = 0;
 
-if ("<%= @housing_form.location %>" != "") {
+if ("<%= @housing_form.location %>" !== "") {
   console.log('geocoding');
   geocode("<%= @housing_form.location %>");
-}
-else {
-  $(window.location.replace("/housing_forms/<%= @housing_form.id %>"));
+} else {
+  $(window.location.replace("/housing_forms/<%= @housing_form.id %>/edit"));
 }
 
 
-function geocode(address){
+function geocode (address) {
   geocoder.geocode({
     'address': address,
     'region': 'us'
-  }, function(results, status) {
+  }, function (results, status) {
     var result;
     if (status === google.maps.GeocoderStatus.OK) {
       coordinates[0] = results[0].geometry.location.lat();
@@ -25,14 +23,14 @@ function geocode(address){
     } else {
       result = 'Unable to find address: ' + status;
       alert('Address not found.');
-      $(window.location.replace("/housing_forms/<%= @housing_form.id %>"));
+      $(window.location.replace("/housing_forms/<%= @housing_form.id %>/edit"));
     }
   });
 }
 
-function update_coordinates(coordinates) {
+function update_coordinates (coordinates) {
   // control loop prevents redirections
-  if(controlLoop == 0){
+  if (controlLoop === 0) {
     $.ajax({
       type: 'PATCH',
       url: '/housing_forms/' + "<%= @housing_form.id%>",
@@ -44,22 +42,15 @@ function update_coordinates(coordinates) {
           'lat': coordinates[0]
         }
       },
-      success: function(data) {
+      success: function (data) {
         controlLoop++;
         console.log('successfully updated coordinates');
       },
-      error: function(data) {
+      error: function (data) {
         controlLoop++;
         console.log('failed updating coordinates');
       }
     });
   }
-  $(window.location.replace("/housing_forms/<%= @housing_form.id %>"));
-
+  $(window.location.replace("/housing_forms/"));
 }
-
-
-
-
-
-
