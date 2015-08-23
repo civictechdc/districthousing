@@ -15,8 +15,6 @@
 
   <%= f.text_field :name, label: "Property Name" %>
   <%= f.text_field :location, label: "Street Address" %>
-  <%= f.number_field :lat, label: "Latitude", step: 0.0000001 %>
-  <%= f.number_field :long, label: "Longitude", step: 0.0000001 %>
   <%= f.file_field :new_form, label: "Replace PDF" %>
 
   <%= f.submit "Submit", :class => 'btn btn-success'  %>
