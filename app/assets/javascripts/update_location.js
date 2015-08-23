@@ -1,10 +1,8 @@
-$(document).ready(function(e) {
+function geocode(address,updated_fields_data,id,name){
 
   var geocoder = new google.maps.Geocoder;
   var coordinates=[];
-  var controlLoop = 0;
 
-  function geocode(address,updated_fields_data,id,name){
     geocoder.geocode({
       'address': address,
       'region': 'us'
@@ -71,6 +69,8 @@ $(document).ready(function(e) {
     }, {});
     return fields_data;
   }
+
+$(document).ready(function(e) {
 
   $(".edit_housing_form").submit(function(e) {
 

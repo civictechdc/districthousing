@@ -58,7 +58,6 @@ class HousingFormsController < ApplicationController
 
   # PATCH/PUT /housing_forms/1
   def update
-    check_location
     if @housing_form.is_external?
       redirect_to(@housing_form, notice: 'You may not modify an external form.') and return
     end
@@ -102,16 +101,6 @@ class HousingFormsController < ApplicationController
     send_file(@housing_form.path,
               type: 'application/pdf',
               filename: "#{Slugify.slugify(@housing_form.name)}.pdf")
-  end
-
-  protected
-
-  def check_location
-    puts "changed attributes #{@housing_form.changed_attributes}"
-    unless @housing_form.location_changed?
-      puts "location did NOT change"
-    end
-    return false
   end
 
   private
