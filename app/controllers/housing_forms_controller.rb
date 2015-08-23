@@ -44,7 +44,6 @@ class HousingFormsController < ApplicationController
       # IF long/lat update coordinates.
       respond_to do |format|
         if @housing_form.save
-            format.js {render 'update_location.js'}
             format.html {redirect_to @housing_form, notice: "Housing Form created"}
             format.json { }
         else
