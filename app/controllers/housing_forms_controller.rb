@@ -31,6 +31,7 @@ class HousingFormsController < ApplicationController
     end
   end
 
+
   # POST /housing_forms
   def create
     if @housing_form = HousingForm.create(housing_form_params) do |h|
@@ -43,7 +44,6 @@ class HousingFormsController < ApplicationController
       # IF long/lat update coordinates.
       respond_to do |format|
         if @housing_form.save
-          format.js {render 'update_location.js'}
           format.html {redirect_to @housing_form, notice: "Housing Form created"}
           format.json { }
         else
@@ -69,8 +69,6 @@ class HousingFormsController < ApplicationController
     end
 
     if @housing_form.update(housing_form_params)
-      puts "update call"
-      puts "here is @housing form: #{@housing_form}"
         respond_to do |format|
           format.js {render 'update_location.js'}
           format.html {redirect_to @housing_form, notice: "Housing Form updated"}

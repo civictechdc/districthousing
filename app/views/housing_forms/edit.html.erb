@@ -1,6 +1,6 @@
 <h1>Editing Housing Form</h1>
 
-<%= bootstrap_form_for @housing_form, remote: true do |f| %>
+<%= bootstrap_form_for @housing_form do |f| %>
   <% if @housing_form.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@housing_form.errors.count, "error") %> prohibited this housing_form from being saved:</h2>
@@ -17,7 +17,8 @@
   <%= f.text_field :location, label: "Street Address" %>
   <%= f.file_field :new_form, label: "Replace PDF" %>
 
-  <%= f.submit "Submit", :class => 'btn btn-success'  %>
+  <%= f.submit "Submit", :class => 'btn btn-success', id: "edit_button",
+  data: @housing_form.to_json  %>
   <a class="btn btn-danger" href="/housing_forms">Cancel</a>
 
 <% end %>
