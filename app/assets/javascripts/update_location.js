@@ -19,6 +19,7 @@ function geocode(address,updated_fields_data,id,name){
       updated_fields_data['lat'] = coordinates[0];
       updated_fields_data['long'] = coordinates[1];
       patch(id,name,updated_fields_data);
+
     } else {
       result = 'Unable to find address: ' + status;
       alert('Address not found.');
@@ -50,18 +51,14 @@ function patch(id,name,updated_fields_data) {
   $(window.location.replace("/housing_forms/"+id));
 }
 
-$(".edit_housing_form").submit(function(e) {
-
-  e.preventDefault();
-  var raw_data = JSON.parse(JSON.stringify($(".edit_housing_form").serializeArray()));
-
-  var updated_fields_data = raw_data.reduce(function(result, currentObject) {
+function format_fields (object) {
+  var fields_data = object.reduce(function(result, currentObject) {
     for(var key in currentObject) {
         if (currentObject.hasOwnProperty(key)) {
 
           var matches = currentObject['name'].match(/\[([^)]+)\]/);
 
-          // second element in array returns
+          // second element retrieves the matched value
           if (matches != null) {
             result[matches[1]] = currentObject['value'];
           }
@@ -71,17 +68,24 @@ $(".edit_housing_form").submit(function(e) {
         }
     }
     return result;
-}, {});
-  // remove unpermitted fields
-  delete updated_fields_data['utf8'];
-  delete updated_fields_data['_method'];
-  delete updated_fields_data['authenticity_token'];
+  }, {});
+  return fields_data;
+}
 
-  // console.log(updated_fields_data);
+$(".edit_housing_form").submit(function(e) {
 
+  e.preventDefault();
+  // returns object of form fields
+  var raw_data = JSON.parse(JSON.stringify($(".edit_housing_form").serializeArray()));
+
+  // format fields to be permitted
+  var updated_fields_data = format_fields(raw_data);
+
+  // retrieving data from updated fields
   var updated_location = updated_fields_data['location'];
   var name = updated_fields_data['name'];
 
+  // retrieved original housing_form from #EDIT as json
   var housing_data = JSON.parse(($("#edit_button")).attr("data"));
   var original_location = housing_data['location'];
   var id = housing_data['id'];
