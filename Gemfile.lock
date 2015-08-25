@@ -100,6 +100,7 @@ GEM
       bundler (~> 1.0)
       rails (>= 3, < 5)
     formatador (0.2.5)
+    geocoder (1.2.9)
     guard (2.10.5)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -260,6 +261,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   figaro
+  geocoder
   guard
   guard-minitest
   guard-rails

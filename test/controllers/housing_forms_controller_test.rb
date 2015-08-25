@@ -8,6 +8,9 @@ class HousingFormsControllerTest < ActionController::TestCase
     HousingFormsController.any_instance.stubs(:call_file_write)
     HousingFormsController.any_instance.stubs(:delete_file)
     PDF_FORMS.stubs(:get_field_names).returns(['Field1', 'Field2'])
+
+    # Prevent external geocoding API calls.
+    HousingForm.any_instance.stubs(:geocode)
   end
 
   def housing_form
@@ -102,8 +105,6 @@ class HousingFormsControllerTest < ActionController::TestCase
     housing_form_update_hash = {
       name: "x",
       location: "x",
-      lat: "1",
-      long: "1",
     }
     put :update, id: housing_form, housing_form: housing_form_update_hash
     assert_attributes_were_updated housing_forms(:one), housing_form_update_hash.keys

@@ -1,6 +1,6 @@
 <h1>Editing Housing Form</h1>
 
-<%= bootstrap_form_for @housing_form, remote: true do |f| %>
+<%= bootstrap_form_for @housing_form do |f| %>
   <% if @housing_form.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@housing_form.errors.count, "error") %> prohibited this housing_form from being saved:</h2>

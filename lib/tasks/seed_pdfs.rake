@@ -15,25 +15,6 @@ def download_pdf uri, name, where
   output_filename
 end
 
-task seed_pdfs: :environment do
-  puts "Seeding PDFs"
-
-  HousingForm.transaction do
-    FormField.transaction do
-      # Add seed forms only if they don't already exist
-      CSV.foreach(Rails.root.join("db","buildings.csv"), :headers => true) do |row|
-        unless HousingForm.find_by(name: row['Property Name'])
-          path = nil
-          unless row['uri'].blank?
-            path = download_pdf(row['uri'], row['name'], 'public/forms/stock/')
-          end
-          HousingForm.create(name: row['Property Name'], location: row['Property Address'], lat: row['lat'], long: row['lng'], path: path)
-        end
-      end
-    end
-  end
-end
-
 require 'find'
 
 task seed_pdfs_external: :environment do
@@ -91,6 +72,9 @@ task pull_pdfs: :environment do
       # 'url' is not a HousingForm database field.  Remove it so we can use this
       # hash to update or create.
       housing_form.delete('url')
+      # 'lat' and 'long' are removed in favor of 'latitude' and 'longitude'
+      housing_form.delete('lat')
+      housing_form.delete('long')
 
       if existing_form.nil?
         puts "New PDF: #{housing_form['name']}".green
