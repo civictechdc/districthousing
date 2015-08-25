@@ -5,6 +5,9 @@ class HousingForm < ActiveRecord::Base
   after_create { initialize_from_disk! }
   after_update { read_fields! }
 
+  geocoded_by :location
+  # FIXME: On `rake pull_pdfs`, #geocode gets called twice per form.  Why?
+  after_validation :geocode, if: :location_changed?
 
   def initialize_from_disk!
     update(name: name)

@@ -72,6 +72,9 @@ task pull_pdfs: :environment do
       # 'url' is not a HousingForm database field.  Remove it so we can use this
       # hash to update or create.
       housing_form.delete('url')
+      # 'lat' and 'long' are removed in favor of 'latitude' and 'longitude'
+      housing_form.delete('lat')
+      housing_form.delete('long')
 
       if existing_form.nil?
         puts "New PDF: #{housing_form['name']}".green

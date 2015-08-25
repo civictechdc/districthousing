@@ -104,7 +104,7 @@ $ ->
     $('#housing-location-modal .modal-title').text(housing_data.name)
     name = housing_data.name
     address = housing_data.location
-    coordinates = [housing_data.lat, housing_data.long]
+    coordinates = [housing_data.latitude, housing_data.longitude]
 
     addMarker coordinates,name,map
     $('#housing-location-modal').modal()
