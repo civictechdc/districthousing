@@ -116,8 +116,6 @@ class HousingFormsController < ApplicationController
       params.require(:housing_form).permit(
         :name,
         :location,
-        :lat,
-        :long,
       )
     end
 
