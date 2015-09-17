@@ -47,8 +47,6 @@ var FindStates = {
   FIND_PENDING: 3
 };
 
-console.log("Hello from viewer.js!");
-
 PDFJS.imageResourcesPath = './images/';
   PDFJS.workerSrc = '../build/pdf.worker.js';
 
@@ -1828,8 +1826,6 @@ var PDFView = {
     }
 
     var url = this.url.split('#')[0];
-    console.log("Hello from viewer.js!");
-    console.log(url);
     var filename = getPDFFileNameFromURL(url);
     var downloadManager = new DownloadManager();
     downloadManager.onerror = function (err) {
