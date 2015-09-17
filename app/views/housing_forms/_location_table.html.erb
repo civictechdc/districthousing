@@ -15,6 +15,7 @@
       <th>Total Fields</th>
       <th>Fillable Fields</th>
       <th></th>
+      <th></th>
       <% unless no_edit %>
         <th></th>
         <th></th>
@@ -50,8 +51,10 @@
       <td><%= housing_form.field_results(@applicant).count %></td>
       <td><%= housing_form.known_fields(@applicant).count %></td>
       <% if housing_form.path %>
-          <td><%= link_to 'Download Form', download_path , class: "btn btn-success" %></td>
+        <td><button class="btn btn-info view-pdf" path="<%= housing_form.path %>" name="<%= housing_form.name %>">View</button></td>
+        <td><%= link_to 'Download', download_path , class: "btn btn-success" %></td>
       <% else %>
+        <td><button class="btn btn-default disabled">View</button></td>
         <td><%= link_to 'Download Form', "#", class: "btn btn-default disabled" %></td>
       <% end %>
       <% unless no_edit %>
