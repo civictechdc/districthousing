@@ -13,11 +13,11 @@
   has_many :household_members, dependent: :destroy
   has_many :household_members_people, through: :household_members, source: :person, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :household_members, allow_destroy: true
-  
+
   has_many :contacts, dependent: :destroy
   has_many :contacts_people, through: :contacts, source: :person, class_name: "Contact", dependent: :destroy
   accepts_nested_attributes_for :contacts, allow_destroy: true
-  
+
 
   belongs_to :identity, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :identity
@@ -91,6 +91,10 @@
 
   def value_for_field field_name
     case field_name
+    when /^(.*)_or_none$/
+      value = value_for_field($1)
+      return "None" if value == nil || value == ''
+      value
     when /^HH(\d+)(.*)$/
       index = $1.to_i - 1
       delegate_field_to household_members[index], $2
