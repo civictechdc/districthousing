@@ -90,6 +90,10 @@
 
   def value_for_field field_name
     case field_name
+    when /^(.*?)_or_(.*?)$/
+      value = value_for_field($1)
+      return $2.gsub('_', ' ') if value == nil || value == '' || value.is_a?(UnknownField)
+      value
     when /^HH(\d+)(.*)$/
       index = $1.to_i - 1
       delegate_field_to household_members[index], $2
