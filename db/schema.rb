@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825093953) do
+ActiveRecord::Schema.define(version: 20151110013159) do
 
   create_table "addresses", force: true do |t|
     t.string  "street"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20150825093953) do
     t.integer  "person_id"
     t.integer  "address_id"
     t.integer  "applicant_id"
+    t.boolean  "part_time"
   end
 
   add_index "employments", ["address_id"], name: "index_employments_on_address_id"
