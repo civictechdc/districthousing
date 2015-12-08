@@ -1,6 +1,6 @@
 <ul class="list-group">
   <%= render 'maybe', attribute: 'Person', object: criminal_history.person %>
-    <%= render 'maybe', attribute: 'Type', object: criminal_history.crime_type.humanize %>
+    <%= render 'maybe', attribute: 'Type', object: criminal_history.crime_type.to_s.humanize %>
   <% unless criminal_history.description.blank? %>
     <%= render 'maybe', attribute: 'Description', object: criminal_history.description %>
   <% end %>

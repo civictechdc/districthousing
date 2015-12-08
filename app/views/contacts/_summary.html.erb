@@ -3,7 +3,7 @@
   <%= render partial: 'maybe', locals: { attribute: 'Relationship', object: contact.relationship } %>
   <%= render 'maybe', attribute: "Address", object: contact.person.mail_address.full %>
   <% %w(cell_phone home_phone work_phone email).each do |attribute_name| %>
-    <%= render 'maybe', attribute: attribute_name.humanize, object: contact.person[attribute_name] %>
+    <%= render 'maybe', attribute: attribute_name.to_s.humanize, object: contact.person[attribute_name] %>
   <% end %>
 </ul>
 

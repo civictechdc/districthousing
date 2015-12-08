@@ -13,6 +13,6 @@ Landlord
   <%= render 'maybe', attribute: "Name", object: residence.landlord.full_name %>
   <%= render 'maybe', attribute: "Address", object: residence.landlord.mail_address.full %>
   <% %w(cell_phone home_phone work_phone email).each do |attribute_name| %>
-    <%= render 'maybe', attribute: attribute_name.humanize, object: residence.landlord[attribute_name] %>
+    <%= render 'maybe', attribute: attribute_name.to_s.humanize, object: residence.landlord[attribute_name] %>
   <% end %>
 </ul>
