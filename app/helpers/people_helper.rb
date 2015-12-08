@@ -27,7 +27,7 @@ module PeopleHelper
     when 'ssn'
       "SSN"
     else
-      attribute_name.humanize
+      attribute_name.to_s.humanize
     end
   end
 
