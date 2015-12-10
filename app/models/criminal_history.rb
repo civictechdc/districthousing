@@ -10,10 +10,14 @@ class CriminalHistory < ActiveRecord::Base
   belongs_to :person
 
   def to_s
-    unless year.nil?
-      "#{crime_type.humanize} in #{year}"
+    if crime_type.blank?
+      "Crime (incomplete)"
     else
-      "#{crime_type.humanize}"
+      if year.blank?
+        "#{crime_type.humanize}"
+      else
+        "#{crime_type.humanize} in #{year}"
+      end
     end
   end
 
