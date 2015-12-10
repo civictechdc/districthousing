@@ -105,7 +105,7 @@ module ApplicantFactory
           "Going 26 in a 25.",
         ].sample,
         crime_type: Constants::CrimeType.all.sample.name_db,
-        year: rand(10*365).days.ago,
+        year: rand(100) + 1900,
       )
     end
 
@@ -123,7 +123,7 @@ module ApplicantFactory
         a.household_members_including_self.each do |p|
           p.incomes << make_an_income
         end
-      end
+      end.tap { |a| puts a }
     end
   end
 end
