@@ -133,6 +133,7 @@ module Constants
         IncomeType.new("lottery"),
         IncomeType.new("alimony"),
         IncomeType.new("scholarship"),
+        IncomeType.new("retirement")
       ]
     end
 
@@ -164,6 +165,7 @@ module Constants
         "lottery" => "Lottery",
         "alimony" => "Alimony",
         "scholarship" => "Scholarship",
+        "retirement" => "Retirement",
       }[name_db]
     end
 
