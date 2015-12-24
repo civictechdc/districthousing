@@ -123,7 +123,7 @@ module ApplicantFactory
         a.household_members_including_self.each do |p|
           p.incomes << make_an_income
         end
-      end.tap { |a| puts a }
+      end
     end
   end
 end

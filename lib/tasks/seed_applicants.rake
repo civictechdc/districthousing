@@ -8,7 +8,7 @@ task seed_applicants: :environment do
   )
 
   30.times do
-    ApplicantFactory.make_a_sample_applicant(test_user)
+    puts ApplicantFactory.make_a_sample_applicant(test_user)
   end
 
 end
