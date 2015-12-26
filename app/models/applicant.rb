@@ -13,16 +13,15 @@
   has_many :household_members, dependent: :destroy
   has_many :household_members_people, through: :household_members, source: :person, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :household_members, allow_destroy: true
-  
+
   has_many :contacts, dependent: :destroy
   has_many :contacts_people, through: :contacts, source: :person, class_name: "Contact", dependent: :destroy
   accepts_nested_attributes_for :contacts, allow_destroy: true
-  
 
   belongs_to :identity, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :identity
 
-  has_many :residences, ->{ order(end: :desc) }, dependent: :destroy
+  has_many :residences, ->{ order(current: :desc, end: :desc) }, dependent: :destroy
   accepts_nested_attributes_for :residences, allow_destroy: true
   has_many :landlords, through: :residences, class_name: "Person", dependent: :destroy
   accepts_nested_attributes_for :landlords, allow_destroy: true
