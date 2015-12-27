@@ -1,5 +1,10 @@
 language: ruby
 rvm:
   - "2.1.2"
-before_install:
-  - sudo apt-get install -qq pdftk
+
+addons:
+  apt:
+    packages:
+      - pdftk
+
+sudo: false
