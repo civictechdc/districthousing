@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-3">
-    <%= f.collection_select :income_type, Constants::IncomeType.all, :name_db, :name_form, include_blank: true %>
+    <%= f.collection_select :income_type, Constants::IncomeType.all.sort{|x,y| x.name_pdf <=> y.name_pdf}, :name_db, :name_form, include_blank: true %>
   </div>
 
   <div class="col-md-3">
