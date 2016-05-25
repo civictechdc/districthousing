@@ -33,18 +33,7 @@
       <td><%= housing_form.location %></td>
       <td>
         <% if (housing_form.location) %>
-          <button class="btn btn-default btn-xs housing-location-show-map"
-            housing-data="
-              <%= {
-                id: housing_form.id,
-                name: housing_form.name,
-                location: housing_form.location,
-                latitude: housing_form.latitude,
-                longitude: housing_form.longitude
-                }.to_json
-              %>">
-            <span class="glyphicon glyphicon-map-marker" title="View on map"></span>
-          </button>
+          <%= render :partial => 'show_location_button', :locals => {:housing_form => housing_form} %>
         <% end %>
       </td>
       <td><%= housing_form.updated_at.strftime("%y-%m-%d %H:%M") %></td>
