@@ -1,0 +1,12 @@
+<button class="btn btn-default btn-xs housing-location-show-map"
+  housing-data="
+    <%= {
+      id: housing_form.id,
+      name: housing_form.name,
+      location: housing_form.location,
+      latitude: housing_form.latitude,
+      longitude: housing_form.longitude
+      }.to_json
+    %>">
+  <span class="glyphicon glyphicon-map-marker" title="View on map"></span>
+</button>
