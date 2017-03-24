@@ -75,3 +75,40 @@ Install pdftk using apt-get and ensure that you are using ruby-2.1.2. You should
     rails s -b $IP -p $PORT
 
 Navigate to http://districthousing-c9-[username].c9.io to see your app.
+
+## Installation with Docker
+
+You can also run the application within a Docker container.
+
+### Installing Docker
+
+If you don't have Docker installed, you can obtain it from the Docker website.
+
+- [Docker for Mac](https://www.docker.com/docker-mac)
+- [Docker for Windows](https://www.docker.com/docker-windows)
+- [Other Operating Systems](https://store.docker.com/search?offering=community&type=edition)
+
+### Running the Application
+
+- Clone this repo
+- `cd` into the `districthousing` folder
+- Run `docker-compose up`
+
+The first time you run the application, it will download all of the dependencies and start the app at [http://localhost:3000](http://localhost:3000)
+
+### Loading Sample Data
+
+To load sample user data, you can run the following command in another terminal:
+
+`docker exec -it districthousing rake seed_applicants`
+
+### Pulling PDFs
+
+To import PDFs into the application, you can run the following command:
+
+`docker exec -it districthousing rake pull_pdfs`
+
+### Stopping the App
+
+- `Ctrl+C` or `docker-compose down`
+

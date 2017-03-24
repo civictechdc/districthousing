@@ -1,0 +1,14 @@
+version: "2"
+services:
+
+  rails:
+    container_name: districthousing
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      # Map subdirectories you want to be able to modify without rebuilding
+      - ./app:/districthousing/app
+      - ./public:/districthousing/public
+      - ./vendor:/districthousing/vendor
+      - ./tmp:/districthousing/tmp
