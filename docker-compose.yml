@@ -11,4 +11,3 @@ services:
       - ./app:/districthousing/app
       - ./public:/districthousing/public
       - ./vendor:/districthousing/vendor
-      - ./tmp:/districthousing/tmp

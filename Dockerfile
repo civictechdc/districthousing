@@ -18,4 +18,4 @@ ADD . $APP_HOME
 RUN rake db:setup
 
 # Command to run on startup
-CMD ["rails", "server"]
+CMD ["./init.sh"]
