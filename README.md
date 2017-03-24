@@ -110,5 +110,9 @@ To import PDFs into the application, you can run the following command:
 
 ### Stopping the App
 
-- `Ctrl+C` or `docker-compose down`
+To stop the application, you can:
+
+- Press `Ctrl+C` in the console where you typed `docker-compose up`
+- Run `docker-compose stop` in another console window
+
 
