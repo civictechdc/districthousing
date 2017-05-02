@@ -7,7 +7,7 @@ one:
 two:
   amount: 222
   person: one
-  income_type: allowance
+  income_type: ssi
   interval: weekly
 
 three:

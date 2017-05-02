@@ -100,6 +100,7 @@ class FieldFillingTest < ActiveSupport::TestCase
     assert_equal "$333.00", @one.field("Income1AmountMonthly")
     assert_equal "$3996.00", @one.field("Income1AmountYearly")
     assert_equal "One John McOne", @one.field("Income2EarnerName")
+    assert_equal "ssi", @one.field("Income2Source")
     assert_equal "yearly", @one.field("Income3Interval")
   end
 
