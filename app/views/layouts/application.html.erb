@@ -19,11 +19,8 @@
     <%= render "layouts/navbar" %>
   <% end %>
 
-  <!-- on user sign-in, main wrapper adds padding for sidebar -->
+  <!-- on user sign-in, main wrapper adds padding for navbar -->
   <div class="main-wrapper <%= 'main-wrapper-pad' if current_user %>">
-    <% if current_user %>
-      <%= render "layouts/sidebar" %>
-    <% end %>
 
     <div id="page-dashboard">
       <% if flash[:alert] %>
