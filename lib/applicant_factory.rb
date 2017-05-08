@@ -105,7 +105,7 @@ module ApplicantFactory
           "Going 26 in a 25.",
         ].sample,
         crime_type: Constants::CrimeType.all.sample.name_db,
-        year: rand(10*365).days.ago,
+        year: rand(100) + 1900,
       )
     end
 

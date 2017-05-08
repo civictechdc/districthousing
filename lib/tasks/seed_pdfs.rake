@@ -17,11 +17,13 @@ end
 
 require 'find'
 
+desc "Load PDFs from public/forms/external"
 task seed_pdfs_external: :environment do
   HousingForm.transaction do
     FormField.transaction do
       HousingForm.destroy_all
-      Dir.glob('public/forms/external/*.pdf').each do |path|
+      glob_pattern = Rails.root.join "public", "forms", "external", "*.pdf"
+      Dir.glob(glob_pattern).each do |path|
         if FileTest.file?(path)
           puts path
           form_name = File.basename(path).sub(/.pdf$/, '')
@@ -41,6 +43,7 @@ end
 # for the City) to retrieve the most up-to-date PDFs from districthousing.org to
 # their local database.
 
+desc "Retrieve PDFs from districthousing.org."
 task pull_pdfs: :environment do
   open('https://districthousing.org/housing_forms.json',
        {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}) do |housing_form_json|

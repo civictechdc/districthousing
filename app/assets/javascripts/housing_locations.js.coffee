@@ -99,7 +99,7 @@ $ ->
     # on firefox the event is triggered on the button, but on chrome, it may be
     # triggered on the icon's span
     while (!button.is('button'))
-      button = button.parent();
+      button = button.parent()
     housing_data = JSON.parse(button.attr('housing-data'))
     $('#housing-location-modal .modal-title').text(housing_data.name)
     name = housing_data.name
@@ -110,3 +110,40 @@ $ ->
     $('#housing-location-modal').modal()
     popUp name,address
   )
+
+$ ->
+  $('button.view-pdf').click(displayPdf)
+
+displayPdf = ->
+  src_path = '/pdfjs/web/viewer.html?file=' + $(this).attr('path')
+  title = $(this).attr('name')
+
+  pdf_frame = $('<iframe>', {
+    src: src_path,
+    width: '100%',
+    height: '600',
+    frameborder: 0,
+  })
+
+  close_button = $('<button>', {
+    type: 'button'
+    class: 'close'
+    'data-dismiss': 'modal'
+  })
+    .append('<span>')
+    .html('&times;')
+
+  pdf_preview = $('<div>', {
+    class: 'modal fade bs-example-modal-lg'
+    id: 'pdf-preview'})
+      .append($('<div>', { class: 'modal-dialog modal-lg' })
+        .append($('<div>', { class: 'modal-content' })
+          .append($('<div>', { class: 'modal-header' })
+            .append(close_button)
+            .append($('<h4>').append(title)))
+          .append($('<div>', { class: 'modal-body' })
+            .append(pdf_frame))
+  ))
+
+  $('body').prepend(pdf_preview)
+  pdf_preview.modal()

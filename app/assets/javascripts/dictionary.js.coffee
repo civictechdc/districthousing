@@ -27,9 +27,7 @@ $ ->
   sidenav.width(sidenav.width())
   # sets up positioning when affix starts and stops
   sidenav.on('affix.bs.affix', ->
-    size = $(window).width()
-    divWidth = $('body > div.container').width()
-    margin = (size - divWidth) / 2
+    margin = $("#page-dashboard").css("padding-right")
     $("#pdf-guide-sidenav").css("right", margin)
     $("#pdf-guide-sidenav").css("position", "")
   )

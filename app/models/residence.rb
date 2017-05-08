@@ -20,6 +20,7 @@ class Residence < ActiveRecord::Base
 
   validates_associated :address, :landlord
   validates :address, :landlord, presence: true
+  validates :current, inclusion: { in: [true, false] }
 
   before_validation :initialize_residence
 
@@ -28,6 +29,7 @@ class Residence < ActiveRecord::Base
   end
 
   def initialize_residence
+    self.current ||= false
     self.landlord ||= Person.new
     self.address ||= Address.new
   end

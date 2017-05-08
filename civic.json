@@ -1,25 +1,38 @@
 {
-  "conformsTo":"http://codefordc.org/resources/specification.html",
-  "status": "Beta",
-  "thumbnailUrl":"https://codefordc.github.io/districthousing/img/district-housing-logo-small.png",
-  "needs": [
-    {"need":"Rails enthusiasts"},
-    {"need":"Salesforce"},
-    {"need":"Passionate People"}
-  ],
-  "bornAt": "Code for DC",
-  "type": "Web App",
-  "categories": [
-    {"category":"Housing"}
-  ],
-  "geography": "Washington, DC",
-  "contact": {
-      "name": "Marcus Louie",
-      "email": "",
-      "twitter": "@mlouie"
-  },
-  "communityPartner": {"Bread for City":"http://www.breadforthecity.org/"},
-  "politicalEntity": {},
-  "governmentPartner": {},
-  "moreInfo": "https://hackpad.com/Code-for-DC-District-Housing-KlQ2UbX0Imc"
+    "name": "District Housing Application Assistant", 
+    "description": "District Housing lets caseworkers help clients apply for Section 8 housing by automatically filling out multiple PDF applications using one online form.", 
+    "license": "MIT", 
+    "status": "Beta", 
+    "type": "Web App", 
+    "homepage": "http://codefordc.github.io/districthousing/", 
+    "repository": "https://github.com/codefordc/districthousing", 
+    "thumbnail": "https://codefordc.github.io/districthousing/img/district-housing-logo-small.png", 
+    "geography": [
+        "Washington, DC"
+    ], 
+    "contact": {
+        "name": "Marcus Louie", 
+        "email": "", 
+        "url": "https://twitter.com/@mlouie"
+    }, 
+    "partners": [
+        {
+            "url": "http://www.breadforthecity.org/", 
+            "name": "Bread for City", 
+            "email": ""
+        }, 
+        {
+            "url": "http://codefordc.org", 
+            "name": "Code for DC", 
+            "email": ""
+        }
+    ], 
+    "data": [], 
+    "tags": [
+        "Housing"
+    ], 
+    "links": [
+        "https://hackpad.com/Code-for-DC-District-Housing-KlQ2UbX0Imc"
+    ], 
+    "id": "https://raw.githubusercontent.com/DCgov/civic.json/master/schemas/schema-v1.json"
 }

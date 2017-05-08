@@ -41,3 +41,4 @@ gem 'poltergeist', group: :test
 gem 'colorize'
 gem 'phantomjs', :require => 'phantomjs/poltergeist'
 gem 'geocoder'
+gem 'pdfjs_rails'

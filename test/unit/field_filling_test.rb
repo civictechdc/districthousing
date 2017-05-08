@@ -6,6 +6,9 @@ class FieldFillingTest < ActiveSupport::TestCase
     @one = applicants(:one)
     valid = @one.valid?
     assert valid, @one.errors.messages
+    @empty = applicants(:empty)
+    valid = @empty.valid?
+    assert valid, @empty.errors.messages
   end
 
   test "fills basic personal information" do
@@ -425,5 +428,59 @@ class FieldFillingTest < ActiveSupport::TestCase
 
     assert_equal "US Citizen",    app.field("Citizenship")
     assert_equal "US Citizen",    app.field("Nationality")
+  end
+
+  test 'dynamic fields' do
+    assert_equal "value", @one.field("UnexistingField_or_value")
+    assert_equal "another Value", @one.field("UnexistingField_or_another_Value")
+
+    assert_equal "Something", @empty.field("Name_or_Something")
+    assert_equal "Something", @empty.field("FullName_or_Something")
+    assert_equal "Something", @empty.field("FirstInitial_or_Something")
+
+    assert_equal "(555) 367-5309", @empty.field("WorkPhone_or_(555)_367-5309")
+
+    assert_equal "01/01/1970", @empty.field("DOB_or_01/01/1970")
+    assert_equal "01", @empty.field("DOBMM_or_01")
+
+    assert_equal "N/A", @empty.field("Email_or_N/A")
+
+    assert_equal "000-00-0000", @empty.field("SSN_or_000-00-0000")
+    assert_equal "Unspecified", @empty.field("Gender_or_Unspecified")
+
+    assert_equal "Other", @empty.field("CountryOfBirth_or_Other")
+    assert_equal "NA", @empty.field("BirthState_or_NA")
+
+    assert_equal "No", @empty.field("USCitizenYesNo_or_Other")
+    assert_equal "N", @empty.field("USCitizenYN_or_Other")
+    assert_equal "Other", @empty.field("USCitizenY_or_Other")
+    assert_equal "No", @empty.field("USCitizenNo_or_Other")
+    assert_equal "N", @empty.field("USCitizenN_or_Other")
+
+    assert_equal "Not Specified", @empty.field("Race_or_Not_Specified")
+    assert_equal "Other", @empty.field("Ethnicity_or_Other")
+
+    assert_equal "X00000000", @empty.field("DriverLicense_or_X00000000")
+
+    assert_equal "Self", @empty.field("Relationship_or_None")
+    assert_equal "No", @empty.field("MarriedYesNo_or_AnotherValue")
+    assert_equal "Other", @empty.field("MarriedYes_or_Other")
+    assert_equal "No", @empty.field("MarriedNo_or_Something")
+    assert_equal "N", @empty.field("MarriedYN_or_Z")
+
+    assert_equal "None", @empty.field("StudentStatus_or_None")
+    assert_equal "No", @empty.field("StudentStatusFullTimeYesNo_or_Other")
+    assert_equal "N", @empty.field("StudentStatusYN_or_Undeclared")
+
+    assert_equal "Address unspecified", @empty.field("LL1Mail_or_Address_unspecified")
+    assert_equal "Landlord", @empty.field("LL1Name_or_Landlord")
+    assert_equal "unknown", @empty.field("LL1Phone_or_unknown")
+
+    assert_equal "Relative name unknown", @empty.field("HH1Name_or_Relative_name_unknown")
+    assert_equal "relative", @empty.field("HH1Relationship_or_relative")
+
+    assert_equal "", @empty.field("AddressStreet_or_")
+    assert_equal "xxxxx", @empty.field("AddressZip_or_xxxxx")
+    assert_equal "asdf", @empty.field("Address2_or_asdf")
   end
 end
