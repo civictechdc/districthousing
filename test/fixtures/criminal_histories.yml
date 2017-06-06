@@ -2,10 +2,12 @@ one:
   person: one
   crime_type: felony
   description: MyString
+  state: DC
   year: 2014
 
 two:
   person: one
   crime_type: felony
   description: MyString
+  state: DC
   year: 2014

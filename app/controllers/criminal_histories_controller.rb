@@ -30,7 +30,7 @@ class CriminalHistoriesController < ApplicationController
   end
 
   def model_params
-    params.require(:criminal_history).permit(:person_id, :crime_type, :description, :year)
+    params.require(:criminal_history).permit(:person_id, :crime_type, :description, :state, :year)
   end
 
   def next_page

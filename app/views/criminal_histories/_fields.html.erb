@@ -10,3 +10,6 @@
 <div class="field">
   <%= f.text_field :year, label: "Year" %>
 </div>
+<div class="field">
+  <%= f.collection_select :state, us_states, :last, :first %>
+</div>
