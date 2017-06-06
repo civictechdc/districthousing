@@ -29,6 +29,8 @@ class CriminalHistory < ActiveRecord::Base
       Constants::CrimeType.new(crime_type).name_pdf
     when "Description"
       description
+    when "State"
+      state
     when /^(\D+)$/
       person.value_for_field $1
     else
