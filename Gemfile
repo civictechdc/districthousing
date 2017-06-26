@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.10'
 gem 'rails', '4.1.1'
 
 gem 'devise'
@@ -18,7 +18,7 @@ gem 'guard-rails'
 gem 'pdf-forms'
 gem 'dotenv-rails', groups: [:development, :test]
 gem "therubyracer"
-gem 'sass-rails', github: 'rails/sass-rails'
+gem 'sass-rails'
 gem "coffee-rails"
 gem 'bootstrap-sass'
 gem 'minitest-rails'
