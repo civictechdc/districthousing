@@ -32,6 +32,8 @@ DchousingApps::Application.routes.draw do
     resources :contacts
   end
 
+  get '/housing_forms/update_all'
+
   resources :housing_forms
   resources :landlords
   resources :salesforce_applicants

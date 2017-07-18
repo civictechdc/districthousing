@@ -1,3 +1,6 @@
+require 'optparse'
+require_relative '../../lib/sync.rb'
+
 class HousingFormsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_housing_form, only: [:show, :edit, :update, :destroy, :download, :download_bank]
@@ -74,6 +77,26 @@ class HousingFormsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # PUT /housing_forms/update_all
+  def update_all
+    puts "Updating all PDFs from Google Drive"
+
+    opt = ["--times", "--update", "--archive"]
+    src = "googledrive://District Housing/5. All PDF Files and Documentation/formsync/"
+    dest = "public/forms/"
+    option = GDSync::Option.new(opt)
+    puts option.inspect
+    puts "opt value:\n"
+    puts opt.inspect
+    puts "src:\n"
+    puts src.inspect
+    puts "dest:\n"
+    puts dest.inspect
+    sync = GDSync::Sync.new([src], dest, option)
+    sync.run
+    #helper_method :update_all
   end
 
   # DELETE /housing_forms/1

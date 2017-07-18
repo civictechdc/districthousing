@@ -1,4 +1,5 @@
 <h1>Housing Locations</h1>
+<%= link_to "Update from Google Drive", controller: "housing_forms", action: "update_all", remote: true %>
 
 <%= render 'location_table', locations: @housing_forms %>
 
