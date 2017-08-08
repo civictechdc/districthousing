@@ -11,6 +11,19 @@ This is a [Ruby on Rails](http://rubyonrails.org/) application: knowledge of [Ru
 
 This application uses the [pdf-forms gem](https://github.com/jkraemer/pdf-forms) and [pdftk](http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/).
 
+## Docker Setup
+
+Docker is the easiest way to spin up a local instance of the app for development. If you haven't already, download [Docker](https://www.docker.com/community-edition) and [get it running](https://docs.docker.com/get-started/#setup). 
+
+Clone this repository to your machine by your preferred method. Then open a terminal window and navigate to where you stored the repo.
+
+Run the following commands: (stable wifi recommended by not strictly necessary)
+
+    docker build -t dh .
+    docker run -p 3000:3000 -t dh
+
+And you're done! Leave the terminal process running and open http://localhost:3000/ in a browser. You will see the app filled with fake applicant data, ready for testing. 
+
 ## Setup
 
 The application can generate random seed data for testing.  To get the application up and running, run these commands:
