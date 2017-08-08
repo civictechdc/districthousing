@@ -17,7 +17,7 @@ Docker is the easiest way to spin up a local instance of the app for development
 
 Clone this repository to your machine by your preferred method. Then open a terminal window and navigate to where you stored the repo.
 
-Run the following commands: (stable wifi recommended by not strictly necessary)
+Run the following commands: (stable wifi recommended but not strictly necessary)
 
     docker build -t dh .
     docker run -p 3000:3000 -t dh
