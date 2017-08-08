@@ -75,7 +75,7 @@ On Debian/Ubuntu:
 
 If you do not want to go through the trouble of installing Rails on your machine, you can easily set up the development environment with [Cloud9](https://c9.io/). After forking the districthousing repo, sign up for a free Cloud9 account using your Github credentials.
 
-Your fork of districthousing should appear on the left side of your Cloud9 dashboard under 'Projects on Github.' Select it and click 'Clone to Edit.' Choose the pre-configured Ruby on Rails environment. The districthousing fork will now be listed under 'My Projects.' Once cloned, click 'Start Editing.'
+On the left side of your Cloud9 dashboard Click on repositories, then from the list on the right hand side Select districthousing and click 'Clone to Edit.' Give Workspace name and click on create Workspace. The districthousing will now be listed under 'workspace'. Once workspace created, you can start editing.
 
 To continue using git, run the following in your workspace terminal:
 
