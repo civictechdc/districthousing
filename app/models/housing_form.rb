@@ -81,6 +81,8 @@ class HousingForm < ActiveRecord::Base
     h
   end
 
+  # FIXME: We shouldn't be putting PDFs in the external directory anymore. This
+  # ought to be removed.
   def is_external?
     if path =~ /external/
       true

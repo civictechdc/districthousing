@@ -36,15 +36,15 @@ end
 
 # Retrieve PDFs from Google Cloud Storage, from the bucket that is synced with
 # the Google Drive folder that the District Housing team uses to manage PDFs.
+desc "Fetch the latest PDFs from Google Drive (via Google Cloud Storage)"
 task formsync: :environment do
 	# I really, really wanted to do this with the Google Cloud Storage Ruby API
 	# instead of gsutil, but it the Ruby API seems to absolutely require
 	# authentication for all requests. These files are public, and require no
 	# authentication. gsutil handles it fine.
 	dest = Rails.root.join "public", "forms"
-	system("gsutil", "rsync", "gs://formsync", dest.to_s)
-	# FIXME: Check for errors, use a more managed subprocess interface than
-	# system().
+	success = system("gsutil", "rsync", "gs://formsync", dest.to_s)
+	raise "Failed to get the latest forms" if not success
 end
 
 # Retrieve PDFs from districthousing.org.  Code for DC team members who work on
