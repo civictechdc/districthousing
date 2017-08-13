@@ -17,8 +17,8 @@ end
 
 require 'find'
 
-desc "Load PDFs from public/forms/external"
-task seed_pdfs_external: :environment do
+desc "Load PDFs from public/forms"
+task seed_pdfs: :environment do
   HousingForm.transaction do
     FormField.transaction do
       HousingForm.destroy_all
