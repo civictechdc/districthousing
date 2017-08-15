@@ -15,12 +15,22 @@ This application uses the [pdf-forms gem](https://github.com/jkraemer/pdf-forms)
 
 Docker is the easiest way to spin up a local instance of the app for development. If you haven't already, download [Docker](https://www.docker.com/community-edition) and [get it running](https://docs.docker.com/get-started/#setup). 
 
+You can grab the latest pre-built docker image, or build it yourself.
+
+### Get the latest pre-built docker image
+
+Run:
+
+    docker run --detach --publish 80:3000 gcr.io/mindful-origin-855/github-codefordc-districthousing
+
+### Build the docker image yourself
+
 Clone this repository to your machine by your preferred method. Then open a terminal window and navigate to where you stored the repo.
 
 Run the following commands: (stable wifi recommended but not strictly necessary)
 
-    docker build -t dh .
-    docker run -p 3000:3000 -t dh
+    docker build --tag dh .
+    docker run --publish 3000:3000 -tag dh
 
 And you're done! Leave the terminal process running and open http://localhost:3000/ in a browser. You will see the app filled with fake applicant data, ready for testing. 
 
