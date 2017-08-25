@@ -21,7 +21,7 @@ You can grab the latest pre-built docker image, or build it yourself.
 
 Run:
 
-    docker run --detach --publish 80:3000 gcr.io/mindful-origin-855/github-codefordc-districthousing
+    docker run --detach --publish 3000:3000 gcr.io/mindful-origin-855/github-codefordc-districthousing
 
 ### Build the docker image yourself
 
@@ -30,7 +30,7 @@ Clone this repository to your machine by your preferred method. Then open a term
 Run the following commands: (stable wifi recommended but not strictly necessary)
 
     docker build --tag dh .
-    docker run --publish 3000:3000 -tag dh
+    docker run --publish 3000:3000 --rm -t dh
 
 And you're done! Leave the terminal process running and open http://localhost:3000/ in a browser. You will see the app filled with fake applicant data, ready for testing. 
 
