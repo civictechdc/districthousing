@@ -16,7 +16,7 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        
+
         <!--<ul class="nav navbar-nav">-->
         <!--  <li><#%= link_to "Clients", root_path %></li>-->
         <!--  <li><#%= link_to "Locations", housing_forms_path %></li>-->
@@ -24,6 +24,10 @@
         <!--</ul>-->
 
         <ul class="nav navbar-nav navbar-right">
+
+          <li><%= link_to "Home", root_path  %></li>
+          <li><%= link_to "Locations", housing_forms_path  %></li>
+          <li><%= link_to "Field Name Guide", dictionary_path  %></li>
 
           <% if current_user %>
             <li class="dropdown">
