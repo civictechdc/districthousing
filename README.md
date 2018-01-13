@@ -91,7 +91,12 @@ To continue using git, run the following in your workspace terminal:
 
     git remote add districthousing 'git@github.com:[github username]/districthousing'
 
-Install pdftk using apt-get and ensure that you are using ruby-2.1.2. You should now be able to get the application up by running:
+Ensure that you are using ruby-2.1.2 and install pdftk:
+
+    rvm install ruby-2.1.2
+    sudo apt-get update && sudo apt-get install -y pdftk
+
+You should now be able to get the application up by running:
 
     bundle install
     rake db:setup pull_pdfs seed_applicants
